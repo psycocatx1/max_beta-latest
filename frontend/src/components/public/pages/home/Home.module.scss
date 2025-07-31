@@ -1,0 +1,7 @@
+@use '../../../styles/variables' as vars;
+
+.home_page {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: vars.$bg-level-2;
+}

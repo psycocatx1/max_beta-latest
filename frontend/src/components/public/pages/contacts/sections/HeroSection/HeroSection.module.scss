@@ -1,0 +1,40 @@
+@use '../../../../../styles/variables' as vars;
+@use '../../../../../styles/mixins' as mix;
+
+.hero {
+  background: linear-gradient(135deg, vars.$bg-level-1 0%, vars.$bg-level-2 100%);
+  text-align: center;
+  padding: vars.$spacing-4xl 0;
+
+  @media (max-width: vars.$breakpoint-md) {
+    padding: vars.$spacing-3xl 0;
+  }
+
+  &__content {
+    @include mix.flex-column;
+
+    & {
+      align-items: center;
+      gap: vars.$spacing-lg;
+    }
+  }
+
+  &__badge {
+    margin-bottom: vars.$spacing-md;
+    font-weight: vars.$font-weight-semibold;
+  }
+
+  &__title {
+    margin-bottom: vars.$spacing-md;
+
+    &_accent {
+      @include mix.gradient-text;
+    }
+  }
+
+  &__description {
+    color: vars.$text-secondary;
+    max-width: 600px;
+    line-height: vars.$line-height-relaxed;
+  }
+}

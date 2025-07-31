@@ -1,0 +1,123 @@
+.original_item {
+  background-color: var(--bg-level-2);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: var(--border-width-thin) solid transparent;
+
+  &:hover {
+    background-color: var(--bg-level-3);
+    border-color: var(--border-color);
+    transform: translateY(-1px);
+  }
+
+  &_header {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  &_label {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &_content {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+
+  &_image_container {
+    flex-shrink: 0;
+    width: 25%;
+    height: auto;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    background-color: var(--bg-level-1);
+    border: var(--border-width-thin) solid var(--border-color);
+  }
+
+  &_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &_text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &_name {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.3;
+  }
+
+  &_description {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  &_price {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-xs);
+  }
+
+  &_current_price {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    color: var(--success);
+  }
+
+  &_old_price {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    text-decoration: line-through;
+  }
+
+  &_discount {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    color: var(--error);
+  }
+}
+
+// Адаптивность для мобильных устройств
+@media (max-width: 480px) {
+  .original_item {
+    &_content {
+      gap: var(--spacing-sm);
+    }
+
+    &_image_container {
+      width: 64px;
+      height: 64px;
+    }
+
+    &_name {
+      font-size: var(--font-size-sm);
+    }
+
+    &_description {
+      font-size: var(--font-size-xs);
+    }
+  }
+}

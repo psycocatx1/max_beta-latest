@@ -1,0 +1,105 @@
+.animated_section {
+  opacity: 0;
+  transition:
+    opacity var(--animation-duration, 0.6s) ease-out var(--animation-delay, 0ms),
+    transform var(--animation-duration, 0.6s) ease-out var(--animation-delay, 0ms);
+
+  &.visible {
+    opacity: 1;
+  }
+
+  // Fade In Up Animation
+  &.fadeInUp {
+    transform: translateY(40px);
+
+    &.visible {
+      transform: translateY(0);
+    }
+  }
+
+  // Fade In Down Animation
+  &.fadeInDown {
+    transform: translateY(-40px);
+
+    &.visible {
+      transform: translateY(0);
+    }
+  }
+
+  // Fade In Left Animation
+  &.fadeInLeft {
+    transform: translateX(-40px);
+
+    &.visible {
+      transform: translateX(0);
+    }
+  }
+
+  // Fade In Right Animation
+  &.fadeInRight {
+    transform: translateX(40px);
+
+    &.visible {
+      transform: translateX(0);
+    }
+  }
+
+  // Fade In Animation
+  &.fadeIn {
+    transform: none;
+
+    &.visible {
+      transform: none;
+    }
+  }
+
+  // Scale In Animation
+  &.scaleIn {
+    transform: scale(0.8);
+
+    &.visible {
+      transform: scale(1);
+    }
+  }
+}
+
+// Staggered animation for child elements
+.animated_section.visible {
+  .stagger-child {
+    &:nth-child(1) {
+      animation-delay: 0ms;
+    }
+
+    &:nth-child(2) {
+      animation-delay: 100ms;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 200ms;
+    }
+
+    &:nth-child(4) {
+      animation-delay: 300ms;
+    }
+
+    &:nth-child(5) {
+      animation-delay: 400ms;
+    }
+
+    &:nth-child(6) {
+      animation-delay: 500ms;
+    }
+  }
+}
+
+// Reduce animations for users who prefer reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .animated_section {
+    transition: opacity 0.3s ease-out;
+    transform: none !important;
+
+    &.visible {
+      transform: none !important;
+    }
+  }
+}

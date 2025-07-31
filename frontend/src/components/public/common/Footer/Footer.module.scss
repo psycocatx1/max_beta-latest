@@ -1,0 +1,433 @@
+@use '../../../styles/variables' as vars;
+@use '../../../styles/mixins' as mix;
+
+.footer {
+  & {
+    background: linear-gradient(135deg, vars.$bg-level-2 0%, vars.$bg-level-3 100%);
+    border-top: vars.$border-width-thin solid vars.$border-color;
+    margin-top: auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  // Декоративная линия сверху
+  &::before {
+    @include mix.absolute-full;
+
+    & {
+      content: '';
+      height: 2px;
+      top: -1px;
+      background: linear-gradient(90deg, transparent, vars.$primary-color, vars.$logistics-blue, transparent);
+      z-index: vars.$z-base;
+    }
+  }
+
+  // Декоративный фон
+  &::after {
+    @include mix.absolute-full;
+
+    & {
+      content: '';
+      background: radial-gradient(circle at 20% 80%, rgba(vars.$primary-color, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(vars.$logistics-blue, 0.03) 0%, transparent 50%);
+      z-index: vars.$z-negative;
+    }
+  }
+
+  &__container {
+    position: relative;
+    z-index: vars.$z-base + 1;
+  }
+
+  &__content {
+    @include mix.grid(5, vars.$spacing-xl);
+
+    & {
+      padding: vars.$spacing-2xl 0;
+    }
+
+    @media (max-width: vars.$breakpoint-xl) {
+      @include mix.grid(3, vars.$spacing-lg);
+
+      & {
+        padding: vars.$spacing-xl 0;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      @include mix.grid(1, vars.$spacing-md);
+
+      & {
+        padding: vars.$spacing-lg 0;
+        text-align: center;
+      }
+    }
+  }
+
+  &__section {
+    @include mix.flex-column;
+
+    // Основная секция с логотипом (первая колонка шире)
+    &:first-child {
+      grid-column: span 2;
+
+      @media (max-width: vars.$breakpoint-xl) {
+        & {
+          grid-column: span 2;
+        }
+      }
+
+      @media (max-width: vars.$breakpoint-md) {
+        & {
+          grid-column: span 1;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  &__logo {
+    @include mix.flex-start;
+
+    & {
+      gap: vars.$spacing-md;
+      margin-bottom: vars.$spacing-xl;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        justify-content: center;
+      }
+    }
+
+    &__icon {
+      @include mix.icon-container(40px, vars.$primary-light, vars.$primary-color);
+
+      & {
+        transition: vars.$transition-all;
+      }
+
+      &:hover {
+        background: vars.$primary-color;
+        color: vars.$text-white;
+        transform: scale(1.1);
+      }
+    }
+
+    &__text {
+      @include mix.gradient-text;
+
+      & {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__description {
+    @include mix.paragraph-lg;
+
+    & {
+      margin-bottom: vars.$spacing-xl;
+      max-width: 400px;
+      line-height: vars.$line-height-relaxed;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        max-width: none;
+      }
+    }
+  }
+
+  &__social {
+    @include mix.flex-start;
+
+    & {
+      gap: vars.$spacing-sm;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        justify-content: center;
+      }
+    }
+
+    &__link {
+      @include mix.flex-center;
+      @include mix.icon-container(44px, vars.$bg-level-1, vars.$text-secondary);
+
+      & {
+        border: vars.$border-width-normal solid vars.$border-color;
+        transition: vars.$transition-all;
+      }
+
+      &:hover {
+        background: vars.$primary-color;
+        border-color: vars.$primary-color;
+        color: vars.$text-white;
+        transform: translateY(-2px);
+        box-shadow: vars.$shadow-md;
+      }
+    }
+  }
+
+  &__title {
+    margin-bottom: vars.$spacing-lg;
+    position: relative;
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        text-align: center;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: - (vars.$spacing-xs);
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(135deg, vars.$primary-color, vars.$logistics-blue);
+      border-radius: vars.$border-radius-full;
+
+      @media (max-width: vars.$breakpoint-md) {
+        & {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    }
+  }
+
+  &__links {
+    @include mix.flex-column;
+
+    & {
+      gap: vars.$spacing-sm;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    &__item {
+      @include mix.flex-start;
+
+      & {
+        color: vars.$text-secondary;
+        font-size: vars.$font-size-md;
+        font-weight: vars.$font-weight-medium;
+        transition: vars.$transition-all;
+        padding: vars.$spacing-xs 0;
+        position: relative;
+      }
+
+      @media (max-width: vars.$breakpoint-md) {
+        & {
+          justify-content: center;
+        }
+      }
+
+      &::before {
+        content: '';
+        width: 0;
+        height: 2px;
+        background: vars.$primary-color;
+        border-radius: vars.$border-radius-full;
+        transition: width vars.$transition-normal vars.$transition-ease;
+        margin-right: 0;
+
+        @media (max-width: vars.$breakpoint-md) {
+          & {
+            display: none;
+          }
+        }
+      }
+
+      &:hover {
+        color: vars.$primary-color;
+        padding-left: vars.$spacing-sm;
+
+        @media (max-width: vars.$breakpoint-md) {
+          & {
+            padding-left: 0;
+            transform: translateY(-2px);
+          }
+        }
+
+        &::before {
+          width: 6px;
+          margin-right: vars.$spacing-xs;
+        }
+      }
+    }
+  }
+
+  &__contacts {
+    @include mix.flex-column;
+
+    & {
+      gap: vars.$spacing-lg;
+    }
+
+    &__item {
+      @include mix.flex-start;
+
+      & {
+        gap: vars.$spacing-md;
+        padding: vars.$spacing-sm;
+        border-radius: vars.$border-radius-md;
+        transition: vars.$transition-all;
+      }
+
+      @media (max-width: vars.$breakpoint-md) {
+        & {
+          justify-content: center;
+          text-align: center;
+        }
+      }
+
+      &:hover {
+        background: rgba(vars.$primary-color, 0.05);
+        transform: translateX(4px);
+
+        @media (max-width: vars.$breakpoint-md) {
+          & {
+            transform: translateY(-2px);
+          }
+        }
+      }
+
+      &__icon {
+        @include mix.icon-container(24px, vars.$primary-light, vars.$primary-color);
+
+        & {
+          margin-top: 2px;
+          flex-shrink: 0;
+        }
+      }
+
+      &__content {
+        @include mix.flex-column;
+
+        & {
+          gap: vars.$spacing-2xs;
+        }
+
+        p {
+          margin: 0;
+          line-height: vars.$line-height-normal;
+
+          &:first-child {
+            @include mix.paragraph-sm;
+
+            & {
+              color: vars.$text-primary;
+              font-weight: vars.$font-weight-semibold;
+              margin-bottom: 0;
+            }
+          }
+
+          &:last-child {
+            font-size: vars.$font-size-xs;
+            color: vars.$text-secondary;
+          }
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    background: vars.$bg-level-3;
+    border-top: vars.$border-width-thin solid vars.$border-color;
+    position: relative;
+
+    &::before {
+      @include mix.absolute-full;
+
+      & {
+        content: '';
+        background: linear-gradient(90deg,
+            rgba(vars.$primary-color, 0.02) 0%,
+            rgba(vars.$logistics-blue, 0.02) 50%,
+            rgba(vars.$primary-color, 0.02) 100%);
+      }
+    }
+
+    &__container {
+      position: relative;
+      z-index: vars.$z-base + 1;
+    }
+
+    &__content {
+      @include mix.flex-between;
+
+      & {
+        padding: vars.$spacing-xl 0;
+      }
+
+      @media (max-width: vars.$breakpoint-md) {
+        @include mix.flex-column;
+
+        & {
+          gap: vars.$spacing-lg;
+          text-align: center;
+        }
+      }
+    }
+
+    &__text {
+      color: vars.$text-secondary;
+      margin-bottom: 0;
+
+
+      strong {
+        color: vars.$text-primary;
+        font-weight: vars.$font-weight-semibold;
+      }
+    }
+
+    &__links {
+      @include mix.flex-start;
+
+      & {
+        gap: vars.$spacing-xl;
+      }
+
+      @media (max-width: vars.$breakpoint-md) {
+        & {
+          gap: vars.$spacing-lg;
+          justify-content: center;
+        }
+      }
+
+      &__item {
+        color: vars.$text-secondary;
+        font-size: vars.$font-size-sm;
+        font-weight: vars.$font-weight-medium;
+        transition: vars.$transition-colors;
+        padding: vars.$spacing-xs vars.$spacing-sm;
+        border-radius: vars.$border-radius-sm;
+
+        &:hover {
+          color: vars.$primary-color;
+          background: rgba(vars.$primary-color, 0.1);
+        }
+      }
+    }
+  }
+}
+
+.footer__map {
+  @include mix.map-mini(200px);
+
+  &__content {
+    filter: grayscale(20%) contrast(1.1);
+    transition: filter vars.$transition-normal vars.$transition-ease;
+
+    &:hover {
+      filter: grayscale(0%) contrast(1.2);
+    }
+  }
+}

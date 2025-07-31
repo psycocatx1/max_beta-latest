@@ -1,0 +1,1 @@
+export { admin_pathnames } from './admin.pathnames.data';

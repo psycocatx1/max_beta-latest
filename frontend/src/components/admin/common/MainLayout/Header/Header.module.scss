@@ -1,0 +1,113 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background-color: var(--bg-level-1);
+  border-bottom: var(--border-width-thin) solid var(--bg-level-3);
+  height: 64px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 280px; // Ширина сайдбара
+  z-index: var(--z-fixed);
+  transition: left var(--transition-normal) var(--transition-ease);
+
+  &_sidebar_collapsed {
+    left: 72px; // Ширина свернутого сайдбара
+  }
+
+  &_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &_logo {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+  }
+
+  &_user {
+    position: relative;
+    background-color: var(--bg-level-2);
+    border-radius: var(--border-radius);
+
+    &_button {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: var(--border-radius);
+      transition: background-color var(--transition-fast);
+      border: none;
+      background: none;
+
+      &:hover {
+        background-color: var(--bg-level-3);
+      }
+    }
+
+    &_avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--border-radius-full);
+      background-color: var(--bg-level-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: var(--font-weight-medium);
+      color: var(--text-primary);
+      font-size: var(--font-size-sm);
+      overflow: hidden;
+    }
+
+    &_name {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--text-primary);
+    }
+
+    &_dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background-color: var(--bg-level-1);
+      border: var(--border-width-thin) solid var(--bg-level-3);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-md);
+      min-width: 180px;
+      z-index: var(--z-dropdown);
+    }
+
+    &_dropdown_item {
+      width: 100%;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: var(--font-size-sm);
+      color: var(--text-primary);
+      transition: background-color var(--transition-fast);
+      cursor: pointer;
+      border: none;
+      background: none;
+      text-align: left;
+
+      &:hover {
+        background-color: var(--bg-level-2);
+      }
+
+      &_danger {
+        color: var(--error);
+      }
+    }
+  }
+
+
+
+
+}

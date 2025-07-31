@@ -1,0 +1,74 @@
+@use '../../../../../styles/mixins' as mix;
+@use '../../../../../styles/variables' as vars;
+
+.filters {
+  background-color: vars.$bg-level-2;
+  padding: vars.$spacing-xl 0 0 0;
+
+  &__container {
+    width: 90%;
+    margin: 0 auto vars.$spacing-xl auto;
+    padding: 0;
+  }
+
+  &__header {
+    margin-bottom: vars.$spacing-lg;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: vars.$spacing-sm;
+  }
+
+  &__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: vars.$text-primary;
+  }
+
+  &__content {
+    display: grid;
+    gap: vars.$spacing-lg;
+    align-items: end;
+
+    @media (max-width: vars.$breakpoint-md) {
+      grid-template-columns: 1fr;
+      gap: vars.$spacing-md;
+    }
+  }
+
+  &__search {
+    display: flex;
+    flex-direction: column;
+    gap: vars.$spacing-md;
+  }
+
+  &__search_wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-md;
+  }
+
+  &__search_icon {
+    position: absolute;
+    left: vars.$spacing-sm;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: vars.$text-secondary;
+    z-index: 1;
+  }
+
+  &__search_input {
+    @include mix.input-base;
+
+    & {
+      padding-left: calc(vars.$spacing-sm + 1.25rem + vars.$spacing-sm) !important;
+      width: 100%;
+      font-size: vars.$font-size-lg;
+      border-radius: vars.$border-radius-lg;
+    }
+  }
+}

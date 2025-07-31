@@ -1,0 +1,144 @@
+@use '../../../../../styles/variables' as vars;
+@use '../../../../../styles/mixins' as mix;
+
+.technology {
+  background-color: vars.$bg-level-1;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: vars.$spacing-3xl;
+    align-items: center;
+
+    @media (max-width: vars.$breakpoint-lg) {
+      grid-template-columns: 1fr;
+      gap: vars.$spacing-2xl;
+    }
+  }
+
+  &__content {
+    @include mix.flex-column;
+
+    &_title {
+      margin-bottom: vars.$spacing-md;
+    }
+
+    &_description {
+      margin-bottom: vars.$spacing-xl;
+    }
+  }
+
+  &__badge {
+    margin-bottom: vars.$spacing-lg;
+  }
+
+  &__features {
+    @include mix.flex-column;
+
+    & {
+      gap: vars.$spacing-lg;
+    }
+  }
+
+  &__feature {
+    @include mix.flex-start;
+
+    & {
+      gap: vars.$spacing-md;
+    }
+
+    &_icon {
+      @include mix.icon-container(48px, vars.$primary-light, vars.$primary-color);
+
+      & {
+        flex-shrink: 0;
+      }
+    }
+
+    &_content {
+      flex: 1;
+
+      &_title {
+        margin-bottom: vars.$spacing-xs;
+      }
+
+      &_description {
+        color: vars.$text-secondary;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__dashboard {
+    background: linear-gradient(135deg, vars.$bg-level-2, vars.$bg-level-3);
+    border: vars.$border-width-normal solid vars.$border-color;
+    padding: vars.$spacing-xl;
+
+    &_header {
+      @include mix.flex-between;
+
+      & {
+        margin-bottom: vars.$spacing-lg;
+        padding-bottom: vars.$spacing-md;
+        border-bottom: vars.$border-width-thin solid vars.$border-color;
+      }
+    }
+
+    &_title {
+      margin-bottom: 0;
+    }
+
+    &_status {
+      @include mix.flex-center;
+
+      & {
+        gap: vars.$spacing-xs;
+        font-size: vars.$font-size-sm;
+        color: vars.$primary-color;
+        font-weight: vars.$font-weight-semibold;
+      }
+
+      &::before {
+        content: '';
+        width: 0.5rem;
+        height: 0.5rem;
+        background: vars.$primary-color;
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+      }
+    }
+
+    &_content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: vars.$spacing-lg;
+
+      @media (max-width: vars.$breakpoint-sm) {
+        grid-template-columns: 1fr;
+        gap: vars.$spacing-md;
+      }
+    }
+  }
+
+  &__metric {
+    text-align: center;
+
+
+    &_value {
+      color: vars.$primary-color;
+      margin-bottom: 0;
+    }
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}

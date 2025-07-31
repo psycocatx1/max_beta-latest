@@ -1,0 +1,184 @@
+@use '../../../../../styles/variables' as vars;
+@use '../../../../../styles/mixins' as mix;
+
+.integrations {
+  background-color: vars.$bg-level-2;
+
+  &__title {
+    text-align: center;
+    margin-bottom: vars.$spacing-3xl;
+
+    @media (max-width: vars.$breakpoint-md) {
+      margin-bottom: vars.$spacing-2xl;
+    }
+  }
+
+  &__logos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+    gap: vars.$spacing-lg;
+    margin-bottom: vars.$spacing-3xl;
+
+    &_item {
+      @include mix.flex-center;
+
+      & {
+        height: 6rem;
+        padding: vars.$spacing-xs;
+        background: vars.$bg-level-1;
+        border: vars.$border-width-normal solid vars.$border-color;
+        position: relative;
+      }
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        z-index: 1;
+      }
+
+      &::before {
+        @include mix.absolute-full;
+
+        & {
+          content: '';
+          padding: 2px;
+          background: linear-gradient(135deg, vars.$primary-color, vars.$logistics-blue);
+          border-radius: vars.$border-radius-lg;
+          mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          mask-composite: xor;
+          opacity: 0;
+          transition: opacity vars.$transition-normal vars.$transition-ease;
+        }
+      }
+
+      &:hover {
+        transform: translateY(-8px);
+        box-shadow: vars.$shadow-lg;
+
+        &::before {
+          opacity: 1;
+        }
+
+        .platform-text {
+          color: vars.$primary-color;
+          transform: scale(1.1);
+        }
+      }
+
+      .platform-text {
+        font-size: vars.$font-size-sm;
+        font-weight: vars.$font-weight-bold;
+        color: vars.$text-secondary;
+        transition: vars.$transition-all;
+      }
+    }
+  }
+
+  &__button {
+    display: block;
+    margin: 0 auto vars.$spacing-3xl;
+    font-size: vars.$font-size-lg;
+    padding: vars.$spacing-lg vars.$spacing-2xl;
+
+    @media (max-width: vars.$breakpoint-md) {
+      margin-bottom: vars.$spacing-2xl;
+    }
+  }
+
+  &__courier {
+    gap: vars.$spacing-xl;
+    display: flex;
+    flex-direction: column;
+    background: vars.$bg-level-1;
+    border: vars.$border-width-normal solid vars.$border-color;
+    padding: vars.$spacing-2xl;
+
+    @media (max-width: vars.$breakpoint-lg) {
+      & {
+        gap: vars.$spacing-lg;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        padding: vars.$spacing-xl;
+      }
+    }
+
+    &_container {
+      @include mix.flex-start;
+
+      & {
+        flex: 1;
+      }
+    }
+
+    &_content {
+      flex: 1;
+
+      &_title {
+        margin-bottom: vars.$spacing-md;
+        color: vars.$text-primary;
+      }
+
+      &_description {
+        margin-bottom: vars.$spacing-xl;
+      }
+    }
+
+    &_logos {
+      @include mix.flex-start;
+
+      & {
+        flex-wrap: wrap;
+        gap: vars.$spacing-lg;
+      }
+
+      &_item {
+        @include mix.flex-center;
+
+        & {
+          width: 6rem;
+          height: 4rem;
+          background: vars.$text-white;
+          padding: vars.$spacing-3xs;
+          transition: vars.$transition-all;
+        }
+
+        & img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          z-index: 1;
+        }
+
+        &:hover {
+          transform: scale(1.05);
+          border-color: vars.$primary-color;
+        }
+
+        .courier-text {
+          font-size: vars.$font-size-xs;
+          font-weight: vars.$font-weight-bold;
+          color: vars.$text-primary;
+        }
+      }
+    }
+
+    &_image {
+      @include mix.flex-center;
+
+      & {
+        flex: 1;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: vars.$border-radius-xl;
+        box-shadow: vars.$shadow-lg;
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@use '../../../../../styles/variables' as vars;
+@use '../../../../../styles/mixins' as mix;
+
+.map_section {
+  @include mix.map-section;
+
+  &__map {
+    border-radius: vars.$border-radius-xl;
+
+    @media (max-width: vars.$breakpoint-md) {
+      border-radius: vars.$border-radius-lg;
+    }
+
+    // Обеспечиваем правильную высоту карты
+    .map_container {
+      min-height: 450px;
+
+      @media (max-width: vars.$breakpoint-lg) {
+        min-height: 400px;
+      }
+
+      @media (max-width: vars.$breakpoint-md) {
+        min-height: 350px;
+      }
+
+      @media (max-width: vars.$breakpoint-sm) {
+        min-height: 300px;
+      }
+    }
+  }
+}

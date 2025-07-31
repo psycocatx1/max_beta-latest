@@ -1,0 +1,109 @@
+@use '../../../../../styles/variables' as vars;
+@use '../../../../../styles/mixins' as mix;
+
+.contact_info {
+  background-color: vars.$bg-level-1;
+
+  &__grid {
+    @include mix.grid(3, vars.$spacing-xl);
+
+    & {
+      margin-bottom: vars.$spacing-3xl;
+    }
+
+    @media (max-width: vars.$breakpoint-lg) {
+      & {
+        @include mix.grid(2, vars.$spacing-lg);
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        @include mix.grid(1, vars.$spacing-lg);
+      }
+    }
+  }
+}
+
+.contact_card {
+  @include mix.flex-start;
+
+  & {
+    gap: vars.$spacing-lg;
+    padding: vars.$spacing-xl;
+    height: 100%;
+    border-left: 4px solid vars.$primary-color;
+    transition: vars.$transition-all, border-left-color vars.$transition-normal vars.$transition-ease;
+  }
+
+  &:hover {
+    border-left-color: vars.$logistics-blue;
+  }
+
+  @media (max-width: vars.$breakpoint-md) {
+    & {
+      padding: vars.$spacing-lg;
+      gap: vars.$spacing-md;
+    }
+  }
+
+  &__icon {
+    @include mix.icon-container(3.75rem, vars.$primary-light, vars.$primary-color);
+
+    & {
+      margin: 0 auto vars.$spacing-lg;
+      transition: vars.$transition-all;
+    }
+
+    .contact_card:hover & {
+      background: vars.$primary-color;
+      color: vars.$text-white;
+      transform: scale(1.1);
+    }
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__title {
+    margin-bottom: vars.$spacing-md;
+    color: vars.$text-primary;
+  }
+
+  &__info {
+    @include mix.flex-column;
+
+    & {
+      gap: vars.$spacing-sm;
+    }
+  }
+}
+
+.contact_item {
+  @include mix.flex-start;
+
+  & {
+    gap: vars.$spacing-sm;
+    color: vars.$text-secondary;
+    font-size: vars.$font-size-md;
+    line-height: vars.$line-height-normal;
+    padding: vars.$spacing-xs 0;
+    transition: vars.$transition-colors;
+  }
+
+  &:hover {
+    color: vars.$text-primary;
+  }
+
+  svg {
+    color: vars.$primary-color;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  span {
+    font-weight: vars.$font-weight-medium;
+    flex: 1;
+  }
+}

@@ -1,0 +1,292 @@
+@use '../../../../../../../styles/mixins' as mix;
+@use '../../../../../../../styles/variables' as vars;
+
+.card {
+  @include mix.modern-card;
+
+  & {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: vars.$bg-level-1;
+    transition: all vars.$transition-normal vars.$ease-in-out-quart;
+    position: relative;
+    cursor: pointer;
+  }
+
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: vars.$shadow-deep, vars.$shadow-glow;
+
+    .card__image {
+      transform: scale(1.08);
+    }
+
+    .card__action_button {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+
+    .card__discount_badge {
+      transform: scale(1.05);
+    }
+  }
+
+  &__image_wrapper {
+    position: relative;
+    width: calc(100% + (vars.$spacing-sm * 2));
+    aspect-ratio: 1 / 1; // Соотношение сторон 1:1
+    overflow: hidden;
+    background: vars.$gradient-card;
+    border-radius: vars.$border-radius-lg vars.$border-radius-lg 0 0;
+    margin: calc(vars.$spacing-sm * -1) calc(vars.$spacing-sm * -1) 0 calc(vars.$spacing-sm * -1);
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; // Показываем изображение полностью без обрезки
+    object-position: center;
+    transition: transform vars.$transition-slow vars.$ease-in-out-quart;
+  }
+
+  &__discount_badge {
+    @include mix.badge('error');
+
+    & {
+      position: absolute;
+      top: vars.$spacing-2xs;
+      left: vars.$spacing-2xs;
+      background: vars.$gradient-tertiary;
+      color: vars.$text-white;
+      padding: vars.$spacing-xs vars.$spacing-sm;
+      border-radius: vars.$border-radius-full;
+      font-size: vars.$font-size-xs;
+      font-weight: vars.$font-weight-bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      z-index: 3;
+      box-shadow: vars.$shadow-md;
+      transition: transform vars.$transition-normal vars.$ease-bounce;
+    }
+  }
+
+  &__actions {
+    position: absolute;
+    top: vars.$spacing-2xs;
+    right: vars.$spacing-2xs;
+    z-index: 3;
+  }
+
+  &__action_button {
+    @include mix.button-icon;
+
+    & {
+      width: 2.75rem;
+      height: 2.75rem;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: vars.$text-primary;
+      border-radius: vars.$border-radius-full;
+      opacity: 0.8;
+      transition: all vars.$transition-normal vars.$ease-bounce;
+      box-shadow: vars.$shadow-sm;
+    }
+
+    &:hover {
+      background: vars.$primary-color;
+      color: vars.$text-white;
+      box-shadow: vars.$shadow-md;
+    }
+  }
+
+  &__content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        padding: vars.$spacing-lg;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-sm) {
+      & {
+        padding: vars.$spacing-md;
+      }
+    }
+  }
+
+  &__title {
+    @include mix.heading-sm;
+    @include mix.line-clamp(2);
+
+    & {
+      margin: 0 0 vars.$spacing-sm 0;
+      color: vars.$text-primary;
+      font-weight: vars.$font-weight-bold;
+      line-height: 1.4;
+      min-height: 2.8em;
+    }
+  }
+
+  &__description {
+    @include mix.paragraph-sm;
+    @include mix.line-clamp(3);
+
+    & {
+      margin: 0 0 vars.$spacing-lg 0;
+      color: vars.$text-secondary;
+      flex-grow: 1;
+      line-height: 1.5;
+      min-height: 4.5em;
+    }
+  }
+
+  &__price_section {
+    margin-top: auto;
+    padding-top: vars.$spacing-md;
+    border-top: 1px solid vars.$border-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: vars.$spacing-md;
+  }
+
+  &__price {
+    display: flex;
+    align-items: baseline;
+    gap: vars.$spacing-sm;
+    flex-wrap: wrap;
+  }
+
+  &__price_current {
+    @include mix.heading-md;
+
+    & {
+      margin: 0;
+      color: vars.$primary-color;
+      font-weight: vars.$font-weight-bold;
+      font-size: vars.$font-size-xl;
+    }
+  }
+
+  &__price_original {
+    @include mix.paragraph-sm;
+
+    & {
+      margin: 0;
+      color: vars.$text-tertiary;
+      text-decoration: line-through;
+      font-size: vars.$font-size-sm;
+      position: relative;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: vars.$error-color;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__details_button {
+    @include mix.button-primary;
+
+    & {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: vars.$spacing-xs;
+      padding: vars.$spacing-sm vars.$spacing-md;
+      font-size: vars.$font-size-sm;
+      font-weight: vars.$font-weight-semibold;
+      text-decoration: none;
+      border-radius: vars.$border-radius-lg;
+      transition: all vars.$transition-normal vars.$ease-in-out-quart;
+      white-space: nowrap;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: vars.$shadow-lg;
+      color: vars.$text-white;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    svg {
+      transition: transform vars.$transition-normal vars.$ease-bounce;
+    }
+
+    &:hover svg {
+      transform: translateX(2px);
+    }
+
+    @media (max-width: vars.$breakpoint-sm) {
+      & {
+        padding: vars.$spacing-xs vars.$spacing-sm;
+        font-size: vars.$font-size-xs;
+      }
+
+      span {
+        display: none;
+      }
+    }
+  }
+
+  // Анимация появления карточки
+  animation: cardFadeIn 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(1.25rem);
+
+  @for $i from 1 through 12 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
+    }
+  }
+}
+
+@keyframes cardFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Состояния загрузки
+.card--loading {
+  @include mix.neomorphism;
+
+  & {
+    animation: pulse 1.5s ease-in-out infinite alternate;
+  }
+
+  .card__image_wrapper,
+  .card__title,
+  .card__description,
+  .card__price_current {
+    background: vars.$bg-level-3;
+    border-radius: vars.$border-radius-sm;
+  }
+}
+
+@keyframes pulse {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.7;
+  }
+}

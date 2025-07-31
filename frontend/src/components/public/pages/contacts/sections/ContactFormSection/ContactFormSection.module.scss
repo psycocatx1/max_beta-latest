@@ -1,0 +1,159 @@
+@use '../../../../../styles/variables' as vars;
+@use '../../../../../styles/mixins' as mix;
+
+.contact_form {
+  background-color: vars.$bg-level-2;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: vars.$spacing-3xl;
+    align-items: start;
+
+    @media (max-width: vars.$breakpoint-lg) {
+      grid-template-columns: 1fr;
+      gap: vars.$spacing-2xl;
+    }
+  }
+
+  &__info {
+    padding: vars.$spacing-xl;
+
+    @media (max-width: vars.$breakpoint-md) {
+      padding: vars.$spacing-lg;
+    }
+  }
+
+  &__title {
+    margin-bottom: vars.$spacing-md;
+    color: vars.$text-primary;
+  }
+
+  &__description {
+    color: vars.$text-secondary;
+    margin-bottom: vars.$spacing-xl;
+    line-height: vars.$line-height-relaxed;
+  }
+
+  &__benefits {
+    @include mix.flex-column;
+
+    & {
+      gap: vars.$spacing-md;
+    }
+  }
+
+  &__form {
+    @include mix.card;
+
+    & {
+      padding: vars.$spacing-2xl;
+      background: vars.$bg-level-1;
+      border: vars.$border-width-normal solid vars.$border-color;
+      box-shadow: vars.$shadow-lg;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      padding: vars.$spacing-xl;
+    }
+  }
+}
+
+.benefit_item {
+  @include mix.flex-start;
+
+  & {
+    gap: vars.$spacing-sm;
+    color: vars.$text-secondary;
+    font-size: vars.$font-size-md;
+    font-weight: vars.$font-weight-medium;
+  }
+
+  &__icon {
+    @include mix.flex-center;
+
+    & {
+      width: 1.25rem;
+      height: 1.25rem;
+      background: vars.$primary-color;
+      color: vars.$text-white;
+      border-radius: 50%;
+      font-size: vars.$font-size-sm;
+      font-weight: vars.$font-weight-bold;
+      flex-shrink: 0;
+    }
+  }
+}
+
+.form_row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: vars.$spacing-lg;
+  margin-bottom: vars.$spacing-lg;
+
+  @media (max-width: vars.$breakpoint-md) {
+    grid-template-columns: 1fr;
+    gap: vars.$spacing-md;
+  }
+}
+
+.form_group {
+  @include mix.form-group;
+
+  &:last-child {
+    margin-bottom: vars.$spacing-xl;
+  }
+
+  label {
+    font-size: vars.$font-size-md;
+    font-weight: vars.$font-weight-semibold;
+    color: vars.$text-primary;
+  }
+
+  input,
+  textarea {
+    @include mix.input-base;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: vars.$line-height-normal;
+  }
+}
+
+.input_wrapper {
+  position: relative;
+
+  svg {
+    position: absolute;
+    left: vars.$spacing-md;
+    top: 50%;
+    transform: translateY(-50%);
+    color: vars.$text-secondary;
+    pointer-events: none;
+  }
+
+  input {
+    padding-left: calc(var(--spacing-md) + 24px + var(--spacing-sm));
+  }
+}
+
+.submit_button {
+  @include mix.flex-center;
+
+  & {
+    gap: vars.$spacing-sm;
+    width: 100%;
+    font-size: vars.$font-size-lg;
+    padding: vars.$spacing-lg;
+  }
+
+  svg {
+    transition: vars.$transition-transform;
+  }
+
+  &:hover svg {
+    transform: translateX(4px);
+  }
+}

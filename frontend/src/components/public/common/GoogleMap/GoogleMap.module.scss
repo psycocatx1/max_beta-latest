@@ -1,0 +1,43 @@
+@use '../../../styles/variables' as vars;
+@use '../../../styles/mixins' as mix;
+
+.map_container {
+  @include mix.map-container;
+}
+
+.loading {
+  @include mix.map-loading-state;
+}
+
+.error {
+  @include mix.map-error-state;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  border-radius: vars.$border-radius-lg;
+}
+
+.directions_button {
+  @include mix.map-directions-button;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid vars.$border-color;
+  border-top: 3px solid vars.$primary-color;
+  border-radius: vars.$border-radius-full;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

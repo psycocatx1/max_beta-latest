@@ -1,0 +1,204 @@
+.privacy_page {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+// ===== HERO SECTION =====
+.hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  &__gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg,
+        var(--primary) 0%,
+        var(--logistics-blue) 50%,
+        var(--logistics-orange) 100%);
+    opacity: 0.95;
+
+    @media (prefers-color-scheme: light) {
+      opacity: 0.85;
+    }
+  }
+
+  &__pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+      radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px, 40px 40px;
+    animation: patternMove 20s linear infinite;
+    opacity: 0.8;
+  }
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-3xl);
+    align-items: center;
+    min-height: 60vh;
+
+    @media (max-width: 768px) {
+      padding: var(--spacing-2xl) var(--spacing-md);
+    }
+  }
+
+  &__content {
+    color: white;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    &_icon {
+      font-size: 1.2em;
+    }
+  }
+
+  &__title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.1;
+    margin-bottom: var(--spacing-lg);
+
+    &_accent {
+      background: linear-gradient(45deg, #fbbf24, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  &__description {
+    font-size: var(--font-size-lg);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-2xl);
+    opacity: 0.9;
+  }
+}
+
+// ===== CONTENT SECTION =====
+.content {
+  padding: var(--spacing-4xl) 0;
+  background: var(--bg-level-1);
+
+  &__container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+  }
+
+  &__section {
+    margin-bottom: var(--spacing-3xl);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  &__text {
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--spacing-lg);
+
+    li {
+      position: relative;
+      padding-left: var(--spacing-xl);
+      margin-bottom: var(--spacing-md);
+      font-size: var(--font-size-base);
+      line-height: 1.6;
+      color: var(--text-secondary);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+        font-size: 1.2em;
+      }
+    }
+  }
+
+  &__contact {
+    background: var(--bg-level-2);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    margin-top: var(--spacing-lg);
+
+    p {
+      font-size: var(--font-size-base);
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-sm);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@keyframes patternMove {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 60px;
+  }
+}

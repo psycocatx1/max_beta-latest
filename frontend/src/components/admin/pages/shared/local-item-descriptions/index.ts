@@ -1,0 +1,1 @@
+export { LocalItemDescriptions } from './LocalItemDescriptions';

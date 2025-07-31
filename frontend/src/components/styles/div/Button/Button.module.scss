@@ -1,0 +1,18 @@
+@use '../../variables' as vars;
+@use '../../mixins' as mix;
+
+.button {
+  @include mix.button-base;
+}
+
+.primary {
+  @include mix.button-primary;
+}
+
+.secondary {
+  @include mix.button-secondary;
+}
+
+.white {
+  @include mix.button-white;
+}

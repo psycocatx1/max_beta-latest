@@ -1,0 +1,115 @@
+@use '../../../../../styles/mixins' as mix;
+@use '../../../../../styles/variables' as vars;
+
+.list {
+  &__header {
+    margin-bottom: vars.$spacing-xl;
+  }
+
+  &__title {
+    margin: 0;
+    color: vars.$text-primary;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: vars.$spacing-lg;
+    margin-bottom: vars.$spacing-xl;
+
+    @media (max-width: vars.$breakpoint-lg) {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: vars.$spacing-md;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: vars.$spacing-md;
+    }
+
+    @media (max-width: vars.$breakpoint-sm) {
+      grid-template-columns: 1fr;
+      gap: vars.$spacing-md;
+    }
+  }
+
+  &__loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    color: vars.$text-secondary;
+    font-size: 1.125rem;
+  }
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 300px;
+    padding: vars.$spacing-xl;
+  }
+
+  &__empty_icon {
+    color: vars.$text-tertiary;
+    margin-bottom: vars.$spacing-lg;
+  }
+
+  &__empty_title {
+    margin: 0 0 vars.$spacing-sm 0;
+    color: vars.$text-primary;
+  }
+
+  &__empty_description {
+    margin: 0;
+    color: vars.$text-secondary;
+    max-width: 400px;
+
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: vars.$spacing-lg;
+    padding-top: vars.$spacing-lg;
+    border-top: 1px solid vars.$border-color-hover;
+
+    @media (max-width: vars.$breakpoint-sm) {
+      gap: vars.$spacing-md;
+    }
+  }
+
+  &__pagination_button {
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: vars.$border-radius-md;
+    background-color: vars.$bg-level-2;
+    border: 1px solid vars.$border-color-hover;
+    color: vars.$text-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background-color: vars.$accent-secondary;
+      color: vars.$text-white;
+      border-color: vars.$accent-secondary;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &__pagination_info {
+    color: vars.$text-secondary;
+    font-weight: 500;
+    min-width: 120px;
+    text-align: center;
+  }
+}

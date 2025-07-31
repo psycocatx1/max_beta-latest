@@ -1,0 +1,1366 @@
+@use './_variables' as vars;
+@use 'sass:math';
+
+// ========== КОНТЕЙНЕРЫ И ЛЕЙАУТЫ ==========
+
+// Стандартный контейнер для секций
+@mixin container {
+  & {
+    max-width: vars.$container-width-xl;
+    margin: 0 auto;
+    padding: 0 vars.$container-padding;
+    position: relative;
+  }
+
+  @media (max-width: vars.$breakpoint-lg) {
+    & {
+      max-width: vars.$container-width-lg;
+      padding: 0 vars.$container-padding-mobile;
+    }
+  }
+
+  @media (max-width: vars.$breakpoint-md) {
+    & {
+      max-width: vars.$container-width-md;
+    }
+  }
+
+  @media (max-width: vars.$breakpoint-sm) {
+    & {
+      max-width: vars.$container-width-sm;
+    }
+  }
+}
+
+// Малый контейнер для узкого контента
+@mixin container-narrow {
+  & {
+    max-width: vars.$container-width-md;
+    margin: 0 auto;
+    padding: 0 vars.$container-padding;
+  }
+
+  @media (max-width: vars.$breakpoint-lg) {
+    & {
+      padding: 0 vars.$container-padding-mobile;
+    }
+  }
+}
+
+// Секция с отступами
+@mixin section {
+  & {
+    position: relative;
+    padding: vars.$section-padding-y 0;
+    overflow-x: hidden;
+  }
+
+  @media (max-width: vars.$breakpoint-lg) {
+    & {
+      padding: vars.$section-padding-y-tablet 0;
+    }
+  }
+
+  @media (max-width: vars.$breakpoint-md) {
+    & {
+      padding: vars.$section-padding-y-mobile 0;
+    }
+  }
+}
+
+// Hero секция
+@mixin hero-section {
+  @include section;
+
+  & {
+    min-height: vars.$hero-min-height;
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: vars.$breakpoint-md) {
+    & {
+      min-height: vars.$hero-min-height-mobile;
+    }
+  }
+}
+
+// Карточка с тенью и границами
+@mixin card {
+  & {
+    background-color: vars.$bg-level-1;
+    border-radius: vars.$card-border-radius;
+    box-shadow: vars.$shadow-card;
+    padding: vars.$card-padding;
+    border: vars.$card-border;
+    transition: vars.$transition-all;
+  }
+
+  @media (max-width: vars.$breakpoint-md) {
+    & {
+      padding: vars.$card-padding-mobile;
+    }
+  }
+}
+
+// Карточка с hover эффектом
+@mixin card-hoverable {
+  @include card;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: vars.$shadow-card-hover;
+  }
+}
+
+// Грид для секций
+@mixin grid($columns: 3, $gap: vars.$spacing-xl) {
+  & {
+    display: grid;
+    gap: $gap;
+  }
+
+  @if $columns ==2 {
+    & {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        grid-template-columns: 1fr;
+        gap: vars.$spacing-lg;
+      }
+    }
+  }
+
+  @else if $columns ==3 {
+
+    & {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: vars.$breakpoint-lg) {
+      & {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        grid-template-columns: 1fr;
+        gap: vars.$spacing-lg;
+      }
+    }
+  }
+
+  @else if $columns ==4 {
+    & {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (max-width: vars.$breakpoint-xl) {
+      & {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-lg) {
+      & {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        grid-template-columns: 1fr;
+        gap: vars.$spacing-lg;
+      }
+    }
+  }
+
+  @else {
+    & {
+      grid-template-columns: repeat($columns, 1fr);
+    }
+  }
+}
+
+// Флекс для выравнивания элементов
+@mixin flex-center {
+  & {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@mixin flex-between {
+  & {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@mixin flex-start {
+  & {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+}
+
+@mixin flex-column {
+  & {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+// ========== ТИПОГРАФИКА ==========
+
+// Заголовки разных уровней
+@mixin heading-xl {
+  font-size: vars.$heading-font-size-xl;
+  font-weight: vars.$font-weight-bold;
+  line-height: vars.$line-height-tight;
+  color: vars.$text-primary;
+  margin-bottom: vars.$spacing-lg;
+}
+
+@mixin heading-lg {
+  font-size: vars.$heading-font-size-lg;
+  font-weight: vars.$font-weight-bold;
+  line-height: vars.$line-height-tight;
+  color: vars.$text-primary;
+  margin-bottom: vars.$spacing-md;
+}
+
+@mixin heading-md {
+  font-size: vars.$heading-font-size-md;
+  font-weight: vars.$font-weight-semibold;
+  line-height: vars.$line-height-tight;
+  color: vars.$text-primary;
+  margin-bottom: vars.$spacing-sm;
+}
+
+@mixin heading-sm {
+  font-size: vars.$heading-font-size-sm;
+  font-weight: vars.$font-weight-semibold;
+  line-height: vars.$line-height-normal;
+  color: vars.$text-primary;
+  margin-bottom: vars.$spacing-sm;
+}
+
+// Параграфы
+@mixin paragraph-xl {
+  font-size: vars.$font-size-xl;
+  line-height: vars.$line-height-relaxed;
+  color: vars.$text-secondary;
+  margin-bottom: vars.$spacing-lg;
+
+  @media (max-width: vars.$breakpoint-md) {
+    & {
+      font-size: vars.$font-size-lg;
+      line-height: vars.$line-height-loose;
+    }
+  }
+}
+
+@mixin paragraph-lg {
+  font-size: vars.$font-size-lg;
+  line-height: vars.$line-height-relaxed;
+  color: vars.$text-secondary;
+  margin-bottom: vars.$spacing-lg;
+
+  @media (max-width: vars.$breakpoint-md) {
+    & {
+      font-size: vars.$font-size-md;
+    }
+  }
+}
+
+@mixin paragraph-md {
+  font-size: vars.$font-size-md;
+  line-height: vars.$line-height-relaxed;
+  color: vars.$text-secondary;
+  margin-bottom: vars.$spacing-md;
+
+  @media (max-width: vars.$breakpoint-md) {
+    & {
+      font-size: vars.$font-size-sm;
+    }
+  }
+}
+
+@mixin paragraph-sm {
+  font-size: vars.$font-size-sm;
+  line-height: vars.$line-height-normal;
+  color: vars.$text-secondary;
+  margin-bottom: vars.$spacing-sm;
+}
+
+// Badge / бейдж элемент
+@mixin badge($variant: 'primary') {
+  & {
+    display: inline-flex;
+    align-items: center;
+    gap: vars.$spacing-xs;
+    padding: vars.$spacing-xs vars.$spacing-sm;
+    border-radius: vars.$border-radius-full;
+    font-size: vars.$font-size-sm;
+    font-weight: vars.$font-weight-medium;
+  }
+
+  @if $variant =='primary' {
+    & {
+      background: vars.$primary-light;
+      color: vars.$primary-color;
+    }
+  }
+
+  @else if $variant =='info' {
+    & {
+      background: vars.$info-light;
+      color: vars.$info-color;
+    }
+  }
+
+  @else if $variant =='success' {
+    & {
+      background: rgba(vars.$success-color, 0.1);
+      color: vars.$success-color;
+    }
+  }
+
+  @else if $variant =='warning' {
+    & {
+      background: rgba(vars.$warning-color, 0.1);
+      color: vars.$warning-color;
+    }
+  }
+
+  @else if $variant =='error' {
+    & {
+      background: rgba(vars.$error-color, 0.1);
+      color: vars.$error-color;
+    }
+  }
+}
+
+// ========== КНОПКИ И ИНТЕРАКТИВНЫЕ ЭЛЕМЕНТЫ ==========
+
+// Базовая кнопка
+@mixin button-base {
+  & {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: vars.$spacing-sm;
+    padding: vars.$button-padding-y vars.$button-padding-x;
+    border-radius: vars.$button-border-radius;
+    font-size: vars.$button-font-size;
+    font-weight: vars.$font-weight-medium;
+    text-decoration: none;
+    transition: vars.$transition-all;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+}
+
+// Основная кнопка
+@mixin button-primary {
+  @include button-base;
+
+  & {
+    background: vars.$primary-color;
+    color: vars.$text-white;
+    box-shadow: vars.$shadow-button;
+  }
+
+  &:hover:not(:disabled) {
+    background: vars.$primary-hover;
+    transform: translateY(-2px);
+    box-shadow: vars.$shadow-button-hover;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Вторичная кнопка
+@mixin button-secondary {
+  @include button-base;
+
+  & {
+    background: transparent;
+    border: vars.$border-width-normal solid vars.$primary-color;
+    color: vars.$primary-color;
+  }
+
+  &:hover:not(:disabled) {
+    background: vars.$primary-light;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Белая кнопка
+@mixin button-white {
+  @include button-base;
+
+  & {
+    background: vars.$bg-level-1;
+    color: vars.$text-primary;
+    border: vars.$card-border;
+    box-shadow: vars.$shadow-button;
+  }
+
+  &:hover:not(:disabled) {
+    background: vars.$bg-level-2;
+    transform: translateY(-2px);
+    box-shadow: vars.$shadow-button-hover;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Кнопка-призрак
+@mixin button-ghost {
+  @include button-base;
+
+  & {
+    background: transparent;
+    color: vars.$text-secondary;
+  }
+
+  &:hover:not(:disabled) {
+    background: vars.$bg-level-2;
+    color: vars.$text-primary;
+  }
+}
+
+// ========== ФОРМЫ ==========
+
+// Базовый input
+@mixin input-base {
+  & {
+    width: 100%;
+    padding: vars.$input-padding;
+    border: vars.$input-border;
+    border-radius: vars.$input-border-radius;
+    font-size: vars.$font-size-md;
+    font-family: inherit;
+    background: vars.$bg-level-1;
+    color: vars.$text-primary;
+    transition: vars.$transition-colors, border-color vars.$transition-normal vars.$transition-ease;
+  }
+
+  &::placeholder {
+    color: vars.$text-tertiary;
+  }
+
+  &:focus {
+    outline: none;
+    border: vars.$input-focus-border;
+    box-shadow: 0 0 0 3px rgba(vars.$primary-color, 0.1);
+  }
+
+  &:disabled {
+    background: vars.$bg-level-3;
+    color: vars.$text-disabled;
+    cursor: not-allowed;
+  }
+}
+
+// Группа полей формы
+@mixin form-group {
+  & {
+    display: flex;
+    flex-direction: column;
+    gap: vars.$spacing-xs;
+    margin-bottom: vars.$spacing-lg;
+  }
+
+  label {
+    & {
+      font-size: vars.$font-size-sm;
+      font-weight: vars.$font-weight-medium;
+      color: vars.$text-primary;
+    }
+  }
+}
+
+// ========== ИКОНКИ И ГРАФИКА ==========
+
+// Контейнер для иконки
+@mixin icon-container($size: 48px, $bg: vars.$primary-light, $color: vars.$primary-color) {
+  & {
+    width: $size;
+    height: $size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $bg;
+    color: $color;
+    border-radius: vars.$border-radius-lg;
+    flex-shrink: 0;
+  }
+}
+
+// Изображение с соотношением сторон
+@mixin aspect-ratio($ratio: calc(16/9)) {
+  & {
+    position: relative;
+    width: 100%;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    padding-bottom: math.percentage(math.div(1, $ratio));
+  }
+
+  >* {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// ========== УТИЛИТЫ ==========
+
+// Обрезать текст с многоточием
+@mixin text-truncate {
+  & {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+// Ограничение строк текста
+@mixin line-clamp($lines: 2) {
+  & {
+    display: -webkit-box;
+    line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// Доступное скрытие элементов
+@mixin visually-hidden {
+  & {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+// Полный размер абсолютного элемента
+@mixin absolute-full {
+  & {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+// Центрирование абсолютного элемента
+@mixin absolute-center {
+  & {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+// Скрытие скроллбара
+@mixin hide-scrollbar {
+  & {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// Градиентный текст
+@mixin gradient-text($gradient: linear-gradient(135deg, vars.$primary-color, vars.$logistics-blue)) {
+  & {
+    background: $gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+// ========== СПЕЦИАЛЬНЫЕ МИКСИНЫ ДЛЯ СЕКЦИЙ ==========
+
+// Заголовок секции с badge
+@mixin section-header {
+  & {
+    text-align: center;
+    margin-bottom: vars.$spacing-3xl;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (max-width: vars.$breakpoint-md) {
+    margin-bottom: vars.$spacing-2xl;
+  }
+}
+
+// Hover эффект для карточек
+@mixin card-hover-effect {
+  & {
+    transition: vars.$transition-transform, box-shadow vars.$transition-normal vars.$transition-ease;
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: vars.$shadow-xl;
+  }
+}
+
+// Эффект появления
+@mixin fade-in-animation($delay: 0s) {
+  & {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp vars.$transition-slow vars.$transition-ease $delay forwards;
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ========== МИКСИНЫ ДЛЯ КАРТ ==========
+
+// Базовый контейнер карты
+@mixin map-container($border-radius: vars.$border-radius-lg) {
+  & {
+    position: relative;
+    border-radius: $border-radius;
+    overflow: hidden;
+    border: vars.$border-width-normal solid vars.$border-color;
+    background-color: vars.$bg-level-2;
+    transition: vars.$transition-all;
+  }
+
+  &:hover {
+    box-shadow: vars.$shadow-lg;
+  }
+}
+
+// Состояние загрузки карты
+@mixin map-loading-state {
+  @include absolute-full;
+  @include flex-center;
+
+  & {
+    flex-direction: column;
+    background-color: vars.$bg-level-2;
+    z-index: vars.$z-dropdown;
+  }
+
+  p {
+    margin-top: vars.$spacing-md;
+    color: vars.$text-secondary;
+    font-size: vars.$font-size-sm;
+    font-weight: vars.$font-weight-medium;
+  }
+}
+
+// Состояние ошибки карты
+@mixin map-error-state {
+  @include flex-center;
+
+  & {
+    flex-direction: column;
+    background-color: vars.$bg-level-2;
+    color: vars.$text-secondary;
+    text-align: center;
+    padding: vars.$spacing-xl;
+    min-height: 200px;
+  }
+
+  svg {
+    color: vars.$text-tertiary;
+    margin-bottom: vars.$spacing-md;
+    opacity: 0.6;
+  }
+
+  p {
+    margin: vars.$spacing-xs 0;
+
+    &:first-of-type {
+      font-weight: vars.$font-weight-semibold;
+      color: vars.$text-primary;
+      font-size: vars.$font-size-md;
+    }
+
+    &:last-of-type {
+      font-size: vars.$font-size-sm;
+      opacity: 0.8;
+    }
+  }
+}
+
+// Кнопка маршрута на карте
+@mixin map-directions-button {
+  @include button-primary;
+
+  & {
+    position: absolute;
+    bottom: vars.$spacing-md;
+    right: vars.$spacing-md;
+    padding: vars.$spacing-sm vars.$spacing-md;
+    font-size: vars.$font-size-sm;
+    box-shadow: vars.$shadow-md;
+    z-index: vars.$z-dropdown;
+  }
+
+  @media (max-width: vars.$breakpoint-md) {
+    & {
+      bottom: vars.$spacing-sm;
+      right: vars.$spacing-sm;
+      padding: vars.$spacing-xs vars.$spacing-sm;
+      font-size: vars.$font-size-xs;
+    }
+  }
+}
+
+// Секция с картой (для страниц)
+@mixin map-section {
+  @include section;
+
+  & {
+    background-color: vars.$bg-level-1;
+  }
+
+  .map_section__container {
+    @include container;
+  }
+
+  .map_section__title {
+    @include heading-lg;
+
+    & {
+      text-align: center;
+      margin-bottom: vars.$spacing-2xl;
+      color: vars.$text-primary;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        margin-bottom: vars.$spacing-xl;
+      }
+    }
+  }
+
+  .map_section__content {
+    & {
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: vars.$border-radius-xl;
+      overflow: hidden;
+      box-shadow: vars.$shadow-lg;
+      border: vars.$border-width-normal solid vars.$border-color;
+      background-color: vars.$bg-level-1;
+      transition: vars.$transition-all;
+    }
+
+    &:hover {
+      box-shadow: vars.$shadow-xl;
+      transform: translateY(-4px);
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        border-radius: vars.$border-radius-lg;
+        box-shadow: vars.$shadow-md;
+        margin: 0 vars.$spacing-sm;
+      }
+    }
+  }
+}
+
+// Мини-карта для футера
+@mixin map-mini($height: 200px) {
+  & {
+    margin-top: vars.$spacing-xl;
+    border-radius: vars.$border-radius-lg;
+    overflow: hidden;
+    border: vars.$border-width-normal solid rgba(255, 255, 255, 0.1);
+    box-shadow: vars.$shadow-md;
+    transition: vars.$transition-all;
+    height: $height;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: vars.$shadow-lg;
+  }
+
+  @media (max-width: vars.$breakpoint-md) {
+    & {
+      margin-top: vars.$spacing-lg;
+      height: 150px;
+    }
+  }
+
+  @media (max-width: vars.$breakpoint-sm) {
+    & {
+      margin-top: vars.$spacing-md;
+      border-radius: vars.$border-radius-md;
+      height: 120px;
+    }
+  }
+}
+
+// ========== СОВРЕМЕННЫЕ МИКСИНЫ ДЛЯ УЛУЧШЕННОГО ДИЗАЙНА ==========
+
+// Современная карточка с градиентом
+@mixin modern-card {
+  background: vars.$gradient-card;
+  border-radius: vars.$border-radius-xl;
+  padding: vars.$spacing-xl;
+  box-shadow: vars.$shadow-lg;
+
+  border: {
+    width: vars.$border-width-normal;
+    style: solid;
+    color: vars.$border-color;
+  }
+
+  transition: vars.$transition-all;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: vars.$gradient-hero;
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: vars.$shadow-xl;
+    border-color: vars.$primary-color;
+  }
+
+  @media (max-width: vars.$breakpoint-md) {
+    & {
+      padding: vars.$spacing-lg;
+    }
+  }
+}
+
+// Эффект размытого фона (glassmorphism)
+@mixin glass-card($blur: 10px, $opacity: 0.1) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: vars.$border-width-normal solid rgba(255, 255, 255, 0.2);
+  border-radius: vars.$border-radius-xl;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+// Плавающий элемент с анимацией
+@mixin floating-element($intensity: 10px) {
+  animation: floating 3s ease-in-out infinite;
+
+  @keyframes floating {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-#{$intensity});
+    }
+  }
+}
+
+// Градиентный текст
+@mixin gradient-text($gradient: vars.$gradient-hero) {
+  @keyframes gradientShift {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  & {
+    background: $gradient;
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+// Пульсирующий эффект
+@mixin pulse-effect($color: vars.$primary-color, $intensity: 0.3) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: $color;
+    border-radius: inherit;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    z-index: -1;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: $intensity;
+    }
+
+    70% {
+      transform: translate(-50%, -50%) scale(1.05);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0;
+    }
+  }
+}
+
+// Неоморфизм эффект
+@mixin neomorphism($depth: 20px, $blur: 40px) {
+  background: vars.$bg-level-1;
+  border-radius: vars.$border-radius-xl;
+  box-shadow: #{$depth} #{$depth} #{$blur} rgba(0, 0, 0, 0.1),
+  -#{$depth} -#{$depth} #{$blur} rgba(255, 255, 255, 0.7);
+}
+
+// Продвинутая анимация при наведении
+@mixin advanced-hover {
+  transition: all vars.$transition-normal vars.$transition-ease;
+
+  &:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: vars.$shadow-xl;
+
+    &::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: vars.$gradient-hero;
+    opacity: 0;
+    transform: scale(0.8);
+    border-radius: inherit;
+    z-index: -1;
+    transition: all vars.$transition-normal vars.$transition-ease;
+  }
+}
+
+// Секция с волнообразным фоном
+@mixin wave-section {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    animation: waveMove 20s ease-in-out infinite;
+    background:
+      radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+  }
+
+  @keyframes waveMove {
+
+    0%,
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+
+    50% {
+      transform: scale(1.1) rotate(1deg);
+    }
+  }
+}
+
+// Кнопка с современными эффектами
+@mixin modern-button($variant: 'primary') {
+  @if $variant =='primary' {
+    & {
+      background: vars.$gradient-primary;
+      color: vars.$text-white;
+    }
+  }
+
+  @else if $variant =='secondary' {
+    & {
+      background: vars.$gradient-secondary;
+      color: vars.$text-white;
+    }
+  }
+
+  @else if $variant =='tertiary' {
+    & {
+      background: vars.$gradient-tertiary;
+      color: vars.$text-white;
+    }
+  }
+
+  padding: vars.$spacing-md vars.$spacing-xl;
+  border-radius: vars.$border-radius-lg;
+  border: none;
+  font-weight: vars.$font-weight-semibold;
+  font-size: vars.$font-size-md;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all vars.$transition-normal vars.$transition-ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all vars.$transition-fast;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: vars.$shadow-lg;
+
+    &::before {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ========== ДОПОЛНИТЕЛЬНЫЕ МИКСИНЫ ДЛЯ ИНТЕРАКТИВНОСТИ ==========
+
+// Интерактивная карточка для секций
+@mixin interactive-card {
+  @include modern-card;
+
+  & {
+    cursor: pointer;
+    transform-origin: center;
+  }
+
+  &:hover {
+    transform: translateY(-12px) scale(1.05);
+    box-shadow: vars.$shadow-deep;
+
+    &::before {
+      height: 6px;
+    }
+  }
+
+  &:active {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+// Светящаяся граница при фокусе
+@mixin focus-glow($color: vars.$primary-color) {
+  outline: none;
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba($color, 0.3);
+    border-color: $color;
+  }
+}
+
+// Скользящий фон при наведении
+@mixin sliding-background($direction: 'left') {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background: vars.$gradient-hero;
+    z-index: -1;
+    transition: transform vars.$transition-normal vars.$ease-out-quart;
+
+    @if $direction =='left' {
+      & {
+        left: -100%;
+        transform: translateX(0);
+      }
+    }
+
+    @else if $direction =='right' {
+      & {
+        right: -100%;
+        transform: translateX(0);
+      }
+    }
+
+    @else if $direction =='up' {
+      & {
+        top: -100%;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: auto;
+        transform: translateY(0);
+      }
+    }
+
+    @else {
+      & {
+        bottom: -100%;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: auto;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &:hover::before {
+    @if $direction =='left' {
+      & {
+        transform: translateX(100%);
+      }
+    }
+
+    @else if $direction =='right' {
+      & {
+        transform: translateX(-100%);
+      }
+    }
+
+    @else if $direction =='up' {
+      & {
+        transform: translateY(100%);
+      }
+    }
+
+    @else {
+      & {
+        transform: translateY(-100%);
+      }
+    }
+  }
+}
+
+// Миксин для создания потрясающих карточек услуг/продуктов
+@mixin service-card {
+  @include modern-card;
+
+  & {
+    text-align: center;
+    transition: all vars.$animation-duration-normal vars.$ease-in-out-quart;
+  }
+
+  &:hover {
+    transform: translateY(-15px) rotateY(5deg);
+    box-shadow: vars.$shadow-glow, vars.$shadow-deep;
+
+    .card-icon {
+      transform: scale(1.2) rotateZ(10deg);
+      filter: drop-shadow(0 5px 15px rgba(34, 197, 94, 0.4));
+    }
+
+    .card-title {
+      @include gradient-text;
+    }
+  }
+
+  .card-icon {
+    font-size: 3rem;
+    margin-bottom: vars.$spacing-md;
+    transition: all vars.$animation-duration-normal vars.$ease-bounce;
+    display: block;
+  }
+
+  .card-title {
+    font-size: vars.$font-size-xl;
+    font-weight: vars.$font-weight-bold;
+    margin-bottom: vars.$spacing-sm;
+    transition: all vars.$animation-duration-normal vars.$ease-in-out-quart;
+  }
+
+  .card-description {
+    color: vars.$text-secondary;
+    line-height: vars.$line-height-relaxed;
+    margin-bottom: vars.$spacing-lg;
+  }
+
+  .card-button {
+    @include modern-button('primary');
+
+    & {
+      margin-top: auto;
+    }
+  }
+}
+
+// Миксин для фильтров и поиска
+@mixin search-filter-section {
+  background: vars.$gradient-card;
+  padding: vars.$spacing-xl;
+  border-radius: vars.$border-radius-xl;
+  margin-bottom: vars.$spacing-xl;
+  border: vars.$border-width-normal solid vars.$border-color;
+
+  .filter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: vars.$spacing-lg;
+  }
+
+  .filter-item {
+    position: relative;
+
+    label {
+      display: block;
+      font-weight: vars.$font-weight-medium;
+      margin-bottom: vars.$spacing-xs;
+      color: vars.$text-primary;
+    }
+
+    input,
+    select {
+      @include focus-glow;
+
+      & {
+        width: 100%;
+        padding: vars.$spacing-md;
+        border: vars.$border-width-normal solid vars.$border-color;
+        border-radius: vars.$border-radius-lg;
+        background: vars.$bg-level-1;
+        transition: all vars.$transition-normal vars.$transition-ease;
+      }
+
+      &:hover {
+        border-color: vars.$primary-color;
+      }
+    }
+  }
+}
+
+// Сетка для отображения карточек
+@mixin responsive-card-grid($min-width: 300px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: vars.$spacing-xl;
+  padding: vars.$spacing-xl 0;
+
+  @media (max-width: vars.$breakpoint-md) {
+    & {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: vars.$spacing-lg;
+    }
+  }
+
+  @media (max-width: vars.$breakpoint-sm) {
+    & {
+      grid-template-columns: 1fr;
+      gap: vars.$spacing-md;
+    }
+  }
+}
+
+// Миксин для иконочных кнопок
+@mixin button-icon {
+  @include button-base;
+
+  & {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: vars.$spacing-sm;
+    border-radius: vars.$border-radius-lg;
+    transition: vars.$transition-all;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: vars.$shadow-md;
+  }
+}

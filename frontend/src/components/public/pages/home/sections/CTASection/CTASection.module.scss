@@ -1,0 +1,153 @@
+@use '../../../../../styles/variables' as vars;
+@use '../../../../../styles/mixins' as mix;
+
+.cta {
+  position: relative;
+  background: linear-gradient(135deg, vars.$primary-color 0%, vars.$primary-dark 100%);
+  color: vars.$text-white;
+  overflow: hidden;
+  padding: vars.$spacing-xl;
+
+  &__background {
+    @include mix.absolute-full;
+
+    & {
+      overflow: hidden;
+      z-index: vars.$z-base;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0) 60%);
+      animation: pulse 10s infinite ease-in-out;
+    }
+
+    &::before {
+      content: '';
+    }
+  }
+
+  &__gradient {
+    background: linear-gradient(135deg, rgba(vars.$primary-color, 0.9) 0%, rgba(vars.$primary-dark, 0.95) 100%);
+  }
+
+  &__container {
+    position: relative;
+    z-index: calc(vars.$z-base + 1);
+    padding-top: vars.$spacing-3xl;
+    padding-bottom: vars.$spacing-3xl;
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        padding-top: vars.$spacing-2xl;
+        padding-bottom: vars.$spacing-2xl;
+      }
+    }
+  }
+
+  &__content {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    padding: vars.$spacing-2xl;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: vars.$border-radius-xl;
+    backdrop-filter: blur(10px);
+    border: vars.$border-width-thin solid rgba(255, 255, 255, 0.2);
+  }
+
+  &__title {
+    color: vars.$text-white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: vars.$spacing-lg;
+  }
+
+  &__description {
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: vars.$spacing-xl;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  &__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: vars.$spacing-md;
+    margin-bottom: vars.$spacing-2xl;
+
+    @media (max-width: vars.$breakpoint-md) {
+      grid-template-columns: 1fr;
+
+      a,
+      button {
+        width: 100%;
+      }
+    }
+  }
+
+  &__button_secondary {
+    background: vars.$bg-level-1;
+    border: vars.$border-width-normal solid vars.$border-color;
+
+    &:hover {
+      background: vars.$bg-level-2 !important;
+    }
+  }
+
+  &__phone_icon {
+    margin-right: vars.$spacing-xs;
+  }
+
+  &__features {
+    @include mix.flex-center;
+
+    & {
+      gap: vars.$spacing-2xl;
+      margin-top: vars.$spacing-2xl;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      flex-direction: column;
+      gap: vars.$spacing-md;
+      align-items: center;
+    }
+  }
+
+  &__feature {
+    @include mix.flex-center;
+
+    & {
+      font-size: vars.$font-size-lg;
+      color: vars.$text-white;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    &_icon {
+      @include mix.flex-center;
+
+      & {
+        width: 2rem;
+        height: 2rem;
+        aspect-ratio: 1/1;
+        background-color: vars.$text-white;
+        color: vars.$primary-color;
+        border-radius: 50%;
+        margin-right: vars.$spacing-xs;
+        font-size: vars.$font-size-sm;
+        font-weight: vars.$font-weight-bold;
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: rotate(180deg);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: rotate(360deg);
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,125 @@
+.local_product_item {
+  &_price {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 16px;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  &_meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  &_date {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+  }
+
+  &_status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    &.active {
+      background-color: var(--success-light);
+      color: var(--success-dark);
+    }
+
+    &.inactive {
+      background-color: var(--warning-light);
+      color: var(--warning-dark);
+    }
+
+    &.blocked {
+      background-color: var(--error-light);
+      color: var(--error-dark);
+    }
+  }
+
+  &_actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+  }
+
+  &_edit_button,
+  &_delete_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &_edit_button {
+    background-color: var(--primary-light);
+    color: var(--primary);
+
+    &:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+  }
+
+  &_delete_button {
+    background-color: var(--error-light);
+    color: var(--error);
+
+    &:hover {
+      background-color: var(--error);
+      color: white;
+    }
+  }
+
+  &_image {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid var(--border-color);
+  }
+
+  &_no_image {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,140 @@
+@use '../../../styles/variables' as vars;
+
+.header {
+  background: vars.$bg-level-1;
+  border-bottom: 1px solid vars.$border-color;
+  position: sticky;
+  top: 0;
+  z-index: vars.$z-sticky;
+  box-shadow: vars.$shadow-sm;
+  transition: box-shadow vars.$transition-normal vars.$transition-ease;
+
+  &:hover {
+    box-shadow: vars.$shadow-md;
+  }
+
+  &_left {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-xl;
+  }
+
+  &_right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @media (max-width: vars.$breakpoint-2xl) {
+    & {
+      gap: vars.$spacing-lg;
+    }
+  }
+
+  @media (max-width: vars.$breakpoint-lg) {
+    & {
+      gap: vars.$spacing-md;
+    }
+  }
+
+  &_container {
+    width: 100%;
+    margin: 0 auto;
+    padding: vars.$spacing-2xl vars.$spacing-3xl vars.$spacing-2xl vars.$spacing-3xl;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+
+    @media (max-width: vars.$breakpoint-xl) {
+      & {
+        padding: vars.$spacing-2xl vars.$spacing-lg vars.$spacing-xl vars.$spacing-lg;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-lg) {
+      & {
+        padding: vars.$spacing-xl vars.$spacing-lg;
+      }
+    }
+  }
+
+  &_logo {
+    &_link {
+      display: flex;
+      align-items: center;
+      gap: vars.$spacing-sm;
+      color: vars.$text-primary;
+      font-weight: vars.$font-weight-bold;
+      font-size: vars.$font-size-2xl;
+      transition: color vars.$transition-normal vars.$transition-ease;
+
+      &:hover {
+        color: vars.$primary-color;
+      }
+    }
+
+    &_icon {
+      font-size: vars.$font-size-2xl;
+    }
+
+    &_text {
+      color: vars.$primary-color;
+      font-weight: vars.$font-weight-bold;
+    }
+  }
+
+  &_actions {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-md;
+
+    @media (max-width: vars.$breakpoint-lg) {
+      & {
+        gap: vars.$spacing-sm;
+      }
+    }
+
+    &_language_selector {
+      display: none;
+
+      @media (max-width: vars.$breakpoint-lg) {
+        & {
+          display: block;
+        }
+      }
+    }
+
+  }
+
+  &_mobile_toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    aspect-ratio: 1/1;
+    padding: vars.$spacing-sm;
+    background: vars.$bg-level-2;
+    border: 1px solid vars.$border-color;
+    border-radius: vars.$border-radius-lg;
+    cursor: pointer;
+
+    @media (max-width: vars.$breakpoint-lg) {
+      display: flex;
+    }
+
+    &:hover {
+      background: vars.$primary-light;
+    }
+  }
+}
+
+@media (max-width: vars.$breakpoint-lg) {
+  .header {
+    &_logo {
+      &_link {
+        font-size: vars.$font-size-lg;
+      }
+    }
+  }
+}

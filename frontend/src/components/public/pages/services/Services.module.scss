@@ -1,0 +1,26 @@
+@use '../../../styles/mixins' as mix;
+@use '../../../styles/variables' as vars;
+
+.services {
+  min-height: 100vh;
+  background: vars.$bg-level-1;
+
+  &__hero {
+    background: vars.$gradient-primary;
+    color: vars.$text-white;
+    text-align: center;
+  }
+
+  &__title {
+    margin: 0 0 vars.$spacing-md 0;
+    color: vars.$text-white;
+  }
+
+  &__description {
+    margin: 0;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

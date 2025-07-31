@@ -1,0 +1,82 @@
+@use '../../../../../styles/variables' as vars;
+@use '../../../../../styles/mixins' as mix;
+
+.hero {
+  background: vars.$bg-level-1;
+  text-align: center;
+
+  &__container {
+    @include mix.flex-column;
+
+    & {
+      align-items: center;
+      gap: vars.$spacing-lg;
+    }
+  }
+
+  &__badge {
+    margin-bottom: vars.$spacing-md;
+    font-weight: vars.$font-weight-semibold;
+  }
+
+  &__title {
+    margin-bottom: vars.$spacing-md;
+
+    &_accent {
+      @include mix.gradient-text;
+    }
+  }
+
+  &__description {
+    max-width: 600px;
+    line-height: vars.$line-height-relaxed;
+    margin-bottom: vars.$spacing-2xl;
+  }
+
+  &__stats {
+    @include mix.grid(3, vars.$spacing-xl);
+
+    & {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      @include mix.grid(1, vars.$spacing-lg);
+
+      & {
+        max-width: 300px;
+      }
+    }
+  }
+
+  &__stat {
+    @include mix.flex-column;
+
+    & {
+      align-items: center;
+      text-align: center;
+      padding: vars.$spacing-xl;
+      border-left: 4px solid vars.$primary-color;
+      transition: vars.$transition-all, border-left-color vars.$transition-normal vars.$transition-ease;
+    }
+
+    &:hover {
+      border-left-color: vars.$logistics-blue;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      padding: vars.$spacing-lg;
+    }
+
+    &_number {
+      color: vars.$primary-color;
+      margin-bottom: vars.$spacing-xs;
+    }
+
+    &_label {
+      color: vars.$text-secondary;
+      margin-bottom: 0;
+    }
+  }
+}

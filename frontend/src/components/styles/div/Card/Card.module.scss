@@ -1,0 +1,10 @@
+@use '../../variables' as vars;
+@use '../../mixins' as mix;
+
+.card {
+  @include mix.card;
+}
+
+.hoverable {
+  @include mix.card-hoverable;
+}

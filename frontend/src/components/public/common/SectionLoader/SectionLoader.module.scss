@@ -1,0 +1,30 @@
+@use '../../../styles/variables' as vars;
+
+.section_loader {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: vars.$bg-level-2;
+  border-radius: vars.$border-radius-lg;
+  margin: vars.$spacing-lg 0;
+
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid vars.$border-color;
+    border-top: 3px solid vars.$primary-color;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

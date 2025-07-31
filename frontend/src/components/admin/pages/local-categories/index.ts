@@ -1,0 +1,1 @@
+export { LocalCategories } from './LocalCategories';

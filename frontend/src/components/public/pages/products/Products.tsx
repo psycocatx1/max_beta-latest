@@ -1,0 +1,57 @@
+'use client'
+import { useProducts, useProductsFilters } from '@/hooks/admin/products';
+import { BaseListResult, ExtendedProduct, Locale } from '@/lib/api';
+import { AnimatedSection } from '@/components/public/common/AnimatedSection';
+import classes from './Products.module.scss';
+import { HeroSection, ProductsFiltersSection, ProductsListSection } from './sections';
+import { useEffect } from 'react';
+
+interface ProductsProps {
+  locale: Locale;
+  initial_products: ExtendedProduct[];
+}
+
+export const Products = ({ locale, initial_products }: ProductsProps) => {
+  const { filters, current_page, setPage, updateFilters } = useProductsFilters({
+    default_filters: { locale_id: locale.id, take: 10, skip: 0, category_id: '' }
+  });
+
+  const initial_data: BaseListResult<ExtendedProduct> = {
+    items: initial_products,
+    total: initial_products.length,
+    skip: 0,
+    take: filters.take
+  }
+  const { data: products, isLoading, refetch } = useProducts().useGet(filters, initial_data);
+
+  useEffect(() => { refetch() })
+
+  return products ? (
+    <div className={classes.products}>
+      <AnimatedSection animation="fadeInUp" enableAnimations={true}>
+        <HeroSection />
+      </AnimatedSection>
+
+      <AnimatedSection animation="fadeInUp" delay={200} enableAnimations={true}>
+        <ProductsFiltersSection
+          filters={filters}
+          updateFilters={updateFilters}
+        />
+      </AnimatedSection>
+
+      <AnimatedSection animation="fadeInUp" delay={400} enableAnimations={true}>
+        <ProductsListSection
+          locale={locale}
+          products={products.items}
+          total={products.total}
+          current_page={current_page}
+          total_pages={Math.ceil(products.total / products.take)}
+          current_page_size={products.take}
+          onPageChange={setPage}
+          updateFilters={updateFilters}
+          is_loading={isLoading}
+        />
+      </AnimatedSection>
+    </div>
+  ) : null;
+};

@@ -1,0 +1,10 @@
+@use '../../variables' as vars;
+@use '../../mixins' as mix;
+
+.container {
+  @include mix.container;
+}
+
+.narrow {
+  @include mix.container-narrow;
+}

@@ -1,0 +1,71 @@
+@use '../../../../../styles/variables' as vars;
+@use '../../../../../styles/mixins' as mix;
+
+.whyus {
+  background-color: vars.$bg-level-2;
+
+  &__title {
+    text-align: center;
+    margin-bottom: vars.$spacing-3xl;
+
+    @media (max-width: vars.$breakpoint-md) {
+      margin-bottom: vars.$spacing-2xl;
+    }
+  }
+
+  &__grid {
+    @include mix.grid(3, vars.$spacing-xl);
+
+    @media (max-width: vars.$breakpoint-lg) {
+      @include mix.grid(2, vars.$spacing-lg);
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      @include mix.grid(1, vars.$spacing-lg);
+    }
+  }
+
+  &__card {
+    @include mix.flex-column;
+
+    & {
+      align-items: center;
+      text-align: center;
+      padding: vars.$spacing-2xl;
+      border-left: 4px solid transparent;
+      transition: vars.$transition-all, border-left-color vars.$transition-normal vars.$transition-ease;
+    }
+
+    &:hover {
+      border-left-color: vars.$primary-color;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      padding: vars.$spacing-xl;
+    }
+
+    &_icon {
+      @include mix.icon-container(4rem, vars.$primary-light, vars.$primary-color);
+
+      & {
+        margin-bottom: vars.$spacing-lg;
+        transition: vars.$transition-all;
+      }
+
+      .whyus__card:hover & {
+        background: vars.$primary-color;
+        color: vars.$text-white;
+        transform: scale(1.1);
+      }
+    }
+
+    &_title {
+      margin-bottom: vars.$spacing-md;
+    }
+
+    &_description {
+      margin-bottom: 0;
+      line-height: vars.$line-height-relaxed;
+    }
+  }
+}

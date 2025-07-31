@@ -1,0 +1,18 @@
+@use '../../variables' as vars;
+@use '../../mixins' as mix;
+
+.xl {
+  @include mix.heading-lg;
+}
+
+.sm {
+  @include mix.heading-sm;
+}
+
+.md {
+  @include mix.heading-md;
+}
+
+.lg {
+  @include mix.heading-lg;
+}

@@ -1,0 +1,242 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+  MODERATOR
+}
+
+enum CategoryType {
+  PRODUCT
+  SERVICE
+}
+
+enum LocalItemDescriptionType {
+  TEXT
+  IMAGE
+  VIDEO
+  LINK
+}
+
+model User {
+  id              String   @id @default(uuid())
+  email           String   @unique
+  hashed_password String
+  first_name      String?
+  last_name       String?
+  phone_number    String?  @unique
+  image           String?
+  created         DateTime @default(now())
+  updated         DateTime @default(now())
+  role            Role     @default(USER)
+  is_banned       Boolean  @default(false)
+
+  locale_id String?
+  locale    Locale? @relation(fields: [locale_id], references: [id])
+
+  @@map("users")
+}
+
+model Form {
+  id           String  @id @default(uuid())
+  sender_name  String
+  company_name String?
+  phone_number String
+  email        String
+  message      String
+  ip_address   String
+
+  is_read     Boolean  @default(false)
+  is_answered Boolean  @default(false)
+  created     DateTime @default(now())
+  updated     DateTime @updatedAt
+
+  locale_id String?
+  locale    Locale? @relation(fields: [locale_id], references: [id])
+
+  @@map("forms")
+}
+
+model Locale {
+  id              String   @id @default(uuid())
+  name            String   @unique
+  language        String
+  symbol          String   @unique
+  currency        String
+  currency_symbol String
+  phone_code      String
+  image           String
+  is_excluded     Boolean  @default(false)
+  created         DateTime @default(now())
+  updated         DateTime @updatedAt
+
+  users            User[]
+  local_products   LocalProduct[]
+  local_services   LocalService[]
+  local_categories LocalCategory[]
+  Form             Form[]
+
+  @@map("locales")
+}
+
+model Category {
+  id          String       @id @default(uuid())
+  name        String
+  description String?
+  image       String?
+  type        CategoryType
+  is_excluded Boolean      @default(false)
+  created     DateTime     @default(now())
+  updated     DateTime     @updatedAt
+
+  parent_id String?
+  parent    Category?  @relation("CategoryHierarchy", fields: [parent_id], references: [id])
+  children  Category[] @relation("CategoryHierarchy")
+
+  products         Product[]
+  services         Service[]
+  local_categories LocalCategory[]
+
+  @@map("categories")
+}
+
+model LocalCategory {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  is_excluded Boolean  @default(false)
+  created     DateTime @default(now())
+  updated     DateTime @updatedAt
+
+  category_id String
+  category    Category @relation(fields: [category_id], references: [id], onDelete: Cascade)
+
+  locale_id String
+  locale    Locale @relation(fields: [locale_id], references: [id], onDelete: Cascade)
+
+  @@map("local_categories")
+}
+
+model Product {
+  id                 String   @id @default(uuid())
+  name               String   @unique
+  description        String?
+  image              String
+  price_USD          Float
+  discount_price_USD Float?
+  is_excluded        Boolean  @default(false)
+  created            DateTime @default(now())
+  updated            DateTime @updatedAt
+
+  category_id String
+  category    Category @relation(fields: [category_id], references: [id], onDelete: Cascade)
+
+  images         ItemImage[]
+  local_products LocalProduct[]
+
+  @@map("products")
+}
+
+model Service {
+  id                 String   @id @default(uuid())
+  name               String   @unique
+  description        String?
+  image              String
+  price_USD          Float
+  discount_price_USD Float?
+  is_excluded        Boolean  @default(false)
+  created            DateTime @default(now())
+  updated            DateTime @updatedAt
+
+  category_id String
+  category    Category @relation(fields: [category_id], references: [id], onDelete: Cascade)
+
+  images         ItemImage[]
+  local_services LocalService[]
+
+  @@map("services")
+}
+
+model ItemImage {
+  id          String   @id @default(uuid())
+  image       String
+  is_excluded Boolean  @default(false)
+  created     DateTime @default(now())
+  updated     DateTime @updatedAt
+
+  product_id String?
+  product    Product? @relation(fields: [product_id], references: [id], onDelete: Cascade)
+
+  service_id String?
+  service    Service? @relation(fields: [service_id], references: [id], onDelete: Cascade)
+
+  @@map("item_images")
+}
+
+model LocalProduct {
+  id             String   @id @default(uuid())
+  name           String
+  description    String?
+  price          Float
+  discount_price Float?
+  is_excluded    Boolean  @default(false)
+  created        DateTime @default(now())
+  updated        DateTime @updatedAt
+
+  product_id String
+  product    Product @relation(fields: [product_id], references: [id], onDelete: Cascade)
+
+  locale_id String
+  locale    Locale @relation(fields: [locale_id], references: [id], onDelete: Cascade)
+
+  local_item_descriptions LocalItemDescription[]
+
+  @@map("local_products")
+}
+
+model LocalService {
+  id             String   @id @default(uuid())
+  name           String
+  description    String?
+  price          Float
+  discount_price Float?
+  is_excluded    Boolean  @default(false)
+  created        DateTime @default(now())
+  updated        DateTime @updatedAt
+
+  service_id String
+  service    Service @relation(fields: [service_id], references: [id], onDelete: Cascade)
+
+  locale_id String
+  locale    Locale @relation(fields: [locale_id], references: [id], onDelete: Cascade)
+
+  local_item_descriptions LocalItemDescription[]
+
+  @@map("local_services")
+}
+
+model LocalItemDescription {
+  id          String                   @id @default(uuid())
+  content     String
+  title       String?
+  type        LocalItemDescriptionType
+  order       Float
+  is_excluded Boolean                  @default(false)
+  created     DateTime                 @default(now())
+  updated     DateTime                 @updatedAt
+
+  local_product_id String?
+  local_product    LocalProduct? @relation(fields: [local_product_id], references: [id], onDelete: Cascade)
+
+  local_service_id String?
+  local_service    LocalService? @relation(fields: [local_service_id], references: [id], onDelete: Cascade)
+
+  @@map("local_item_descriptions")
+}

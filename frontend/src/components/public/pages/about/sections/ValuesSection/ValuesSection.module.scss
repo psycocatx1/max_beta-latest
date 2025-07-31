@@ -1,0 +1,106 @@
+@use '../../../../../styles/variables' as vars;
+@use '../../../../../styles/mixins' as mix;
+
+.values {
+  position: relative;
+  overflow: hidden;
+  background-color: vars.$bg-level-2;
+
+  // Декоративный фон
+  &::before {
+    @include mix.absolute-full;
+
+    & {
+      content: '';
+      background: linear-gradient(135deg,
+          rgba(vars.$primary-color, 0.02) 0%,
+          rgba(vars.$logistics-blue, 0.02) 100%);
+      z-index: vars.$z-negative;
+    }
+  }
+
+  &__container {
+    position: relative;
+    z-index: calc(vars.$z-base + 1);
+  }
+
+  &__header {
+    @include mix.section-header;
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        margin-bottom: vars.$spacing-2xl;
+      }
+    }
+  }
+
+  &__badge {
+    margin-bottom: vars.$spacing-lg;
+  }
+
+  &__title {
+    margin-bottom: vars.$spacing-md;
+  }
+
+  &__description {
+    margin-bottom: 0;
+  }
+
+  &__grid {
+    @include mix.grid(2, vars.$spacing-xl);
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        @include mix.grid(1, vars.$spacing-lg);
+      }
+    }
+  }
+
+  &__card {
+    @include mix.flex-column;
+
+    & {
+      padding: vars.$spacing-2xl;
+      text-align: center;
+      background: vars.$bg-level-1;
+      border-left: 4px solid transparent;
+      transition: vars.$transition-all, border-left-color vars.$transition-normal vars.$transition-ease;
+    }
+
+    &:hover {
+      border-left-color: vars.$primary-color;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        padding: vars.$spacing-xl;
+      }
+    }
+
+    &_icon {
+      @include mix.icon-container(4rem, vars.$primary-light, vars.$primary-color);
+
+      & {
+        margin: 0 auto vars.$spacing-lg;
+        transition: vars.$transition-all;
+      }
+
+      .values__card:hover & {
+        background: vars.$primary-color;
+        color: vars.$text-white;
+        transform: scale(1.1);
+      }
+    }
+
+    &_title {
+      margin-bottom: vars.$spacing-md;
+      color: vars.$text-primary;
+    }
+
+    &_description {
+      color: vars.$text-secondary;
+      margin-bottom: 0;
+      line-height: vars.$line-height-relaxed;
+    }
+  }
+}

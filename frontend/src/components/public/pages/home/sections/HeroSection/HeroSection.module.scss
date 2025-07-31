@@ -1,0 +1,154 @@
+@use '../../../../../styles/variables' as vars;
+@use '../../../../../styles/mixins' as mix;
+
+.hero {
+  background: vars.$bg-level-1;
+  position: relative;
+  overflow: hidden;
+
+  // Декоративные элементы
+  &::before {
+    @include mix.absolute-full;
+
+    & {
+      content: '';
+      background: linear-gradient(135deg,
+          rgba(vars.$primary-color, 0.02) 0%,
+          rgba(vars.$logistics-blue, 0.02) 100%);
+      z-index: vars.$z-negative;
+    }
+  }
+
+  &__container {
+    position: relative;
+    z-index: vars.$z-base + 1;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: vars.$spacing-3xl;
+    align-items: center;
+
+    @media (max-width: vars.$breakpoint-lg) {
+      grid-template-columns: 1fr;
+      gap: vars.$spacing-2xl;
+      text-align: center;
+    }
+  }
+
+  &__text_content {
+    padding: vars.$spacing-3xl;
+    background: rgba(vars.$bg-level-1, 0.8);
+    backdrop-filter: blur(10px);
+    border: vars.$border-width-thin solid rgba(vars.$border-color, 0.5);
+
+    @media (max-width: vars.$breakpoint-lg) {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      padding: vars.$spacing-2xl;
+    }
+  }
+
+  &__badge {
+    margin-bottom: vars.$spacing-lg;
+    font-weight: vars.$font-weight-semibold;
+  }
+
+  &__title {
+    margin-bottom: vars.$spacing-lg;
+
+    &_accent {
+      @include mix.gradient-text;
+    }
+  }
+
+  &__description {
+    margin-bottom: vars.$spacing-xl;
+    max-width: 500px;
+
+    @media (max-width: vars.$breakpoint-lg) {
+      max-width: none;
+    }
+  }
+
+  &__actions {
+    @include mix.flex-start;
+
+    & {
+      gap: vars.$spacing-md;
+    }
+
+    @media (max-width: vars.$breakpoint-lg) {
+      justify-content: center;
+    }
+
+    @media (max-width: vars.$breakpoint-sm) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
+  &__button {
+    font-size: vars.$font-size-lg;
+    padding: vars.$spacing-md vars.$spacing-xl;
+
+    @media (max-width: vars.$breakpoint-sm) {
+      width: 100%;
+    }
+  }
+
+  &__visual {
+    @include mix.flex-center;
+
+    & {
+      position: relative;
+    }
+
+    // Placeholder для изображения
+    &::before {
+      @include mix.absolute-full;
+
+      & {
+        content: '';
+        background: linear-gradient(135deg, vars.$bg-level-2, vars.$bg-level-3);
+        border-radius: vars.$border-radius-xl;
+        opacity: 0;
+        transition: opacity vars.$transition-normal vars.$transition-ease;
+        z-index: vars.$z-base;
+      }
+    }
+
+    &[data-loading="true"]::before {
+      opacity: 1;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 600px;
+      object-fit: contain;
+      border-radius: vars.$border-radius-xl;
+      box-shadow: vars.$shadow-xl;
+      position: relative;
+      z-index: vars.$z-base + 1;
+      transition: opacity vars.$transition-slow vars.$transition-ease;
+
+      @media (max-width: vars.$breakpoint-lg) {
+        max-height: 500px;
+        max-width: 600px;
+      }
+
+      &[data-loaded="false"] {
+        opacity: 0;
+      }
+
+      &[data-loaded="true"] {
+        opacity: 1;
+      }
+    }
+  }
+}

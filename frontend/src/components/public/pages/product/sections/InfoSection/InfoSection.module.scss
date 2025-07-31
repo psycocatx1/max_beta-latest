@@ -1,0 +1,98 @@
+@use '../../../../../styles/mixins' as mix;
+@use '../../../../../styles/variables' as vars;
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$spacing-lg;
+
+  &__header {
+    padding-bottom: vars.$spacing-lg;
+    border-bottom: vars.$border-width-normal solid vars.$border-color;
+  }
+
+  &__title_section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: vars.$spacing-md;
+    margin-bottom: vars.$spacing-md;
+  }
+
+  &__actions {
+    display: flex;
+    gap: vars.$spacing-sm;
+  }
+
+  &__action_button {
+    @include mix.button-base;
+
+    & {
+      width: 44px;
+      height: 44px;
+      background-color: vars.$bg-level-2;
+      border: 1px solid vars.$border-color;
+      color: vars.$text-primary;
+    }
+
+    &:hover {
+      background-color: vars.$primary-color;
+      color: white;
+      border-color: vars.$primary-color;
+    }
+  }
+
+  &__price_section {
+    padding: vars.$spacing-lg;
+    background: vars.$bg-level-2;
+    border-radius: vars.$border-radius-lg;
+    margin-bottom: vars.$spacing-lg;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-md;
+    flex-wrap: wrap;
+    margin-bottom: vars.$spacing-sm;
+  }
+
+  &__price_current {
+    color: vars.$primary-color;
+    font-weight: vars.$font-weight-bold;
+    margin: 0;
+  }
+
+  &__price_original {
+    color: vars.$text-tertiary;
+    text-decoration: line-through;
+    margin: 0;
+  }
+
+  &__price_note {
+    color: vars.$text-tertiary;
+    margin: 0;
+    font-style: italic;
+  }
+
+  &__cta {
+    padding: vars.$spacing-lg;
+    background: vars.$gradient-secondary;
+    border-radius: vars.$border-radius-lg;
+    text-align: center;
+  }
+
+  &__contact_button {
+    width: 100%;
+    font-size: vars.$font-size-lg;
+    background: vars.$bg-level-1;
+    color: vars.$primary-color;
+    border: none;
+
+    &:hover {
+      background: vars.$bg-level-1;
+      transform: translateY(-2px);
+      box-shadow: vars.$shadow-lg;
+    }
+  }
+}

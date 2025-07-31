@@ -1,0 +1,22 @@
+@use '../../variables' as vars;
+@use '../../mixins' as mix;
+
+.badge {
+  @include mix.badge;
+}
+
+.info {
+  @include mix.badge('info');
+}
+
+.success {
+  @include mix.badge('success');
+}
+
+.warning {
+  @include mix.badge('warning');
+}
+
+.error {
+  @include mix.badge('error');
+}

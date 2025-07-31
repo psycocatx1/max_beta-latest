@@ -1,0 +1,124 @@
+@use '../../../../../styles/variables' as vars;
+@use '../../../../../styles/mixins' as mix;
+@use 'sass:math';
+
+.services {
+  background-color: vars.$bg-level-2;
+
+  &__header {
+    @include mix.section-header;
+
+    & {
+      background: vars.$bg-level-1;
+      padding: vars.$spacing-2xl;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      padding: vars.$spacing-xl;
+    }
+  }
+
+  &__badge {
+    margin-bottom: vars.$spacing-lg;
+  }
+
+  &__title {
+    margin-bottom: vars.$spacing-md;
+  }
+
+  &__description {
+    margin-bottom: 0;
+  }
+
+  &__grid {
+    @include mix.grid(2, vars.$spacing-xl);
+
+    @media (max-width: vars.$breakpoint-lg) {
+      @include mix.grid(1, vars.$spacing-lg);
+    }
+  }
+
+  &__card {
+    @include mix.flex-column;
+
+    & {
+      height: 100%;
+      padding: vars.$spacing-2xl;
+      border-left: 4px solid vars.$primary-color;
+      transition: vars.$transition-all, border-left-color vars.$transition-normal vars.$transition-ease;
+    }
+
+    &:hover {
+      border-left-color: vars.$logistics-blue;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      padding: vars.$spacing-xl;
+    }
+
+    &_header {
+      margin-bottom: vars.$spacing-lg;
+    }
+
+    &_icon {
+      @include mix.aspect-ratio(math.div(16, 9));
+
+      & {
+        width: 100%;
+        margin-bottom: vars.$spacing-md;
+        border-radius: vars.$border-radius-md;
+        background: linear-gradient(135deg, vars.$bg-level-2, vars.$bg-level-3);
+        overflow: hidden;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: vars.$transition-transform;
+      }
+
+      &:hover img {
+        transform: scale(1.05);
+      }
+    }
+
+    &_title {
+      color: vars.$text-primary;
+    }
+
+    &_description {
+      flex-grow: 1;
+      margin-bottom: vars.$spacing-lg;
+    }
+
+    &_features {
+      @include mix.flex-column;
+
+      & {
+        gap: vars.$spacing-xs;
+        margin-top: auto;
+        padding-top: vars.$spacing-md;
+        border-top: vars.$border-width-thin solid vars.$border-color;
+      }
+
+      span {
+        @include mix.flex-start;
+
+        & {
+          font-size: vars.$font-size-sm;
+          color: vars.$text-secondary;
+          line-height: vars.$line-height-normal;
+        }
+
+        &::before {
+          content: "•";
+          color: vars.$primary-color;
+          margin-right: vars.$spacing-xs;
+          font-size: vars.$font-size-lg;
+          font-weight: vars.$font-weight-bold;
+        }
+      }
+    }
+  }
+}

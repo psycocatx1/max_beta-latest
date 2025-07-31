@@ -1,0 +1,137 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: var(--spacing-lg);
+
+  &_content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &_grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+    width: 100%;
+
+    // Для больших экранов - 3 карточки в ряд
+    @media (min-width: 1200px) {
+      &>* {
+        flex: 1 1 calc(33.333% - var(--spacing-lg));
+        max-width: calc(35% - var(--spacing-lg));
+      }
+    }
+
+    // Для средних экранов - 2 карточки в ряд
+    @media (min-width: 768px) and (max-width: 1199px) {
+      &>* {
+        flex: 1 1 calc(50% - var(--spacing-lg) / 2);
+        max-width: calc(50% - var(--spacing-lg) / 2);
+      }
+    }
+
+    // Для планшетов и мобильных - 1 карточка в ряд
+    @media (max-width: 767px) {
+      gap: var(--spacing-md);
+      margin: var(--spacing-md) 0;
+
+      &>* {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+    }
+
+    &_small {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-lg);
+      margin: var(--spacing-lg) 0;
+      width: 100%;
+
+      // Для больших экранов - 2 карточки в ряд
+      @media (min-width: 1200px) {
+        &>* {
+          flex: 1 1 calc(50% - var(--spacing-lg) / 2);
+          max-width: calc(50% - var(--spacing-lg) / 2);
+        }
+      }
+
+      // Для средних экранов и мобильных - 1 карточка в ряд
+      @media (max-width: 1199px) {
+        gap: var(--spacing-md);
+        margin: var(--spacing-md) 0;
+
+        &>* {
+          flex: 1 1 100%;
+          max-width: 100%;
+        }
+      }
+    }
+  }
+
+  &_empty {
+    padding: var(--spacing-xl);
+    text-align: center;
+    font-size: var(--font-size-md);
+    color: var(--text-secondary);
+    background-color: var(--bg-level-1);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    margin: var(--spacing-lg) var(--spacing-lg);
+  }
+
+  &_loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+  }
+
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    background-color: var(--bg-level-1);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-md);
+  }
+
+  &_info {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Адаптивность для планшетов и мобильных
+@media (max-width: 767px) {
+  .list {
+    margin: var(--spacing-md);
+  }
+}
+
+// Дополнительная адаптивность для мобильных
+@media (max-width: 480px) {
+  .list {
+    margin: var(--spacing-sm);
+
+    &_grid,
+    &_grid_small {
+      gap: var(--spacing-sm);
+      margin: var(--spacing-sm) 0;
+    }
+  }
+}

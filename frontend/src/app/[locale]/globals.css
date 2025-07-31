@@ -1,0 +1,261 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #2d3748;
+
+  --z-tooltip: 1000;
+  --border-radius: 0.5rem;
+  --border-radius-xs: 0.125rem;
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.375rem;
+  --border-radius-lg: 1rem;
+  --border-radius-xl: 1.5rem;
+  --border-radius-full: 9999px;
+
+  --shadow-sm: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1), 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 1rem 2rem 0 rgba(0, 0, 0, 0.1), 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.06);
+  --shadow-xl: 0 2rem 2.5rem -0.5rem rgba(0, 0, 0, 0.1), 0 1rem 1rem -0.5rem rgba(0, 0, 0, 0.04);
+
+  --transition-fast: 0.15s;
+  --transition-normal: 0.3s;
+  --transition-slow: 0.5s;
+  --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: cubic-bezier(0.2, 0.9, 0.3, 1.1);
+
+  --spacing-3xs: 0.1875rem;
+  --spacing-2xs: 0.25rem;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
+  /* Breakpoints for media queries */
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  --breakpoint-3xl: 1920px;
+
+  /* Container sizes */
+  --container-xs: 400px;
+  --container-sm: 600px;
+  --container-md: 700px;
+  --container-lg: 900px;
+  --container-xl: 1000px;
+  --container-2xl: 1200px;
+
+  --content-width-xs: 360px;
+  --content-width-sm: 480px;
+  --content-width-md: 640px;
+  --content-width-lg: 768px;
+  --content-width-xl: 800px;
+  --content-width-2xl: 960px;
+
+
+
+  /* Зеленые акценты для логистической компании */
+  --primary: #22c55e;
+  --primary-rgb: 34, 197, 94;
+  --primary-light: rgba(34, 197, 94, 0.1);
+  --primary-dark: #16a34a;
+  --primary-hover: #15803d;
+
+  --success: rgb(34, 197, 94);
+  --success-rgb: 34, 197, 94;
+  --error: rgb(239, 68, 68);
+  --error-rgb: 239, 68, 68;
+  --warning: rgb(249, 115, 22);
+  --warning-rgb: 249, 115, 22;
+  --info: rgb(59, 130, 246);
+  --info-rgb: 59, 130, 246;
+  --info-light: rgba(59, 130, 246, 0.1);
+  --info-dark: rgb(30, 64, 175);
+
+  --border-width-thin: 0.0625rem;
+  --border-width-normal: 0.125rem;
+  --border-width-thick: 0.1875rem;
+
+  --z-negative: -1;
+  --z-base: 1;
+  --z-dropdown: 10;
+  --z-sticky: 100;
+  --z-fixed: 200;
+  --z-modal: 500;
+  --z-toast: 1100;
+  --z-max: 9999;
+
+  /* Текстовые стили */
+  --text-primary: var(--foreground);
+  --text-secondary: rgba(45, 55, 72, 0.8);
+  --text-tertiary: rgba(45, 55, 72, 0.6);
+  --text-disabled: rgba(45, 55, 72, 0.4);
+  --text-white: #ffffff;
+
+  --font-size-xs: 0.5rem;
+  --font-size-sm: 0.75rem;
+  --font-size-md: 0.875rem;
+  --font-size-lg: 1rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Уровни фона - белый с серыми оттенками */
+  --bg-level-1: #ffffff;
+  /* Основной белый фон */
+  --bg-level-2: #f8fafc;
+  /* Очень светло-серый */
+  --bg-level-3: #f1f5f9;
+  /* Светло-серый */
+  --bg-level-4: #e2e8f0;
+  /* Серый */
+  --bg-level-5: #cbd5e1;
+  /* Темно-серый */
+
+  /* Специальные цвета для логистики */
+  --logistics-blue: #3b82f6;
+  --logistics-blue-light: rgba(59, 130, 246, 0.1);
+  --logistics-blue-dark: #1e40af;
+  /* Для доверия и надежности */
+  --logistics-orange: #f97316;
+  --logistics-orange-light: rgba(249, 115, 22, 0.1);
+  --logistics-orange-dark: #ea580c;
+  /* Для энергии и скорости */
+  --logistics-gray: #64748b;
+  /* Для профессионализма */
+
+  /* Акцентные цвета */
+  --accent-primary: var(--primary);
+  --accent-primary-light: var(--primary-light);
+  --accent-secondary: var(--logistics-blue);
+  --accent-secondary-light: var(--logistics-blue-light);
+  --accent-tertiary: var(--logistics-orange);
+  --accent-tertiary-light: var(--logistics-orange-light);
+
+  /* Современные градиенты */
+  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--logistics-blue) 0%, var(--logistics-blue-dark) 100%);
+  --gradient-tertiary: linear-gradient(135deg, var(--logistics-orange) 0%, var(--logistics-orange-dark) 100%);
+  --gradient-hero: linear-gradient(135deg, var(--logistics-blue) 0%, var(--primary) 100%);
+  --gradient-card: linear-gradient(145deg, var(--bg-level-1) 0%, var(--bg-level-2) 100%);
+
+  /* Границы */
+  --border-color: #e2e8f0;
+  --border-color-hover: #cbd5e1;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #f8fafc;
+
+    /* Переопределение для темной темы */
+    --text-primary: var(--foreground);
+    --text-secondary: rgba(248, 250, 252, 0.8);
+    --text-tertiary: rgba(248, 250, 252, 0.6);
+    --text-disabled: rgba(248, 250, 252, 0.4);
+
+    /* Уровни фона для темной темы */
+    --bg-level-1: #0f172a;
+    /* Основной темный фон */
+    --bg-level-2: #1e293b;
+    /* Чуть светлее */
+    --bg-level-3: #334155;
+    /* Еще светлее */
+    --bg-level-4: #475569;
+    /* Светло-серый */
+    --bg-level-5: #64748b;
+    /* Самый светлый */
+
+    /* Границы для темной темы */
+    --border-color: #334155;
+    --border-color-hover: #475569;
+  }
+}
+
+html {
+  scrollbar-width: none;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Базовые стили для ссылок */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition-normal) var(--transition-ease);
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+/* Базовые стили для кнопок */
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all var(--transition-normal) var(--transition-ease);
+}
+
+/* Утилитарные классы */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--text-white);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--border-radius);
+  font-weight: var(--font-weight-medium);
+  transition: all var(--transition-normal) var(--transition-ease);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: 1px solid var(--primary);
+  border-radius: var(--border-radius);
+  font-weight: var(--font-weight-medium);
+  transition: all var(--transition-normal) var(--transition-ease);
+}
+
+.btn-secondary:hover {
+  background: var(--primary);
+  color: var(--text-white);
+}

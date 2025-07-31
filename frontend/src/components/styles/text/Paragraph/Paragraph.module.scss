@@ -1,0 +1,18 @@
+@use '../../variables' as vars;
+@use '../../mixins' as mix;
+
+.sm {
+  @include mix.paragraph-sm;
+}
+
+.md {
+  @include mix.paragraph-md;
+}
+
+.lg {
+  @include mix.paragraph-lg;
+}
+
+.xl {
+  @include mix.paragraph-xl;
+}
