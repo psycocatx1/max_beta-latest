@@ -49,5 +49,6 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function page({ params }: Params) {
   const { locale, product } = await apiRequest({ params });
-  return <ProductDetail locale={locale} product={product} />;
+  const { product_id } = await params;
+  return <ProductDetail locale={locale} initial_product={product} product_id={product_id} />;
 } 

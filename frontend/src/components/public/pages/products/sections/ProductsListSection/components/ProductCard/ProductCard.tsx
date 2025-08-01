@@ -1,6 +1,6 @@
 'use client'
 import { useTranslations } from 'next-intl';
-import { Image } from '@/components/Image';
+import { Image } from '@/components/common/Image';
 import { ExtendedProduct, getImageUrl, Locale } from '@/lib/api';
 import classes from './ProductCard.module.scss';
 import { Eye } from 'lucide-react';

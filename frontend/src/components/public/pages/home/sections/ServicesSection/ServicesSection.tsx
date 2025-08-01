@@ -4,7 +4,7 @@ import delivery_icon from '@/../public/public/home/services-delivery.png';
 import international_icon from '@/../public/public/home/services-international.png';
 import repackaging_icon from '@/../public/public/home/services-repackaging.png';
 import storaging_icon from '@/../public/public/home/services-storaging.jpg';
-import { Image } from '@/components/Image';
+import { Image } from '@/components/common/Image';
 import { Badge, Card, Container, Heading, Paragraph, Section } from '@/components/styles';
 
 export const ServicesSection = async () => {

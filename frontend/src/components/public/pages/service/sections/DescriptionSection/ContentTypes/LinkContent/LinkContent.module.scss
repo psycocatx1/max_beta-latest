@@ -1,0 +1,52 @@
+@use '../../../../../../../styles/mixins' as mix;
+@use '../../../../../../../styles/variables' as vars;
+
+.link {
+  @include mix.modern-button('primary');
+
+  & {
+    display: inline-flex;
+    align-items: center;
+    gap: vars.$spacing-sm;
+    margin-top: vars.$spacing-md;
+    text-decoration: none;
+    font-weight: vars.$font-weight-semibold;
+    padding: vars.$spacing-sm vars.$spacing-lg;
+    background: vars.$gradient-primary;
+    color: vars.$text-white;
+    border-radius: vars.$border-radius-lg;
+    transition: all vars.$transition-normal vars.$transition-ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left vars.$transition-normal vars.$transition-ease;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: vars.$shadow-lg;
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &::after {
+    content: '→';
+    margin-left: vars.$spacing-xs;
+    transition: transform vars.$transition-normal vars.$transition-ease;
+  }
+
+  &:hover::after {
+    transform: translateX(4px);
+  }
+}

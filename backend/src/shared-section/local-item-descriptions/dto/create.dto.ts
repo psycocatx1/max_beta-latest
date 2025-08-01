@@ -6,9 +6,7 @@ import {
   IsString,
   IsUUID,
   MaxLength,
-  MinLength,
 } from "class-validator";
-import { IsNotEmpty } from "class-validator";
 import { example_local_item_description } from "../example.data";
 import { LocalItemDescriptionType } from "@lib/prisma";
 import { Transform } from "class-transformer";
@@ -19,7 +17,6 @@ export class CreateLocalItemDescriptionDto {
     example: example_local_item_description.content,
   })
   @IsString()
-  @IsNotEmpty()
   @MaxLength(2048)
   content: string;
 
@@ -28,11 +25,10 @@ export class CreateLocalItemDescriptionDto {
     required: false,
     example: example_local_item_description.title,
   })
+  @IsOptional()
   @IsString()
-  @IsNotEmpty()
-  @MinLength(1)
   @MaxLength(256)
-  title: string;
+  title?: string;
 
   @ApiProperty({
     description: "Тип описания",
@@ -41,7 +37,6 @@ export class CreateLocalItemDescriptionDto {
     example: example_local_item_description.type,
   })
   @IsEnum(LocalItemDescriptionType)
-  @IsNotEmpty()
   type: LocalItemDescriptionType;
 
   @ApiProperty({

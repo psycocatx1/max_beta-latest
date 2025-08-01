@@ -25,7 +25,7 @@ export class CrudService {
       images: true,
       category: true,
       local_services: {
-        include: { local_item_descriptions: { orderBy: { order: "asc" } } },
+        include: { local_item_descriptions: { orderBy: { order: "asc" }, where: { is_excluded: false } } },
         ...(locale_id && { where: { locale_id } }),
       },
     };
@@ -83,10 +83,9 @@ export class CrudService {
    * @returns услуга с локализацией и изображениями (ServiceWithImagesAndLocalDescription) | null
    */
   async findOne(id: string, locale_id?: string): Promise<ExtendedService> {
-    const include: Prisma.ServiceInclude = this.getInclude(locale_id);
     const service = await this.prisma.service.findUnique({
       where: { id },
-      include,
+      include: this.getInclude(locale_id),
     });
     if (!service) throw new NotFoundException("Service not found");
     return service as unknown as ExtendedService;

@@ -1,47 +1,50 @@
 import { getImageUrl } from '@/lib/api';
-import { Image } from '@/components/Image';
+import { Image } from '@/components/common/Image';
 import classes from './GallerySection.module.scss';
 import { useTranslations } from 'next-intl';
-import { LocalizedService } from '../../localized-service';
+import { ItemImage } from '@/lib/api';
 
 interface GallerySectionProps {
-  selectedImageIndex: number;
-  localized_service: LocalizedService;
+  selected_image_index: number;
+  name: string;
+  is_discounted?: boolean;
+  images: ItemImage[];
   setSelectedImageIndex: (index: number) => void;
 }
 
-export const GallerySection = ({ localized_service, selectedImageIndex, setSelectedImageIndex }: GallerySectionProps) => {
-  const t = useTranslations('public.pages.service.detail');
+export const GallerySection = ({ is_discounted, name, images, selected_image_index, setSelectedImageIndex }: GallerySectionProps) => {
+  const t = useTranslations('public.pages.product.detail');
+  console.log(images)
 
   return (
     <div className={classes.gallery}>
       <div className={classes.gallery__main_image}>
         <Image
-          src={getImageUrl(localized_service.image)}
-          alt={localized_service.name}
+          src={getImageUrl(images[selected_image_index].image)}
+          alt={name}
           width={600}
           height={400}
           className={classes.gallery__image}
         />
-        {localized_service.is_discounted && (
+        {is_discounted && (
           <div className={classes.gallery__discount_badge}>
             {t('discount')}
           </div>
         )}
       </div>
 
-      {localized_service.images.length > 1 && (
+      {images.length > 1 && (
         <div className={classes.gallery__thumbnails}>
-          {localized_service.images.map((image, index) => (
+          {images.map((image, index) => (
             <button
               key={index}
               onClick={() => setSelectedImageIndex(index)}
-              className={`${classes.gallery__thumbnail} ${index === selectedImageIndex ? classes.gallery__thumbnail_active : ''
+              className={`${classes.gallery__thumbnail} ${index === selected_image_index ? classes.gallery__thumbnail_active : ''
                 }`}
             >
               <Image
                 src={getImageUrl(image.image)}
-                alt={`${localized_service.name} ${index + 1}`}
+                alt={`${name} ${index + 1}`}
                 width={80}
                 height={80}
                 className={classes.gallery__thumbnail_image}

@@ -23,12 +23,12 @@ export class CrudService {
     private readonly filesService: FilesService,
     private readonly localProductService: LocalProductCrudService,
     private readonly localServiceService: LocalServiceCrudService,
-  ) {}
+  ) { }
 
   /**
    * Константы для управления порядком
    */
-  private readonly REINDEX_THRESHOLD = 0.01; // Порог для запуска реиндексации
+  private readonly REINDEX_THRESHOLD = 0.001; // Порог для запуска реиндексации
 
   /**
    * Сохраняет изображение для описания типа IMAGE

@@ -3,7 +3,6 @@ import { ExtendedProduct, ItemImage, Locale, LocalItemDescription } from "@/lib/
 export interface LocalizedProduct {
   id: string,
   name: string,
-  image: string,
   description: string | null,
   price: number,
   discount_price: number | null,
@@ -30,7 +29,6 @@ export const formatExtendedProduct = (product: ExtendedProduct, locale: Locale):
   return {
     id: product.id,
     name: product.local_products?.[0]?.name || product.name,
-    image: product.image,
     description: product.local_products?.[0]?.description || product.description,
     price: price,
     discount_price: discount_price,
@@ -38,9 +36,7 @@ export const formatExtendedProduct = (product: ExtendedProduct, locale: Locale):
     is_discounted: is_discounted,
     formatted_price: formatted_price,
     formatted_discount_price: !is_discounted ? null : formatted_discount_price,
-    images: product.image
-      ? [mainImageToItemImage(product)]
-      : [mainImageToItemImage(product), ...product.images],
+    images: [mainImageToItemImage(product), ...product.images],
     item_descriptions: product.local_products?.[0]?.local_item_descriptions || [],
   }
 }

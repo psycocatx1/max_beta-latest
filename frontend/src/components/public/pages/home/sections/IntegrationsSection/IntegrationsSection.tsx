@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import classes from './IntegrationsSection.module.scss';
-import { Image } from '@/components/Image';
+import { Image } from '@/components/common/Image';
 import integration_courier_image from '@/../public/public/home/integrations-courier.png';
 
 import shopify_logo from '@/../public/public/home/shopify-logo.png';

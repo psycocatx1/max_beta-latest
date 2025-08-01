@@ -5,7 +5,7 @@ import styles from './InfoDisplay.module.scss';
 import { Edit } from 'lucide-react';
 import { Loader } from '@/components/admin/common/Loader';
 import { useTranslations } from 'next-intl';
-import { Image } from '@/components/Image';
+import { Image } from '@/components/common/Image';
 
 export interface InfoDisplayField {
   label: string;

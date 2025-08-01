@@ -7,8 +7,8 @@ import { useCommon, QUERY_KEYS } from "../useCommon"
 import { useTranslations } from "next-intl";
 
 const invalidate_queries = (id?: string) => {
-  query_client.invalidateQueries({ queryKey: QUERY_KEYS.categories(), exact: false });
-  query_client.invalidateQueries({ queryKey: QUERY_KEYS.validate_entities(), exact: false });
+  query_client.invalidateQueries({ queryKey: ['categories'], exact: false });
+  query_client.invalidateQueries({ queryKey: ['validate_entities'], exact: false });
   if (id) query_client.invalidateQueries({ queryKey: QUERY_KEYS.category(id) });
 }
 

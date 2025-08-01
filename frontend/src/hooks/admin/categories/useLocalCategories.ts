@@ -9,9 +9,9 @@ interface InvalidateQueries {
 }
 
 const invalidate_queries = ({ id, filters }: InvalidateQueries) => {
-  query_client.invalidateQueries({ queryKey: QUERY_KEYS.local_categories(), exact: false });
-  query_client.invalidateQueries({ queryKey: QUERY_KEYS.categories(), exact: false });
-  query_client.invalidateQueries({ queryKey: QUERY_KEYS.validate_entities(), exact: false });
+  query_client.invalidateQueries({ queryKey: ['local_categories'], exact: false });
+  query_client.invalidateQueries({ queryKey: ['categories'], exact: false });
+  query_client.invalidateQueries({ queryKey: ['validate_entities'], exact: false });
   if (id) query_client.invalidateQueries({ queryKey: QUERY_KEYS.local_category(id) });
   if (filters?.category_id) query_client.invalidateQueries({ queryKey: QUERY_KEYS.category(filters.category_id) });
 }

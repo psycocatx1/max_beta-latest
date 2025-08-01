@@ -4,8 +4,8 @@ import { BaseListResult, AxiosResponse, ExtendedProduct, query_client } from "@l
 import { useCommon, QUERY_KEYS } from '../useCommon'
 
 const invalidate_queries = (id?: string) => {
-  query_client.invalidateQueries({ queryKey: QUERY_KEYS.validate_entities(), exact: false });
-  query_client.invalidateQueries({ queryKey: QUERY_KEYS.products(), exact: false });
+  query_client.invalidateQueries({ queryKey: ['validate_entities'], exact: false });
+  query_client.invalidateQueries({ queryKey: ['products'], exact: false });
   if (id) {
     query_client.invalidateQueries({ queryKey: QUERY_KEYS.product(id) });
     // Также инвалидируем все локальные продукты, так как они могут быть связаны с этим продуктом
@@ -26,10 +26,12 @@ export const useProducts = () => {
     initialData: initial_data ? { data: initial_data } as AxiosResponse<BaseListResult<ExtendedProduct>> : undefined
   })
 
-  const useFind = (id: string) => useQuery({
+  const useFind = ({ id, initial_data, locale_id }: { id: string, initial_data?: ExtendedProduct, locale_id?: string }) => useQuery({
     queryKey: QUERY_KEYS.product(id),
-    queryFn: () => ProductsApi.find(id),
+    queryFn: () => ProductsApi.find(id, locale_id),
     select: (data) => data.data,
+    initialData: initial_data ? { data: initial_data } as AxiosResponse<ExtendedProduct> : undefined,
+    enabled: !!id
   });
 
   const useCreate = () => useMutation({

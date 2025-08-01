@@ -30,6 +30,7 @@ interface ImageProps extends NextImageType {
   fill?: boolean;
   sizes?: string;
   quality?: number;
+  style?: React.CSSProperties;
 }
 
 export const Image = ({
@@ -43,6 +44,7 @@ export const Image = ({
   fill = false,
   sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw",
   quality = 80,
+  style,
   ...props
 }: ImageProps) => {
   // If src is StaticImageData, use it directly
@@ -58,6 +60,7 @@ export const Image = ({
         quality={quality}
         sizes={sizes}
         className={className}
+        style={style}
         {...props}
       />
     );

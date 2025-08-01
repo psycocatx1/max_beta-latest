@@ -4,12 +4,15 @@ import {
   LocalService,
   LocalItemDescription,
   Service,
+  Category,
 } from "@prisma/client";
 import { example_item_image } from "src/shared-section/item-images/example.data";
 import { example_extended_local_service } from "../local-services/example.data";
+import { example_category } from "src/categories-section/categories/example.data";
 
 export type ExtendedService = Service & {
   images: ItemImage[];
+  category: Category;
   local_services: (LocalService & {
     local_item_descriptions: LocalItemDescription[];
   })[];
@@ -30,14 +33,15 @@ export const example_service: Service = {
 
 export const example_extended_service: ExtendedService = {
   ...example_service,
+  category: example_category,
   images: [example_item_image],
   local_services: [example_extended_local_service],
 };
 
 export const example_extended_services_list_result: BaseListResult<ExtendedService> =
-  {
-    items: [example_extended_service],
-    total: 1,
-    skip: 0,
-    take: 10,
-  };
+{
+  items: [example_extended_service],
+  total: 1,
+  skip: 0,
+  take: 10,
+};

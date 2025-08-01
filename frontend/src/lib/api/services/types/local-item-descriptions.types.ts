@@ -1,6 +1,7 @@
-import { LocalItemDescription } from "@prisma/client";
+import { LocalItemDescription, LocalItemDescriptionType } from "@prisma/client";
 import { CreateLocalItemDescriptionDto, LocalItemDescriptionsFiltersDto, UpdateLocalItemDescriptionDto } from '@/../../backend/src/shared-section/local-item-descriptions';
 export type { CreateLocalItemDescriptionDto, LocalItemDescriptionsFiltersDto, UpdateLocalItemDescriptionDto, LocalItemDescription };
+export { LocalItemDescriptionType };
 /**
  * Поля для создания локального описания товара или услуги
  */

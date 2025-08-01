@@ -6,7 +6,7 @@ import { UserMenu } from './UserMenu';
 import styles from './Header.module.scss';
 import { useState } from 'react';
 import { useUIStore } from '@/store/useUIStore';
-import { Image } from '@/components/Image';
+import { Image } from '@/components/common/Image';
 import default_avatar from '@/../public/default-avatar.png';
 import { Locale } from '@prisma/client';
 

@@ -49,5 +49,6 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function page({ params }: Params) {
   const { locale, service } = await apiRequest({ params });
-  return <ServiceDetail locale={locale} service={service} />;
+  const { service_id } = await params;
+  return <ServiceDetail locale={locale} initial_service={service} service_id={service_id} />;
 } 

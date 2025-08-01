@@ -37,7 +37,7 @@ export class ServicesController {
   constructor(
     private readonly listService: ListService,
     private readonly crudService: CrudService,
-  ) {}
+  ) { }
 
   @Get()
   @ApiQuery({ type: ServiceFiltersDto })
@@ -50,7 +50,7 @@ export class ServicesController {
     summary: "Получение списка услуг с пагинацией и сортировкой",
   })
   async getServices(@Query() filters: ServiceFiltersDto) {
-    return this.listService.getList(filters);
+    return this.listService.getServices(filters);
   }
 
   @Get(":id")
@@ -65,7 +65,7 @@ export class ServicesController {
   @ApiResponse({ status: 403, description: "Доступ запрещен" })
   async getService(
     @Param("id", ParseUUIDPipe) id: string,
-    @Query("locale_id", ParseUUIDPipe) locale_id: string,
+    @Query("locale_id", new ParseUUIDPipe({ optional: true })) locale_id?: string,
   ) {
     return this.crudService.findOne(id, locale_id);
   }

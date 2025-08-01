@@ -2,6 +2,15 @@
 @use '../../../../../styles/variables' as vars;
 
 .filters {
+  background-color: vars.$bg-level-2;
+  padding: vars.$spacing-xl 0 0 0;
+
+  &__container {
+    width: 90%;
+    margin: 0 auto vars.$spacing-xl auto;
+    padding: 0;
+  }
+
   &__header {
     margin-bottom: vars.$spacing-lg;
   }
@@ -9,19 +18,18 @@
   &__title {
     display: flex;
     align-items: center;
+    flex-direction: row;
     gap: vars.$spacing-sm;
-    margin: 0;
   }
 
   &__icon {
     width: 1.5rem;
     height: 1.5rem;
-    color: vars.$accent-primary;
+    color: vars.$text-primary;
   }
 
   &__content {
     display: grid;
-    grid-template-columns: 1fr auto;
     gap: vars.$spacing-lg;
     align-items: end;
 
@@ -34,13 +42,14 @@
   &__search {
     display: flex;
     flex-direction: column;
-    gap: vars.$spacing-xs;
+    gap: vars.$spacing-md;
   }
 
   &__search_wrapper {
     position: relative;
     display: flex;
     align-items: center;
+    gap: vars.$spacing-md;
   }
 
   &__search_icon {
@@ -56,29 +65,10 @@
     @include mix.input-base;
 
     & {
-      padding-left: calc(vars.$spacing-sm + 1.25rem + vars.$spacing-xs);
+      padding-left: calc(vars.$spacing-sm + 1.25rem + vars.$spacing-sm) !important;
       width: 100%;
-    }
-  }
-
-  &__select_group {
-    display: flex;
-    gap: vars.$spacing-md;
-
-    @media (max-width: vars.$breakpoint-md) {
-      flex-direction: column;
-    }
-  }
-
-  &__select {
-    min-width: 200px;
-
-    & {
-      @include mix.input-base;
-    }
-
-    @media (max-width: vars.$breakpoint-md) {
-      min-width: 100%;
+      font-size: vars.$font-size-lg;
+      border-radius: vars.$border-radius-lg;
     }
   }
 }

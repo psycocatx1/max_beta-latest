@@ -10,7 +10,7 @@ import { ProductFormModal } from '@/components/admin/common/Modal/Forms/ProductF
 import { getImageUrl } from '@lib/api';
 
 export const Info = ({ product_id }: { product_id: string }) => {
-  const { data: product, isLoading: is_loading } = useProducts().useFind(product_id);
+  const { data: product, isLoading: is_loading } = useProducts().useFind({ id: product_id });
   const [is_editing, setIsEditing] = useState(false);
   const update_mutation = useProducts().useUpdate(product_id);
   const toast = useToast();
@@ -42,7 +42,7 @@ export const Info = ({ product_id }: { product_id: string }) => {
     fields.push({ label: tFields('discount_label'), value: `$${product.discount_price_USD}` });
   }
 
-  return (
+  return product ? (
     <InfoDisplay
       title={tProducts('info_title')}
       image={product?.image || undefined}
@@ -57,8 +57,14 @@ export const Info = ({ product_id }: { product_id: string }) => {
         onClose={() => setIsEditing(false)}
         onSubmit={handleSubmitForm}
         is_loading={is_loading || update_mutation.isPending}
-        initial_data={{ ...product, image_type: 'url', url: getImageUrl(product.image) }}
+        initial_data={{
+          ...product,
+          image_type: 'url',
+          url: getImageUrl(product?.image),
+          description: product?.description || undefined,
+          discount_price_USD: product?.discount_price_USD || undefined,
+        }}
       />
     </InfoDisplay>
-  );
+  ) : null;
 }; 

@@ -17,9 +17,11 @@ export const ServicesFiltersSection = ({ filters, updateFilters }: ServicesFilte
     updateFilters({ name: e.target.value });
   };
 
+
+
   return (
-    <Section>
-      <Container>
+    <Section className={classes.filters}>
+      <Container className={classes.filters__container}>
         <div className={classes.filters__header}>
           <Heading size='lg' className={classes.filters__title}>
             <Filter className={classes.filters__icon} />
@@ -40,6 +42,8 @@ export const ServicesFiltersSection = ({ filters, updateFilters }: ServicesFilte
               />
             </div>
           </div>
+
+
         </div>
       </Container>
     </Section>

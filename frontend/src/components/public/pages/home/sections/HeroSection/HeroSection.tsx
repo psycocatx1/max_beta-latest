@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { Image } from '@/components/Image';
+import { Image } from '@/components/common/Image';
 import classes from './HeroSection.module.scss';
 import home_hero_main_image from '@/../public/public/home/hero-main.png';
 import { ArrowRight } from 'lucide-react';

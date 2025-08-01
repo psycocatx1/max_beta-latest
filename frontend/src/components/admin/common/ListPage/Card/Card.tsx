@@ -4,13 +4,14 @@ import { ReactNode, MouseEvent } from 'react';
 import styles from './Card.module.scss';
 import { Edit, Trash2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { Image } from '@/components/Image';
+import { Image, Iframe } from '@/components/common';
 
 interface CardProps {
   title: string;
   subtitle?: string;
   image?: string;
   imageAlt?: string;
+  video?: string;
   actions?: ReactNode;
   children?: ReactNode;
   bodyClassName?: string;
@@ -24,6 +25,7 @@ export const Card = ({
   subtitle,
   image,
   imageAlt,
+  video,
   actions,
   children,
   bodyClassName,
@@ -59,6 +61,12 @@ export const Card = ({
             height={80}
             className={styles.card_image}
           />
+        </div>
+      )}
+
+      {video && (
+        <div className={styles.card_image_container}>
+          <Iframe url={video} title={video} className={styles.card_iframe} />
         </div>
       )}
 

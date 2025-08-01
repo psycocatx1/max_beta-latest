@@ -1,7 +1,7 @@
 'use client';
 
 import { useForm } from 'react-hook-form';
-import { LocalItemDescriptionContentSection } from '@/components/admin/common/Form/FormSections/LocalItemDescriptionContentSection';
+import { LocalItemDescriptionContentSection } from '@/components/admin/common/Form/FormSections/LocalItemDescriptionContentSection/LocalItemDescriptionContentSection';
 import { BaseFormModal, ItemSelectSection, LocaleSelectSection, mergeDefaultValues, SelectField } from '@/components/admin/common/Form';
 import { useLocalProducts } from '@/hooks/admin/products';
 import { useLocalServices } from '@/hooks/admin/services';
@@ -27,8 +27,6 @@ export interface LocalItemDescriptionFormData {
   title?: string;
   type: LocalItemDescriptionType;
   files?: FileList;
-  file?: File;
-  image?: string;
   url?: string;
   image_type?: 'file' | 'url';
   local_item_id: string;
@@ -43,7 +41,6 @@ const DEFAULT_VALUES: LocalItemDescriptionFormData = {
   type: LocalItemDescriptionType.TEXT,
   local_item_id: '',
   image_type: 'url',
-  image: '',
   url: '',
 }
 
@@ -79,7 +76,7 @@ export const LocalItemDescriptionFormModal = ({
   const { register, watch, setValue, formState: { errors } } = form;
 
   const handleSubmitWrapper = (data: LocalItemDescriptionFormData) => {
-    if (data.type === 'IMAGE') {
+    if (data.type === LocalItemDescriptionType.IMAGE) {
       const hasFile = data.image_type === 'file' && data.files && data.files.length > 0;
       const hasUrl = data.image_type === 'url' && data.content && data.content.trim() !== '';
 
@@ -88,25 +85,24 @@ export const LocalItemDescriptionFormModal = ({
         return;
       }
     }
-
     const submitData = {
       ...data,
-      content: data.type === 'IMAGE' && data.image_type === 'url' ? data.content : data.type === 'TEXT' ? data.text : data.content,
-      file: data.type === 'IMAGE' && data.image_type === 'file' ? data.files?.[0] : undefined,
+      content: data.type === LocalItemDescriptionType.IMAGE && data.image_type === 'url' ? data.content : data.type === LocalItemDescriptionType.TEXT ? data.text : data.content,
+      file: data.type === LocalItemDescriptionType.IMAGE && data.image_type === 'file' ? data.files?.[0] : undefined,
       ...(type === CategoryType.PRODUCT ? { local_product_id: data.local_item_id } : { local_service_id: data.local_item_id })
     };
     onSubmit(submitData);
   };
 
   useEffect(() => {
-    if (initial_data && initial_data.type === 'IMAGE') {
+    if (initial_data && initial_data.type === LocalItemDescriptionType.IMAGE) {
       if (initial_data.content) {
         setValue('image_type', 'url');
         setValue('content', getImageUrl(initial_data.content) || initial_data.content);
       } else {
         setValue('image_type', 'file');
       }
-    } else if (initial_data && initial_data.type === 'TEXT') {
+    } else if (initial_data && initial_data.type === LocalItemDescriptionType.TEXT) {
       setValue('text', initial_data.content);
     }
   }, [initial_data, setValue]);
@@ -162,6 +158,10 @@ export const LocalItemDescriptionFormModal = ({
         title_field_name="title"
         text_field_name="text"
         url_field_name="url"
+        image_url_field_name="url"
+        image_type_field_name="image_type"
+        image_file_field_name="files"
+        setValue={setValue}
       />
     </BaseFormModal>
   );

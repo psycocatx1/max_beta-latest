@@ -24,7 +24,7 @@ export class CrudService {
       images: true,
       category: true,
       local_products: {
-        include: { local_item_descriptions: { orderBy: { order: "asc" } } },
+        include: { local_item_descriptions: { orderBy: { order: "asc" }, where: { is_excluded: false } } },
         ...(locale_id && { where: { locale_id } }),
       },
     };
@@ -76,23 +76,9 @@ export class CrudService {
     if (category.type !== "PRODUCT")
       throw new BadRequestException("Категория должна быть типа PRODUCT");
 
-    const product = {
-      name: data.name,
-      description: data.description,
-      image: data.image,
-      category_id: data.category_id,
-      price_USD: data.price_USD,
-      discount_price_USD: data.discount_price_USD,
-    };
     return await this.prisma.product.create({
-      data: product,
-      include: {
-        images: true,
-        category: true,
-        local_products: {
-          include: { local_item_descriptions: { orderBy: { order: "asc" } } },
-        },
-      },
+      data: { ...data, image: data.image },
+      include: this.getInclude(),
     });
   }
 
@@ -103,10 +89,9 @@ export class CrudService {
    * @returns продукт с локализацией и изображениями (ExtendedProduct) | null
    */
   async findOne(id: string, locale_id?: string): Promise<ExtendedProduct> {
-    const include: Prisma.ProductInclude = this.getInclude(locale_id);
     const product = await this.prisma.product.findUnique({
       where: { id },
-      include,
+      include: this.getInclude(locale_id),
     });
     if (!product) throw new NotFoundException("Product not found");
     return product as unknown as ExtendedProduct;
@@ -139,18 +124,9 @@ export class CrudService {
         throw new BadRequestException("Категория должна быть типа PRODUCT");
     }
 
-    const product = {
-      name: data.name || existingProduct.name,
-      description: data.description || existingProduct.description,
-      image: data.image || existingProduct.image,
-      category_id: data.category_id || existingProduct.category_id,
-      price_USD: data.price_USD || existingProduct.price_USD,
-      discount_price_USD:
-        data.discount_price_USD || existingProduct.discount_price_USD,
-    };
     return this.prisma.product.update({
       where: { id },
-      data: product,
+      data: { ...data, image: data.image },
       include: this.getInclude(),
     });
   }

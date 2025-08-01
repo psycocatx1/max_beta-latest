@@ -3,7 +3,6 @@ import { ExtendedService, ItemImage, Locale, LocalItemDescription } from "@/lib/
 export interface LocalizedService {
   id: string,
   name: string,
-  image: string,
   description: string | null,
   price: number,
   discount_price: number | null,
@@ -30,7 +29,6 @@ export const formatExtendedService = (service: ExtendedService, locale: Locale):
   return {
     id: service.id,
     name: service.local_services?.[0]?.name || service.name,
-    image: service.image,
     description: service.local_services?.[0]?.description || service.description,
     price: price,
     discount_price: discount_price,
@@ -38,9 +36,7 @@ export const formatExtendedService = (service: ExtendedService, locale: Locale):
     is_discounted: is_discounted,
     formatted_price: formatted_price,
     formatted_discount_price: !is_discounted ? null : formatted_discount_price,
-    images: service.image
-      ? [mainImageToItemImage(service)]
-      : [mainImageToItemImage(service), ...service.images],
+    images: [mainImageToItemImage(service), ...service.images],
     item_descriptions: service.local_services?.[0]?.local_item_descriptions || [],
   }
 }

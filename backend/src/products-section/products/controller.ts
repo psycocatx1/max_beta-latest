@@ -33,7 +33,7 @@ export class ProductsController {
   constructor(
     private readonly listService: ListService,
     private readonly crudService: CrudService,
-  ) {}
+  ) { }
 
   @Get()
   @ApiResponse({
@@ -60,7 +60,7 @@ export class ProductsController {
   @ApiResponse({ status: 403, description: "Доступ запрещен" })
   async getProduct(
     @Param("id", ParseUUIDPipe) id: string,
-    @Query("locale_id", ParseUUIDPipe) locale_id: string,
+    @Query("locale_id", new ParseUUIDPipe({ optional: true })) locale_id?: string,
   ) {
     return this.crudService.findOne(id, locale_id);
   }
@@ -81,7 +81,7 @@ export class ProductsController {
   @ApiResponse({ status: 404, description: "Продукт не найден" })
   async getProductByLocale(
     @Param("id", ParseUUIDPipe) id: string,
-    @Param("locale_id", ParseUUIDPipe) locale_id: string,
+    @Param("locale_id", new ParseUUIDPipe({ optional: true })) locale_id?: string,
   ) {
     return this.crudService.findOne(id, locale_id);
   }

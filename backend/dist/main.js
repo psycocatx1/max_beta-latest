@@ -814,7 +814,7 @@ __decorate([
     (0, swagger_1.ApiResponse)({ status: 400, description: "Некорректный id продукта" }),
     (0, swagger_1.ApiResponse)({ status: 403, description: "Доступ запрещен" }),
     __param(0, (0, common_1.Param)("id", common_1.ParseUUIDPipe)),
-    __param(1, (0, common_1.Query)("locale_id", common_1.ParseUUIDPipe)),
+    __param(1, (0, common_1.Query)("locale_id", new common_1.ParseUUIDPipe({ optional: true }))),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", Promise)
@@ -835,7 +835,7 @@ __decorate([
     }),
     (0, swagger_1.ApiResponse)({ status: 404, description: "Продукт не найден" }),
     __param(0, (0, common_1.Param)("id", common_1.ParseUUIDPipe)),
-    __param(1, (0, common_1.Param)("locale_id", common_1.ParseUUIDPipe)),
+    __param(1, (0, common_1.Param)("locale_id", new common_1.ParseUUIDPipe({ optional: true }))),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", Promise)
@@ -1182,7 +1182,7 @@ let CrudService = class CrudService {
             images: true,
             category: true,
             local_products: {
-                include: { local_item_descriptions: { orderBy: { order: "asc" } } },
+                include: { local_item_descriptions: { orderBy: { order: "asc" }, where: { is_excluded: false } } },
                 ...(locale_id && { where: { locale_id } }),
             },
         };
@@ -1212,30 +1212,15 @@ let CrudService = class CrudService {
             throw new common_1.BadRequestException("Категория не найдена");
         if (category.type !== "PRODUCT")
             throw new common_1.BadRequestException("Категория должна быть типа PRODUCT");
-        const product = {
-            name: data.name,
-            description: data.description,
-            image: data.image,
-            category_id: data.category_id,
-            price_USD: data.price_USD,
-            discount_price_USD: data.discount_price_USD,
-        };
         return await this.prisma.product.create({
-            data: product,
-            include: {
-                images: true,
-                category: true,
-                local_products: {
-                    include: { local_item_descriptions: { orderBy: { order: "asc" } } },
-                },
-            },
+            data: { ...data, image: data.image },
+            include: this.getInclude(),
         });
     }
     async findOne(id, locale_id) {
-        const include = this.getInclude(locale_id);
         const product = await this.prisma.product.findUnique({
             where: { id },
-            include,
+            include: this.getInclude(locale_id),
         });
         if (!product)
             throw new common_1.NotFoundException("Product not found");
@@ -1258,17 +1243,9 @@ let CrudService = class CrudService {
             if (category.type !== "PRODUCT")
                 throw new common_1.BadRequestException("Категория должна быть типа PRODUCT");
         }
-        const product = {
-            name: data.name || existingProduct.name,
-            description: data.description || existingProduct.description,
-            image: data.image || existingProduct.image,
-            category_id: data.category_id || existingProduct.category_id,
-            price_USD: data.price_USD || existingProduct.price_USD,
-            discount_price_USD: data.discount_price_USD || existingProduct.discount_price_USD,
-        };
         return this.prisma.product.update({
             where: { id },
-            data: product,
+            data: { ...data, image: data.image },
             include: this.getInclude(),
         });
     }
@@ -3304,7 +3281,9 @@ let SyncService = class SyncService {
             if (Object.prototype.hasOwnProperty.call(template, key)) {
                 const value = template[key];
                 result[key] =
-                    typeof value === "object" ? this.createEmptyTemplate(value) : "";
+                    typeof value === "object"
+                        ? this.createEmptyTemplate(value)
+                        : `#!restored "${value}"`;
             }
         }
         return result;
@@ -3348,7 +3327,9 @@ let SyncService = class SyncService {
                     result[key] = this.mergeWithTemplate(existingValue, templateValue);
                 }
                 else {
-                    result[key] = typeof existingValue === "string" ? existingValue : "";
+                    result[key] = typeof existingValue === "string"
+                        ? existingValue
+                        : `#!restored "${templateValue}"`;
                 }
             }
         }
@@ -8487,7 +8468,7 @@ let ServicesController = class ServicesController {
         this.crudService = crudService;
     }
     async getServices(filters) {
-        return this.listService.getList(filters);
+        return this.listService.getServices(filters);
     }
     async getService(id, locale_id) {
         return this.crudService.findOne(id, locale_id);
@@ -8534,7 +8515,7 @@ __decorate([
     (0, swagger_1.ApiResponse)({ status: 400, description: "Некорректный id услуги" }),
     (0, swagger_1.ApiResponse)({ status: 403, description: "Доступ запрещен" }),
     __param(0, (0, common_1.Param)("id", common_1.ParseUUIDPipe)),
-    __param(1, (0, common_1.Query)("locale_id", common_1.ParseUUIDPipe)),
+    __param(1, (0, common_1.Query)("locale_id", new common_1.ParseUUIDPipe({ optional: true }))),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", Promise)
@@ -8797,7 +8778,7 @@ let CrudService = class CrudService {
             images: true,
             category: true,
             local_services: {
-                include: { local_item_descriptions: { orderBy: { order: "asc" } } },
+                include: { local_item_descriptions: { orderBy: { order: "asc" }, where: { is_excluded: false } } },
                 ...(locale_id && { where: { locale_id } }),
             },
         };
@@ -8829,10 +8810,9 @@ let CrudService = class CrudService {
         });
     }
     async findOne(id, locale_id) {
-        const include = this.getInclude(locale_id);
         const service = await this.prisma.service.findUnique({
             where: { id },
-            include,
+            include: this.getInclude(locale_id),
         });
         if (!service)
             throw new common_1.NotFoundException("Service not found");
@@ -8886,8 +8866,8 @@ let ListService = class ListService {
     constructor(prisma) {
         this.prisma = prisma;
     }
-    async getList(filterDto) {
-        const { name, min_price, max_price, category_id, is_discounted, description, is_excluded, skip = 0, take = 10, locale_id, sort = "created", sort_direction = "desc", } = filterDto;
+    async getServices(filterDto) {
+        const { category_id, name, description, min_price, max_price, is_discounted, is_excluded, skip = 0, take = 10, locale_id, sort = "created", sort_direction = "desc", } = filterDto;
         let where = {};
         if (category_id) {
             where = {
@@ -8902,9 +8882,9 @@ let ListService = class ListService {
             where.price_USD = { gte: min_price };
         if (max_price)
             where.price_USD = { lte: max_price };
-        if (is_discounted)
+        if (is_discounted !== undefined)
             where.discount_price_USD = { not: null };
-        if (is_excluded !== undefined)
+        if (is_excluded)
             where.is_excluded = is_excluded;
         const items = await this.prisma.service.findMany({
             where,
@@ -8914,17 +8894,20 @@ let ListService = class ListService {
             include: {
                 images: true,
                 category: true,
-                local_services: {
-                    where: locale_id ? { locale_id } : undefined,
-                    include: {
-                        local_item_descriptions: { orderBy: { order: "asc" } },
-                    },
-                },
+                local_services: locale_id
+                    ? {
+                        where: locale_id ? { locale_id } : undefined,
+                        include: {
+                            local_item_descriptions: { orderBy: { order: "asc" } },
+                        },
+                    }
+                    : false,
             },
         });
+        const total = await this.prisma.service.count({ where });
         return {
             items: items,
-            total: items.length,
+            total,
             skip,
             take,
         };
@@ -8946,6 +8929,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.example_extended_services_list_result = exports.example_extended_service = exports.example_service = void 0;
 const example_data_1 = __webpack_require__(163);
 const example_data_2 = __webpack_require__(164);
+const example_data_3 = __webpack_require__(33);
 exports.example_service = {
     id: "UUID",
     name: "Example Service Name",
@@ -8960,6 +8944,7 @@ exports.example_service = {
 };
 exports.example_extended_service = {
     ...exports.example_service,
+    category: example_data_3.example_category,
     images: [example_data_1.example_item_image],
     local_services: [example_data_2.example_extended_local_service],
 };
@@ -9948,7 +9933,7 @@ let CrudService = class CrudService {
         this.localProductService = localProductService;
         this.localServiceService = localServiceService;
     }
-    REINDEX_THRESHOLD = 0.01;
+    REINDEX_THRESHOLD = 0.001;
     saveImage(data, file, existingDescription) {
         if (!this.filesService.isValidImage(file))
             throw new Error("Недопустимый формат файла. Разрешены только JPEG, PNG и WebP");
@@ -10452,7 +10437,6 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.CreateLocalItemDescriptionDto = void 0;
 const swagger_1 = __webpack_require__(11);
 const class_validator_1 = __webpack_require__(10);
-const class_validator_2 = __webpack_require__(10);
 const example_data_1 = __webpack_require__(106);
 const prisma_1 = __webpack_require__(19);
 const class_transformer_1 = __webpack_require__(9);
@@ -10471,7 +10455,6 @@ __decorate([
         example: example_data_1.example_local_item_description.content,
     }),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_2.IsNotEmpty)(),
     (0, class_validator_1.MaxLength)(2048),
     __metadata("design:type", String)
 ], CreateLocalItemDescriptionDto.prototype, "content", void 0);
@@ -10481,9 +10464,8 @@ __decorate([
         required: false,
         example: example_data_1.example_local_item_description.title,
     }),
+    (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_2.IsNotEmpty)(),
-    (0, class_validator_1.MinLength)(1),
     (0, class_validator_1.MaxLength)(256),
     __metadata("design:type", String)
 ], CreateLocalItemDescriptionDto.prototype, "title", void 0);
@@ -10495,7 +10477,6 @@ __decorate([
         example: example_data_1.example_local_item_description.type,
     }),
     (0, class_validator_1.IsEnum)(prisma_1.LocalItemDescriptionType),
-    (0, class_validator_2.IsNotEmpty)(),
     __metadata("design:type", typeof (_a = typeof prisma_1.LocalItemDescriptionType !== "undefined" && prisma_1.LocalItemDescriptionType) === "function" ? _a : Object)
 ], CreateLocalItemDescriptionDto.prototype, "type", void 0);
 __decorate([

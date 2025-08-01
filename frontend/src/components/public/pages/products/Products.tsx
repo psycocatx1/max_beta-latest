@@ -13,7 +13,7 @@ interface ProductsProps {
 
 export const Products = ({ locale, initial_products }: ProductsProps) => {
   const { filters, current_page, setPage, updateFilters } = useProductsFilters({
-    default_filters: { locale_id: locale.id, take: 10, skip: 0, category_id: '' }
+    default_filters: { locale_id: locale.id, take: 10, skip: 0 }
   });
 
   const initial_data: BaseListResult<ExtendedProduct> = {

@@ -4,7 +4,7 @@ import { TranslationModuleType } from '@lib/api/services';
 import styles from './TranslationStatus.module.scss';
 import { Loader } from '@/components/admin/common/Loader';
 import { Link } from '@lib/intl';
-import { Image } from '@/components/Image';
+import { Image } from '@/components/common/Image';
 import { useTransactionStatus } from './useTransactionStatus';
 import { useTranslations } from 'next-intl';
 import { Locale } from '@prisma/client';

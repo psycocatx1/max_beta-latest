@@ -13,7 +13,7 @@ interface LayoutProps {
 }
 
 export const Layout = ({ service_id, children }: LayoutProps) => {
-  const { data: service, isLoading: is_loading } = useServices().useFind(service_id);
+  const { data: service, isLoading: is_loading } = useServices().useFind({ id: service_id });
   const router = useRouter();
   const delete_mutation = useServices().useDelete(service_id);
   const toast = useToast();

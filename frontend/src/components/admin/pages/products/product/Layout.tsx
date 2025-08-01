@@ -13,7 +13,7 @@ interface LayoutProps {
 }
 
 export const Layout = ({ product_id, children }: LayoutProps) => {
-  const { data: product, isLoading: is_loading } = useProducts().useFind(product_id);
+  const { data: product, isLoading: is_loading } = useProducts().useFind({ id: product_id });
   const router = useRouter();
   const delete_mutation = useProducts().useDelete(product_id);
   const toast = useToast();
@@ -31,7 +31,7 @@ export const Layout = ({ product_id, children }: LayoutProps) => {
     }
   };
 
-  return product && (
+  return product ? (
     <SecondaryLayout
       item_id={product_id}
       title={product.name}
@@ -49,5 +49,5 @@ export const Layout = ({ product_id, children }: LayoutProps) => {
     >
       {children}
     </SecondaryLayout>
-  );
+  ) : null;
 }; 

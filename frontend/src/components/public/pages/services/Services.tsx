@@ -1,11 +1,10 @@
 'use client'
-import { useTranslations } from 'next-intl';
 import { useServices, useServicesFilters } from '@/hooks/admin/services';
-import { ExtendedService, Locale } from '@/lib/api';
-import { ServicesFiltersSection, ServicesListSection } from './sections';
+import { BaseListResult, ExtendedService, Locale } from '@/lib/api';
 import { AnimatedSection } from '@/components/public/common/AnimatedSection';
 import classes from './Services.module.scss';
-import { Container, Heading, Paragraph, Section } from '@/components/styles';
+import { HeroSection, ServicesFiltersSection, ServicesListSection } from './sections';
+import { useEffect } from 'react';
 
 interface ServicesProps {
   locale: Locale;
@@ -13,29 +12,24 @@ interface ServicesProps {
 }
 
 export const Services = ({ locale, initial_services }: ServicesProps) => {
-  const t = useTranslations('public.pages.services');
   const { filters, current_page, setPage, updateFilters } = useServicesFilters({
-    default_filters: { locale_id: locale.id, take: 24, skip: 0, category_id: '' }
+    default_filters: { locale_id: locale.id, take: 10, skip: 0 }
   });
-  const { data: services, isLoading } = useServices().useGet(filters);
 
-  const currentServices = services?.items || initial_services;
-  const total = services?.total || initial_services.length;
-  const totalPages = Math.ceil(total / (filters.take || 24));
+  const initial_data: BaseListResult<ExtendedService> = {
+    items: initial_services,
+    total: initial_services.length,
+    skip: 0,
+    take: filters.take
+  }
+  const { data: services, isLoading, refetch } = useServices().useGet(filters, initial_data);
 
-  return (
+  useEffect(() => { refetch() })
+
+  return services ? (
     <div className={classes.services}>
       <AnimatedSection animation="fadeInUp" enableAnimations={true}>
-        <Section className={classes.services__hero}>
-          <Container>
-            <Heading size='xl' className={classes.services__title}>
-              {t('title')}
-            </Heading>
-            <Paragraph size='lg' className={classes.services__description}>
-              {t('description')}
-            </Paragraph>
-          </Container>
-        </Section>
+        <HeroSection />
       </AnimatedSection>
 
       <AnimatedSection animation="fadeInUp" delay={200} enableAnimations={true}>
@@ -48,14 +42,16 @@ export const Services = ({ locale, initial_services }: ServicesProps) => {
       <AnimatedSection animation="fadeInUp" delay={400} enableAnimations={true}>
         <ServicesListSection
           locale={locale}
-          services={currentServices}
-          total={total}
-          currentPage={current_page}
-          totalPages={totalPages}
+          services={services.items}
+          total={services.total}
+          current_page={current_page}
+          total_pages={Math.ceil(services.total / services.take)}
+          current_page_size={services.take}
           onPageChange={setPage}
-          isLoading={isLoading}
+          updateFilters={updateFilters}
+          is_loading={isLoading}
         />
       </AnimatedSection>
     </div>
-  );
+  ) : null;
 };

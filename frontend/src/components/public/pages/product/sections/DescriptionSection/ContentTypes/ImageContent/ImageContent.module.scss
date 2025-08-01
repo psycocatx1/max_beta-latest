@@ -1,0 +1,54 @@
+@use '../../../../../../../styles/mixins' as mix;
+@use '../../../../../../../styles/variables' as vars;
+
+.image {
+  & {
+    margin: vars.$spacing-lg 0 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    gap: vars.$spacing-xl;
+    max-height: clamp(100%, 20rem, 100%);
+    overflow: hidden;
+    transition: all vars.$transition-normal vars.$transition-ease;
+  }
+
+  &:hover {
+    box-shadow: vars.$shadow-lg;
+    transform: translateY(-2px);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform vars.$transition-normal vars.$transition-ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  &_title {
+    @include mix.heading-md;
+
+    & {
+      margin: vars.$spacing-md 0;
+      color: vars.$text-primary;
+      position: relative;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -#{vars.$spacing-xs};
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: vars.$primary-color;
+      border-radius: vars.$border-radius-full;
+    }
+  }
+
+
+}

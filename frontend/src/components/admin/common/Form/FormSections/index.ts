@@ -11,4 +11,4 @@ export * from './InputField';
 export * from './TextareaField';
 export * from './ContentTypeSection';
 export * from './ItemSelectSection';
-export * from './LocalItemDescriptionContentSection';
+export * from './LocalItemDescriptionContentSection/LocalItemDescriptionContentSection';

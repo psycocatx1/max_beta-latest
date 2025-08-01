@@ -2,7 +2,7 @@
 
 import React from 'react';
 import styles from './OriginalItem.module.scss';
-import { Image } from '@/components/Image';
+import { Image } from '@/components/common/Image';
 
 export interface OriginalItemData {
   id: string;

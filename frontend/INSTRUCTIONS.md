@@ -1331,3 +1331,280 @@ vars.$font-size-2xl
 4. **Адаптивность**: Responsive подход для всех устройств
 5. **Производительность**: CSS анимации вместо JavaScript
 6. **Доступность**: Правильная семантика и ARIA атрибуты
+
+## 🛍️ СОВРЕМЕННАЯ СТРАНИЦА ПРОДУКТА (01.01.2025)
+
+### Архитектура страницы продукта:
+```
+components/public/pages/product/
+├── ProductDetail.tsx               // Основной компонент страницы
+├── ProductDetail.module.scss       // Стили главной страницы
+├── sections/                       // Секции страницы
+│   ├── GallerySection/            // Галерея изображений
+│   ├── InfoSection/               // Информация о продукте
+│   ├── DescriptionSection/        // Секция описаний
+│   └── index.ts                   // Экспорты секций
+├── localized-product.ts           // Типы и форматирование данных
+└── index.ts
+```
+
+### Ключевые особенности дизайна:
+
+#### 1. Главная страница (ProductDetail):
+```scss
+.detail {
+  @include mix.section;
+  
+  // Волнообразный декоративный фон
+  &::before {
+    background: vars.$gradient-hero;
+    opacity: 0.05;
+    border-radius: 0 0 50% 50% / 0 0 100px 100px;
+  }
+  
+  // Адаптивная сетка 2 колонки -> 1 колонка
+  &__content {
+    @include mix.grid(2, vars.$spacing-4xl);
+  }
+  
+  // Анимация появления контента
+  &__content > * {
+    @include mix.fade-in-animation;
+  }
+}
+```
+
+#### 2. Галерея продукта (GallerySection):
+```scss
+.gallery {
+  // Sticky позиционирование на десктопе
+  position: sticky;
+  top: vars.$spacing-xl;
+  
+  &__main_image {
+    @include mix.modern-card;
+    
+    // Hover эффекты с масштабированием
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: vars.$shadow-xl, 0 0 30px rgba(34, 197, 94, 0.15);
+    }
+  }
+  
+  // Современный дизайн миниатюр
+  &__thumbnail {
+    @include mix.card;
+    
+    &_active {
+      border-color: vars.$primary-color;
+      box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+      
+      // Индикатор активности
+      &::after {
+        content: '';
+        width: 12px; height: 12px;
+        background: vars.$primary-color;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+```
+
+#### 3. Информационная секция (InfoSection):
+```scss
+.info {
+  &__header {
+    @include mix.modern-card;
+    
+    // Цветная полоса сверху
+    &::before {
+      height: 4px;
+      background: vars.$gradient-primary;
+    }
+  }
+  
+  // Секция цены с градиентным дизайном
+  &__price_section {
+    @include mix.modern-card;
+    background: vars.$gradient-card;
+    
+    &::before {
+      height: 3px;
+      background: vars.$gradient-secondary;
+    }
+  }
+  
+  // Градиентная цена
+  &__price_current {
+    @include mix.gradient-text;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    
+    &::after {
+      width: 100%; height: 2px;
+      background: vars.$gradient-primary;
+      opacity: 0.3;
+    }
+  }
+  
+  // Интерактивная кнопка заказа
+  &__contact_button {
+    @include mix.modern-button('primary');
+    
+    // Анимация заливки
+    &::before {
+      background: vars.$primary-color;
+      transition: left vars.$transition-normal;
+    }
+    
+    &:hover::before {
+      left: 0; // Заливка слева направо
+    }
+  }
+}
+```
+
+#### 4. Секция описаний (DescriptionSection):
+```scss
+.description {
+  &__local_descriptions {
+    @include mix.modern-card;
+    
+    &::before {
+      height: 3px;
+      background: vars.$gradient-secondary;
+    }
+  }
+  
+  // Интерактивные карточки описаний
+  &__description_item {
+    @include mix.interactive-card;
+    
+    // Анимированная цветная полоса
+    &::before {
+      width: 4px; height: 100%;
+      background: vars.$gradient-primary;
+      transform: scaleY(0);
+      transform-origin: bottom;
+    }
+    
+    &:hover::before {
+      transform: scaleY(1);
+    }
+  }
+  
+  // Стилизованные ссылки
+  &__description_link {
+    @include mix.modern-button('primary');
+    
+    // Анимация стрелки
+    &::after {
+      content: '→';
+      transition: transform vars.$transition-normal;
+    }
+    
+    &:hover::after {
+      transform: translateX(4px);
+    }
+  }
+}
+```
+
+### Используемые миксины и переменные:
+
+#### Ключевые миксины:
+```scss
+@include mix.modern-card           // Современные карточки с градиентом
+@include mix.interactive-card      // Карточки с hover эффектами
+@include mix.modern-button()       // Кнопки с анимациями
+@include mix.gradient-text         // Градиентный текст
+@include mix.grid()               // Адаптивная сетка
+@include mix.fade-in-animation    // Анимации появления
+@include mix.flex-column          // Flexbox колонки
+@include mix.icon-container()     // Контейнеры для иконок
+```
+
+#### Ключевые переменные:
+```scss
+// Градиенты
+vars.$gradient-hero
+vars.$gradient-primary  
+vars.$gradient-secondary
+vars.$gradient-card
+
+// Тени
+vars.$shadow-xl
+vars.$shadow-deep
+vars.$shadow-glow
+
+// Переходы
+vars.$transition-normal
+vars.$transition-slow
+vars.$ease-in-out-quart
+
+// Размеры
+vars.$spacing-xl
+vars.$spacing-2xl
+vars.$spacing-4xl
+vars.$border-radius-lg
+vars.$border-radius-xl
+```
+
+### Адаптивный дизайн:
+
+#### Брейкпоинты:
+- **Desktop (1024px+)**: Двухколоночный макет, sticky галерея
+- **Tablet (768px-1023px)**: Двухколоночный -> одноколоночный
+- **Mobile (767px-)**: Одноколоночный, упрощенные анимации
+
+#### Особенности мобильной версии:
+```scss
+@media (max-width: vars.$breakpoint-md) {
+  .gallery {
+    position: static; // Убираем sticky
+    
+    &__main_image:hover {
+      transform: none; // Упрощаем анимации
+    }
+  }
+  
+  .info__price_current {
+    font-size: clamp(1.2rem, 3vw, 1.8rem); // Меньший размер
+  }
+}
+```
+
+### Интерфейс LocalizedProduct:
+```typescript
+export interface LocalizedProduct {
+  id: string;
+  name: string;
+  image: string;
+  description: string | null;
+  price: number;
+  discount_price: number | null;
+  discount_percentage: number;
+  is_discounted: boolean;
+  formatted_price: string;
+  formatted_discount_price: string | null;
+  images: ItemImage[];
+  item_descriptions: LocalItemDescription[];
+}
+```
+
+### Основные принципы:
+1. **Современность**: Градиенты, glassmorphism, анимации
+2. **Интерактивность**: Hover эффекты, smooth transitions
+3. **Адаптивность**: Mobile-first подход
+4. **Производительность**: CSS анимации, оптимизированные изображения
+5. **Доступность**: Semantic HTML, ARIA атрибуты
+6. **Консистентность**: Единая система миксинов и переменных
+
+### Переводы для страницы продукта:
+```typescript
+const t = useTranslations('public.pages.product.detail');
+// Ключи: back_to_products, discount, share, price_negotiable, 
+//        contact_for_order, additional_info
+```
+
+Страница продукта использует современные техники дизайна и следует принципам интернет-магазинов с улучшенным UX и визуальными эффектами.

@@ -6,7 +6,7 @@ import { SecondarySidebar, SecondarySidebarConfig } from '@/components/admin/com
 import styles from './SecondaryLayout.module.scss';
 import { useUIStore } from '@/store/useUIStore';
 import { useTranslations } from 'next-intl';
-import { Image } from '@/components/Image';
+import { Image } from '@/components/common/Image';
 import { Loader } from '../Loader';
 
 interface SecondaryLayoutProps {

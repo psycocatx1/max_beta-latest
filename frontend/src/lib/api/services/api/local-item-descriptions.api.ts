@@ -38,7 +38,7 @@ export class LocalItemDescriptionsApi {
    * @returns Результат создания локального описания товара или услуги
    */
   static async create(data: CreateLocalItemDescriptionFormData): Promise<AxiosResponse<LocalItemDescription | null>> {
-    return await api.post<LocalItemDescription | null>(this.LOCAL_ITEM_DESCRIPTIONS_PATHS.create, createFormData(data));
+    return await api.post<LocalItemDescription | null>(this.LOCAL_ITEM_DESCRIPTIONS_PATHS.create, ...createFormData(data));
   }
   /**
    * Обновление локального описания товара или услуги 
@@ -47,7 +47,7 @@ export class LocalItemDescriptionsApi {
    * @returns Результат обновления локального описания товара или услуги
    */
   static async update(id: string, data: UpdateLocalItemDescriptionFormData): Promise<AxiosResponse<LocalItemDescription | null>> {
-    return await api.put<LocalItemDescription | null>(this.LOCAL_ITEM_DESCRIPTIONS_PATHS.update(id), createFormData(data));
+    return await api.put<LocalItemDescription | null>(this.LOCAL_ITEM_DESCRIPTIONS_PATHS.update(id), ...createFormData(data));
   }
 
   /**

@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { ChevronDown, Globe, Loader } from 'lucide-react';
 import styles from './LanguageSelector.module.scss';
 import { Link, usePathname } from '@/lib/intl';
-import { Image } from '@/components/Image';
+import { Image } from '@/components/common/Image';
 import { useParams } from 'next/navigation';
 import { LOCALES } from '@/lib/intl/routing';
 import { Locale } from '@prisma/client';

@@ -53,7 +53,7 @@ export const DraggableLocalItemDescriptionsList = ({
   const item_filter_key = type === CategoryType.PRODUCT ? 'product_id' : 'service_id';
 
   // Получаем описания без пагинации и сортируем по order
-  const { data: descriptions_data, isLoading } = useLocalItemDescriptions().useGet({
+  const { data: descriptions_data } = useLocalItemDescriptions().useGet({
     [local_item_filter_key]: local_item_id,
     [item_filter_key]: item_id,
     take: 100, // Получаем больше элементов для drag-and-drop
@@ -196,15 +196,6 @@ export const DraggableLocalItemDescriptionsList = ({
   // Находим активный элемент для DragOverlay
   const active_item = sorted_descriptions.find(item => item.id === active_id);
 
-  if (isLoading) {
-    return (
-      <div className={styles.loading_container}>
-        <div className={styles.loading_spinner}></div>
-        <p>Загрузка...</p>
-      </div>
-    );
-  }
-
   return (
     <div className={styles.draggable_descriptions_container}>
       {sorted_descriptions.length === 0 ? (
@@ -242,14 +233,6 @@ export const DraggableLocalItemDescriptionsList = ({
             )}
           </DragOverlay>
         </DndContext>
-      )}
-
-      {is_updating_order && (
-        <div className={styles.updating_overlay}>
-          <div className={styles.updating_message}>
-            Обновление порядка...
-          </div>
-        </div>
       )}
 
       <LocalItemDescriptionFormModal

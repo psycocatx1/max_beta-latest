@@ -60,27 +60,25 @@ export const LocalItemDescriptions = ({ local_item_id, item_id, type }: LocalIte
           type={type}
         />
       ) : (
-        <>
-          <LocalItemDescriptionsList
-            type={type}
-            filters={filters}
-            updateFilters={updateFilters}
-            resetFilters={resetFilters}
-            setPage={setPage}
-            current_page={current_page}
-            is_loading={is_loading}
-            descriptions={descriptions || { items: [], total: 0, skip: 0, take: 0 }}
-          />
-          <LocalItemDescriptionFormModal
-            is_open={is_modal_open}
-            onClose={() => setIsModalOpen(false)}
-            onSubmit={handleCreateDescription}
-            is_loading={create_mutation.isPending}
-            type={type}
-            initial_data={{ local_item_id, item_id }}
-          />
-        </>
+        <LocalItemDescriptionsList
+          type={type}
+          filters={filters}
+          updateFilters={updateFilters}
+          resetFilters={resetFilters}
+          setPage={setPage}
+          current_page={current_page}
+          is_loading={is_loading}
+          descriptions={descriptions || { items: [], total: 0, skip: 0, take: 0 }}
+        />
       )}
+      <LocalItemDescriptionFormModal
+        is_open={is_modal_open}
+        onClose={() => setIsModalOpen(false)}
+        onSubmit={handleCreateDescription}
+        is_loading={create_mutation.isPending}
+        type={type}
+        initial_data={{ local_item_id, item_id }}
+      />
     </AdminPage>
   );
 }; 

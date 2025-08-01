@@ -2,73 +2,222 @@
 @use '../../../../../styles/variables' as vars;
 
 .gallery {
-  position: sticky;
-  top: vars.$spacing-xl;
+  & {
+    position: sticky;
+    top: vars.$spacing-xl;
+    z-index: vars.$z-base;
+  }
+
+  @media (max-width: vars.$breakpoint-lg) {
+    & {
+      position: static;
+      margin-bottom: vars.$spacing-xl;
+    }
+  }
 
   &__main_image {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1;
-    background: vars.$bg-level-2;
-    border-radius: vars.$border-radius-lg;
-    overflow: hidden;
-    margin-bottom: vars.$spacing-lg;
-    border: vars.$border-width-normal solid vars.$border-color;
+    @include mix.modern-card;
 
-    &:hover .detail__image {
-      transform: scale(1.05);
+    & {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      background: vars.$bg-level-1;
+      margin-bottom: vars.$spacing-lg;
+      overflow: hidden;
+      cursor: zoom-in;
+      transition: all vars.$transition-normal vars.$transition-ease;
+    }
+
+    &:hover {
+      transform: none;
+      box-shadow: vars.$shadow-xl, 0 0 30px rgba(34, 197, 94, 0.15);
+
+      .gallery__image {
+        transform: scale(1.1);
+      }
+
+      .gallery__discount_badge {
+        transform: scale(1.1);
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        margin-bottom: vars.$spacing-md;
+      }
+
+      &:hover {
+        transform: none;
+
+        .gallery__image {
+          transform: scale(1.05);
+        }
+      }
     }
   }
 
   &__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform vars.$transition-normal vars.$transition-ease;
+    & {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform vars.$transition-slow vars.$transition-ease;
+    }
   }
 
   &__discount_badge {
-    position: absolute;
-    top: vars.$spacing-md;
-    left: vars.$spacing-md;
-    background: vars.$error-color;
-    color: white;
-    padding: vars.$spacing-xs vars.$spacing-sm;
-    border-radius: vars.$border-radius-lg;
-    font-weight: vars.$font-weight-bold;
-    font-size: vars.$font-size-sm;
-    text-transform: uppercase;
-    z-index: 2;
+    @include mix.badge('error');
+
+    & {
+      position: absolute;
+      top: vars.$spacing-md;
+      left: vars.$spacing-md;
+      background: vars.$gradient-secondary;
+      color: vars.$text-white;
+      font-weight: vars.$font-weight-bold;
+      font-size: vars.$font-size-sm;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      z-index: vars.$z-dropdown;
+      box-shadow: vars.$shadow-md;
+      transition: all vars.$transition-normal vars.$transition-ease;
+      border: none;
+      backdrop-filter: blur(10px);
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        top: vars.$spacing-sm;
+        left: vars.$spacing-sm;
+        font-size: vars.$font-size-xs;
+        padding: vars.$spacing-2xs vars.$spacing-xs;
+      }
+    }
   }
 
   &__thumbnails {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    gap: vars.$spacing-sm;
-    max-width: 100%;
+    & {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: vars.$spacing-md;
+      max-width: 100%;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+        gap: vars.$spacing-sm;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-sm) {
+      & {
+        grid-template-columns: repeat(4, 1fr);
+        gap: vars.$spacing-xs;
+      }
+    }
   }
 
   &__thumbnail {
-    background: vars.$bg-level-1;
-    border: 2px solid vars.$border-color;
-    border-radius: vars.$border-radius-md;
-    padding: vars.$spacing-xs;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all vars.$transition-normal vars.$transition-ease;
-    aspect-ratio: 1;
+    @include mix.card;
 
-    &:hover,
+    & {
+      padding: vars.$spacing-xs;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all vars.$transition-normal vars.$transition-ease;
+      aspect-ratio: 1;
+      position: relative;
+      border: 2px solid vars.$border-color;
+    }
+
+    &:hover {
+      border-color: vars.$primary-color;
+      box-shadow: vars.$shadow-lg;
+      transform: translateY(-4px) scale(1.05);
+    }
+
     &_active {
       border-color: vars.$primary-color;
-      box-shadow: vars.$shadow-md;
+      box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2), vars.$shadow-md;
+      background: vars.$primary-light;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: vars.$spacing-xs;
+        right: vars.$spacing-xs;
+        width: 12px;
+        height: 12px;
+        background: vars.$primary-color;
+        border-radius: 50%;
+        border: 2px solid vars.$bg-level-1;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        padding: vars.$spacing-2xs;
+      }
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
 
   &__thumbnail_image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: vars.$border-radius-sm;
+    & {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: vars.$border-radius-sm;
+      transition: all vars.$transition-normal vars.$transition-ease;
+    }
+  }
+
+  // Дополнительные элементы UI
+  &__zoom_indicator {
+    position: absolute;
+    bottom: vars.$spacing-md;
+    right: vars.$spacing-md;
+    background: rgba(0, 0, 0, 0.7);
+    color: vars.$text-white;
+    padding: vars.$spacing-xs;
+    border-radius: vars.$border-radius-md;
+    font-size: vars.$font-size-xs;
+    opacity: 0;
+    transition: opacity vars.$transition-normal vars.$transition-ease;
+    z-index: vars.$z-dropdown;
+    backdrop-filter: blur(10px);
+  }
+
+  &__main_image:hover &__zoom_indicator {
+    opacity: 1;
+  }
+
+  // Лоадер для изображений
+  &__image_loader {
+    @include mix.absolute-center;
+
+    & {
+      width: 40px;
+      height: 40px;
+      border: 3px solid vars.$border-color;
+      border-top: 3px solid vars.$primary-color;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
   }
 }

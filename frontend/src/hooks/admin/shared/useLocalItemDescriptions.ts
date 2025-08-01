@@ -4,7 +4,7 @@ import { query_client } from "@lib/api";
 import { useCommon, QUERY_KEYS } from "../useCommon";
 
 const invalidate_queries = (id?: string) => {
-  query_client.invalidateQueries({ queryKey: QUERY_KEYS.local_item_descriptions(), exact: false });
+  query_client.invalidateQueries({ queryKey: ['local_item_descriptions'], exact: false });
   query_client.invalidateQueries({ queryKey: QUERY_KEYS.validate_entities(), exact: false });
   if (id) query_client.invalidateQueries({ queryKey: QUERY_KEYS.local_item_description(id) });
 }

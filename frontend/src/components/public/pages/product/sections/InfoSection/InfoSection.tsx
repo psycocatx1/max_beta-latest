@@ -1,4 +1,4 @@
-import { Settings, Share2, Phone } from 'lucide-react';
+import { Share2, Phone } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import classes from './InfoSection.module.scss';
 import { LocalizedProduct } from '../../localized-product';
@@ -16,7 +16,6 @@ export const InfoSection = ({ localized_product, handleShare }: InfoSectionProps
       <div className={classes.info__header}>
         <div className={classes.info__title_section}>
           <div className={classes.info__title_wrapper}>
-            <Settings className={classes.info__service_icon} />
             <Heading size='xl'>{localized_product.name}</Heading>
           </div>
           <div className={classes.info__actions}>
@@ -29,6 +28,8 @@ export const InfoSection = ({ localized_product, handleShare }: InfoSectionProps
             </button>
           </div>
         </div>
+
+        <Paragraph size='lg'>{localized_product.description}</Paragraph>
 
         <div className={classes.info__price_section}>
           <div className={classes.info__price}>
@@ -52,7 +53,7 @@ export const InfoSection = ({ localized_product, handleShare }: InfoSectionProps
       </div>
 
       <div className={classes.info__cta}>
-        <Button className={classes.info__contact_button} variant='primary'>
+        <Button href={t('contact_for_order_url')} className={classes.info__contact_button} variant='primary'>
           <Phone size={20} />
           {t('contact_for_order')}
         </Button>

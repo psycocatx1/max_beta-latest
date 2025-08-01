@@ -98,7 +98,7 @@
     &_language_selector {
       display: none;
 
-      @media (max-width: vars.$breakpoint-lg) {
+      @media (max-width: vars.$breakpoint-md) {
         & {
           display: block;
         }
@@ -119,7 +119,7 @@
     border-radius: vars.$border-radius-lg;
     cursor: pointer;
 
-    @media (max-width: vars.$breakpoint-lg) {
+    @media (max-width: vars.$breakpoint-md) {
       display: flex;
     }
 

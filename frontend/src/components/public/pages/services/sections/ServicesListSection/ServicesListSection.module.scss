@@ -2,114 +2,199 @@
 @use '../../../../../styles/variables' as vars;
 
 .list {
+  @include mix.section;
+
+  & {
+    background: vars.$gradient-card;
+    position: relative;
+    overflow: hidden;
+    background: vars.$bg-level-2;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+
+  &__container {
+    @include mix.container;
+
+    & {
+      position: relative;
+      padding: 0;
+      z-index: 1;
+    }
+  }
+
   &__header {
-    margin-bottom: vars.$spacing-xl;
+    @include mix.modern-card;
+
+    & {
+      margin-bottom: vars.$spacing-2xl;
+      text-align: center;
+      background: vars.$bg-level-1;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: vars.$gradient-primary;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        padding: vars.$spacing-xl;
+        margin-bottom: vars.$spacing-xl;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-sm) {
+      & {
+        padding: vars.$spacing-lg;
+        margin-bottom: vars.$spacing-lg;
+      }
+    }
+
+    &:hover {
+      background: vars.$bg-level-1;
+      transform: none;
+    }
   }
 
   &__title {
-    margin: 0;
-    color: vars.$text-primary;
+    @include mix.heading-lg;
+    @include mix.gradient-text;
+
+    & {
+      margin: 0;
+      font-weight: vars.$font-weight-bold;
+      letter-spacing: -0.5px;
+    }
   }
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: vars.$spacing-lg;
-    margin-bottom: vars.$spacing-xl;
+    gap: vars.$spacing-xl;
+    padding: vars.$spacing-xl 0;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    margin-bottom: vars.$spacing-2xl;
+    position: relative;
+    z-index: 1;
 
-    @media (max-width: vars.$breakpoint-lg) {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: vars.$spacing-md;
+    @media (max-width: vars.$breakpoint-2xl) {
+      & {
+        grid-template-columns: repeat(4, 1fr);
+        gap: vars.$spacing-md;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-xl) {
+      & {
+        grid-template-columns: repeat(3, 1fr);
+        gap: vars.$spacing-lg;
+      }
     }
 
     @media (max-width: vars.$breakpoint-md) {
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: vars.$spacing-md;
+      & {
+        grid-template-columns: repeat(2, 1fr);
+        gap: vars.$spacing-md;
+      }
     }
 
     @media (max-width: vars.$breakpoint-sm) {
-      grid-template-columns: 1fr;
-      gap: vars.$spacing-md;
+      & {
+        grid-template-columns: 1fr;
+        margin: 0 auto vars.$spacing-2xl;
+        gap: vars.$spacing-lg;
+      }
     }
   }
+}
 
-  &__loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 200px;
-    color: vars.$text-secondary;
-    font-size: 1.125rem;
+// Анимации для появления элементов
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
 
-  &__empty {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: 300px;
-    padding: vars.$spacing-xl;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.list__header {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.list__grid {
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.list__pagination {
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+// Состояние загрузки для карточек
+.loading-card {
+  @include mix.neomorphism;
+
+  & {
+    height: 400px;
+    background: vars.$bg-level-2;
+    border-radius: vars.$border-radius-xl;
+    animation: loadingPulse 1.5s ease-in-out infinite alternate;
+    position: relative;
+    overflow: hidden;
   }
 
-  &__empty_icon {
-    color: vars.$text-tertiary;
-    margin-bottom: vars.$spacing-lg;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent);
+    animation: shimmer 2s infinite;
+  }
+}
+
+@keyframes loadingPulse {
+  from {
+    opacity: 1;
   }
 
-  &__empty_title {
-    margin: 0 0 vars.$spacing-sm 0;
-    color: vars.$text-primary;
+  to {
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
   }
 
-  &__empty_description {
-    margin: 0;
-    color: vars.$text-secondary;
-    max-width: 400px;
-
-  }
-
-  &__pagination {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: vars.$spacing-lg;
-    padding-top: vars.$spacing-lg;
-    border-top: 1px solid vars.$border-color-hover;
-
-    @media (max-width: vars.$breakpoint-sm) {
-      gap: vars.$spacing-md;
-    }
-  }
-
-  &__pagination_button {
-    width: 3.75rem;
-    height: 3.75rem;
-    border-radius: vars.$border-radius-md;
-    background-color: vars.$bg-level-2;
-    border: 1px solid vars.$border-color-hover;
-    color: vars.$text-primary;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-
-    &:hover:not(:disabled) {
-      background-color: vars.$accent-secondary;
-      color: vars.$text-white;
-      border-color: vars.$accent-secondary;
-    }
-
-    &:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-  }
-
-  &__pagination_info {
-    color: vars.$text-secondary;
-    font-weight: 500;
-    min-width: 120px;
-    text-align: center;
+  100% {
+    left: 100%;
   }
 }

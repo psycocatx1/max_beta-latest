@@ -40,6 +40,7 @@ export const LocalItemDescriptionCard = ({ item, type }: LocalItemDescriptionCar
       onEdit={() => setIsModalOpen(true)}
       onDelete={handleDelete}
       image={item.type === 'IMAGE' ? item.content : undefined}
+      video={item.type === 'VIDEO' ? item.content : undefined}
     >
       <Content item={item} />
 

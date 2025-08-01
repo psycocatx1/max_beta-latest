@@ -3,22 +3,31 @@ import { useTranslations } from 'next-intl';
 import { ExtendedProduct, Locale } from '@/lib/api';
 import classes from './ProductDetail.module.scss';
 import { ArrowLeft } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GallerySection, InfoSection, DescriptionSection } from './sections';
 import { formatExtendedProduct } from './localized-product';
 import { useRouter } from '@hooks/useRouting';
-import { Button, Container } from '@/components/styles';
+import { Button } from '@/components/styles';
+import { useProducts } from '@hooks/admin/products';
 
 interface ProductDetailProps {
   locale: Locale;
-  product: ExtendedProduct;
+  initial_product: ExtendedProduct;
+  product_id: string;
 }
 
-export const ProductDetail = ({ locale, product }: ProductDetailProps) => {
+export const ProductDetail = ({ locale, initial_product, product_id }: ProductDetailProps) => {
   const t = useTranslations('public.pages.product.detail');
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const localized_product = formatExtendedProduct(product, locale);
+  const [selected_image_index, setSelectedImageIndex] = useState(0);
+
+  const { data: product, refetch } = useProducts().useFind({ id: product_id, locale_id: locale.id, initial_data: initial_product })
+
+  useEffect(() => { refetch() })
+
+  const localized_product = formatExtendedProduct(product || initial_product, locale);
   const router = useRouter();
+
+  console.log("localized_product", localized_product)
 
 
   const handleShare = () => {
@@ -35,7 +44,7 @@ export const ProductDetail = ({ locale, product }: ProductDetailProps) => {
 
   return (
     <div className={classes.detail}>
-      <Container>
+      <div className={classes.detail__container}>
         <Button
           variant='secondary'
           onClick={router.back}
@@ -47,8 +56,10 @@ export const ProductDetail = ({ locale, product }: ProductDetailProps) => {
 
         <div className={classes.detail__content}>
           <GallerySection
-            localized_product={localized_product}
-            selectedImageIndex={selectedImageIndex}
+            selected_image_index={selected_image_index}
+            is_discounted={localized_product.is_discounted}
+            name={localized_product.name}
+            images={localized_product.images || []}
             setSelectedImageIndex={setSelectedImageIndex}
           />
           <InfoSection
@@ -60,7 +71,7 @@ export const ProductDetail = ({ locale, product }: ProductDetailProps) => {
         {localized_product.item_descriptions.length > 0 && (
           <DescriptionSection descriptions={localized_product.item_descriptions} />
         )}
-      </Container>
+      </div>
     </div >
   );
 }; 

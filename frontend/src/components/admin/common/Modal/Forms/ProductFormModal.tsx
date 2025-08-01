@@ -58,7 +58,7 @@ export const ProductFormModal = ({
     const submitData: CreateProductFormData | UpdateProductFormData = {
       ...data,
       file: data.image_type === 'file' && data.files ? data.files[0] : undefined,
-      image: data.image_type === 'url' ? data.url : undefined,
+      image: data.image_type === 'url' ? data.url || undefined : undefined,
       discount_price_USD: data.discount_price_USD || undefined,
     };
     onSubmit(submitData);

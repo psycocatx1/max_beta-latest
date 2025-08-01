@@ -1,8 +1,8 @@
-import { Settings, Share2, Phone } from 'lucide-react';
+import { Share2, Phone } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import classes from './InfoSection.module.scss';
 import { LocalizedService } from '../../localized-service';
-import { Button, Paragraph, Heading } from '@/components/styles';
+import { Button, Heading, Paragraph } from '@/components';
 
 interface InfoSectionProps {
   localized_service: LocalizedService
@@ -16,8 +16,7 @@ export const InfoSection = ({ localized_service, handleShare }: InfoSectionProps
       <div className={classes.info__header}>
         <div className={classes.info__title_section}>
           <div className={classes.info__title_wrapper}>
-            <Settings className={classes.info__service_icon} />
-            <Heading size='lg' className={classes.info__title}>{localized_service.name}</Heading>
+            <Heading size='xl'>{localized_service.name}</Heading>
           </div>
           <div className={classes.info__actions}>
             <button
@@ -29,6 +28,8 @@ export const InfoSection = ({ localized_service, handleShare }: InfoSectionProps
             </button>
           </div>
         </div>
+
+        <Paragraph size='lg'>{localized_service.description}</Paragraph>
 
         <div className={classes.info__price_section}>
           <div className={classes.info__price}>
@@ -47,12 +48,12 @@ export const InfoSection = ({ localized_service, handleShare }: InfoSectionProps
               </Heading>
             )}
           </div>
-          <Paragraph size='md' className={classes.info__price_note}>{t('price_negotiable')}</Paragraph>
+          <Paragraph size='sm' className={classes.info__price_note}>{t('price_negotiable')}</Paragraph>
         </div>
       </div>
 
       <div className={classes.info__cta}>
-        <Button variant='primary' className={classes.info__contact_button}>
+        <Button href={t('contact_for_order_url')} className={classes.info__contact_button} variant='primary'>
           <Phone size={20} />
           {t('contact_for_order')}
         </Button>

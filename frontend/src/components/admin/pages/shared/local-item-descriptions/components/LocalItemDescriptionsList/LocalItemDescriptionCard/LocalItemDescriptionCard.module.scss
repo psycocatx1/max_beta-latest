@@ -59,30 +59,6 @@
     object-fit: cover;
   }
 
-  &__video_placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: var(--spacing-xl);
-    background: var(--bg-level-2);
-    border: 2px dashed var(--bg-level-4);
-    border-radius: var(--border-radius);
-    color: var(--text-secondary);
-    gap: var(--spacing-sm);
-  }
-
-  &__video_icon {
-    width: 48px;
-    height: 48px;
-    color: var(--text-tertiary);
-  }
-
-  &__video_text {
-    font-size: var(--font-size-md);
-    font-weight: var(--font-weight-medium);
-  }
-
   &__link {
     display: inline-flex;
     align-items: center;

@@ -4,8 +4,8 @@ import { query_client } from "@lib/api";
 import { useCommon, QUERY_KEYS } from "../useCommon";
 
 const invalidate_queries = (id?: string) => {
-  query_client.invalidateQueries({ queryKey: QUERY_KEYS.local_services(), exact: false });
-  query_client.invalidateQueries({ queryKey: QUERY_KEYS.validate_entities(), exact: false });
+  query_client.invalidateQueries({ queryKey: ['local_services'], exact: false });
+  query_client.invalidateQueries({ queryKey: ['validate_entities'], exact: false });
   if (id) query_client.invalidateQueries({ queryKey: QUERY_KEYS.local_service(id) });
 }
 

@@ -4,15 +4,15 @@ import { query_client } from "@lib/api";
 import { useCommon, QUERY_KEYS } from "../useCommon";
 
 const invalidate_queries = (id?: string) => {
-  query_client.invalidateQueries({ queryKey: QUERY_KEYS.locales(), exact: false });
-  query_client.invalidateQueries({ queryKey: QUERY_KEYS.validate_entities(), exact: false });
+  query_client.invalidateQueries({ queryKey: ['locales'], exact: false });
+  query_client.invalidateQueries({ queryKey: ['validate_entities'], exact: false });
   if (id) {
     query_client.invalidateQueries({ queryKey: QUERY_KEYS.locale(id) });
     // Также инвалидируем все локальные сущности, так как они могут быть связаны с этой локалью
-    query_client.invalidateQueries({ queryKey: QUERY_KEYS.local_products(), exact: false });
-    query_client.invalidateQueries({ queryKey: QUERY_KEYS.local_services(), exact: false });
-    query_client.invalidateQueries({ queryKey: QUERY_KEYS.local_categories(), exact: false });
-    query_client.invalidateQueries({ queryKey: QUERY_KEYS.local_item_descriptions(), exact: false });
+    query_client.invalidateQueries({ queryKey: ['local_products'], exact: false });
+    query_client.invalidateQueries({ queryKey: ['local_services'], exact: false });
+    query_client.invalidateQueries({ queryKey: ['local_categories'], exact: false });
+    query_client.invalidateQueries({ queryKey: ['local_item_descriptions'], exact: false });
   }
 }
 

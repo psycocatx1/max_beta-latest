@@ -6,10 +6,10 @@ import { InfoDisplay } from '@/components/admin/common/InfoDisplay';
 import { formatDate } from '@/lib/intl/format-date';
 import { useLocale, useTranslations } from 'next-intl';
 import { useToast } from '@/hooks/useToast';
-import { ServiceFormModal, ServiceFormData } from '@/components/admin/common/Modal/Forms/ServiceFormModal';
+import { ServiceFormModal } from '@/components/admin/common/Modal/Forms/ServiceFormModal';
 
 export const Info = ({ service_id }: { service_id: string }) => {
-  const { data: service, isLoading: is_loading } = useServices().useFind(service_id);
+  const { data: service, isLoading: is_loading } = useServices().useFind({ id: service_id });
   const [is_editing, setIsEditing] = useState(false);
   const update_mutation = useServices().useUpdate(service_id);
   const toast = useToast();
@@ -30,25 +30,19 @@ export const Info = ({ service_id }: { service_id: string }) => {
     }
   };
 
-  const initial_data: ServiceFormData = {
-    ...service,
-    image_type: 'url',
-    url: service?.image || ''
-  };
-
   // Подготавливаем поля для отображения
   const fields = [
     { label: tFields('name_label'), value: service?.name },
     { label: tFields('description_label'), value: service?.description },
-    { label: tFields('price_label'), value: `$${service.price_USD}` },
-    ...(service.discount_price_USD ? [{ label: tFields('discount_label'), value: `$${service.discount_price_USD}` }] : []),
-    ...(service.category ? [{ label: tFields('category_label'), value: service.category.name }] : []),
+    { label: tFields('price_label'), value: `$${service?.price_USD}` },
+    ...(service?.discount_price_USD ? [{ label: tFields('discount_label'), value: `$${service?.discount_price_USD}` }] : []),
+    ...(service?.category ? [{ label: tFields('category_label'), value: service?.category?.name }] : []),
     { label: tFields('created_date_label'), value: formatDate({ date: service?.created, locale }) },
     { label: tFields('updated_date_label'), value: formatDate({ date: service?.updated, locale }) },
   ];
 
 
-  return (
+  return service ? (
     <InfoDisplay
       title={tServices('info_title')}
       image={service?.image}
@@ -63,9 +57,15 @@ export const Info = ({ service_id }: { service_id: string }) => {
         onClose={() => setIsEditing(false)}
         onSubmit={handleSubmitForm}
         is_loading={is_loading || update_mutation.isPending}
-        initial_data={initial_data}
+        initial_data={{
+          ...service,
+          image_type: 'url',
+          url: service.image || '',
+          description: service.description || undefined,
+          discount_price_USD: service.discount_price_USD || undefined
+        }}
         is_edit
       />
     </InfoDisplay>
-  );
+  ) : null;
 }; 

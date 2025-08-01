@@ -1,26 +1,26 @@
 import { Injectable } from "@nestjs/common";
+import { ServiceFiltersDto } from "../dto";
 import { BaseListResult, PrismaService, Prisma } from "@lib/prisma";
-import { ExtendedService } from "../../services/example.data";
-import { ServiceFiltersDto } from "../../services/dto";
+import { ExtendedService } from "../example.data";
 
 /**
- * Сервис для получения списка услуг по фильтрам с пагинацией и сортировкой
- * @returns список услуг с локальными данными
+ * Сервис для получения списка продуктов по фильтрам с пагинацией и сортировкой
+ * @returns список продуктов с изображениями и локальными данными
  */
 @Injectable()
 export class ListService {
   constructor(private readonly prisma: PrismaService) { }
 
-  async getList(
+  async getServices(
     filterDto: ServiceFiltersDto,
   ): Promise<BaseListResult<ExtendedService>> {
     const {
+      category_id,
       name,
+      description,
       min_price,
       max_price,
-      category_id,
       is_discounted,
-      description,
       is_excluded,
       skip = 0,
       take = 10,
@@ -39,9 +39,8 @@ export class ListService {
       where.description = { contains: description, mode: "insensitive" };
     if (min_price) where.price_USD = { gte: min_price };
     if (max_price) where.price_USD = { lte: max_price };
-    if (is_discounted) where.discount_price_USD = { not: null };
-    if (is_excluded !== undefined) where.is_excluded = is_excluded;
-
+    if (is_discounted !== undefined) where.discount_price_USD = { not: null };
+    if (is_excluded) where.is_excluded = is_excluded;
     const items = await this.prisma.service.findMany({
       where,
       skip,
@@ -50,18 +49,22 @@ export class ListService {
       include: {
         images: true,
         category: true,
-        local_services: {
-          where: locale_id ? { locale_id } : undefined,
-          include: {
-            local_item_descriptions: { orderBy: { order: "asc" } },
-          },
-        },
+        local_services: locale_id
+          ? {
+            where: locale_id ? { locale_id } : undefined,
+            include: {
+              local_item_descriptions: { orderBy: { order: "asc" } },
+            },
+          }
+          : false,
       },
     });
 
+    const total = await this.prisma.service.count({ where });
+
     return {
       items: items as ExtendedService[],
-      total: items.length,
+      total,
       skip,
       take,
     };

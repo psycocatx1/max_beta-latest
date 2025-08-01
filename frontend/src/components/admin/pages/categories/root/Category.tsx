@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import { CategoryType } from '@prisma/client';
 import { useRouter } from "@hooks/useRouting";
 import styles from './Category.module.scss';
-import { Image } from '@/components/Image';
+import { Image } from '@/components/common/Image';
 import { useState } from 'react';
 import { ChevronDown } from "lucide-react";
 

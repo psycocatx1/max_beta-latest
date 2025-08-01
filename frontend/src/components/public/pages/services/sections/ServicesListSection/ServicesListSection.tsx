@@ -1,108 +1,73 @@
 'use client'
 import { useTranslations } from 'next-intl';
-import { ExtendedService, Locale } from '@/lib/api';
-import { ServiceCard } from '../../components/ServiceCard';
+import { ExtendedService, Locale, BaseFilterDto } from '@/lib/api';
+import { ServiceCard, LoadingList, EmptyList } from './components';
 import classes from './ServicesListSection.module.scss';
-import { ChevronLeft, ChevronRight, Settings } from 'lucide-react';
-import { Paragraph, Container, Section, Heading } from '@/components/styles';
+import { Pagination } from '@/components/public/common/Pagination';
+import { Container, Heading, Section } from '@/components/styles';
 
 interface ServicesListSectionProps {
   locale: Locale;
   services: ExtendedService[];
   total: number;
-  currentPage: number;
-  totalPages: number;
+  current_page: number;
+  total_pages: number;
+  current_page_size?: number;
   onPageChange: (page: number) => void;
-  isLoading?: boolean;
+  updateFilters: (filters: BaseFilterDto) => void;
+  is_loading?: boolean;
 }
+
 
 export const ServicesListSection = ({
   locale,
   services,
   total,
-  currentPage,
-  totalPages,
+  current_page,
+  total_pages,
+  current_page_size,
   onPageChange,
-  isLoading = false
+  updateFilters,
+  is_loading = false
 }: ServicesListSectionProps) => {
   const t = useTranslations('public.pages.services.list');
 
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      onPageChange(currentPage - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      onPageChange(currentPage + 1);
-    }
-  };
-
-  if (isLoading) {
-    return (
-      <Section>
-        <Container>
-          <div className={classes.list__loading}>
-            {t('loading')}
-          </div>
-        </Container>
-      </Section>
-    );
-  }
-
-  if (services.length === 0) {
-    return (
-      <Section>
-        <Container>
-          <div className={classes.list__empty}>
-            <Settings size={64} className={classes.list__empty_icon} />
-            <Heading size='md' className={classes.list__empty_title}>{t('no_services')}</Heading>
-            <Paragraph size='lg' className={classes.list__empty_description}>{t('no_services_description')}</Paragraph>
-          </div>
-        </Container>
-      </Section>
-    );
-  }
+  if (is_loading) return <LoadingList />;
+  if (services.length === 0 && !is_loading) return <EmptyList />;
 
   return (
-    <Section>
-      <Container>
+    <Section className={classes.list}>
+      <Container className={classes.list__container}>
         <div className={classes.list__header}>
           <Heading size='lg' className={classes.list__title}>
             {t('found_services', { count: total })}
           </Heading>
         </div>
+        <Pagination
+          current_page={current_page}
+          total_pages={total_pages}
+          current_page_size={current_page_size}
+          onPageChange={onPageChange}
+          updateFilters={updateFilters}
+        />
 
         <div className={classes.list__grid}>
-          {services.map((service) => (<ServiceCard key={service.id} service={service} locale={locale} />))}
+          {services.map((service) => (
+            <ServiceCard
+              locale={locale}
+              key={service.id}
+              service={service}
+            />
+          ))}
         </div>
 
-        {totalPages > 1 && (
-          <div className={classes.list__pagination}>
-            <button
-              onClick={handlePrevPage}
-              disabled={currentPage <= 1}
-              className={classes.list__pagination_button}
-              aria-label={t('previous_page')}
-            >
-              <ChevronLeft size={20} />
-            </button>
-
-            <div className={classes.list__pagination_info}>
-              <Paragraph size='sm'>{t('page_info', { current: currentPage, total: totalPages })}</Paragraph>
-            </div>
-
-            <button
-              onClick={handleNextPage}
-              disabled={currentPage >= totalPages}
-              className={classes.list__pagination_button}
-              aria-label={t('next_page')}
-            >
-              <ChevronRight size={20} />
-            </button>
-          </div>
-        )}
+        <Pagination
+          current_page={current_page}
+          total_pages={total_pages}
+          current_page_size={current_page_size}
+          onPageChange={onPageChange}
+          updateFilters={updateFilters}
+        />
       </Container>
     </Section>
   );

@@ -12,6 +12,18 @@
     position: relative;
   }
 
+  @media (max-width: vars.$breakpoint-2xl) {
+    & {
+      max-width: vars.$container-width-2xl;
+    }
+  }
+
+  @media (max-width: vars.$breakpoint-xl) {
+    & {
+      max-width: vars.$container-width-xl;
+    }
+  }
+
   @media (max-width: vars.$breakpoint-lg) {
     & {
       max-width: vars.$container-width-lg;
@@ -856,20 +868,16 @@
 
 // Современная карточка с градиентом
 @mixin modern-card {
-  background: vars.$gradient-card;
-  border-radius: vars.$border-radius-xl;
-  padding: vars.$spacing-xl;
-  box-shadow: vars.$shadow-lg;
-
-  border: {
-    width: vars.$border-width-normal;
-    style: solid;
-    color: vars.$border-color;
+  & {
+    background: vars.$gradient-card;
+    border-radius: vars.$border-radius-xl;
+    padding: vars.$spacing-xl;
+    box-shadow: vars.$shadow-lg;
+    border: vars.$border-width-normal solid vars.$border-color;
+    transition: vars.$transition-all;
+    position: relative;
+    overflow: hidden;
   }
-
-  transition: vars.$transition-all;
-  position: relative;
-  overflow: hidden;
 
   &::before {
     content: '';
@@ -1076,15 +1084,17 @@
     }
   }
 
-  padding: vars.$spacing-md vars.$spacing-xl;
-  border-radius: vars.$border-radius-lg;
-  border: none;
-  font-weight: vars.$font-weight-semibold;
-  font-size: vars.$font-size-md;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: all vars.$transition-normal vars.$transition-ease;
+  & {
+    padding: vars.$spacing-md vars.$spacing-xl;
+    border-radius: vars.$border-radius-lg;
+    border: none;
+    font-weight: vars.$font-weight-semibold;
+    font-size: vars.$font-size-md;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all vars.$transition-normal vars.$transition-ease;
+  }
 
   &::before {
     content: '';
