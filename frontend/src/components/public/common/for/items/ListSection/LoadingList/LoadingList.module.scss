@@ -1,0 +1,48 @@
+@use '../../../../../../styles/mixins' as mix;
+@use '../../../../../../styles/variables' as vars;
+
+
+.list {
+  @include mix.section;
+
+  & {
+    background: vars.$gradient-card;
+    position: relative;
+    overflow: hidden;
+    background: vars.$bg-level-2;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+
+  &__container {
+    @include mix.container;
+
+    & {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  &__loading {
+    @include mix.flex-center;
+
+    & {
+      min-height: 400px;
+      color: vars.$text-secondary;
+      font-size: vars.$font-size-lg;
+      font-weight: vars.$font-weight-medium;
+      background: vars.$bg-level-1;
+      border-radius: vars.$border-radius-xl;
+      margin: vars.$spacing-xl 0;
+      box-shadow: vars.$shadow-md;
+    }
+  }
+}

@@ -1,0 +1,79 @@
+@use '../../../../styles/mixins' as mix;
+@use '../../../../styles/variables' as vars;
+
+.info {
+  @include mix.flex-column;
+
+  & {
+    gap: vars.$spacing-2xl;
+    height: fit-content;
+  }
+
+  &__header {
+    @include mix.modern-card;
+
+    & {
+      padding: vars.$spacing-xl;
+      margin-bottom: 0;
+      border-bottom: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    &:hover {
+      transform: none;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: vars.$gradient-primary;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        padding: vars.$spacing-lg;
+      }
+    }
+  }
+
+  &__badge {
+    @include mix.badge('success');
+
+    & {
+      position: absolute;
+      top: vars.$spacing-md;
+      right: vars.$spacing-md;
+      z-index: vars.$z-dropdown;
+    }
+  }
+
+  &__features {
+    & {
+      margin-top: vars.$spacing-lg;
+      padding-top: vars.$spacing-lg;
+      border-top: vars.$border-width-thin solid vars.$border-color;
+    }
+  }
+
+  &__feature_item {
+    @include mix.flex-start;
+
+    & {
+      gap: vars.$spacing-sm;
+      margin-bottom: vars.$spacing-sm;
+      align-items: center;
+    }
+
+    &::before {
+      content: '✓';
+      color: vars.$primary-color;
+      font-weight: vars.$font-weight-bold;
+      font-size: vars.$font-size-md;
+    }
+  }
+}

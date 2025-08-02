@@ -1,6 +1,6 @@
 import dynamic, { DynamicOptions } from 'next/dynamic';
 import classes from './Home.module.scss';
-import { AnimatedSection } from '@/components/public/common/AnimatedSection';
+import { AnimatedSection } from '@/components/public/common/for/section/AnimatedSection';
 import { SectionLoader } from '../../common';
 
 const options: DynamicOptions = {

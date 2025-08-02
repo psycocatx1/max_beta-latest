@@ -1,5 +1,5 @@
 import dynamic, { DynamicOptions } from 'next/dynamic';
-import { AnimatedSection } from '@/components/public/common/AnimatedSection';
+import { AnimatedSection } from '@/components/public/common/for/section/AnimatedSection';
 import classes from './Contacts.module.scss';
 import { SectionLoader } from '../../common';
 import { ToastProvider } from '@/providers/ToastProvider';

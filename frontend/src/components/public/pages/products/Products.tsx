@@ -1,10 +1,12 @@
 'use client'
 import { useProducts, useProductsFilters } from '@/hooks/admin/products';
 import { BaseListResult, ExtendedProduct, Locale } from '@/lib/api';
-import { AnimatedSection } from '@/components/public/common/AnimatedSection';
+import { AnimatedSection } from '@/components/public/common/for/section';
+import { HeroSection, FiltersSection } from '@/components/public/common/for/items';
 import classes from './Products.module.scss';
-import { HeroSection, ProductsFiltersSection, ProductsListSection } from './sections';
+import { ProductsListSection } from './ProductsListSection';
 import { useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 
 interface ProductsProps {
   locale: Locale;
@@ -15,6 +17,8 @@ export const Products = ({ locale, initial_products }: ProductsProps) => {
   const { filters, current_page, setPage, updateFilters } = useProductsFilters({
     default_filters: { locale_id: locale.id, take: 10, skip: 0 }
   });
+
+  const t = useTranslations('public.pages.products');
 
   const initial_data: BaseListResult<ExtendedProduct> = {
     items: initial_products,
@@ -29,11 +33,11 @@ export const Products = ({ locale, initial_products }: ProductsProps) => {
   return products ? (
     <div className={classes.products}>
       <AnimatedSection animation="fadeInUp" enableAnimations={true}>
-        <HeroSection />
+        <HeroSection title={t('title')} description={t('description')} />
       </AnimatedSection>
 
       <AnimatedSection animation="fadeInUp" delay={200} enableAnimations={true}>
-        <ProductsFiltersSection
+        <FiltersSection
           filters={filters}
           updateFilters={updateFilters}
         />

@@ -1,6 +1,3 @@
-export * from './Footer';
-export * from './Header';
-export * from './Layout';
-export { AnimatedSection } from './AnimatedSection';
-export { SectionLoader } from './SectionLoader';
+export { Layout } from './Layout';
 export { GoogleMap } from './GoogleMap';
+export * from './for';

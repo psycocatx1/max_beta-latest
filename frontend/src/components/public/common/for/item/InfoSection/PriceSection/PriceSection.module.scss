@@ -1,0 +1,121 @@
+@use '../../../../../../styles/mixins' as mix;
+@use '../../../../../../styles/variables' as vars;
+
+.section {
+  @include mix.modern-card;
+
+  & {
+    padding: vars.$spacing-lg;
+    background: vars.$gradient-card;
+    margin-bottom: 0;
+    position: relative;
+    border: vars.$border-width-normal solid vars.$border-color;
+  }
+
+  &:hover {
+    transform: translateY(-1px) scale(1.01);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: vars.$gradient-secondary;
+  }
+
+  @media (max-width: vars.$breakpoint-md) {
+    & {
+      padding: vars.$spacing-md;
+    }
+  }
+
+
+  &__price {
+    @include mix.flex-start;
+
+    & {
+      gap: vars.$spacing-lg;
+      flex-wrap: wrap;
+      margin-bottom: vars.$spacing-md;
+      align-items: baseline;
+    }
+
+    @media (max-width: vars.$breakpoint-sm) {
+      & {
+        flex-direction: column;
+        gap: vars.$spacing-sm;
+        align-items: flex-start;
+      }
+    }
+
+    &_current {
+      @include mix.gradient-text;
+
+      & {
+        font-weight: vars.$font-weight-bold;
+        margin: 0;
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        line-height: 1.2;
+        position: relative;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: vars.$gradient-primary;
+        border-radius: vars.$border-radius-full;
+        opacity: 0.3;
+      }
+    }
+
+    &_original {
+      & {
+        color: vars.$text-tertiary;
+        text-decoration: line-through;
+        margin: 0;
+        font-size: vars.$font-size-lg;
+        font-weight: vars.$font-weight-medium;
+        position: relative;
+      }
+
+      &::before {
+        content: 'было';
+        position: absolute;
+        top: -20px;
+        left: 0;
+        font-size: vars.$font-size-xs;
+        color: vars.$text-tertiary;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        text-decoration: none;
+      }
+
+      @media (max-width: vars.$breakpoint-sm) {
+        &::before {
+          top: -18px;
+        }
+      }
+    }
+  }
+
+  &__note {
+    @include mix.paragraph-sm;
+
+    & {
+      color: vars.$text-tertiary;
+      margin: 0;
+      font-style: italic;
+      padding: vars.$spacing-sm;
+      background: rgba(34, 197, 94, 0.05);
+      border-radius: vars.$border-radius-md;
+      border-left: 3px solid vars.$primary-color;
+    }
+  }
+}

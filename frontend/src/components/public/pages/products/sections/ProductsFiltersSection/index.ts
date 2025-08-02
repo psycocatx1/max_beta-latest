@@ -1,1 +1,0 @@
-export { ProductsFiltersSection } from './ProductsFiltersSection'; 

@@ -1,4 +1,4 @@
-import { getVideoUrl } from '@/lib/api/video-url';
+import { getVideoUrl } from '@/lib/api';
 
 type IframeProps = React.ComponentProps<'iframe'> & {
   url: string;
