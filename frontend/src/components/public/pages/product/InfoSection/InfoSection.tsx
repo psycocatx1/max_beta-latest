@@ -1,8 +1,7 @@
 import { useTranslations } from 'next-intl';
 import classes from './InfoSection.module.scss';
 import { LocalizedProduct } from '../localized-product';
-import { CTAButton, PriceSection } from '@/components/public/common/for/item';
-import { DataSection } from '@/components/public/common/for/item/InfoSection/DataSection';
+import { CTAButton, PriceSection, DataSection } from '@/components/public/common/for/item';
 
 export const InfoSection = ({ localized_product }: { localized_product: LocalizedProduct }) => {
   const t = useTranslations('public.pages.product.detail');

@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import classes from './InfoSection.module.scss';
-import { CTAButton, DataSection, PriceSection } from '@/components/public/common/for/item/InfoSection';
+import { CTAButton, DataSection, PriceSection } from '@/components/public/common/for/item';
 import { LocalizedService } from '../localized-service';
 
 export const InfoSection = ({ localized_service }: { localized_service: LocalizedService }) => {
