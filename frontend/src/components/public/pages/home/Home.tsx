@@ -20,7 +20,7 @@ const CTASection = dynamic(() => import('./sections/CTASection').then(mod => ({ 
 export const Home = () => {
   return (
     <div className={classes.home_page}>
-      <AnimatedSection animation="fadeInUp" enableAnimations={true}>
+      <AnimatedSection animation="fadeInUp" enableAnimations={true} delay={0}>
         <HeroSection />
       </AnimatedSection>
 
@@ -28,23 +28,23 @@ export const Home = () => {
         <ServicesSection />
       </AnimatedSection>
 
-      <AnimatedSection animation="fadeInUp" delay={400} enableAnimations={true}>
+      <AnimatedSection animation="fadeInUp" delay={200} enableAnimations={true}>
         <VideoSection />
       </AnimatedSection>
 
-      <AnimatedSection animation="fadeInUp" delay={600} enableAnimations={true}>
+      <AnimatedSection animation="fadeInUp" delay={200} enableAnimations={true}>
         <WhyUsSection />
       </AnimatedSection>
 
-      <AnimatedSection animation="fadeInUp" delay={800} enableAnimations={true}>
+      <AnimatedSection animation="fadeInUp" delay={200} enableAnimations={true}>
         <TechnologySection />
       </AnimatedSection>
 
-      <AnimatedSection animation="fadeInUp" delay={1000} enableAnimations={true}>
+      <AnimatedSection animation="fadeInUp" delay={200} enableAnimations={true}>
         <IntegrationsSection />
       </AnimatedSection>
 
-      <AnimatedSection animation="fadeInUp" delay={1200} enableAnimations={true}>
+      <AnimatedSection animation="fadeInUp" delay={200} enableAnimations={true}>
         <CTASection />
       </AnimatedSection>
     </div>

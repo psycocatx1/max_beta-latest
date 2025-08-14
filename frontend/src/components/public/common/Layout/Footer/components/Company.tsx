@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 
 export const Company = async () => {
-  const tFooter = await getTranslations('public.common.footer');
-  const tNavigation = await getTranslations('public.common.navigation');
+  const tFooter = await getTranslations('public.layout');
+  const tNavigation = await getTranslations('public.layout.navigation');
 
   return (
     <div className={styles.footer__section}>

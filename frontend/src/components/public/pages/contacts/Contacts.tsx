@@ -19,19 +19,19 @@ export const Contacts = () => {
   return (
     <ToastProvider>
       <div className={classes.contacts_page}>
-        <AnimatedSection animation="fadeInUp" enableAnimations={true}>
+        <AnimatedSection animation="fadeInUp" enableAnimations={true} delay={0} useCssOnly>
           <HeroSection />
         </AnimatedSection>
 
-        <AnimatedSection animation="fadeInUp" delay={200} enableAnimations={true}>
+        <AnimatedSection animation="fadeInUp" delay={200} enableAnimations={true} useCssOnly>
           <ContactInfoSection />
         </AnimatedSection>
 
-        <AnimatedSection animation="fadeInUp" delay={400} enableAnimations={true}>
+        <AnimatedSection animation="fadeInUp" delay={200} enableAnimations={true} useCssOnly>
           <ContactFormSection />
         </AnimatedSection>
 
-        <AnimatedSection animation="fadeIn" delay={600} enableAnimations={true}>
+        <AnimatedSection animation="fadeIn" delay={200} enableAnimations={true} useCssOnly>
           <MapSection />
         </AnimatedSection>
       </div>

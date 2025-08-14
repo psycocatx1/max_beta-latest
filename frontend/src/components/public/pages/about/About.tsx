@@ -16,15 +16,15 @@ const TeamSection = dynamic(() => import('./sections/TeamSection').then(mod => (
 export const About = () => {
   return (
     <div className={classes.about_page}>
-      <AnimatedSection animation="fadeInUp" enableAnimations={true}>
+      <AnimatedSection animation="fadeInUp" enableAnimations={true} delay={0} useCssOnly>
         <HeroSection />
       </AnimatedSection>
 
-      <AnimatedSection animation="fadeInUp" delay={200} enableAnimations={true}>
+      <AnimatedSection animation="fadeInUp" delay={200} enableAnimations={true} useCssOnly>
         <ValuesSection />
       </AnimatedSection>
 
-      <AnimatedSection animation="fadeInUp" delay={400} enableAnimations={true}>
+      <AnimatedSection animation="fadeInUp" delay={200} enableAnimations={true} useCssOnly>
         <TeamSection />
       </AnimatedSection>
     </div>

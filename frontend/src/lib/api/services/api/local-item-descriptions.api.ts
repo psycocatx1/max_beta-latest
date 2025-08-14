@@ -6,7 +6,7 @@ import { CreateLocalItemDescriptionFormData, UpdateLocalItemDescriptionFormData,
  * API для работы с локальными описаниями товаров
  */
 export class LocalItemDescriptionsApi {
-  private static readonly ENDPOINT = '/local-item-descriptions';
+  private static readonly ENDPOINT = `${process.env.NEXT_PUBLIC_API_URL}/local-item-descriptions`;
 
   private static readonly LOCAL_ITEM_DESCRIPTIONS_PATHS = {
     get: (filters: LocalItemDescriptionsFiltersDto) => formatQueryPath(this.ENDPOINT, filters),

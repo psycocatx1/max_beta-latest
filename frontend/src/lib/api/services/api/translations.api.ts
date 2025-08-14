@@ -12,7 +12,7 @@ import { NestedRecord } from '@/components/admin/common/JsonEditor/useJsonEditor
  * API для работы с переводами
  */
 export class TranslationsApi {
-  private static readonly ENDPOINT = '/translations';
+  private static readonly ENDPOINT = `${process.env.NEXT_PUBLIC_API_URL}/translations`;
 
   private static readonly TRANSLATIONS_PATHS = {
     getMessages: (locale_symbol: string, modules?: TranslationModuleType[]) => formatQueryPath(`${this.ENDPOINT}/messages/${locale_symbol}`, { modules }),

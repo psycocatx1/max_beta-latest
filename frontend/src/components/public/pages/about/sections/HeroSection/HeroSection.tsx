@@ -17,18 +17,12 @@ export const HeroSection = async () => {
           {t('description')}
         </Paragraph>
         <div className={classes.hero__stats}>
-          <Card hoverable className={classes.hero__stat}>
-            <Heading size="xl" className={classes.hero__stat_number}>{t('stats.experience.number')}</Heading>
-            <Paragraph size="sm" className={classes.hero__stat_label}>{t('stats.experience.label')}</Paragraph>
-          </Card>
-          <Card hoverable className={classes.hero__stat}>
-            <Heading size="xl" className={classes.hero__stat_number}>{t('stats.employees.number')}</Heading>
-            <Paragraph size="sm" className={classes.hero__stat_label}>{t('stats.employees.label')}</Paragraph>
-          </Card>
-          <Card hoverable className={classes.hero__stat}>
-            <Heading size="xl" className={classes.hero__stat_number}>{t('stats.cities.number')}</Heading>
-            <Paragraph size="sm" className={classes.hero__stat_label}>{t('stats.cities.label')}</Paragraph>
-          </Card>
+          {t.raw('stats').map((stat: any, index: number) => (
+            <Card hoverable key={index} className={classes.hero__stat}>
+              <Heading size="xl" className={classes.hero__stat_number}>{stat.number}</Heading>
+              <Paragraph size="sm" className={classes.hero__stat_label}>{stat.label}</Paragraph>
+            </Card>
+          ))}
         </div>
       </Container>
     </Section>

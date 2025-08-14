@@ -6,7 +6,7 @@
 
   &__content {
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
+    grid-template-columns: 1fr 1.3fr;
     gap: vars.$spacing-3xl;
     align-items: start;
 
@@ -87,12 +87,11 @@
 
 .form_row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: vars.$spacing-lg;
-  margin-bottom: vars.$spacing-lg;
+  grid-template-columns: 1fr;
+  gap: vars.$spacing-sm;
+  margin-bottom: vars.$spacing-sm;
 
   @media (max-width: vars.$breakpoint-md) {
-    grid-template-columns: 1fr;
     gap: vars.$spacing-md;
   }
 }
@@ -118,6 +117,7 @@
   textarea {
     resize: vertical;
     min-height: 120px;
+    margin-bottom: vars.$spacing-lg;
     line-height: vars.$line-height-normal;
   }
 }

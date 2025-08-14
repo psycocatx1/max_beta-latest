@@ -6,7 +6,7 @@ import { CreateProductFormData, UpdateProductFormData, ProductFiltersDto, Extend
  * API для работы с товарами
  */
 export class ProductsApi {
-  private static readonly ENDPOINT = '/products';
+  private static readonly ENDPOINT = `${process.env.NEXT_PUBLIC_API_URL}/products`;
 
   private static readonly PRODUCTS_PATHS = {
     get: (filters: ProductFiltersDto) => formatQueryPath(this.ENDPOINT, filters),

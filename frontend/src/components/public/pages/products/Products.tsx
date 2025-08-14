@@ -32,18 +32,18 @@ export const Products = ({ locale, initial_products }: ProductsProps) => {
 
   return products ? (
     <div className={classes.products}>
-      <AnimatedSection animation="fadeInUp" enableAnimations={true}>
+      <AnimatedSection animation="fadeInUp" enableAnimations={true} delay={0} useCssOnly>
         <HeroSection title={t('title')} description={t('description')} />
       </AnimatedSection>
 
-      <AnimatedSection animation="fadeInUp" delay={200} enableAnimations={true}>
+      <AnimatedSection animation="fadeInUp" delay={200} enableAnimations={true} useCssOnly>
         <FiltersSection
           filters={filters}
           updateFilters={updateFilters}
         />
       </AnimatedSection>
 
-      <AnimatedSection animation="fadeInUp" delay={400} enableAnimations={true}>
+      <AnimatedSection animation="fadeInUp" delay={200} enableAnimations={true} useCssOnly>
         <ProductsListSection
           locale={locale}
           products={products.items}

@@ -5,7 +5,7 @@ import { SessionType } from '../types/session.types';
  * API для работы с сессиями
  */
 export class SessionsApi {
-  private static readonly ENDPOINT = '/sessions';
+  private static readonly ENDPOINT = `${process.env.NEXT_PUBLIC_API_URL}/sessions`;
 
   private static readonly SESSIONS_PATHS = {
     get: (user_id?: string) => formatQueryPath(this.ENDPOINT, { user_id }),

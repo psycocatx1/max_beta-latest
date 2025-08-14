@@ -5,7 +5,7 @@ import { ExtendedCategory, CategoryWithCounts, CreateCategoryFormData, UpdateCat
  * API для работы с категориями
  */
 export class CategoriesApi {
-  private static readonly ENDPOINT = '/categories';
+  private static readonly ENDPOINT = `${process.env.NEXT_PUBLIC_API_URL}/categories`;
 
   private static readonly CATEGORIES_PATHS = {
     get: (filters: CategoryFiltersDto) => formatQueryPath(this.ENDPOINT, filters),

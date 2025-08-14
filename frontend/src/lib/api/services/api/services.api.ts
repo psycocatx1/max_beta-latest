@@ -6,7 +6,7 @@ import { CreateServiceFormData, UpdateServiceFormData, ExtendedService, ServiceF
  * API для работы с услугами
  */
 export class ServicesApi {
-  private static readonly ENDPOINT = '/services';
+  private static readonly ENDPOINT = `${process.env.NEXT_PUBLIC_API_URL}/services`;
 
   private static readonly SERVICES_PATHS = {
     get: (filters: ServiceFiltersDto) => formatQueryPath(this.ENDPOINT, filters),

@@ -1,7 +1,4 @@
-'use client';
-
-import { ReactNode, useEffect, useState } from 'react';
-import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import { ReactNode } from 'react';
 import classes from './AnimatedSection.module.scss';
 import clsx from 'clsx';
 
@@ -12,6 +9,7 @@ interface AnimatedSectionProps {
   duration?: number;
   className?: string;
   enableAnimations?: boolean;
+  useCssOnly?: boolean; // Новая опция для CSS-only анимаций
 }
 
 export const AnimatedSection = ({
@@ -20,49 +18,31 @@ export const AnimatedSection = ({
   delay = 0,
   duration = 0.6,
   className,
-  enableAnimations = true
+  enableAnimations = true,
+  useCssOnly = false
 }: AnimatedSectionProps) => {
-  const [shouldAnimate, setShouldAnimate] = useState(false);
-
-  // Включаем анимации только после монтирования компонента
-  useEffect(() => {
-    if (enableAnimations) {
-      const timer = setTimeout(() => setShouldAnimate(true), 100);
-      return () => clearTimeout(timer);
-    }
-  }, [enableAnimations]);
-
-  // Используем Intersection Observer только когда анимации включены
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px',
-    disabled: !enableAnimations || !shouldAnimate
-  };
-
-  const { ref, isIntersecting } = useIntersectionObserver(observerOptions);
-
-  // Определяем видимость элемента
-  // На сервере и без анимаций - элемент сразу видимый
-  // С анимациями - только когда shouldAnimate и isIntersecting
-  const isVisible = !enableAnimations || !shouldAnimate || isIntersecting;
-
   return (
     <section
-      ref={ref}
       className={clsx(
         classes.animated_section,
         {
-          // Элемент видимый если нет анимаций или если анимация должна быть показана
-          [classes.visible]: isVisible,
-          // Анимация применяется только когда включена и shouldAnimate = true
-          [classes[animation]]: enableAnimations && shouldAnimate,
+          // CSS-only анимации (более производительные)
+          [`${classes[`css_${animation}`]}`]: enableAnimations && useCssOnly,
+          // Transition-based анимации (с Intersection Observer)
+          [classes[animation]]: enableAnimations && !useCssOnly,
+          [classes.no_animation]: !enableAnimations,
         },
         className
       )}
-      style={enableAnimations && shouldAnimate ? {
+      style={enableAnimations ? {
         '--animation-delay': `${delay}ms`,
         '--animation-duration': `${duration}s`
       } as React.CSSProperties : undefined}
+      data-animation={animation}
+      data-delay={delay}
+      data-duration={duration}
+      data-enable-animations={enableAnimations}
+      data-css-only={useCssOnly}
     >
       {children}
     </section>

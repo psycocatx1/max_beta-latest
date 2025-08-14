@@ -53,13 +53,13 @@
   }
 
   &__title {
-    color: vars.$text-white;
+    color: vars.$text-white !important;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     margin-bottom: vars.$spacing-lg;
   }
 
   &__description {
-    color: rgba(255, 255, 255, 0.95);
+    color: vars.$text-white !important;
     margin-bottom: vars.$spacing-xl;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
@@ -81,8 +81,8 @@
   }
 
   &__button_secondary {
-    background: vars.$bg-level-1;
-    border: vars.$border-width-normal solid vars.$border-color;
+    background: vars.$bg-level-1 !important;
+    border: vars.$border-width-normal solid vars.$border-color !important;
 
     &:hover {
       background: vars.$bg-level-2 !important;

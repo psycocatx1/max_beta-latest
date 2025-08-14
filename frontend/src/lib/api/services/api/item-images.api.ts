@@ -6,7 +6,7 @@ import { CreateItemImageFormData, UpdateItemImageFormData, ItemImagesFiltersDto,
  * API для работы с изображениями товаров и услуг
  */
 export class ItemImagesApi {
-  private static readonly ENDPOINT = '/item-images';
+  private static readonly ENDPOINT = `${process.env.NEXT_PUBLIC_API_URL}/item-images`;
 
   private static readonly ITEM_IMAGES_PATHS = {
     get: (filters: ItemImagesFiltersDto) => formatQueryPath(this.ENDPOINT, filters),

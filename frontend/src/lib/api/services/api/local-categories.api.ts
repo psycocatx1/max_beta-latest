@@ -6,7 +6,7 @@ import { ExtendedLocalCategory, CreateLocalCategoryDto, UpdateLocalCategoryDto, 
  * API для работы с локализациями категорий
  */
 export class LocalCategoriesApi {
-  private static readonly ENDPOINT = '/local-categories';
+  private static readonly ENDPOINT = `${process.env.NEXT_PUBLIC_API_URL}/local-categories`;
 
   private static readonly LOCAL_CATEGORIES_PATHS = {
     get: (filters: LocalCategoryFiltersDto) => formatQueryPath(this.ENDPOINT, filters),

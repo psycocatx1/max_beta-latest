@@ -2,7 +2,7 @@ import { api, BaseListResult, AxiosResponse, formatQueryPath } from '@lib/api';
 import { CreateFormDto, FormsFiltersDto, ExtendedForm } from '../types/forms.types';
 
 export class FormsApi {
-  private static readonly ENDPOINT = '/forms';
+  private static readonly ENDPOINT = `${process.env.NEXT_PUBLIC_API_URL}/forms`;
 
   private static readonly FORMS_PATHS = {
     get: (filters: FormsFiltersDto) => formatQueryPath(this.ENDPOINT, filters),

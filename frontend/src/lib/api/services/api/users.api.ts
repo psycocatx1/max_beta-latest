@@ -6,7 +6,7 @@ import { User, UserFiltersDto, UpdateUserFormData } from "../types/users.types";
  * API для работы с пользователями
  */
 export class UsersApi {
-  private static readonly ENDPOINT = '/users';
+  private static readonly ENDPOINT = `${process.env.NEXT_PUBLIC_API_URL}/users`;
   private static readonly USERS_PATHS = {
     get: (filters: UserFiltersDto) => formatQueryPath(this.ENDPOINT, filters),
     find: (where: Prisma.UserWhereUniqueInput) => formatQueryPath(`${this.ENDPOINT}/find/`, { id: where.id }),

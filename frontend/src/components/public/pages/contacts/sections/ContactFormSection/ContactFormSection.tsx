@@ -58,18 +58,12 @@ export const ContactFormSection = () => {
               {t('description')}
             </Paragraph>
             <div className={classes.contact_form__benefits}>
-              <div className={classes.benefit_item}>
-                <span className={classes.benefit_item__icon}>✓</span>
-                <span>{t('benefits.response')}</span>
-              </div>
-              <div className={classes.benefit_item}>
-                <span className={classes.benefit_item__icon}>✓</span>
-                <span>{t('benefits.consultation')}</span>
-              </div>
-              <div className={classes.benefit_item}>
-                <span className={classes.benefit_item__icon}>✓</span>
-                <span>{t('benefits.calculation')}</span>
-              </div>
+              {t.raw('benefits').map((benefit: string, index: number) => (
+                <div key={index} className={classes.benefit_item}>
+                  <span className={classes.benefit_item__icon}>✓</span>
+                  <span>{benefit}</span>
+                </div>
+              ))}
             </div>
           </div>
 

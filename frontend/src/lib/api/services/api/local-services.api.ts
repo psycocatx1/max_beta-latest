@@ -6,7 +6,7 @@ import { LocalServiceFiltersDto, UpdateLocalServiceDto, CreateLocalServiceDto, E
  * API для работы с локальными услугами
  */
 export class LocalServicesApi {
-  private static readonly ENDPOINT = '/local-services';
+  private static readonly ENDPOINT = `${process.env.NEXT_PUBLIC_API_URL}/local-services`;
 
   private static readonly LOCAL_SERVICES_PATHS = {
     get: (filters: LocalServiceFiltersDto) => formatQueryPath(this.ENDPOINT, filters),

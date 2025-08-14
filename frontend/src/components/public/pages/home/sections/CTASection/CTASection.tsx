@@ -4,7 +4,7 @@ import { Phone, CheckCircle } from 'lucide-react';
 import { Button, Container, Heading, Paragraph, Section } from '@/components/styles';
 
 export const CTASection = async () => {
-  const t = await getTranslations('public.pages.root.cta');
+  const t = await getTranslations('public.pages.home.cta');
 
   return (
     <Section className={classes.cta}>
@@ -31,24 +31,14 @@ export const CTASection = async () => {
           </div>
 
           <div className={classes.cta__features}>
-            <div className={classes.cta__feature}>
-              <div className={classes.cta__feature_icon}>
-                <CheckCircle size={24} />
+            {t.raw('features').map((feature: string, index: number) => (
+              <div key={index} className={classes.cta__feature}>
+                <div className={classes.cta__feature_icon}>
+                  <CheckCircle size={24} />
+                </div>
+                {feature}
               </div>
-              {t('features.consultation')}
-            </div>
-            <div className={classes.cta__feature}>
-              <div className={classes.cta__feature_icon}>
-                <CheckCircle size={24} />
-              </div>
-              {t('features.calculation')}
-            </div>
-            <div className={classes.cta__feature}>
-              <div className={classes.cta__feature_icon}>
-                <CheckCircle size={24} />
-              </div>
-              {t('features.individual')}
-            </div>
+            ))}
           </div>
         </div>
       </Container>

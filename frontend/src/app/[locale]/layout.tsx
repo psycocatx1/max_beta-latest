@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { getMessages } from "next-intl/server";
 import { LOCALES, DEFAULT_LOCALE } from "@lib/intl/routing";
 import { Providers } from '@/providers';
+import { AnimationInitializer } from '@/components/public/common/for/section/AnimatedSection/AnimationInitializer';
 import "./globals.css";
 
 
@@ -36,6 +37,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   return (
     <Providers locale={current_locale} messages={messages}>
+      <AnimationInitializer />
       <div>
         {children}
       </div>

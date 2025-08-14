@@ -6,7 +6,7 @@ import { LocalProduct, LocalProductFiltersDto, CreateLocalProductDto, UpdateLoca
  * API для работы с локальными товарами
  */
 export class LocalProductsApi {
-  private static readonly ENDPOINT = '/local-products';
+  private static readonly ENDPOINT = `${process.env.NEXT_PUBLIC_API_URL}/local-products`;
 
   private static readonly LOCAL_PRODUCTS_PATHS = {
     get: (filters: LocalProductFiltersDto) => formatQueryPath(this.ENDPOINT, filters),

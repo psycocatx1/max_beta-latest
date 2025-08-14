@@ -3,7 +3,7 @@ import classes from './VideoSection.module.scss';
 import { Button, Container, Heading, Paragraph, Section } from '@/components/styles';
 
 export const VideoSection = async () => {
-  const t = await getTranslations('public.pages.root.video');
+  const t = await getTranslations('public.pages.home.video');
 
   // Получаем переводы заранее и проверяем их наличие
   const title = t('title') || '';

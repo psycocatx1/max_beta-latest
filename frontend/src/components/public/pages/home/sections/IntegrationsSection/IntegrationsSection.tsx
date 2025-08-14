@@ -17,7 +17,7 @@ import ups_logo from '@/../public/public/home/ups-logo.png';
 import { Button, Card, Container, Heading, Paragraph, Section } from '@/components/styles';
 
 export const IntegrationsSection = async () => {
-  const t = await getTranslations('public.pages.root.integrations');
+  const t = await getTranslations('public.pages.home.integrations');
 
   const platforms = [
     { name: 'Shopify', logo: shopify_logo.src, href: 'https://www.shopify.com' },

@@ -4,7 +4,7 @@ import { Cpu, Smartphone, Globe, Activity } from 'lucide-react';
 import { Badge, Card, Container, Paragraph, Section, Heading } from '@/components/styles';
 
 export const TechnologySection = async () => {
-  const t = await getTranslations('public.pages.root.technology');
+  const t = await getTranslations('public.pages.home.technology');
 
   const features = [
     {

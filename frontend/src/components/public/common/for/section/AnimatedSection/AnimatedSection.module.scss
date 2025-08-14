@@ -4,6 +4,15 @@
     opacity var(--animation-duration, 0.6s) ease-out var(--animation-delay, 0ms),
     transform var(--animation-duration, 0.6s) ease-out var(--animation-delay, 0ms);
 
+  // Состояние без анимации - элемент сразу видимый
+  &.no_animation {
+    opacity: 1;
+    transform: none !important;
+  }
+
+  // Состояние видимости для анимированных элементов
+  // Используем глобальный класс visible вместо модульного
+  &:global(.visible),
   &.visible {
     opacity: 1;
   }
@@ -12,6 +21,7 @@
   &.fadeInUp {
     transform: translateY(40px);
 
+    &:global(.visible),
     &.visible {
       transform: translateY(0);
     }
@@ -21,6 +31,7 @@
   &.fadeInDown {
     transform: translateY(-40px);
 
+    &:global(.visible),
     &.visible {
       transform: translateY(0);
     }
@@ -30,6 +41,7 @@
   &.fadeInLeft {
     transform: translateX(-40px);
 
+    &:global(.visible),
     &.visible {
       transform: translateX(0);
     }
@@ -39,6 +51,7 @@
   &.fadeInRight {
     transform: translateX(40px);
 
+    &:global(.visible),
     &.visible {
       transform: translateX(0);
     }
@@ -48,6 +61,7 @@
   &.fadeIn {
     transform: none;
 
+    &:global(.visible),
     &.visible {
       transform: none;
     }
@@ -57,13 +71,113 @@
   &.scaleIn {
     transform: scale(0.8);
 
+    &:global(.visible),
     &.visible {
       transform: scale(1);
     }
   }
 }
 
+// CSS-only анимации через @keyframes для максимальной производительности
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// CSS-only классы для анимаций
+.animated_section {
+  &.css_fadeInUp {
+    animation: fadeInUp var(--animation-duration, 0.6s) ease-out var(--animation-delay, 0ms) forwards;
+  }
+
+  &.css_fadeInDown {
+    animation: fadeInDown var(--animation-duration, 0.6s) ease-out var(--animation-delay, 0ms) forwards;
+  }
+
+  &.css_fadeInLeft {
+    animation: fadeInLeft var(--animation-duration, 0.6s) ease-out var(--animation-delay, 0ms) forwards;
+  }
+
+  &.css_fadeInRight {
+    animation: fadeInRight var(--animation-duration, 0.6s) ease-out var(--animation-delay, 0ms) forwards;
+  }
+
+  &.css_fadeIn {
+    animation: fadeIn var(--animation-duration, 0.6s) ease-out var(--animation-delay, 0ms) forwards;
+  }
+
+  &.css_scaleIn {
+    animation: scaleIn var(--animation-duration, 0.6s) ease-out var(--animation-delay, 0ms) forwards;
+  }
+}
+
 // Staggered animation for child elements
+.animated_section:global(.visible),
 .animated_section.visible {
   .stagger-child {
     &:nth-child(1) {
@@ -97,7 +211,9 @@
   .animated_section {
     transition: opacity 0.3s ease-out;
     transform: none !important;
+    animation: none !important;
 
+    &:global(.visible),
     &.visible {
       transform: none !important;
     }

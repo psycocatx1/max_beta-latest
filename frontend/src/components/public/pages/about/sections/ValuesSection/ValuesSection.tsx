@@ -6,28 +6,7 @@ import { Badge, Card, Container, Heading, Paragraph, Section } from '@/component
 export const ValuesSection = async () => {
   const t = await getTranslations('public.pages.about.values');
 
-  const values = [
-    {
-      icon: Lightbulb,
-      title: t('innovation.title'),
-      description: t('innovation.description'),
-    },
-    {
-      icon: Shield,
-      title: t('reliability.title'),
-      description: t('reliability.description'),
-    },
-    {
-      icon: Leaf,
-      title: t('sustainability.title'),
-      description: t('sustainability.description'),
-    },
-    {
-      icon: Users,
-      title: t('customer_focus.title'),
-      description: t('customer_focus.description'),
-    },
-  ];
+  const icons = [Lightbulb, Shield, Leaf, Users];
 
   return (
     <Section className={classes.values}>
@@ -39,15 +18,18 @@ export const ValuesSection = async () => {
         </div>
 
         <div className={classes.values__grid}>
-          {values.map((value, index) => (
-            <Card hoverable key={index} className={classes.values__card}>
-              <div className={classes.values__card_icon}>
-                <value.icon size={32} />
-              </div>
-              <Heading size='md' className={classes.values__card_title}>{value.title}</Heading>
-              <Paragraph size='md' className={classes.values__card_description}>{value.description}</Paragraph>
-            </Card>
-          ))}
+          {t.raw('items').map((value: any, index: number) => {
+            const IconComponent = icons[index];
+            return (
+              <Card hoverable key={index} className={classes.values__card}>
+                <div className={classes.values__card_icon}>
+                  <IconComponent size={32} />
+                </div>
+                <Heading size='md' className={classes.values__card_title}>{value.title}</Heading>
+                <Paragraph size='md' className={classes.values__card_description}>{value.description}</Paragraph>
+              </Card>
+            );
+          })}
         </div>
       </Container>
     </Section>

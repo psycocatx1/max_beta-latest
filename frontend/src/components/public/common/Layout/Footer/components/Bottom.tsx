@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 
 export const Bottom = async () => {
-  const tFooter = await getTranslations('public.common.footer');
+  const tFooter = await getTranslations('public.layout');
 
   return (
     <div className={styles.footer__bottom}>

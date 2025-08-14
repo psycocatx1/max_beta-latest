@@ -1,4 +1,4 @@
-import { Header, Footer } from '@/components/public/common';
+import { Header, Footer } from '@/components/public/common/Layout';
 import { FC } from 'react';
 import styles from './Layout.module.scss';
 import { LocalesApi } from '@/lib/api/services/api/locales.api';

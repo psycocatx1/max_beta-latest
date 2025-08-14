@@ -8,7 +8,14 @@ import { Image } from '@/components/common/Image';
 import { Badge, Card, Container, Heading, Paragraph, Section } from '@/components/styles';
 
 export const ServicesSection = async () => {
-  const t = await getTranslations('public.pages.root.services');
+  const t = await getTranslations('public.pages.home.services');
+
+  const serviceIcons = [
+    storaging_icon.src,
+    delivery_icon.src,
+    international_icon.src,
+    repackaging_icon.src
+  ];
 
   return (
     <Section className={classes.services}>
@@ -23,73 +30,24 @@ export const ServicesSection = async () => {
           </Paragraph>
         </Card>
         <div className={classes.services__grid}>
-          <Card hoverable className={classes.services__card}>
-            <div className={classes.services__card_header}>
-              <div className={classes.services__card_icon}>
-                <Image src={storaging_icon.src} alt="Storaging" width={400} height={300} />
+          {t.raw('items').map((service: any, index: number) => (
+            <Card hoverable key={index} className={classes.services__card}>
+              <div className={classes.services__card_header}>
+                <div className={classes.services__card_icon}>
+                  <Image src={serviceIcons[index]} alt={service.title} width={400} height={300} />
+                </div>
+                <Heading size='md' className={classes.services__card_title}>{service.title}</Heading>
               </div>
-              <Heading size='md' className={classes.services__card_title}>{t('warehouse.title')}</Heading>
-            </div>
-            <Paragraph size='md' className={classes.services__card_description}>
-              {t('warehouse.description')}
-            </Paragraph>
-            <div className={classes.services__card_features}>
-              <span>{t('warehouse.features.automation')}</span>
-              <span>{t('warehouse.features.climate')}</span>
-              <span>{t('warehouse.features.monitoring')}</span>
-            </div>
-          </Card>
-
-          <Card hoverable className={classes.services__card}>
-            <div className={classes.services__card_header}>
-              <div className={classes.services__card_icon}>
-                <Image src={delivery_icon.src} alt="Delivery" width={400} height={300} />
+              <Paragraph size='md' className={classes.services__card_description}>
+                {service.description}
+              </Paragraph>
+              <div className={classes.services__card_features}>
+                {service.features.map((feature: string, featureIndex: number) => (
+                  <span key={featureIndex}>{feature}</span>
+                ))}
               </div>
-              <Heading size='md' className={classes.services__card_title}>{t('express.title')}</Heading>
-            </div>
-            <Paragraph size='md' className={classes.services__card_description}>
-              {t('express.description')}
-            </Paragraph>
-            <div className={classes.services__card_features}>
-              <span>{t('express.features.time')}</span>
-              <span>{t('express.features.tracking')}</span>
-              <span>{t('express.features.guarantee')}</span>
-            </div>
-          </Card>
-
-          <Card hoverable className={classes.services__card}>
-            <div className={classes.services__card_header}>
-              <div className={classes.services__card_icon}>
-                <Image src={international_icon.src} alt="International" width={400} height={300} />
-              </div>
-              <Heading size='md' className={classes.services__card_title}>{t('international.title')}</Heading>
-            </div>
-            <Paragraph size='md' className={classes.services__card_description}>
-              {t('international.description')}
-            </Paragraph>
-            <div className={classes.services__card_features}>
-              <span>{t('international.features.countries')}</span>
-              <span>{t('international.features.customs')}</span>
-              <span>{t('international.features.insurance')}</span>
-            </div>
-          </Card>
-
-          <Card hoverable className={classes.services__card}>
-            <div className={classes.services__card_header}>
-              <div className={classes.services__card_icon}>
-                <Image src={repackaging_icon.src} alt="Repackaging" width={400} height={300} />
-              </div>
-              <Heading size='md' className={classes.services__card_title}>{t('repackaging.title')}</Heading>
-            </div>
-            <Paragraph size='md' className={classes.services__card_description}>
-              {t('repackaging.description')}
-            </Paragraph>
-            <div className={classes.services__card_features}>
-              <span>{t('repackaging.features.eco')}</span>
-              <span>{t('repackaging.features.protection')}</span>
-              <span>{t('repackaging.features.branding')}</span>
-            </div>
-          </Card>
+            </Card>
+          ))}
         </div>
       </Container>
     </Section>

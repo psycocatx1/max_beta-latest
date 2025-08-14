@@ -3,7 +3,7 @@ import styles from '../Footer.module.scss';
 import { getTranslations } from 'next-intl/server';
 
 export const Socials = async () => {
-  const tFooter = await getTranslations('public.common.footer');
+  const tFooter = await getTranslations('public.layout');
 
   return (
     <div className={styles.footer__section}>

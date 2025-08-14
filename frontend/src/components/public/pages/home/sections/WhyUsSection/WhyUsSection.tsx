@@ -4,40 +4,9 @@ import { Zap, Shield, Users, Lock, Cpu, BarChart3 } from 'lucide-react';
 import { Card, Container, Heading, Paragraph, Section } from '@/components/styles';
 
 export const WhyUsSection = async () => {
-  const t = await getTranslations('public.pages.root.why_us');
+  const t = await getTranslations('public.pages.home.why_us');
 
-  const features = [
-    {
-      icon: Zap,
-      title: t('features.speed.title'),
-      description: t('features.speed.description'),
-    },
-    {
-      icon: Shield,
-      title: t('features.quality.title'),
-      description: t('features.quality.description'),
-    },
-    {
-      icon: Users,
-      title: t('features.support.title'),
-      description: t('features.support.description'),
-    },
-    {
-      icon: Lock,
-      title: t('features.safety.title'),
-      description: t('features.safety.description'),
-    },
-    {
-      icon: Cpu,
-      title: t('features.api.title'),
-      description: t('features.api.description'),
-    },
-    {
-      icon: BarChart3,
-      title: t('features.reporting.title'),
-      description: t('features.reporting.description'),
-    },
-  ];
+  const icons = [Zap, Shield, Users, Lock, Cpu, BarChart3];
 
   return (
     <Section className={classes.whyus}>
@@ -46,15 +15,18 @@ export const WhyUsSection = async () => {
           {t('title')}
         </Heading>
         <div className={classes.whyus__grid}>
-          {features.map((feature, index) => (
-            <Card hoverable key={index} className={classes.whyus__card}>
-              <div className={classes.whyus__card_icon}>
-                <feature.icon size={24} />
-              </div>
-              <Heading size='md' className={classes.whyus__card_title}>{feature.title}</Heading>
-              <Paragraph size='md' className={classes.whyus__card_description}>{feature.description}</Paragraph>
-            </Card>
-          ))}
+          {t.raw('features').map((feature: any, index: number) => {
+            const IconComponent = icons[index];
+            return (
+              <Card hoverable key={index} className={classes.whyus__card}>
+                <div className={classes.whyus__card_icon}>
+                  <IconComponent size={24} />
+                </div>
+                <Heading size='md' className={classes.whyus__card_title}>{feature.title}</Heading>
+                <Paragraph size='md' className={classes.whyus__card_description}>{feature.description}</Paragraph>
+              </Card>
+            );
+          })}
         </div>
       </Container>
     </Section>

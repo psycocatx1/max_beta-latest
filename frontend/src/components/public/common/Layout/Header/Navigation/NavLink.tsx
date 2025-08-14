@@ -15,7 +15,7 @@ type NavLinkProps = {
 import { useEffect, useState } from 'react';
 
 export const NavLink = ({ locale, href, onClick, label, is_mobile_menu_opened }: NavLinkProps) => {
-  const t = useTranslations('public.common.navigation');
+  const tNavigation = useTranslations('public.layout.navigation');
   const pathname = usePathname();
 
   const [is_desktop, setIsDesktop] = useState<boolean>(false);
@@ -41,14 +41,14 @@ export const NavLink = ({ locale, href, onClick, label, is_mobile_menu_opened }:
         className={`${classes.nav_link} ${match(href)(pathname) ? classes.nav_link__active : ''}`}
         onClick={onClick}
       >
-        {t(label)}
+        {tNavigation(label)}
       </Link>
     );
   }
 
   return (
     <span className={classes.nav_link}>
-      {t(label)}
+      {tNavigation(label)}
     </span>
   );
 }

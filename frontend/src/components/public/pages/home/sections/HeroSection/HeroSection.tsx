@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react';
 import { Badge, Button, Card, Container, Heading, Paragraph, Section } from '@/components/styles';
 
 export const HeroSection = async () => {
-  const t = await getTranslations('public.pages.root.hero');
+  const t = await getTranslations('public.pages.home.hero');
 
   return (
     <Section hero className={classes.hero}>

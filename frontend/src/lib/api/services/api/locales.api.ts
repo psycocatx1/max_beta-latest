@@ -6,7 +6,7 @@ import { Locale, LocaleFiltersDto, CreateLocaleFormData, UpdateLocaleFormData, E
  * API для работы с регионами
  */
 export class LocalesApi {
-  private static readonly ENDPOINT = '/locales';
+  private static readonly ENDPOINT = `${process.env.NEXT_PUBLIC_API_URL}/locales`;
 
   private static readonly LOCALES_PATHS = {
     get: (filters: LocaleFiltersDto) => formatQueryPath(this.ENDPOINT, filters),
