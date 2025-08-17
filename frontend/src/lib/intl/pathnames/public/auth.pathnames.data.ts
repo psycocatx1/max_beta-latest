@@ -1,12 +1,12 @@
 export const auth_pathnames = {
   '/auth/login': {
-    ru: '/auth/vhod',
-    ua: '/auth/vhid',
+    ru: '/auth/вход',
+    ua: '/auth/вхід',
     pl: '/auth/logowanie'
   },
   '/auth/register': {
-    ru: '/auth/registraciya',
-    ua: '/auth/reyestratsiya',
+    ru: '/auth/регистрация',
+    ua: '/auth/реєстрація',
     pl: '/auth/rejestracja'
   }
 } as const;

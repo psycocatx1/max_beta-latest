@@ -1,0 +1,23 @@
+{
+  "cancel": "",
+  "save": "",
+  "saving": "",
+  "edit": "",
+  "delete": "",
+  "deleting": "",
+  "creating": "",
+  "create": "",
+  "not_found": "",
+  "confirm_delete": "",
+  "back": "",
+  "deleted_successfully": "",
+  "error_while_deleting": "",
+  "saved_successfully": "",
+  "error_while_saving": "",
+  "loading": "",
+  "updated_successfully": "",
+  "error_while_updating": "",
+  "restore": "",
+  "restoring": "",
+  "restore_title": ""
+}

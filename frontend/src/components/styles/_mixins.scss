@@ -297,12 +297,6 @@
   line-height: vars.$line-height-relaxed;
   color: vars.$text-secondary;
   margin-bottom: vars.$spacing-md;
-
-  @media (max-width: vars.$breakpoint-md) {
-    & {
-      font-size: vars.$font-size-sm;
-    }
-  }
 }
 
 @mixin paragraph-sm {

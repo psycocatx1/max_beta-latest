@@ -8,6 +8,8 @@ import { useTranslations } from 'next-intl';
 import { Navigation } from './Navigation';
 import { LanguageSelector } from '@/components/common/LanguageSelector/LanguageSelector';
 import { Locale } from '@prisma/client';
+import { Image } from '../../../../common/Image'
+import logo from '@/../public/logo.svg'
 
 export const Header = ({ locale, locales }: { locale: string, locales: Locale[] }) => {
   const [is_mobile_menu_opened, setIsMobileMenuOpened] = useState(false);
@@ -17,12 +19,9 @@ export const Header = ({ locale, locales }: { locale: string, locales: Locale[] 
     <header className={styles.header}>
       <div className={styles.header_container}>
         <div className={styles.header_left}>
-          <div className={styles.header_logo}>
-            <Link locale={locale} href="/" className={styles.header_logo_link}>
-              <span className={styles.header_logo_icon}>📦</span>
-              <span className={styles.header_logo_text}>{t('company_name')}</span>
-            </Link>
-          </div>
+          <Link locale={locale} href="/" className={styles.header_logo_link}>
+            <Image src={logo.src} alt="Logo" width={270} height={150} />
+          </Link>
         </div>
 
         <div className={styles.header_right}>

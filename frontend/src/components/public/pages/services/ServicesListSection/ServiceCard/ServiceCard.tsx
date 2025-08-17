@@ -7,6 +7,7 @@ import { Eye } from 'lucide-react';
 import { Link } from '@/lib/intl/navigation';
 import { formatExtendedService } from '../../../service/localized-service';
 import { Price } from './components/Price';
+import { Paragraph, Heading } from '@/components/styles';
 
 interface ServiceCardProps {
   service: ExtendedService;
@@ -44,9 +45,9 @@ export const ServiceCard = ({ service, locale }: ServiceCardProps) => {
       </div>
 
       <div className={classes.card__content}>
-        <h3 className={classes.card__title}>{localized_service.name}</h3>
+        <Heading size='lg' className={classes.card__title}>{localized_service.name}</Heading>
         {localized_service.description && (
-          <p className={classes.card__description}>{localized_service.description}</p>
+          <Paragraph size='lg' className={classes.card__description}>{localized_service.description}</Paragraph>
         )}
 
         <div className={classes.card__price_section}>
@@ -56,7 +57,7 @@ export const ServiceCard = ({ service, locale }: ServiceCardProps) => {
             href={{ pathname: '/services/[service_id]', params: { service_id: service.id } }}
             className={classes.card__details_button}
           >
-            <span>{t('view_details')}</span>
+            <Paragraph size='md'>{t('view_details')}</Paragraph>
             <Eye size={16} />
           </Link>
         </div>

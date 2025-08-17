@@ -18,7 +18,7 @@ export const ValuesSection = async () => {
         </div>
 
         <div className={classes.values__grid}>
-          {t.raw('items').map((value: any, index: number) => {
+          {t.raw('items').map((value: { title: string, description: string }, index: number) => {
             const IconComponent = icons[index];
             return (
               <Card hoverable key={index} className={classes.values__card}>

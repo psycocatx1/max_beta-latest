@@ -15,9 +15,10 @@ export const Iframe = ({ url, title, allow, allowFullScreen, className, ...props
     <iframe
       src={video_url}
       title={title}
-      allow={allow || 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'}
-      allowFullScreen={allowFullScreen || true}
+      allow={allow || 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'}
+      allowFullScreen={allowFullScreen !== false}
       className={className}
+      loading="lazy"
       {...props}
     />
   );

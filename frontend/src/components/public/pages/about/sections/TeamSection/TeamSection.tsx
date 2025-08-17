@@ -18,7 +18,7 @@ export const TeamSection = async () => {
         </div>
 
         <div className={classes.team__features}>
-          {t.raw('items').map((feature: any, index: number) => {
+          {t.raw('items').map((feature: { title: string, description: string }, index: number) => {
             const IconComponent = icons[index];
             return (
               <Card hoverable key={index} className={classes.team__feature}>

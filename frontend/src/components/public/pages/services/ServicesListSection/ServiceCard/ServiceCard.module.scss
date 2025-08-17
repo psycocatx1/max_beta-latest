@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background-color: vars.$bg-level-1;
+    background: vars.$bg-level-0;
     transition: all vars.$transition-normal vars.$ease-in-out-quart;
     position: relative;
     cursor: pointer;
@@ -42,17 +42,17 @@
   &__image_wrapper {
     position: relative;
     width: calc(100% + (vars.$spacing-sm * 2));
-    aspect-ratio: 1.2 / 1; // Соотношение сторон 1:1
+    aspect-ratio: 1.2 / 1;
     overflow: hidden;
-    background: vars.$gradient-card;
+    background: vars.$bg-level-0;
     border-radius: vars.$border-radius-lg vars.$border-radius-lg 0 0;
     margin: calc(vars.$spacing-sm * -1) calc(vars.$spacing-sm * -1) vars.$spacing-md calc(vars.$spacing-sm * -1);
   }
 
-  &__image {
+  & img {
     width: 100%;
-    aspect-ratio: 1.2/1;
-    object-fit: cover; // Показываем изображение полностью без обрезки
+    height: 100%;
+    object-fit: contain;
     object-position: center;
     transition: transform vars.$transition-slow vars.$ease-in-out-quart;
   }
@@ -113,21 +113,14 @@
     display: flex;
     flex-direction: column;
 
-    @media (max-width: vars.$breakpoint-md) {
-      & {
-        padding: vars.$spacing-lg;
-      }
-    }
-
     @media (max-width: vars.$breakpoint-sm) {
       & {
-        padding: vars.$spacing-md;
+        padding: vars.$spacing-sm;
       }
     }
   }
 
   &__title {
-    @include mix.heading-sm;
     @include mix.line-clamp(2);
 
     & {
@@ -140,7 +133,6 @@
   }
 
   &__description {
-    @include mix.paragraph-sm;
     @include mix.line-clamp(3);
 
     & {
@@ -163,7 +155,48 @@
     gap: vars.$spacing-xs;
   }
 
-  
+  &__price {
+    display: flex;
+    align-items: baseline;
+    gap: vars.$spacing-sm;
+    flex-wrap: wrap;
+  }
+
+  &__price_current {
+    @include mix.heading-md;
+
+    & {
+      margin: 0;
+      color: vars.$primary-color;
+      font-weight: vars.$font-weight-bold;
+      font-size: vars.$font-size-xl;
+      text-wrap: nowrap;
+    }
+  }
+
+  &__price_original {
+    @include mix.paragraph-sm;
+
+    & {
+      margin: 0;
+      color: vars.$text-tertiary;
+      text-decoration: line-through;
+      font-size: vars.$font-size-sm;
+      position: relative;
+      text-wrap: nowrap;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: vars.$error-color;
+      transform: translateY(-50%);
+    }
+  }
 
   &__details_button {
     @include mix.button-primary;
@@ -201,14 +234,15 @@
       transform: translateX(2px);
     }
 
+    & p {
+      color: vars.$text-white;
+      margin-bottom: 0;
+    }
+
     @media (max-width: vars.$breakpoint-sm) {
       & {
         padding: vars.$spacing-xs vars.$spacing-sm;
         font-size: vars.$font-size-xs;
-      }
-
-      span {
-        display: none;
       }
     }
   }

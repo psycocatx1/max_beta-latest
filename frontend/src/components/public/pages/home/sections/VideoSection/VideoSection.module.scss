@@ -31,6 +31,7 @@
 
     & {
       width: 100%;
+      height: 100%;
       border-radius: vars.$border-radius-xl;
       overflow: hidden;
       box-shadow: vars.$shadow-lg;
@@ -46,7 +47,7 @@
       & {
         content: '';
         background: linear-gradient(135deg, vars.$bg-level-2, vars.$bg-level-3);
-        z-index: vars.$z-base;
+        z-index: 1;
       }
     }
 
@@ -54,11 +55,23 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100% !important;
+      height: 100% !important;
       border: none;
-      z-index: vars.$z-base + 1;
+      z-index: 10;
+      min-width: 100%;
+      min-height: 100%;
     }
+  }
+
+  &__placeholder {
+    @include mix.absolute-full;
+    @include mix.flex-center;
+    z-index: 5;
+    background: vars.$bg-level-2;
+    color: vars.$text-secondary;
+    font-size: vars.$font-size-lg;
+    text-align: center;
   }
 
   &__info {

@@ -6,10 +6,23 @@
   padding: vars.$spacing-xl 0 0 0;
 
   &__container {
-    width: 90%;
-    margin: 0 auto vars.$spacing-xl auto;
+    width: calc(100% - (vars.$spacing-sm * 2));
+    margin: 0 vars.$spacing-sm;
+    margin-bottom: vars.$spacing-sm;
     padding: 0;
+    background-color: vars.$bg-level-1;
+    padding: vars.$spacing-md;
+    border-radius: vars.$border-radius-lg;
+    border: vars.$border-width-normal solid vars.$border-color;
+    box-shadow: vars.$shadow-sm;
+
+
+    @media (max-width: vars.$breakpoint-sm) {
+      width: calc(100% - (vars.$spacing-sm * 2));
+      padding: vars.$spacing-sm;
+    }
   }
+
 
   &__header {
     margin-bottom: vars.$spacing-lg;
@@ -65,6 +78,7 @@
     @include mix.input-base;
 
     & {
+      padding: vars.$spacing-sm;
       padding-left: calc(vars.$spacing-sm + 1.25rem + vars.$spacing-sm) !important;
       width: 100%;
       font-size: vars.$font-size-lg;

@@ -1,0 +1,283 @@
+@use '../../../../../styles/mixins' as mix;
+@use '../../../../../styles/variables' as vars;
+
+.pagination {
+  @include mix.flex-center;
+
+  & {
+    gap: vars.$spacing-md;
+    padding: vars.$spacing-md;
+    background: vars.$bg-level-1;
+    border-radius: vars.$border-radius-lg;
+    border: vars.$border-width-normal solid vars.$border-color;
+    box-shadow: vars.$shadow-sm;
+    width: calc(100% - (vars.$spacing-sm * 2));
+    margin: 0 vars.$spacing-sm;
+    flex-wrap: wrap;
+  }
+
+  // Планшеты
+  @media (max-width: vars.$breakpoint-md) {
+    & {
+      gap: vars.$spacing-sm;
+      padding: vars.$spacing-sm;
+    }
+  }
+
+  // Мобильные устройства
+  @media (max-width: vars.$breakpoint-sm) {
+    & {
+      flex-direction: column;
+      gap: vars.$spacing-md;
+      padding: vars.$spacing-md;
+      width: calc(100% - (vars.$spacing-sm * 2));
+      margin: 0 vars.$spacing-sm vars.$spacing-sm;
+    }
+  }
+
+  // Очень маленькие экраны
+  @media (max-width: vars.$breakpoint-xs) {
+    & {
+      padding: vars.$spacing-sm;
+      gap: vars.$spacing-sm;
+    }
+  }
+
+  &_button {
+    @include mix.flex-center;
+
+    & {
+      width: 2.5rem;
+      height: 2.5rem;
+      border: vars.$border-width-normal solid vars.$border-color;
+      border-radius: vars.$border-radius-md;
+      background: vars.$bg-level-1;
+      color: vars.$text-secondary;
+      cursor: pointer;
+      transition: all vars.$transition-fast vars.$transition-ease;
+      flex-shrink: 0;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: vars.$primary-color;
+      color: vars.$primary-color;
+      transform: translateY(-1px);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+      flex-shrink: 0;
+    }
+
+    // Планшеты
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        width: 2.25rem;
+        height: 2.25rem;
+      }
+
+      svg {
+        width: 0.875rem;
+        height: 0.875rem;
+      }
+    }
+
+    // Мобильные устройства
+    @media (max-width: vars.$breakpoint-sm) {
+      & {
+        width: 3rem;
+        height: 3rem;
+        min-width: 3rem;
+      }
+
+      svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+    }
+
+    // Очень маленькие экраны
+    @media (max-width: vars.$breakpoint-xs) {
+      & {
+        width: 2.75rem;
+        height: 2.75rem;
+        min-width: 2.75rem;
+      }
+
+      svg {
+        width: 1.125rem;
+        height: 1.125rem;
+      }
+    }
+  }
+
+  &_controls {
+    @include mix.flex-center;
+
+    & {
+      gap: vars.$spacing-md;
+      flex-wrap: wrap;
+    }
+
+    // Планшеты
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        gap: vars.$spacing-sm;
+      }
+    }
+
+    // Мобильные устройства
+    @media (max-width: vars.$breakpoint-sm) {
+      & {
+        flex-direction: column;
+        gap: vars.$spacing-md;
+        width: 100%;
+      }
+    }
+
+    // Очень маленькие экраны
+    @media (max-width: vars.$breakpoint-xs) {
+      & {
+        gap: vars.$spacing-sm;
+      }
+    }
+  }
+
+  &_navigation {
+    @include mix.flex-center;
+
+    & {
+      gap: vars.$spacing-sm;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    // Мобильные устройства
+    @media (max-width: vars.$breakpoint-sm) {
+      & {
+        gap: vars.$spacing-xs;
+        justify-content: space-between;
+      }
+    }
+
+    // Очень маленькие экраны
+    @media (max-width: vars.$breakpoint-xs) {
+      & {
+        gap: vars.$spacing-xs;
+      }
+    }
+  }
+
+  &_select {
+    & {
+      padding: vars.$spacing-xs vars.$spacing-md;
+      border: vars.$border-width-normal solid vars.$border-color;
+      border-radius: vars.$border-radius-md;
+      background: vars.$bg-level-1;
+      height: 100%;
+      height: -webkit-fill-available;
+      color: vars.$text-primary;
+      font-size: vars.$font-size-md;
+      font-weight: vars.$font-weight-medium;
+      cursor: pointer;
+      transition: all vars.$transition-fast vars.$transition-ease;
+      min-width: 80px;
+    }
+
+    &:hover {
+      border-color: vars.$primary-color;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: vars.$primary-color;
+      box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.1);
+    }
+
+    // Планшеты
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        padding: vars.$spacing-xs vars.$spacing-sm;
+        font-size: vars.$font-size-md;
+        min-width: 70px;
+      }
+    }
+
+    // Мобильные устройства
+    @media (max-width: vars.$breakpoint-sm) {
+      & {
+        width: 100%;
+        min-width: auto;
+        padding: vars.$spacing-md;
+        font-size: vars.$font-size-md;
+        height: 3rem;
+        text-align: center;
+        font-weight: vars.$font-weight-semibold;
+      }
+    }
+
+    // Очень маленькие экраны
+    @media (max-width: vars.$breakpoint-xs) {
+      & {
+        padding: vars.$spacing-sm;
+        font-size: vars.$font-size-md;
+        height: 2.75rem;
+      }
+    }
+  }
+
+  &_info {
+    @include mix.flex-center;
+
+    & {
+      padding: vars.$spacing-xs vars.$spacing-md;
+      background: vars.$bg-level-2;
+      border-radius: vars.$border-radius-md;
+      color: vars.$text-primary;
+      margin: 0;
+      font-size: vars.$font-size-md;
+      font-weight: vars.$font-weight-medium;
+      border: vars.$border-width-normal solid vars.$border-color;
+      white-space: nowrap;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        padding: vars.$spacing-2xs vars.$spacing-sm;
+        font-size: vars.$font-size-md;
+      }
+    }
+
+    // Мобильные устройства
+    @media (max-width: vars.$breakpoint-sm) {
+      & {
+        padding: vars.$spacing-sm vars.$spacing-md;
+        font-size: vars.$font-size-md;
+        font-weight: vars.$font-weight-semibold;
+        white-space: normal;
+        line-height: 1.4;
+        text-align: center;
+        min-width: 120px;
+        height: 3rem;
+        flex-shrink: 0;
+      }
+    }
+
+    // Очень маленькие экраны
+    @media (max-width: vars.$breakpoint-xs) {
+      & {
+        padding: vars.$spacing-xs vars.$spacing-sm;
+        font-size: vars.$font-size-md;
+        min-width: 100px;
+        height: 2.75rem;
+      }
+    }
+  }
+}

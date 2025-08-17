@@ -87,32 +87,37 @@
 
   &__grid {
     display: grid;
-    gap: vars.$spacing-xl;
+    gap: vars.$spacing-md;
     padding: vars.$spacing-xl 0;
     grid-template-columns: repeat(3, 1fr);
     justify-content: center;
     margin-bottom: vars.$spacing-2xl;
     position: relative;
+    width: calc(100% - (vars.$spacing-sm * 2));
+    margin: 0 vars.$spacing-sm;
     z-index: 1;
 
     @media (max-width: vars.$breakpoint-2xl) {
       & {
         grid-template-columns: repeat(4, 1fr);
-        gap: vars.$spacing-md;
       }
     }
 
     @media (max-width: vars.$breakpoint-xl) {
       & {
         grid-template-columns: repeat(3, 1fr);
-        gap: vars.$spacing-lg;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-lg) {
+      & {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media (max-width: vars.$breakpoint-md) {
       & {
         grid-template-columns: repeat(2, 1fr);
-        gap: vars.$spacing-md;
       }
     }
 
@@ -120,7 +125,8 @@
       & {
         grid-template-columns: 1fr;
         margin: 0 auto vars.$spacing-2xl;
-        gap: vars.$spacing-lg;
+        padding: 0;
+        padding-top: vars.$spacing-sm;
       }
     }
   }

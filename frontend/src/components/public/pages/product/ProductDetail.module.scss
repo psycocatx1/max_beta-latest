@@ -10,20 +10,6 @@
     position: relative;
   }
 
-  // Волнообразный фон для современности
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 400px;
-    background: vars.$gradient-hero;
-    opacity: 0.05;
-    z-index: -1;
-    border-radius: 0 0 50% 50% / 0 0 100px 100px;
-  }
-
   &__container {
     @include mix.container;
   }
@@ -86,6 +72,8 @@
       text-align: center;
       margin-bottom: vars.$spacing-2xl;
       position: relative;
+      color: vars.$text-primary;
+      font-weight: vars.$font-weight-bold;
     }
 
     &::after {
@@ -95,8 +83,8 @@
       left: 50%;
       transform: translateX(-50%);
       width: 60px;
-      height: 4px;
-      background: vars.$gradient-primary;
+      height: 3px;
+      background: vars.$primary-color;
       border-radius: vars.$border-radius-full;
     }
 

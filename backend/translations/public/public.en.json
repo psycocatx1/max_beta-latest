@@ -1,0 +1,207 @@
+{
+  "pages": {
+    "root": {
+      "hero": {
+        "badge": "Leading Logistics Provider",
+        "title": "Fulfillment",
+        "title_accent": " for eCommerce",
+        "description": "Revolutionary solutions for delivery, warehousing, and repackaging. We use AI and modern technologies to maximize your business efficiency.",
+        "stats": {
+          "deliveries": {
+            "number": "50K+",
+            "label": "Monthly Deliveries"
+          },
+          "accuracy": {
+            "number": "99.8%",
+            "label": "Delivery Accuracy"
+          },
+          "support": {
+            "number": "24/7",
+            "label": "Customer Support"
+          }
+        },
+        "buttons": {
+          "quote": "Get a Quote",
+          "video": "Watch Video"
+        },
+        "cards": {
+          "cargo": {
+            "title": "Shipment #12847",
+            "status": "In Transit → London"
+          },
+          "delivery": {
+            "title": "Delivery",
+            "status": "Tomorrow, 14:30",
+            "badge": "Express"
+          }
+        }
+      },
+      "services": {
+        "badge": "Our Services",
+        "title": "What We Can Do For You",
+        "description": "From warehousing to last-mile delivery - we cover all stages of the logistics chain",
+        "warehouse": {
+          "title": "Warehousing Services",
+          "description": "Modern automated warehouses with climate control and WMS systems",
+          "features": {
+            "automation": "• Automation",
+            "climate": "• Climate Control",
+            "monitoring": "• 24/7 Monitoring"
+          }
+        },
+        "express": {
+          "title": "Express Delivery",
+          "description": "Fast delivery across city and regions with time guarantee",
+          "features": {
+            "time": "• Within 2 Hours",
+            "tracking": "• Real-time Tracking",
+            "guarantee": "• Time Guarantee"
+          }
+        },
+        "international": {
+          "title": "International Logistics",
+          "description": "Worldwide delivery with customs clearance and insurance",
+          "features": {
+            "countries": "• 180+ Countries",
+            "customs": "• Customs Clearance",
+            "insurance": "• Full Insurance"
+          }
+        },
+        "repackaging": {
+          "title": "Repackaging",
+          "description": "Professional repackaging using eco-friendly materials",
+          "features": {
+            "eco": "• Eco Materials",
+            "protection": "• Damage Protection",
+            "branding": "• Package Branding"
+          }
+        }
+      },
+      "technology": {
+        "badge": "Technology",
+        "title": "Watch The Video",
+        "description": "Using advanced technologies to optimize routes, forecast demand, and ensure maximum transparency.",
+        "ai": {
+          "title": "AI Optimization",
+          "description": "Machine learning for optimal routing"
+        },
+        "mobile": {
+          "title": "Mobile Application",
+          "description": "Full control of deliveries on your smartphone"
+        },
+        "api": {
+          "title": "API Integration",
+          "description": "Easy integration with your systems"
+        },
+        "dashboard": {
+          "title": "Control Dashboard",
+          "status": "Online",
+          "metrics": {
+            "active_deliveries": "Active Deliveries",
+            "average_speed": "Average Speed"
+          }
+        }
+      },
+      "cta": {
+        "title": "Why Us?",
+        "description": "Get a personalized offer and start saving on logistics today",
+        "buttons": {
+          "quote": "Get an Offer"
+        },
+        "phone": {
+          "number": "+12345678901",
+          "display": "+1 (234) 567-8901"
+        },
+        "features": {
+          "consultation": "Free Consultation",
+          "calculation": "Quote in 15 Minutes",
+          "individual": "Individual Terms"
+        }
+      }
+    },
+    "about": {
+      "hero": {
+        "badge": "About Company",
+        "title": "We're creating the future",
+        "title_accent": " of logistics",
+        "description": "Our mission is to make logistics simple, efficient, and accessible for every business. We combine innovative technologies with years of experience to create the best solutions.",
+        "stats": {
+          "experience": {
+            "number": "10+",
+            "label": "Years of Experience"
+          },
+          "employees": {
+            "number": "500+",
+            "label": "Employees"
+          },
+          "cities": {
+            "number": "50+",
+            "label": "Cities"
+          }
+        }
+      },
+      "values": {
+        "badge": "Our Values",
+        "title": "What Drives Us",
+        "description": "Our values define every aspect of our work and help us create the best solutions",
+        "innovation": {
+          "title": "Innovation",
+          "description": "We constantly seek new ways to improve logistics processes"
+        },
+        "reliability": {
+          "title": "Reliability",
+          "description": "We fulfill our commitments to clients and partners"
+        },
+        "sustainability": {
+          "title": "Sustainability",
+          "description": "We care about the environment and develop sustainable logistics"
+        },
+        "customer_focus": {
+          "title": "Customer Focus",
+          "description": "We put client needs at the center of all our solutions"
+        }
+      },
+      "team": {
+        "badge": "Team",
+        "title": "Logistics Professionals",
+        "description": "Our team consists of experienced specialists who work every day to improve logistics processes",
+        "expertise": {
+          "title": "Expertise",
+          "description": "Over 10 years of experience in logistics"
+        },
+        "training": {
+          "title": "Training",
+          "description": "Continuous development of employees"
+        },
+        "collaboration": {
+          "title": "Collaboration",
+          "description": "A cohesive team of professionals"
+        }
+      }
+    },
+    "product": {
+      "detail": {
+        "back_to_products": "Back to products",
+        "discount": "Discount",
+        "share": "Share",
+        "description": "Description",
+        "additional_info": "Additional information",
+        "contact_for_order": "Contact for order",
+        "price_negotiable": "Price negotiable",
+        "contact_for_order_url": "https://t.me/relpen_support_en",
+        "no_image": "No image available",
+        "select_image": "Select image"
+      }
+    }
+  },
+  "common": {
+    "navigation": {
+      "home": "Home",
+      "products": "Products",
+      "services": "Services",
+      "about": "About Us",
+      "contacts": "Contacts",
+      "menu": "Menu"
+    }
+  }
+}

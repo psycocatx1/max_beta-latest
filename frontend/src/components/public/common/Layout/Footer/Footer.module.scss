@@ -300,9 +300,10 @@
       }
 
       &__icon {
-        @include mix.icon-container(24px, vars.$primary-light, vars.$primary-color);
+        @include mix.icon-container(2rem, vars.$primary-light, vars.$primary-color);
 
         & {
+          padding: vars.$spacing-2xs;
           margin-top: 2px;
           flex-shrink: 0;
         }
@@ -320,7 +321,7 @@
           line-height: vars.$line-height-normal;
 
           &:first-child {
-            @include mix.paragraph-sm;
+            @include mix.paragraph-md;
 
             & {
               color: vars.$text-primary;
@@ -330,7 +331,7 @@
           }
 
           &:last-child {
-            font-size: vars.$font-size-xs;
+            font-size: vars.$font-size-sm;
             color: vars.$text-secondary;
           }
         }

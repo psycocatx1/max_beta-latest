@@ -47,7 +47,6 @@ export const Products = ({ locale, initial_products }: ProductsProps) => {
         <ProductsListSection
           locale={locale}
           products={products.items}
-          total={products.total}
           current_page={current_page}
           total_pages={Math.ceil(products.total / products.take)}
           current_page_size={products.take}

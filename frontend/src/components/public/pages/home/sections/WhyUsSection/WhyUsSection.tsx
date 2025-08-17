@@ -15,7 +15,7 @@ export const WhyUsSection = async () => {
           {t('title')}
         </Heading>
         <div className={classes.whyus__grid}>
-          {t.raw('features').map((feature: any, index: number) => {
+          {t.raw('features').map((feature: { title: string, description: string }, index: number) => {
             const IconComponent = icons[index];
             return (
               <Card hoverable key={index} className={classes.whyus__card}>

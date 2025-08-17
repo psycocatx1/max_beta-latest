@@ -2,18 +2,19 @@
 @use '../../../../../../styles/variables' as vars;
 
 .section {
-  @include mix.modern-card;
-
   & {
     padding: vars.$spacing-lg;
-    background: vars.$gradient-card;
+    background: vars.$bg-level-1;
     margin-bottom: 0;
     position: relative;
-    border: vars.$border-width-normal solid vars.$border-color;
+    border: 1px solid vars.$border-color;
+    border-radius: vars.$border-radius-md;
+    transition: all vars.$transition-normal vars.$transition-ease;
   }
 
   &:hover {
-    transform: translateY(-1px) scale(1.01);
+    border-color: vars.$primary-color;
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.1);
   }
 
   &::before {
@@ -23,7 +24,7 @@
     left: 0;
     right: 0;
     height: 3px;
-    background: vars.$gradient-secondary;
+    background: vars.$primary-color;
   }
 
   @media (max-width: vars.$breakpoint-md) {
@@ -31,7 +32,6 @@
       padding: vars.$spacing-md;
     }
   }
-
 
   &__price {
     @include mix.flex-start;
@@ -52,14 +52,13 @@
     }
 
     &_current {
-      @include mix.gradient-text;
-
       & {
         font-weight: vars.$font-weight-bold;
         margin: 0;
         font-size: clamp(1.5rem, 4vw, 2.5rem);
         line-height: 1.2;
         position: relative;
+        color: vars.$primary-color;
       }
 
       &::after {
@@ -69,7 +68,7 @@
         left: 0;
         width: 100%;
         height: 2px;
-        background: vars.$gradient-primary;
+        background: vars.$primary-color;
         border-radius: vars.$border-radius-full;
         opacity: 0.3;
       }
@@ -106,8 +105,6 @@
   }
 
   &__note {
-    @include mix.paragraph-sm;
-
     & {
       color: vars.$text-tertiary;
       margin: 0;
@@ -116,6 +113,7 @@
       background: rgba(34, 197, 94, 0.05);
       border-radius: vars.$border-radius-md;
       border-left: 3px solid vars.$primary-color;
+      font-size: vars.$font-size-sm;
     }
   }
 }

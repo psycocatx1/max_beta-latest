@@ -47,7 +47,6 @@ export const Services = ({ locale, initial_services }: ServicesProps) => {
         <ServicesListSection
           locale={locale}
           services={services.items}
-          total={services.total}
           current_page={current_page}
           total_pages={Math.ceil(services.total / services.take)}
           current_page_size={services.take}

@@ -31,9 +31,21 @@
     align-items: center;
 
     @media (max-width: vars.$breakpoint-lg) {
-      grid-template-columns: 1fr;
       gap: vars.$spacing-2xl;
       text-align: center;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: vars.$breakpoint-sm) {
+      max-width: inherit;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: center;
+      gap: vars.$spacing-xl;
     }
   }
 
@@ -51,6 +63,12 @@
     @media (max-width: vars.$breakpoint-md) {
       padding: vars.$spacing-2xl;
     }
+
+    @media (max-width: vars.$breakpoint-sm) {
+      width: 100%;
+      max-width: 100%;
+      padding: vars.$spacing-md;
+    }
   }
 
   &__badge {
@@ -64,6 +82,13 @@
     &_accent {
       @include mix.gradient-text;
     }
+
+    @media (max-width: vars.$breakpoint-sm) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   &__description {
@@ -72,6 +97,10 @@
 
     @media (max-width: vars.$breakpoint-lg) {
       max-width: none;
+    }
+
+    @media (max-width: vars.$breakpoint-sm) {
+      max-width: 100%;
     }
   }
 
@@ -126,6 +155,11 @@
       opacity: 1;
     }
 
+    @media (max-width: vars.$breakpoint-md) {
+      width: 100%;
+      height: auto;
+    }
+
     img {
       width: 100%;
       height: auto;
@@ -148,6 +182,11 @@
 
       &[data-loaded="true"] {
         opacity: 1;
+      }
+
+      @media (max-width: vars.$breakpoint-sm) {
+        width: 100%;
+        height: auto;
       }
     }
   }

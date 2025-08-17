@@ -18,8 +18,21 @@ export const GallerySection = ({ is_discounted, name, images }: GallerySectionPr
 
   const t = useTranslations('public.pages.product.detail');
 
+  if (!images || images.length === 0) {
+    return (
+      <div className={classes.gallery}>
+        <div className={classes.gallery__main_image}>
+          <div className={classes.gallery__placeholder}>
+            <span>{t('no_image')}</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={classes.gallery}>
+      {/* Основное изображение */}
       <div className={classes.gallery__main_image}>
         <Image
           src={getImageUrl(images[selected_image_index].image)}
@@ -35,6 +48,7 @@ export const GallerySection = ({ is_discounted, name, images }: GallerySectionPr
         )}
       </div>
 
+      {/* Горизонтальный список миниатюр */}
       {images.length > 1 && (
         <div className={classes.gallery__thumbnails}>
           {images.map((image, index) => (
@@ -43,6 +57,7 @@ export const GallerySection = ({ is_discounted, name, images }: GallerySectionPr
               onClick={() => setSelectedImageIndex(index)}
               className={`${classes.gallery__thumbnail} ${index === selected_image_index ? classes.gallery__thumbnail_active : ''
                 }`}
+              aria-label={`${t('select_image')} ${index + 1}`}
             >
               <Image
                 src={getImageUrl(image.image)}

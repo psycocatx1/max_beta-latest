@@ -6,6 +6,7 @@ import classes from './ProductCard.module.scss';
 import { Eye } from 'lucide-react';
 import { Link } from '@/lib/intl/navigation';
 import { formatExtendedProduct } from '../../../product/localized-product';
+import { Heading, Paragraph } from '@/components/styles';
 
 interface ProductCardProps {
   product: ExtendedProduct;
@@ -43,9 +44,9 @@ export const ProductCard = ({ product, locale }: ProductCardProps) => {
       </div>
 
       <div className={classes.card__content}>
-        <h3 className={classes.card__title}>{localized_product.name}</h3>
+        <Heading size='lg' className={classes.card__title}>{localized_product.name}</Heading>
         {localized_product.description && (
-          <p className={classes.card__description}>{localized_product.description}</p>
+          <Paragraph size='lg' className={classes.card__description}>{localized_product.description}</Paragraph>
         )}
 
         <div className={classes.card__price_section}>
@@ -70,7 +71,7 @@ export const ProductCard = ({ product, locale }: ProductCardProps) => {
             href={{ pathname: '/products/[product_id]', params: { product_id: product.id } }}
             className={classes.card__details_button}
           >
-            <span>{t('view_details')}</span>
+            <Paragraph size='md'>{t('view_details')}</Paragraph>
             <Eye size={16} />
           </Link>
         </div>

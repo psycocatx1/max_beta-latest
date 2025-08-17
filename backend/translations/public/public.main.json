@@ -1,0 +1,620 @@
+{
+  "pages": {
+    "home": {
+      "metadata": {
+        "title": "Home",
+        "description": "Home page"
+      },
+      "hero": {
+        "badge": "Leading wholesale and retail trade company",
+        "title": "RELPEN",
+        "title_accent": " - Your Trusted Partner",
+        "description": "Professional wholesale and retail trade, vehicle repair, and logistics services. We specialize in porcelain, ceramic, and glass products, as well as comprehensive logistics solutions for your business.",
+        "stats": {
+          "deliveries": {
+            "number": "1000+",
+            "label": "Monthly Orders"
+          },
+          "accuracy": {
+            "number": "99.5%",
+            "label": "Order Accuracy"
+          },
+          "support": {
+            "number": "24/7",
+            "label": "Customer Support"
+          }
+        },
+        "buttons": {
+          "quote": "Get Price Quote",
+          "video": "Watch Video"
+        },
+        "cards": {
+          "cargo": {
+            "title": "Order #12847",
+            "status": "In Transit → Warsaw"
+          },
+          "delivery": {
+            "title": "Delivery",
+            "status": "Tomorrow, 14:30",
+            "badge": "Express"
+          }
+        }
+      },
+      "services": {
+        "badge": "Our Services",
+        "title": "Comprehensive Business Solutions",
+        "description": "From wholesale and retail trade to logistics and professional services - we provide complete solutions for your business needs",
+        "warehouse": {
+          "title": "Wholesale Trade",
+          "description": "Specialized wholesale trade in porcelain, ceramic, and glass products, as well as cleaning supplies. Professional warehousing and inventory management.",
+          "features": {
+            "automation": "• Automated inventory management",
+            "climate": "• Climate-controlled storage",
+            "monitoring": "• 24/7 warehouse monitoring"
+          }
+        },
+        "express": {
+          "title": "Retail Services",
+          "description": "Comprehensive retail services including vehicle repair and maintenance. Fast and reliable service with quality guarantees.",
+          "features": {
+            "time": "• Quick service turnaround",
+            "tracking": "• Real-time order tracking",
+            "guarantee": "• Quality guarantee"
+          }
+        },
+        "international": {
+          "title": "Transport & Logistics",
+          "description": "Land transport, pipeline transport, and comprehensive logistics services including warehousing and storage solutions.",
+          "features": {
+            "countries": "• Nationwide coverage",
+            "customs": "• Customs clearance services",
+            "insurance": "• Full cargo insurance"
+          }
+        },
+        "repackaging": {
+          "title": "Professional Services",
+          "description": "Management consulting, administrative services, and professional support for business operations and development.",
+          "features": {
+            "eco": "• Sustainable practices",
+            "protection": "• Data protection",
+            "branding": "• Professional branding"
+          }
+        }
+      },
+      "video": {
+        "title": "See How We Work",
+        "video_url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "info": {
+          "title": "We are RELPEN!",
+          "text": "<p>RELPEN SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ has been present in the market since October 12, 2022. We are located in Warsaw at KIELECKA 41A / 8.</p><p>We specialize in wholesale and retail trade, vehicle repair, logistics, and professional services. Our comprehensive approach ensures that all your business needs are met under one roof.</p>",
+          "button": "Learn More About Us"
+        }
+      },
+      "why_us": {
+        "title": "Why Choose Us?",
+        "features": {
+          "speed": {
+            "title": "Fast Service",
+            "description": "Quick order processing and delivery. Our efficient systems ensure your orders are handled promptly and professionally."
+          },
+          "quality": {
+            "title": "Quality Guarantee",
+            "description": "99.5% order accuracy thanks to our professional systems and multi-level quality control processes."
+          },
+          "support": {
+            "title": "Personal Support",
+            "description": "Dedicated personal manager and 24/7 technical support to resolve any questions or issues."
+          },
+          "safety": {
+            "title": "Maximum Security",
+            "description": "GPS monitoring, warehouse video surveillance, cargo insurance, and compliance with international security standards."
+          },
+          "api": {
+            "title": "Easy Integration",
+            "description": "RESTful API and ready-made plugins for popular systems. Integration in 1 day without programmers."
+          },
+          "reporting": {
+            "title": "Detailed Analytics",
+            "description": "Complete sales analytics, inventory management, demand forecasting, and optimization recommendations."
+          }
+        }
+      },
+      "integrations": {
+        "title": "Easy Integration with Popular eCommerce Platforms and ERP Systems",
+        "button_text": "Connect Integration",
+        "courier": {
+          "title": "Partner Network of Courier Services",
+          "description": "We collaborate with leading courier services and transport companies to ensure reliable delivery to any point. Automatic selection of the optimal carrier by price and delivery speed."
+        }
+      },
+      "technology": {
+        "badge": "Modern Technologies",
+        "title": "AI and Automation in Every Process",
+        "description": "We use machine learning for demand forecasting, route optimization, and warehouse process automation. Complete digitalization of logistics for maximum efficiency.",
+        "ai": {
+          "title": "AI Optimization",
+          "description": "Machine learning algorithms for forecasting and optimization"
+        },
+        "mobile": {
+          "title": "Mobile Application",
+          "description": "Order management and real-time delivery monitoring"
+        },
+        "api": {
+          "title": "Open API",
+          "description": "Complete integration with any systems through REST API"
+        },
+        "dashboard": {
+          "title": "Control Panel",
+          "status": "Online",
+          "metrics": {
+            "active_deliveries": "Active Deliveries",
+            "average_speed": "Average Delivery Speed"
+          }
+        }
+      },
+      "cta": {
+        "title": "Ready to Scale Your Business?",
+        "description": "Get a personalized offer and start optimizing your operations today. Free consultation and cost calculation in 15 minutes.",
+        "buttons": {
+          "quote": "Get Personalized Offer"
+        },
+        "phone": {
+          "number": "+48123456789",
+          "display": "+48 (12) 345-67-89"
+        },
+        "features": {
+          "consultation": "Free Expert Consultation",
+          "calculation": "Accurate Calculation in 15 Minutes",
+          "individual": "Individual Tariffs and Terms"
+        }
+      }
+    },
+    "about": {
+      "metadata": {
+        "title": "About",
+        "description": "About Us page"
+      },
+      "hero": {
+        "badge": "About RELPEN Company",
+        "title": "We Create the Future",
+        "title_accent": " of Business Services",
+        "description": "Our mission is to revolutionize business services through technology. We make complex business processes simple, fast, and accessible for any company.",
+        "stats": {
+          "experience": {
+            "number": "2+",
+            "label": "Years of Market Experience"
+          },
+          "employees": {
+            "number": "50+",
+            "label": "Experts in Team"
+          },
+          "cities": {
+            "number": "10+",
+            "label": "Cities of Presence"
+          }
+        }
+      },
+      "values": {
+        "badge": "Our Values",
+        "title": "Principles That Drive Us Forward",
+        "description": "These values define our approach to work and help us create innovative solutions for our clients every day",
+        "innovation": {
+          "title": "Innovation",
+          "description": "We implement the most advanced technologies and constantly seek new ways to optimize business processes"
+        },
+        "reliability": {
+          "title": "Reliability",
+          "description": "We fulfill all obligations to clients and partners, ensuring stable service quality"
+        },
+        "sustainability": {
+          "title": "Sustainability",
+          "description": "We use eco-friendly materials and optimize routes to reduce carbon footprint"
+        },
+        "customer_focus": {
+          "title": "Customer Focus",
+          "description": "Our clients' needs and success are the foundation for all strategic decisions"
+        }
+      },
+      "team": {
+        "badge": "Our Team",
+        "title": "World-Class Experts",
+        "description": "A team of professionals with experience in leading logistics and technology companies. We have united the best specialists in the industry.",
+        "expertise": {
+          "title": "Expertise",
+          "description": "Average team experience - over 5 years in logistics and business services"
+        },
+        "training": {
+          "title": "Development",
+          "description": "Continuous training, certification, and skill development of employees"
+        },
+        "cooperation": {
+          "title": "Teamwork",
+          "description": "Coordinated work of cross-functional teams to achieve the best results"
+        }
+      }
+    },
+    "contacts": {
+      "metadata": {
+        "title": "Contacts",
+        "description": "Contacts page"
+      },
+      "hero": {
+        "badge": "Contact Us",
+        "title": "Ready to Start",
+        "title_accent": " Cooperation?",
+        "description": "Our experts will help you find the optimal solution for your business. Get a consultation and personalized offer today."
+      },
+      "main_office": {
+        "title": "Main Office",
+        "address": "Warsaw, KIELECKA 41A / 8",
+        "coordinates": {
+          "lat": "52.2057584",
+          "lng": "21.0036713"
+        },
+        "phone": "+48 (12) 345-67-89",
+        "email": "info@relpen.pl",
+        "hours": "Mon-Fri: 9:00-18:00, Sat: 10:00-15:00"
+      },
+      "warehouse": {
+        "title": "Logistics Center",
+        "address": "Warsaw, Logistics Zone, Warehouse A1",
+        "coordinates": {
+          "lat": "52.2057584",
+          "lng": "21.0036713"
+        },
+        "phone": "+48 (12) 345-67-90",
+        "hours": "24/7, No Days Off"
+      },
+      "support": {
+        "title": "Technical Support",
+        "phone": "+48 (12) 345-67-90",
+        "email": "support@relpen.pl",
+        "telegram": "@relpen_support",
+        "hours": "24/7 Online Support"
+      },
+      "form": {
+        "title": "Send Request",
+        "description": "Fill out the form, and our manager will contact you within 30 minutes to discuss cooperation details.",
+        "benefits": {
+          "response": "Response within 30 minutes",
+          "consultation": "Free Expert Consultation",
+          "calculation": "Personalized Cost Calculation"
+        },
+        "fields": {
+          "name": "Full Name",
+          "company": "Company Name",
+          "phone": "Phone",
+          "email": "Email",
+          "message": "Message"
+        },
+        "placeholders": {
+          "name": "Enter your name",
+          "company": "Your company name",
+          "phone": "+48 (12) 345-67-89",
+          "email": "your@email.com",
+          "message": "Tell us about your business needs..."
+        },
+        "submit": "Send Request",
+        "form_sent_success": "Request sent successfully. Request ID: {id}",
+        "form_sent_error": "Error sending request",
+        "form_sent_daily_limit_error": "You have reached the daily request limit"
+      },
+      "map": {
+        "title": "How to Find Us",
+        "placeholder": "Interactive map will be here",
+        "office_marker": "RELPEN Office",
+        "directions_button": "Get Directions"
+      }
+    },
+    "auth": {
+      "metadata": {
+        "title": "Auth",
+        "description": "Auth page"
+      },
+      "login": {
+        "title": "Login to System",
+        "email_label": "Email",
+        "password_label": "Password",
+        "email_placeholder": "Enter your email",
+        "password_placeholder": "Enter your password",
+        "submit": "Login",
+        "loading": "Logging in...",
+        "validation": {
+          "email_required": "Email is required",
+          "email_invalid": "Invalid email format",
+          "password_required": "Password is required",
+          "password_min": "Password must contain at least 6 characters"
+        },
+        "footer": {
+          "no_account": "Don't have an account?",
+          "register_link": "Register"
+        }
+      },
+      "register": {
+        "title": "Registration",
+        "name_label": "Name",
+        "email_label": "Email",
+        "password_label": "Password",
+        "password_confirmation_label": "Password Confirmation",
+        "name_placeholder": "Enter your name",
+        "email_placeholder": "Enter your email",
+        "password_placeholder": "Enter your password",
+        "password_confirmation_placeholder": "Confirm your password",
+        "submit": "Register",
+        "loading": "Registering...",
+        "validation": {
+          "name_required": "Name is required",
+          "name_min": "Name must contain at least 2 characters",
+          "email_required": "Email is required",
+          "email_invalid": "Invalid email format",
+          "password_required": "Password is required",
+          "password_min": "Password must contain at least 6 characters",
+          "password_confirmation_required": "Password confirmation is required",
+          "passwords_match": "Passwords do not match"
+        },
+        "footer": {
+          "have_account": "Already have an account?",
+          "login_link": "Login"
+        }
+      }
+    },
+    "terms": {
+      "metadata": {
+        "title": "Terms",
+        "description": "Terms page"
+      },
+      "hero": {
+        "badge": "Terms of Use",
+        "title": "Terms of Service",
+        "title_accent": " Usage",
+        "description": "Read the rules for using our service to ensure safe and effective interaction."
+      },
+      "content": {
+        "general": {
+          "title": "1. General Provisions",
+          "description": "By using our service, you agree to these terms and conditions. We reserve the right to change these rules at any time."
+        },
+        "registration": {
+          "title": "2. Registration and Account",
+          "description": "When registering, you agree to:",
+          "list": [
+            "Provide accurate information",
+            "Maintain data relevance",
+            "Ensure account security",
+            "Not transfer access to third parties"
+          ]
+        },
+        "usage": {
+          "title": "3. Service Usage",
+          "description": "When using the service, it is prohibited to:",
+          "list": [
+            "Violate legislation",
+            "Create interference with service operation",
+            "Use malicious software",
+            "Violate other users' rights"
+          ]
+        },
+        "orders": {
+          "title": "4. Orders and Delivery",
+          "description": "When placing an order:",
+          "list": [
+            "Provide correct recipient data",
+            "Follow packaging rules",
+            "Pay for services on time",
+            "Monitor delivery status"
+          ]
+        },
+        "responsibility": {
+          "title": "5. Responsibility",
+          "description": "We are responsible for:",
+          "list": [
+            "Quality of provided services",
+            "Timely delivery",
+            "Transport safety",
+            "Cargo preservation"
+          ]
+        },
+        "contacts": {
+          "title": "6. Contacts",
+          "description": "For all questions, contact:",
+          "email": "Email: support@relpen.pl",
+          "phone": "Phone: +48 (12) 345-67-89",
+          "address": "Address: Warsaw, KIELECKA 41A / 8"
+        }
+      }
+    },
+    "privacy": {
+      "metadata": {
+        "title": "Privacy",
+        "description": "Privacy page"
+      },
+      "hero": {
+        "badge": "Privacy Policy",
+        "title": "Protection of Your Data",
+        "title_accent": " Our Priority",
+        "description": "We take the protection of your personal data seriously and ensure their security in accordance with legislation and best practices."
+      },
+      "content": {
+        "collection": {
+          "title": "1. Information Collection",
+          "description": "We collect the following types of information:",
+          "list": [
+            "Contact information (name, email, phone)",
+            "Company information (name, tax number, address)",
+            "Order and delivery data",
+            "Technical information (IP address, browser type)"
+          ]
+        },
+        "usage": {
+          "title": "2. Information Usage",
+          "description": "Collected information is used for:",
+          "list": [
+            "Processing and fulfilling orders",
+            "Improving service quality",
+            "Communicating with clients",
+            "Analyzing and optimizing service operation"
+          ]
+        },
+        "protection": {
+          "title": "3. Data Protection",
+          "description": "We take the following measures to protect your data:",
+          "list": [
+            "Data encryption during transmission",
+            "Regular security system updates",
+            "Limited access to personal data",
+            "Security system monitoring and auditing"
+          ]
+        },
+        "sharing": {
+          "title": "4. Data Sharing",
+          "description": "We do not share your personal data with third parties, except in cases:",
+          "list": [
+            "When necessary for order fulfillment",
+            "By legal requirement",
+            "With your explicit consent"
+          ]
+        },
+        "rights": {
+          "title": "5. Your Rights",
+          "description": "You have the right to:",
+          "list": [
+            "Access your data",
+            "Request correction of inaccurate data",
+            "Request deletion of your data",
+            "Withdraw consent for data processing"
+          ]
+        },
+        "contacts": {
+          "title": "6. Contacts",
+          "description": "For all questions related to personal data processing, contact:",
+          "email": "Email: privacy@relpen.pl",
+          "phone": "Phone: +48 (12) 345-67-89",
+          "address": "Address: Warsaw, KIELECKA 41A / 8"
+        }
+      }
+    },
+    "product": {
+      "detail": {
+        "back_to_products": "Back to Products",
+        "discount": "Discount",
+        "share": "Share",
+        "description": "Description",
+        "additional_info": "Additional Information",
+        "contact_for_order": "Contact for Order",
+        "price_negotiable": "Price Negotiable",
+        "contact_for_order_url": "https://t.me/relpen_support_en"
+      }
+    },
+    "products": {
+      "metadata": {
+        "title": "Products",
+        "description": "Innovative products for your business"
+      },
+      "title": "Our Products",
+      "description": "Wide range of quality products for your business",
+      "filters": {
+        "title": "Filters",
+        "search_placeholder": "Search products...",
+        "all_categories": "All Categories"
+      },
+      "list": {
+        "loading": "Loading products...",
+        "no_products": "Products not found",
+        "no_products_description": "Try changing search parameters",
+        "previous_page": "Previous page",
+        "next_page": "Next page",
+        "first_page": "First page",
+        "last_page": "Last page",
+        "page_info": "Page {current} of {total}",
+        "items_per_page": "Items per page",
+        "items_per_page_option": "{count} items",
+        "select_page": "Select page",
+        "page_number": "Page {number}",
+        "single_page": "Single page"
+      },
+      "card": {
+        "discount": "Discount",
+        "view_details": "View Details"
+      }
+    },
+    "service": {
+      "detail": {
+        "back_to_services": "Back to Services",
+        "discount": "Discount",
+        "share": "Share",
+        "description": "Description",
+        "additional_info": "Additional Information",
+        "contact_for_order": "Contact for Order",
+        "price_negotiable": "Price Negotiable",
+        "contact_for_order_url": "https://t.me/relpen_support_en"
+      }
+    },
+    "services": {
+      "metadata": {
+        "title": "Services",
+        "description": "Innovative services for your business"
+      },
+      "title": "Our Services",
+      "description": "Wide range of quality services for your business",
+      "filters": {
+        "title": "Filters",
+        "search_placeholder": "Search services...",
+        "all_categories": "All Categories"
+      },
+      "list": {
+        "loading": "Loading services...",
+        "no_services": "Services not found",
+        "no_services_description": "Try changing search parameters",
+        "previous_page": "Previous page",
+        "next_page": "Next page",
+        "first_page": "First page",
+        "last_page": "Last page",
+        "page_info": "Page {current} of {total}",
+        "items_per_page": "Services per page",
+        "items_per_page_option": "{count} services",
+        "select_page": "Select page",
+        "page_number": "Page {number}",
+        "single_page": "Single page"
+      },
+      "card": {
+        "discount": "Discount",
+        "view_details": "View Details"
+      }
+    }
+  },
+  "common": {
+    "layout": {
+      "navigation": {
+        "home": "Home",
+        "products": "Products",
+        "services": "Services",
+        "about": "About Us",
+        "contacts": "Contacts",
+        "menu": "Menu"
+      },
+      "company_name": "RELPEN",
+      "all_rights_reserved": "All rights reserved {year}",
+      "privacy_policy": "Privacy Policy",
+      "terms_of_use": "Terms of Use",
+      "contact_us": "Contact Us",
+      "company_description": "Revolutionary solutions for wholesale and retail trade, logistics, and business services. We use modern technologies for maximum efficiency of your business.",
+      "company": "Company",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "solutions": "Solutions",
+      "contacts": "Contacts",
+      "main_office": {
+        "address_label": "Address",
+        "phone_label": "Phone",
+        "email_label": "Email",
+        "hours_label": "Working Hours",
+        "address": "Warsaw, KIELECKA 41A / 8",
+        "phone": "+48 (12) 345-67-89",
+        "email": "info@relpen.pl",
+        "hours": "Mon-Fri: 9:00-18:00",
+        "latitude": "52.2057584",
+        "longitude": "21.0036713"
+      }
+    }
+  }
+}

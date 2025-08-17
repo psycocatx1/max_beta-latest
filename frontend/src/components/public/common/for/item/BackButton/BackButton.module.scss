@@ -5,10 +5,9 @@
   @include mix.button-secondary;
 
   & {
-    margin-bottom: vars.$spacing-xl;
+    margin-bottom: vars.$spacing-lg;
     display: inline-flex;
-    align-items: center;
-    gap: vars.$spacing-sm;
+    justify-content: space-between;
     background: vars.$bg-level-1;
     color: vars.$text-primary;
     border: vars.$border-width-normal solid vars.$border-color;

@@ -1,22 +1,22 @@
 export const info_pathnames = {
   '/about': {
-    ru: '/o-nas',
-    ua: '/pro-nas',
+    ru: '/о-нас',
+    ua: '/про-нас',
     pl: '/o-nas'
   },
   '/contacts': {
-    ru: '/kontakty',
-    ua: '/kontakty',
+    ru: '/контакты',
+    ua: '/контакти',
     pl: '/kontakt'
   },
   '/privacy': {
-    ru: '/politika-konfidentsialnosti',
-    ua: '/polityka-konfidentsijnosti',
+    ru: '/политика-конфиденциальности',
+    ua: '/політика-конфіденційності',
     pl: '/polityka-prywatnosci'
   },
   '/terms': {
-    ru: '/usloviya-ispolzovaniya',
-    ua: '/umovy-vykorystannya',
+    ru: '/условия-использования',
+    ua: '/умови-використання',
     pl: '/regulamin'
   },
 } as const;

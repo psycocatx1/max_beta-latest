@@ -30,7 +30,7 @@ export const ServicesSection = async () => {
           </Paragraph>
         </Card>
         <div className={classes.services__grid}>
-          {t.raw('items').map((service: any, index: number) => (
+          {t.raw('items').map((service: { title: string, description: string, features: string[] }, index: number) => (
             <Card hoverable key={index} className={classes.services__card}>
               <div className={classes.services__card_header}>
                 <div className={classes.services__card_icon}>

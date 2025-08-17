@@ -1,4 +1,4 @@
-import { Heading } from '@/components';
+import { Heading, Paragraph } from '@/components';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import styles from '../Footer.module.scss';
 import { GoogleMap } from '../../../GoogleMap';
@@ -14,32 +14,32 @@ export const Contacts = async () => {
         <div className={styles.footer__contacts__item}>
           <MapPin className={styles.footer__contacts__item__icon} size={16} />
           <div className={styles.footer__contacts__item__content}>
-            <p>{tFooter('main_office.address_label')}</p>
-            <p>{tFooter('main_office.address')}</p>
+            <Paragraph size='md'>{tFooter('main_office.address_label')}</Paragraph>
+            <Paragraph size='md'>{tFooter('main_office.address')}</Paragraph>
           </div>
         </div>
 
         <div className={styles.footer__contacts__item}>
           <Phone className={styles.footer__contacts__item__icon} size={16} />
           <div className={styles.footer__contacts__item__content}>
-            <p>{tFooter('main_office.phone_label')}</p>
-            <p>{tFooter('main_office.phone')}</p>
+            <Paragraph size='md'>{tFooter('main_office.phone_label')}</Paragraph>
+            <Paragraph size='md'>{tFooter('main_office.phone')}</Paragraph>
           </div>
         </div>
 
         <div className={styles.footer__contacts__item}>
           <Mail className={styles.footer__contacts__item__icon} size={16} />
           <div className={styles.footer__contacts__item__content}>
-            <p>{tFooter('main_office.email_label')}</p>
-            <p>{tFooter('main_office.email')}</p>
+            <Paragraph size='md'>{tFooter('main_office.email_label')}</Paragraph>
+            <Paragraph size='md'>{tFooter('main_office.email')}</Paragraph>
           </div>
         </div>
 
         <div className={styles.footer__contacts__item}>
           <Clock className={styles.footer__contacts__item__icon} size={16} />
           <div className={styles.footer__contacts__item__content}>
-            <p>{tFooter('main_office.hours_label')}</p>
-            <p>{tFooter('main_office.hours')}</p>
+            <Paragraph size='md'>{tFooter('main_office.hours_label')}</Paragraph>
+            <Paragraph size='md'>{tFooter('main_office.hours')}</Paragraph>
           </div>
         </div>
       </div>

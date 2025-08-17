@@ -3,6 +3,15 @@
 import { useTranslations } from 'next-intl';
 import styles from './Page.module.scss';
 
+interface TermsSection {
+  title: string;
+  description: string;
+  list: string[];
+  email: string;
+  phone: string;
+  address: string;
+}
+
 export const Page = () => {
   const t = useTranslations('public.pages.terms');
 
@@ -34,7 +43,7 @@ export const Page = () => {
       {/* Content Section */}
       <section className={styles.content}>
         <div className={styles.content__container}>
-          {t.raw('content.sections').map((section: any, index: number) => (
+          {t.raw('content.sections').map((section: TermsSection, index: number) => (
             <div key={index} className={styles.content__section}>
               <h2 className={styles.content__title}>{section.title}</h2>
               <p className={styles.content__text}>

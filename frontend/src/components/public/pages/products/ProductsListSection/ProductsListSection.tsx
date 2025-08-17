@@ -4,13 +4,12 @@ import { ExtendedProduct, Locale, BaseFilterDto } from '@/lib/api';
 import { ProductCard } from './ProductCard';
 import { LoadingList, EmptyList } from '@/components/public/common/for/items';
 import classes from './ProductsListSection.module.scss';
-import { Pagination } from '@/components/public/common/Pagination';
-import { Container, Heading, Section } from '@/components/styles';
+import { Pagination } from '@/components/public/common/for/items/Pagination';
+import { Container, Section } from '@/components/styles';
 
 interface ProductsListSectionProps {
   locale: Locale;
   products: ExtendedProduct[];
-  total: number;
   current_page: number;
   total_pages: number;
   current_page_size?: number;
@@ -23,7 +22,6 @@ interface ProductsListSectionProps {
 export const ProductsListSection = ({
   locale,
   products,
-  total,
   current_page,
   total_pages,
   current_page_size,
@@ -39,11 +37,6 @@ export const ProductsListSection = ({
   return (
     <Section className={classes.list}>
       <Container className={classes.list__container}>
-        <div className={classes.list__header}>
-          <Heading size='lg' className={classes.list__title}>
-            {t('found_products', { count: total })}
-          </Heading>
-        </div>
         <Pagination
           current_page={current_page}
           total_pages={total_pages}

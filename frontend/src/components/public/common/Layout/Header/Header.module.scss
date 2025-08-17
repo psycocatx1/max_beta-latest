@@ -15,8 +15,21 @@
 
   &_left {
     display: flex;
+    height: inherit;
     align-items: center;
     gap: vars.$spacing-xl;
+    margin-top: -18px;
+  }
+
+  &_logo_link {
+    margin-left: -40px;
+
+    & img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 230px;
+    }
   }
 
   &_right {

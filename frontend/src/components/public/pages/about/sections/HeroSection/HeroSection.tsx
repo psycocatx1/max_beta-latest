@@ -17,7 +17,7 @@ export const HeroSection = async () => {
           {t('description')}
         </Paragraph>
         <div className={classes.hero__stats}>
-          {t.raw('stats').map((stat: any, index: number) => (
+          {t.raw('stats').map((stat: { number: string, label: string }, index: number) => (
             <Card hoverable key={index} className={classes.hero__stat}>
               <Heading size="xl" className={classes.hero__stat_number}>{stat.number}</Heading>
               <Paragraph size="sm" className={classes.hero__stat_label}>{stat.label}</Paragraph>

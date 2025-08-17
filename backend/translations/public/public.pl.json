@@ -1,0 +1,630 @@
+{
+  "pages": {
+    "home": {
+      "metadata": {
+        "title": "Strona główna",
+        "description": "Strona główna"
+      },
+      "hero": {
+        "badge": "Lider w sferze handlu hurtowego i detalicznego",
+        "title": "RELPEN",
+        "title_accent": " - Twój zaufany partner",
+        "description": "Profesjonalne usługi handlu hurtowego i detalicznego, naprawy pojazdów i logistyki. Specjalizujemy się w wyrobach porcelanowych, ceramicznych i szklanych oraz kompleksowych rozwiązaniach logistycznych dla Twojego biznesu.",
+        "stats": [
+          {
+            "number": "1000+",
+            "label": "Zamówień miesięcznie"
+          },
+          {
+            "number": "99.5%",
+            "label": "Dokładność zamówień"
+          },
+          {
+            "number": "24/7",
+            "label": "Wsparcie klientów"
+          }
+        ],
+        "buttons": {
+          "quote": "Otrzymaj wycenę kosztów",
+          "video": "Obejrzyj wideo"
+        },
+        "cards": [
+          {
+            "title": "Zamówienie #12847",
+            "status": "W drodze → Warszawa"
+          },
+          {
+            "title": "Dostawa",
+            "status": "Jutro, 14:30",
+            "badge": "Express"
+          }
+        ]
+      },
+      "services": {
+        "badge": "Nasze usługi",
+        "title": "Kompleksowe rozwiązania biznesowe",
+        "description": "Od handlu hurtowego i detalicznego po logistykę i usługi profesjonalne - zapewniamy kompletne rozwiązania dla potrzeb Twojego biznesu",
+        "items": [
+          {
+            "title": "Handel hurtowy",
+            "description": "Specjalistyczny handel hurtowy wyrobami porcelanowymi, ceramicznymi i szklanymi oraz środkami czyszczącymi. Profesjonalne magazynowanie i zarządzanie zapasami.",
+            "features": [
+              "Zautomatyzowane zarządzanie zapasami",
+              "Kontrola klimatu dla dowolnych towarów",
+              "Monitoring i analityka 24/7"
+            ]
+          },
+          {
+            "title": "Usługi detaliczne",
+            "description": "Kompleksowe usługi detaliczne, w tym naprawa i konserwacja pojazdów. Szybki i niezawodny serwis z gwarancją jakości.",
+            "features": [
+              "Szybka realizacja zamówień",
+              "Śledzenie zamówień w czasie rzeczywistym",
+              "Gwarancja jakości"
+            ]
+          },
+          {
+            "title": "Transport i logistyka",
+            "description": "Transport lądowy, transport rurociągowy i kompleksowe usługi logistyczne, w tym magazynowanie i przechowywanie.",
+            "features": [
+              "Pokrycie całego kraju",
+              "Obsługa celna",
+              "Pełne ubezpieczenie ładunków"
+            ]
+          },
+          {
+            "title": "Usługi profesjonalne",
+            "description": "Konsulting zarządczy, usługi administracyjne i profesjonalne wsparcie dla operacji biznesowych i rozwoju.",
+            "features": [
+              "Zrównoważone praktyki",
+              "Ochrona danych",
+              "Profesjonalny branding"
+            ]
+          }
+        ]
+      },
+      "video": {
+        "title": "Zobacz, jak pracujemy",
+        "video_url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "info": {
+          "title": "Jesteśmy RELPEN!",
+          "text": "<p>RELPEN SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ jest obecna na rynku od 12 października 2022 roku. Znajdujemy się w Warszawie przy KIELECKA 41A / 8.</p><p>Specjalizujemy się w handlu hurtowym i detalicznym, naprawie pojazdów, logistyce i usługach profesjonalnych. Nasze kompleksowe podejście zapewnia, że wszystkie potrzeby Twojego biznesu są zaspokajane pod jednym dachem.</p>",
+          "button": "Dowiedz się więcej o nas"
+        }
+      },
+      "why_us": {
+        "title": "Dlaczego nas wybierają?",
+        "features": [
+          {
+            "title": "Szybki serwis",
+            "description": "Szybkie przetwarzanie i dostawa zamówień. Nasze wydajne systemy zapewniają terminową i profesjonalną obsługę Twoich zamówień."
+          },
+          {
+            "title": "Gwarancja jakości",
+            "description": "99.5% dokładność zamówień dzięki naszym profesjonalnym systemom i wielopoziomowej kontroli jakości."
+          },
+          {
+            "title": "Osobiste wsparcie",
+            "description": "Dedykowany osobisty menedżer i 24/7 wsparcie techniczne w rozwiązywaniu wszelkich pytań i problemów."
+          },
+          {
+            "title": "Maksymalne bezpieczeństwo",
+            "description": "Monitoring GPS, monitoring wideo magazynów, ubezpieczenie ładunków i zgodność z międzynarodowymi standardami bezpieczeństwa."
+          },
+          {
+            "title": "Łatwa integracja",
+            "description": "RESTful API i gotowe wtyczki dla popularnych systemów. Integracja w 1 dzień bez programistów."
+          },
+          {
+            "title": "Szczegółowa analityka",
+            "description": "Kompletna analityka sprzedaży, zarządzanie zapasami, prognozowanie popytu i rekomendacje optymalizacji."
+          }
+        ]
+      },
+      "integrations": {
+        "title": "Łatwa integracja z popularnymi platformami eCommerce i systemami ERP",
+        "button_text": "Połącz integrację",
+        "courier": {
+          "title": "Sieć partnerska firm kurierskich",
+          "description": "Współpracujemy z wiodącymi firmami kurierskimi i transportowymi, aby zapewnić niezawodną dostawę do dowolnego punktu. Automatyczny wybór optymalnego przewoźnika według ceny i szybkości dostawy."
+        }
+      },
+      "technology": {
+        "badge": "Nowoczesne technologie",
+        "title": "AI i automatyzacja w każdym procesie",
+        "description": "Używamy uczenia maszynowego do prognozowania popytu, optymalizacji tras i automatyzacji procesów magazynowych. Kompletna cyfryzacja logistyki dla maksymalnej efektywności.",
+        "ai": {
+          "title": "Optymalizacja AI",
+          "description": "Algorytmy uczenia maszynowego do prognozowania i optymalizacji"
+        },
+        "mobile": {
+          "title": "Aplikacja mobilna",
+          "description": "Zarządzanie zamówieniami i monitoring dostaw w czasie rzeczywistym"
+        },
+        "api": {
+          "title": "Otwarte API",
+          "description": "Kompletna integracja z dowolnymi systemami przez REST API"
+        },
+        "dashboard": {
+          "title": "Panel kontrolny",
+          "status": "Online",
+          "metrics": {
+            "active_deliveries": "Aktywne dostawy",
+            "average_speed": "Średnia prędkość dostawy"
+          }
+        }
+      },
+      "cta": {
+        "title": "Gotowy do skalowania swojego biznesu?",
+        "description": "Otrzymaj spersonalizowaną ofertę i zacznij optymalizować swoje operacje już dziś. Darmowa konsultacja i kalkulacja kosztów w 15 minut.",
+        "buttons": {
+          "quote": "Otrzymaj spersonalizowaną ofertę"
+        },
+        "phone": {
+          "number": "+48123456789",
+          "display": "+48 (12) 345-67-89"
+        },
+        "features": [
+          "Darmowa ekspercka konsultacja",
+          "Dokładna kalkulacja w 15 minut",
+          "Indywidualne taryfy i warunki"
+        ]
+      }
+    },
+    "about": {
+      "metadata": {
+        "title": "O nas",
+        "description": "Strona o nas"
+      },
+      "hero": {
+        "badge": "O firmie RELPEN",
+        "title": "Tworzymy przyszłość",
+        "title_accent": " usług biznesowych",
+        "description": "Naszą misją jest rewolucjonizowanie usług biznesowych przez technologie. Uczyniamy złożone procesy biznesowe prostymi, szybkimi i dostępnymi dla każdej firmy.",
+        "stats": [
+          {
+            "number": "2+",
+            "label": "Lata doświadczenia na rynku"
+          },
+          {
+            "number": "50+",
+            "label": "Ekspertów w zespole"
+          },
+          {
+            "number": "10+",
+            "label": "Miast obecności"
+          }
+        ]
+      },
+      "values": {
+        "badge": "Nasze wartości",
+        "title": "Zasady, które napędzają nas do przodu",
+        "description": "Te wartości definiują nasze podejście do pracy i pomagają nam tworzyć innowacyjne rozwiązania dla naszych klientów każdego dnia",
+        "items": [
+          {
+            "title": "Innowacje",
+            "description": "Wdrażamy najnowocześniejsze technologie i stale poszukujemy nowych sposobów optymalizacji procesów biznesowych"
+          },
+          {
+            "title": "Niezawodność",
+            "description": "Wypełniamy wszystkie zobowiązania wobec klientów i partnerów, zapewniając stabilną jakość usług"
+          },
+          {
+            "title": "Zrównoważony rozwój",
+            "description": "Używamy przyjaznych dla środowiska materiałów i optymalizujemy trasy, aby zmniejszyć ślad węglowy"
+          },
+          {
+            "title": "Orientacja na klienta",
+            "description": "Potrzeby i sukces naszych klientów są podstawą wszystkich strategicznych decyzji"
+          }
+        ]
+      },
+      "team": {
+        "badge": "Nasz zespół",
+        "title": "Eksperci światowej klasy",
+        "description": "Zespół profesjonalistów z doświadczeniem w wiodących firmach logistycznych i technologicznych. Zjednoczyliśmy najlepszych specjalistów w branży.",
+        "items": [
+          {
+            "title": "Ekspertyza",
+            "description": "Średnie doświadczenie zespołu - ponad 5 lat w logistyce i usługach biznesowych"
+          },
+          {
+            "title": "Rozwój",
+            "description": "Ciągłe szkolenia, certyfikacja i rozwój umiejętności pracowników"
+          },
+          {
+            "title": "Praca zespołowa",
+            "description": "Skoordynowana praca zespołów cross-funkcyjnych dla osiągnięcia najlepszych wyników"
+          }
+        ]
+      }
+    },
+    "contacts": {
+      "metadata": {
+        "title": "Kontakty",
+        "description": "Strona kontaktów"
+      },
+      "hero": {
+        "badge": "Skontaktuj się z nami",
+        "title": "Gotowy do rozpoczęcia",
+        "title_accent": " współpracy?",
+        "description": "Nasi eksperci pomogą znaleźć optymalne rozwiązanie dla Twojego biznesu. Otrzymaj konsultację i spersonalizowaną ofertę już dziś."
+      },
+      "main_office": {
+        "title": "Główny biuro",
+        "address": "Warszawa, KIELECKA 41A / 8",
+        "coordinates": {
+          "lat": "52.2057584",
+          "lng": "21.0036713"
+        },
+        "phone": "+48 (12) 345-67-89",
+        "email": "info@relpen.pl",
+        "hours": "Pn-Pt: 9:00-18:00, Sob: 10:00-15:00"
+      },
+      "warehouse": {
+        "title": "Centrum logistyczne",
+        "address": "Warszawa, Strefa Logistyczna, Magazyn A1",
+        "coordinates": {
+          "lat": "52.2057584",
+          "lng": "21.0036713"
+        },
+        "phone": "+48 (12) 345-67-90",
+        "hours": "24/7, bez dni wolnych"
+      },
+      "support": {
+        "title": "Wsparcie techniczne",
+        "phone": "+48 (12) 345-67-90",
+        "email": "support@relpen.pl",
+        "telegram": "@relpen_support",
+        "hours": "24/7 wsparcie online"
+      },
+      "form": {
+        "title": "Wyślij wniosek",
+        "description": "Wypełnij formularz, a nasz menedżer skontaktuje się z Tobą w ciągu 30 minut, aby omówić szczegóły współpracy.",
+        "benefits": [
+          "Odpowiedź w ciągu 30 minut",
+          "Darmowa ekspercka konsultacja",
+          "Spersonalizowana kalkulacja kosztów"
+        ],
+        "fields": {
+          "name": "Imię i nazwisko",
+          "company": "Nazwa firmy",
+          "phone": "Telefon",
+          "email": "Email",
+          "message": "Wiadomość"
+        },
+        "placeholders": {
+          "name": "Wprowadź swoje imię",
+          "company": "Nazwa Twojej firmy",
+          "phone": "+48 (12) 345-67-89",
+          "email": "your@email.com",
+          "message": "Opowiedz nam o potrzebach Twojego biznesu..."
+        },
+        "submit": "Wyślij wniosek",
+        "form_sent_success": "Wniosek wysłany pomyślnie. ID wniosku: {id}",
+        "form_sent_error": "Błąd wysyłania wniosku",
+        "form_sent_daily_limit_error": "Osiągnąłeś dzienny limit wysyłania wniosków"
+      },
+      "map": {
+        "title": "Jak nas znaleźć",
+        "placeholder": "Interaktywna mapa będzie tutaj",
+        "office_marker": "Biuro RELPEN",
+        "directions_button": "Pobierz wskazówki"
+      }
+    },
+    "auth": {
+      "metadata": {
+        "title": "Autoryzacja",
+        "description": "Strona autoryzacji"
+      },
+      "login": {
+        "title": "Logowanie do systemu",
+        "email_label": "Email",
+        "password_label": "Hasło",
+        "email_placeholder": "Wprowadź swój email",
+        "password_placeholder": "Wprowadź swoje hasło",
+        "submit": "Zaloguj się",
+        "loading": "Logowanie...",
+        "validation": {
+          "email_required": "Email jest wymagany",
+          "email_invalid": "Nieprawidłowy format email",
+          "password_required": "Hasło jest wymagane",
+          "password_min": "Hasło musi zawierać co najmniej 6 znaków"
+        },
+        "footer": {
+          "no_account": "Nie masz konta?",
+          "register_link": "Zarejestruj się"
+        }
+      },
+      "register": {
+        "title": "Rejestracja",
+        "name_label": "Imię",
+        "email_label": "Email",
+        "password_label": "Hasło",
+        "password_confirmation_label": "Potwierdzenie hasła",
+        "name_placeholder": "Wprowadź swoje imię",
+        "email_placeholder": "Wprowadź swój email",
+        "password_placeholder": "Wprowadź swoje hasło",
+        "password_confirmation_placeholder": "Potwierdź swoje hasło",
+        "submit": "Zarejestruj się",
+        "loading": "Rejestracja...",
+        "validation": {
+          "name_required": "Imię jest wymagane",
+          "name_min": "Imię musi zawierać co najmniej 2 znaki",
+          "email_required": "Email jest wymagany",
+          "email_invalid": "Nieprawidłowy format email",
+          "password_required": "Hasło jest wymagane",
+          "password_min": "Hasło musi zawierać co najmniej 6 znaków",
+          "password_confirmation_required": "Potwierdzenie hasła jest wymagane",
+          "passwords_match": "Hasła nie pasują"
+        },
+        "footer": {
+          "have_account": "Masz już konto?",
+          "login_link": "Zaloguj się"
+        }
+      }
+    },
+    "terms": {
+      "metadata": {
+        "title": "Warunki",
+        "description": "Strona warunków"
+      },
+      "hero": {
+        "badge": "Warunki użytkowania",
+        "title": "Warunki świadczenia usług",
+        "title_accent": " Użytkowania",
+        "description": "Przeczytaj zasady korzystania z naszego serwisu, aby zapewnić bezpieczne i skuteczne interakcje."
+      },
+      "content": {
+        "sections": [
+          {
+            "title": "1. Postanowienia ogólne",
+            "description": "Korzystając z naszego serwisu, zgadzasz się z niniejszymi warunkami. Zastrzegamy sobie prawo do zmiany tych zasad w dowolnym momencie."
+          },
+          {
+            "title": "2. Rejestracja i konto",
+            "description": "Podczas rejestracji zgadzasz się:",
+            "list": [
+              "Podawać dokładne informacje",
+              "Utrzymywać aktualność danych",
+              "Zapewniać bezpieczeństwo konta",
+              "Nie przekazywać dostępu osobom trzecim"
+            ]
+          },
+          {
+            "title": "3. Korzystanie z serwisu",
+            "description": "Podczas korzystania z serwisu zabrania się:",
+            "list": [
+              "Naruszać przepisy prawa",
+              "Tworzyć zakłócenia w działaniu serwisu",
+              "Używać złośliwego oprogramowania",
+              "Naruszać prawa innych użytkowników"
+            ]
+          },
+          {
+            "title": "4. Zamówienia i dostawa",
+            "description": "Przy składaniu zamówienia:",
+            "list": [
+              "Podawaj poprawne dane odbiorcy",
+              "Przestrzegaj zasad pakowania",
+              "Terminowo płac za usługi",
+              "Śledź status dostawy"
+            ]
+          },
+          {
+            "title": "5. Odpowiedzialność",
+            "description": "Jesteśmy odpowiedzialni za:",
+            "list": [
+              "Jakość świadczonych usług",
+              "Terminowość dostawy",
+              "Bezpieczeństwo transportu",
+              "Zachowanie ładunku"
+            ]
+          },
+          {
+            "title": "6. Kontakty",
+            "description": "W przypadku wszelkich pytań kontaktuj się:",
+            "email": "Email: support@relpen.pl",
+            "phone": "Telefon: +48 (12) 345-67-89",
+            "address": "Adres: Warszawa, KIELECKA 41A / 8"
+          }
+        ]
+      }
+    },
+    "privacy": {
+      "metadata": {
+        "title": "Prywatność",
+        "description": "Strona prywatności"
+      },
+      "hero": {
+        "badge": "Polityka prywatności",
+        "title": "Ochrona Twoich danych",
+        "title_accent": " naszym priorytetem",
+        "description": "Traktujemy poważnie ochronę Twoich danych osobowych i zapewniamy ich bezpieczeństwo zgodnie z przepisami prawa i najlepszymi praktykami."
+      },
+      "content": {
+        "sections": [
+          {
+            "title": "1. Zbieranie informacji",
+            "description": "Zbieramy następujące typy informacji:",
+            "list": [
+              "Informacje kontaktowe (imię, email, telefon)",
+              "Informacje o firmie (nazwa, numer podatkowy, adres)",
+              "Dane o zamówieniach i dostawach",
+              "Informacje techniczne (adres IP, typ przeglądarki)"
+            ]
+          },
+          {
+            "title": "2. Używanie informacji",
+            "description": "Zebrane informacje są używane do:",
+            "list": [
+              "Przetwarzania i realizacji zamówień",
+              "Poprawy jakości obsługi",
+              "Komunikacji z klientami",
+              "Analizy i optymalizacji działania serwisu"
+            ]
+          },
+          {
+            "title": "3. Ochrona danych",
+            "description": "Podejmujemy następujące środki w celu ochrony Twoich danych:",
+            "list": [
+              "Szyfrowanie danych podczas transmisji",
+              "Regularne aktualizacje systemów bezpieczeństwa",
+              "Ograniczenie dostępu do danych osobowych",
+              "Monitoring i audyt systemów bezpieczeństwa"
+            ]
+          },
+          {
+            "title": "4. Udostępnianie danych",
+            "description": "Nie udostępniamy Twoich danych osobowych osobom trzecim, z wyjątkiem przypadków:",
+            "list": [
+              "Gdy jest to konieczne do realizacji zamówienia",
+              "Na żądanie przepisów prawa",
+              "Z Twoją wyraźną zgodą"
+            ]
+          },
+          {
+            "title": "5. Twoje prawa",
+            "description": "Masz prawo do:",
+            "list": [
+              "Dostępu do swoich danych",
+              "Żądania poprawienia nieprawidłowych danych",
+              "Żądania usunięcia swoich danych",
+              "Cofnięcia zgody na przetwarzanie danych"
+            ]
+          },
+          {
+            "title": "6. Kontakty",
+            "description": "W przypadku wszelkich pytań związanych z przetwarzaniem danych osobowych kontaktuj się:",
+            "email": "Email: privacy@relpen.pl",
+            "phone": "Telefon: +48 (12) 345-67-89",
+            "address": "Adres: Warszawa, KIELECKA 41A / 8"
+          }
+        ]
+      }
+    },
+    "product": {
+      "detail": {
+        "back_to_products": "Powrót do produktów",
+        "discount": "Rabat",
+        "share": "Udostępnij",
+        "description": "Opis",
+        "additional_info": "Dodatkowe informacje",
+        "contact_for_order": "Kontakt w sprawie zamówienia",
+        "price_negotiable": "Cena do negocjacji",
+        "contact_for_order_url": "https://t.me/relpen_support_pl",
+        "no_image": "Brak obrazu",
+        "select_image": "Wybierz obraz"
+      }
+    },
+    "products": {
+      "metadata": {
+        "title": "Produkty",
+        "description": "Innowacyjne produkty dla Twojego biznesu"
+      },
+      "title": "Nasze produkty",
+      "description": "Szeroki asortyment wysokiej jakości produktów dla Twojego biznesu",
+      "filters": {
+        "title": "Filtry",
+        "search_placeholder": "Szukaj produktów...",
+        "all_categories": "Wszystkie kategorie"
+      },
+      "list": {
+        "loading": "Ładowanie produktów...",
+        "no_products": "Produkty nie znalezione",
+        "no_products_description": "Spróbuj zmienić parametry wyszukiwania",
+        "previous_page": "Poprzednia strona",
+        "next_page": "Następna strona",
+        "first_page": "Pierwsza strona",
+        "last_page": "Ostatnia strona",
+        "page_info": "Strona {current} z {total}",
+        "items_per_page": "Elementów na stronie",
+        "items_per_page_option": "{count} elementów",
+        "select_page": "Wybierz stronę",
+        "page_number": "Strona {number}",
+        "single_page": "Pojedyncza strona"
+      },
+      "card": {
+        "discount": "Rabat",
+        "view_details": "Zobacz szczegóły"
+      }
+    },
+    "service": {
+      "detail": {
+        "back_to_services": "Powrót do usług",
+        "discount": "Rabat",
+        "share": "Udostępnij",
+        "description": "Opis",
+        "additional_info": "Dodatkowe informacje",
+        "contact_for_order": "Kontakt w sprawie zamówienia",
+        "price_negotiable": "Cena do negocjacji",
+        "contact_for_order_url": "https://t.me/relpen_support_pl"
+      }
+    },
+    "services": {
+      "metadata": {
+        "title": "Usługi",
+        "description": "Innowacyjne usługi dla Twojego biznesu"
+      },
+      "title": "Nasze usługi",
+      "description": "Szeroki asortyment wysokiej jakości usług dla Twojego biznesu",
+      "filters": {
+        "title": "Filtry",
+        "search_placeholder": "Szukaj usług...",
+        "all_categories": "Wszystkie kategorie"
+      },
+      "list": {
+        "loading": "Ładowanie usług...",
+        "no_services": "Usługi nie znalezione",
+        "no_services_description": "Spróbuj zmienić parametry wyszukiwania",
+        "previous_page": "Poprzednia strona",
+        "next_page": "Następna strona",
+        "first_page": "Pierwsza strona",
+        "last_page": "Ostatnia strona",
+        "page_info": "Strona {current} z {total}",
+        "items_per_page": "Usług na stronie",
+        "items_per_page_option": "{count} usług",
+        "select_page": "Wybierz stronę",
+        "page_number": "Strona {number}",
+        "single_page": "Pojedyncza strona"
+      },
+      "card": {
+        "discount": "Rabat",
+        "view_details": "Zobacz szczegóły"
+      }
+    }
+  },
+  "layout": {
+    "navigation": {
+      "home": "Strona główna",
+      "products": "Produkty",
+      "services": "Usługi",
+      "about": "O nas",
+      "contacts": "Kontakty",
+      "menu": "Menu"
+    },
+    "company_name": "RELPEN",
+    "all_rights_reserved": "Wszystkie prawa zastrzeżone {year}",
+    "privacy_policy": "Polityka prywatności",
+    "terms_of_use": "Warunki użytkowania",
+    "contact_us": "Skontaktuj się z nami",
+    "company_description": "Profesjonalna firma handlu hurtowego i detalicznego specjalizująca się w wyrobach porcelanowych, ceramicznych i szklanych oraz środkach czyszczących. Zapewniamy kompleksowe usługi logistyczne, naprawy pojazdów i usługi profesjonalne z nowoczesnymi rozwiązaniami technologicznymi dla maksymalnej efektywności biznesowej.",
+    "company": "Firma",
+    "privacy": "Prywatność",
+    "terms": "Warunki",
+    "solutions": "Rozwiązania",
+    "contacts": "Kontakty",
+    "main_office": {
+      "address_label": "Adres",
+      "phone_label": "Telefon",
+      "email_label": "Email",
+      "hours_label": "Godziny pracy",
+      "address": "Warszawa, KIELECKA 41A / 8",
+      "phone": "+48 (12) 345-67-89",
+      "email": "info@relpen.pl",
+      "hours": "Pn-Pt: 9:00-18:00",
+      "latitude": "52.2057584",
+      "longitude": "21.0036713"
+    }
+  }
+}
