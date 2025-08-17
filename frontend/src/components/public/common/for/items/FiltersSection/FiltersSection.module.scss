@@ -6,9 +6,6 @@
   padding: vars.$spacing-xl 0 0 0;
 
   &__container {
-    width: calc(100% - (vars.$spacing-sm * 2));
-    margin: 0 vars.$spacing-sm;
-    margin-bottom: vars.$spacing-sm;
     padding: 0;
     background-color: vars.$bg-level-1;
     padding: vars.$spacing-md;

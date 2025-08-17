@@ -64,16 +64,6 @@
     }
   }
 
-  &__placeholder {
-    @include mix.absolute-full;
-    @include mix.flex-center;
-    z-index: 5;
-    background: vars.$bg-level-2;
-    color: vars.$text-secondary;
-    font-size: vars.$font-size-lg;
-    text-align: center;
-  }
-
   &__info {
     @include mix.flex-column;
 

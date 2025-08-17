@@ -61,11 +61,11 @@
 
 
   /* Зеленые акценты для логистической компании */
-  --primary: #22c55e;
-  --primary-rgb: 34, 197, 94;
-  --primary-light: rgba(34, 197, 94, 0.1);
-  --primary-dark: #16a34a;
-  --primary-hover: #15803d;
+  --primary: #006425;
+  --primary-rgb: 0, 100, 37;
+  --primary-light: rgba(0, 100, 37, 0.1);
+  --primary-dark: #004f1d;
+  --primary-hover: #005e22;
 
   --success: rgb(34, 197, 94);
   --success-rgb: 34, 197, 94;
