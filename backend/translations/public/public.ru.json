@@ -258,7 +258,7 @@
           "lng": "21.0036713"
         },
         "phone": "+48 (12) 345-67-89",
-        "email": "info@relpen.pl",
+        "email": "relpenspzoo@gmail.com",
         "hours": "Пн-Пт: 9:00-18:00, Сб: 10:00-15:00"
       },
       "warehouse": {
@@ -274,7 +274,7 @@
       "support": {
         "title": "Техническая поддержка",
         "phone": "+48 (12) 345-67-90",
-        "email": "support@relpen.pl",
+        "email": "relpenspzoo@gmail.com",
         "telegram": "@relpen_support",
         "hours": "24/7 онлайн поддержка"
       },
@@ -428,7 +428,7 @@
           {
             "title": "6. Контакты",
             "description": "По всем вопросам обращайтесь:",
-            "email": "Email: support@relpen.pl",
+            "email": "Email: relpenspzoo@gmail.com",
             "phone": "Телефон: +48 (12) 345-67-89",
             "address": "Адрес: Варшава, KIELECKA 41A / 8"
           }
@@ -500,7 +500,7 @@
           {
             "title": "6. Контакты",
             "description": "По всем вопросам, связанным с обработкой персональных данных, обращайтесь:",
-            "email": "Email: privacy@relpen.pl",
+            "email": "Email: relpenspzoo@gmail.com",
             "phone": "Телефон: +48 (12) 345-67-89",
             "address": "Адрес: Варшава, KIELECKA 41A / 8"
           }
@@ -625,7 +625,7 @@
       "hours_label": "График работы",
       "address": "Варшава, KIELECKA 41A / 8",
       "phone": "+48 (12) 345-67-89",
-      "email": "info@relpen.pl",
+      "email": "relpenspzoo@gmail.com",
       "hours": "Пн-Пт: 9:00-18:00",
       "latitude": "52.2057584",
       "longitude": "21.0036713"

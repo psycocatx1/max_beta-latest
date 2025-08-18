@@ -1,8 +1,7 @@
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 import styles from '../Footer.module.scss';
 import { getTranslations } from 'next-intl/server';
-import logo from '@/../public/logo.svg'
-import { Image } from '@/components/common/Image'
+import { Logo } from '../../Logo';
 
 export const Socials = async () => {
   const tFooter = await getTranslations('public.layout');
@@ -10,7 +9,7 @@ export const Socials = async () => {
   return (
     <div className={styles.footer__section}>
       <div className={styles.footer__logo}>
-        <Image src={logo.src} alt="Logo" width={350} height={150} />
+        <Logo className={styles.footer__logo__image} width={350} height={150} />
       </div>
       <p className={styles.footer__description}>
         {tFooter('company_description')}
