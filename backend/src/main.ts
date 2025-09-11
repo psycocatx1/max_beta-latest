@@ -25,7 +25,7 @@ async function bootstrap(): Promise<void> {
 
   // CORS
   app.enableCors({
-    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    origin: ['*'],
     credentials: true,
   });
   app.setGlobalPrefix("api");
