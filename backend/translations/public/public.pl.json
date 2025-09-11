@@ -515,6 +515,18 @@
         "contact_for_order_url": "https://t.me/relpen_support_pl",
         "no_image": "Brak obrazu",
         "select_image": "Wybierz obraz"
+      },
+      "not_found": {
+        "back_to_products": "Powrót do produktów",
+        "title": "Produkt nie znaleziony",
+        "description": "Niestety, żądany produkt nie został znaleziony. Może zostać usunięty, przeniesiony lub nigdy nie istniał.",
+        "product_id": "ID produktu",
+        "browse_products": "Przeglądaj produkty",
+        "go_home": "Idź do strony głównej",
+        "suggestions_title": "Co możesz zrobić:",
+        "suggestion_1": "Sprawdź poprawność linku do produktu",
+        "suggestion_2": "Wróć do listy produktów i znajdź potrzebny towar",
+        "suggestion_3": "Użyj wyszukiwania lub filtrów, aby znaleźć podobne produkty"
       }
     },
     "products": {

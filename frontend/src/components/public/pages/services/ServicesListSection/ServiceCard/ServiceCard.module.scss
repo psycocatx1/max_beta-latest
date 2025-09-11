@@ -2,7 +2,7 @@
 @use '../../../../../styles/variables' as vars;
 
 .card {
-  @include mix.modern-card;
+  @include mix.card;
 
   & {
     height: 100%;
@@ -12,6 +12,7 @@
     background: vars.$bg-level-0;
     transition: all vars.$transition-normal vars.$ease-in-out-quart;
     position: relative;
+    border-radius: vars.$border-radius-xl;
     cursor: pointer;
   }
 
@@ -22,12 +23,6 @@
   }
 
   &:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: vars.$shadow-deep, vars.$shadow-glow;
-
-    .card__image {
-      transform: scale(1.08);
-    }
 
     .card__action_button {
       transform: scale(1.1);
@@ -91,7 +86,7 @@
     & {
       width: 2.75rem;
       height: 2.75rem;
-      background: rgba(255, 255, 255, 0.9);
+      background-color: var(--bg-level-4);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: vars.$text-primary;
@@ -129,6 +124,7 @@
       font-weight: vars.$font-weight-bold;
       line-height: 1.4;
       min-height: 2.8em;
+      font-size: vars.$font-size-xl
     }
   }
 
@@ -136,6 +132,11 @@
     @include mix.line-clamp(3);
 
     & {
+      line-clamp: 3;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
       margin: 0 0 vars.$spacing-lg 0;
       color: vars.$text-secondary;
       flex-grow: 1;
@@ -150,9 +151,10 @@
     border-top: 1px solid vars.$border-color;
     margin: calc(vars.$spacing-xs * -1);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    gap: vars.$spacing-xs;
+    gap: vars.$spacing-sm;
   }
 
   &__price {
@@ -204,6 +206,7 @@
     & {
       flex-shrink: 0;
       display: flex;
+      width: 100%;
       align-items: center;
       justify-content: center;
       gap: vars.$spacing-xs;
@@ -217,7 +220,7 @@
     }
 
     &:hover {
-      transform: translateY(-2px);
+      transform: translateY(-1px);
       box-shadow: vars.$shadow-lg;
       color: vars.$text-white;
     }
@@ -228,10 +231,6 @@
 
     svg {
       transition: transform vars.$transition-normal vars.$ease-bounce;
-    }
-
-    &:hover svg {
-      transform: translateX(2px);
     }
 
     & p {

@@ -1,7 +1,7 @@
 'use client';
 
 import { useProducts, useProductsFilters, CreateProductFormData } from '@/hooks/admin/products';
-import { ProductFiltersDto, Product } from '@lib/api/services/types/products.types';
+import { ProductFiltersDto, Product, ExtendedProduct, UpdateProductFormData } from '@lib/api/services/types/products.types';
 import { useState } from 'react';
 import { AdminPage } from '@/components/admin/common/AdminPage';
 import { Filters, FilterField, List } from '@/components/admin/common/ListPage';
@@ -45,7 +45,7 @@ export const Products = ({ category_id }: ProductsPageProps) => {
   const renderProductItem = (product: Product) => (
     <ProductCard
       key={product.id}
-      product={product}
+      product={product as ExtendedProduct}
     />
   );
 
@@ -102,7 +102,7 @@ export const Products = ({ category_id }: ProductsPageProps) => {
       <ProductFormModal
         is_open={is_create_modal_open}
         onClose={() => setIsCreateModalOpen(false)}
-        onSubmit={() => handleCreateProduct as (data: CreateProductFormData) => void}
+        onSubmit={handleCreateProduct as (data: CreateProductFormData | UpdateProductFormData) => void}
       />
     </AdminPage>
   );

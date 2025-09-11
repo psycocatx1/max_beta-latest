@@ -20,7 +20,7 @@ export class CrudService {
     private readonly filesService: FilesService,
     private readonly productsService: ProductsCrudService,
     private readonly servicesService: ServicesCrudService,
-  ) {}
+  ) { }
 
   /**
    * Сохраняет изображение
@@ -116,10 +116,8 @@ export class CrudService {
    * @returns удаленная картинка объекта (ItemImage) | null
    */
   async delete(id: string): Promise<ItemImage> {
-    await this.findOne(id);
-    return this.prisma.itemImage.update({
-      where: { id },
-      data: { is_excluded: true },
-    });
+    return !(await this.findOne(id)).is_excluded
+      ? await this.prisma.itemImage.update({ where: { id }, data: { is_excluded: true } })
+      : await this.prisma.itemImage.delete({ where: { id } });
   }
 }

@@ -37,7 +37,7 @@ export class ProductsApi {
    * @returns Результат создания товара
    */
   static async create(data: CreateProductFormData): Promise<AxiosResponse<Product | null>> {
-    return await api.post<Product | null>(this.PRODUCTS_PATHS.create, createFormData(data));
+    return await api.post<Product | null>(this.PRODUCTS_PATHS.create, ...createFormData(data));
   }
   /**
    * Обновление товара
@@ -46,7 +46,7 @@ export class ProductsApi {
    * @returns Результат обновления товара
    */
   static async update(id: string, data: UpdateProductFormData): Promise<AxiosResponse<ExtendedProduct | null>> {
-    return await api.put<ExtendedProduct | null>(this.PRODUCTS_PATHS.update(id), createFormData(data));
+    return await api.put<ExtendedProduct | null>(this.PRODUCTS_PATHS.update(id), ...createFormData(data));
   }
   /**
    * Удаление товара

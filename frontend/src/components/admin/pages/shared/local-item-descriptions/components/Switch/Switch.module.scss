@@ -1,6 +1,7 @@
 .switch {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--spacing-sm);
   padding: var(--spacing-sm) var(--spacing-lg);
   background: var(--accent-secondary);
@@ -11,7 +12,6 @@
   font-weight: var(--font-weight-medium);
   cursor: pointer;
   transition: all var(--transition-fast) var(--transition-ease);
-  white-space: nowrap;
 
   &:hover:not(:disabled) {
     background: color-mix(in srgb, var(--accent-secondary) 85%, black);

@@ -1785,18 +1785,18 @@ let CrudService = class CrudService {
         if (file)
             this.saveImage(data, file);
         if (!data.image)
-            throw new Error("Изображение обязательно");
+            throw new common_1.BadRequestException("Изображение обязательно");
         if (data.parent_id) {
             const parentCategory = await this.prisma.category.findUnique({
-                where: { id: data.parent_id },
+                where: { id: data.parent_id, is_excluded: false },
             });
             if (!parentCategory)
-                throw new common_1.NotFoundException("Родительская категория не найдена");
+                throw new common_1.NotFoundException("Родительская категория не найдена или удалена");
             if (parentCategory.type !== data.type)
                 throw new common_1.BadRequestException("Тип категории должен совпадать с типом родительской категории");
         }
         return await this.prisma.category.create({
-            data,
+            data: { ...data, parent_id: data.parent_id?.length && data.parent_id.length > 0 ? data.parent_id : null },
             include: {
                 parent: true,
                 children: true,
@@ -1826,9 +1826,11 @@ let CrudService = class CrudService {
             throw new common_1.BadRequestException("Изображение обязательно");
         const existingCategory = await this.findOneInternal(id);
         if (data.parent_id) {
-            const parentCategory = await this.findOneInternal(data.parent_id);
+            const parentCategory = await this.prisma.category.findUnique({
+                where: { id: data.parent_id, is_excluded: false },
+            });
             if (!parentCategory)
-                throw new common_1.NotFoundException("Родительская категория не найдена");
+                throw new common_1.NotFoundException("Родительская категория не найдена или удалена");
             const categoryType = data.type || existingCategory.type;
             if (parentCategory.type !== categoryType)
                 throw new common_1.BadRequestException("Тип категории должен совпадать с типом родительской категории");
@@ -3870,7 +3872,7 @@ let ListService = class ListService {
         this.prisma = prisma;
     }
     customFilters = (options) => {
-        const { search, is_excluded } = options;
+        const { search, is_excluded, symbol } = options;
         const filters = {};
         if (search) {
             filters.OR = [
@@ -3884,6 +3886,8 @@ let ListService = class ListService {
         }
         if (is_excluded !== undefined)
             filters.is_excluded = is_excluded;
+        if (symbol)
+            filters.symbol = symbol;
         return filters;
     };
     async findAll(filters) {
@@ -4732,6 +4736,7 @@ const class_validator_1 = __webpack_require__(10);
 const class_transformer_1 = __webpack_require__(9);
 class LocaleFiltersDto extends base_filter_dto_1.BaseFilterDto {
     search;
+    symbol;
     is_excluded;
 }
 exports.LocaleFiltersDto = LocaleFiltersDto;
@@ -4746,6 +4751,17 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], LocaleFiltersDto.prototype, "search", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
+    (0, swagger_1.ApiProperty)({
+        name: "Язык",
+        description: "Язык",
+        example: "RU",
+        required: false,
+    }),
+    __metadata("design:type", String)
+], LocaleFiltersDto.prototype, "symbol", void 0);
 __decorate([
     (0, class_transformer_1.Transform)(({ value }) => value == "true"),
     (0, class_validator_1.IsBoolean)(),
@@ -10127,11 +10143,9 @@ let CrudService = class CrudService {
         return updatedDescription;
     }
     async delete(id) {
-        await this.findOne(id);
-        return this.prisma.localItemDescription.update({
-            where: { id },
-            data: { is_excluded: true },
-        });
+        return !(await this.findOne(id)).is_excluded
+            ? await this.prisma.localItemDescription.update({ where: { id }, data: { is_excluded: true } })
+            : await this.prisma.localItemDescription.delete({ where: { id } });
     }
 };
 exports.CrudService = CrudService;
@@ -10993,11 +11007,9 @@ let CrudService = class CrudService {
         });
     }
     async delete(id) {
-        await this.findOne(id);
-        return this.prisma.itemImage.update({
-            where: { id },
-            data: { is_excluded: true },
-        });
+        return !(await this.findOne(id)).is_excluded
+            ? await this.prisma.itemImage.update({ where: { id }, data: { is_excluded: true } })
+            : await this.prisma.itemImage.delete({ where: { id } });
     }
 };
 exports.CrudService = CrudService;

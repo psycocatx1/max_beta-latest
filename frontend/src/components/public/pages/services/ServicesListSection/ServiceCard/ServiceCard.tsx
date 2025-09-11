@@ -51,7 +51,7 @@ export const ServiceCard = ({ service, locale }: ServiceCardProps) => {
         )}
 
         <div className={classes.card__price_section}>
-          <Price price={localized_service.price} discount_price={localized_service.discount_price} />
+          <Price formatted_discount_price={localized_service.formatted_discount_price} formatted_price={localized_service.formatted_price} />
 
           <Link
             href={{ pathname: '/services/[service_id]', params: { service_id: service.id } }}

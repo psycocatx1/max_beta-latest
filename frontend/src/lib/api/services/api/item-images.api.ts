@@ -37,7 +37,7 @@ export class ItemImagesApi {
    * @returns Результат создания изображения товара или услуги
    */
   static async create(data: CreateItemImageFormData): Promise<AxiosResponse<ItemImage | null>> {
-    return await api.post<ItemImage | null>(this.ITEM_IMAGES_PATHS.create, createFormData(data));
+    return await api.post<ItemImage | null>(this.ITEM_IMAGES_PATHS.create, ...createFormData(data));
   }
   /**
    * Обновление изображения товара или услуги
@@ -46,7 +46,7 @@ export class ItemImagesApi {
    * @returns Результат обновления изображения товара или услуги
    */
   static async update(id: string, data: UpdateItemImageFormData): Promise<AxiosResponse<ItemImage | null>> {
-    return await api.put<ItemImage | null>(this.ITEM_IMAGES_PATHS.update(id), createFormData(data));
+    return await api.put<ItemImage | null>(this.ITEM_IMAGES_PATHS.update(id), ...createFormData(data));
   }
   /**
    * Удаление изображения товара или услуги

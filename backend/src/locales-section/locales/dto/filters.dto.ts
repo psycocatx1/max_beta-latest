@@ -15,6 +15,16 @@ export class LocaleFiltersDto extends BaseFilterDto {
   })
   search?: string;
 
+  @IsString()
+  @IsOptional()
+  @ApiProperty({
+    name: "Язык",
+    description: "Язык",
+    example: "RU",
+    required: false,
+  })
+  symbol?: string;
+
   @Transform(({ value }) => value == "true")
   @IsBoolean()
   @IsOptional()

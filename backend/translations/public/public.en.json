@@ -191,6 +191,18 @@
         "contact_for_order_url": "https://t.me/relpen_support_en",
         "no_image": "No image available",
         "select_image": "Select image"
+      },
+      "not_found": {
+        "back_to_products": "Back to products",
+        "title": "Product not found",
+        "description": "Unfortunately, the requested product was not found. It may have been removed, moved, or never existed.",
+        "product_id": "Product ID",
+        "browse_products": "Browse products",
+        "go_home": "Go home",
+        "suggestions_title": "What you can do:",
+        "suggestion_1": "Check the product link for correctness",
+        "suggestion_2": "Return to the products list and find the item you need",
+        "suggestion_3": "Use search or filters to find similar products"
       }
     }
   },

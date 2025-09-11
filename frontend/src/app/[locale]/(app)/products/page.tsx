@@ -8,7 +8,7 @@ interface Params { params: Promise<{ locale: string }> }
 async function apiRequest({ params }: Params): Promise<{ locale: Locale, initial_products: ExtendedProduct[] }> {
   const { locale } = await params;
 
-  const locale_data = await LocalesApi.get({ search: locale.toUpperCase(), skip: 0, take: 1 });
+  const locale_data = await LocalesApi.get({ symbol: locale.toUpperCase(), skip: 0, take: 1 });
   const locale_id = locale_data.data.items[0].id
 
   const products_data = await ProductsApi.get({ skip: 0, take: 1000, locale_id });

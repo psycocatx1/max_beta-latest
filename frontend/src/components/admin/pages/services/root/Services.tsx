@@ -1,7 +1,7 @@
 'use client';
 
 import { useServices, useServicesFilters, CreateServiceFormData } from '@/hooks/admin/services';
-import { ServiceFiltersDto } from '@lib/api/services/types/services.types';
+import { ServiceFiltersDto, ExtendedService, UpdateServiceFormData } from '@lib/api/services/types/services.types';
 import { useState } from 'react';
 import { AdminPage } from '@/components/admin/common/AdminPage';
 import { Filters, FilterField, List } from '@/components/admin/common/ListPage';
@@ -11,7 +11,6 @@ import { useCategories } from '@/hooks/admin/categories';
 import { flattenCategoriesForSelect } from '@/hooks/admin/categories';
 import { useTranslations } from 'next-intl';
 import { CategoryType, Service } from '@prisma/client';
-import { ExtendedService } from '@lib/api/services/types/services.types';
 
 
 interface ServicesPageProps {
@@ -44,10 +43,10 @@ export const Services = ({ category_id }: ServicesPageProps) => {
     updateFilters({ [name]: value } as Partial<ServiceFiltersDto>);
   };
 
-  const renderServiceItem = (service: ExtendedService) => (
+  const renderServiceItem = (service: Service) => (
     <ServiceCard
       key={service.id}
-      service={service}
+      service={service as ExtendedService}
     />
   );
 
@@ -101,7 +100,7 @@ export const Services = ({ category_id }: ServicesPageProps) => {
       <ServiceFormModal
         is_open={is_create_modal_open}
         onClose={() => setIsCreateModalOpen(false)}
-        onSubmit={() => handleCreateService as (data: CreateServiceFormData) => void}
+        onSubmit={handleCreateService as (data: CreateServiceFormData | UpdateServiceFormData) => void}
       />
     </AdminPage>
   );

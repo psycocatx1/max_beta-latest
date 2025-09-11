@@ -503,6 +503,17 @@
         "contact_for_order": "Contact for Order",
         "price_negotiable": "Price Negotiable",
         "contact_for_order_url": "https://t.me/relpen_support_en"
+      },
+      "not_found": {
+        "back_to_products": "Back to products",
+        "title": "Product not found",
+        "description": "Unfortunately, the requested product was not found. It may have been removed, moved, or never existed.",
+        "browse_products": "Browse products",
+        "go_home": "Go home",
+        "suggestions_title": "What you can do:",
+        "suggestion_1": "Check the product link for correctness",
+        "suggestion_2": "Return to the products list and find the item you need",
+        "suggestion_3": "Use search or filters to find similar products"
       }
     },
     "products": {
@@ -547,6 +558,17 @@
         "contact_for_order": "Contact for Order",
         "price_negotiable": "Price Negotiable",
         "contact_for_order_url": "https://t.me/relpen_support_en"
+      },
+      "not_found": {
+        "back_to_services": "Back to services",
+        "title": "Service not found",
+        "description": "Unfortunately, the requested product was not found. It may have been removed, moved, or never existed.",
+        "browse_services": "Browse services",
+        "go_home": "Go home",
+        "suggestions_title": "What you can do:",
+        "suggestion_1": "Check the service link for correctness",
+        "suggestion_2": "Return to the services list and find the item you need",
+        "suggestion_3": "Use search or filters to find similar services"
       }
     },
     "services": {

@@ -13,19 +13,19 @@ interface Params {
 async function apiRequest({ params }: Params): Promise<{ locale: Locale, service: ExtendedService }> {
   const { locale, service_id } = await params;
 
-  const locale_data = await LocalesApi.get({ search: locale.toUpperCase(), skip: 0, take: 1 });
+  const locale_data = await LocalesApi.get({ symbol: locale.toUpperCase(), skip: 0, take: 1 });
   const locale_id = locale_data.data.items[0].id;
 
-  const service = await ServicesApi.find(service_id, locale_id);
-
-  if (!service.data) {
+  try {
+    const service = await ServicesApi.find(service_id, locale_id);
+    if (!service.data) notFound();
+    return {
+      locale: locale_data.data.items[0],
+      service: service.data,
+    };
+  } catch {
     notFound();
   }
-
-  return {
-    locale: locale_data.data.items[0],
-    service: service.data
-  };
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {

@@ -1,12 +1,12 @@
 'use client'
 import { useTranslations } from 'next-intl';
-import { Image } from '@/components/common/Image';
-import { ExtendedProduct, getImageUrl, Locale } from '@/lib/api';
+import { ExtendedProduct, Locale } from '@/lib/api';
 import classes from './ProductCard.module.scss';
 import { Eye } from 'lucide-react';
 import { Link } from '@/lib/intl/navigation';
 import { formatExtendedProduct } from '../../../product/localized-product';
 import { Heading, Paragraph } from '@/components/styles';
+import { PriceSection, ImageSection } from './components';
 
 interface ProductCardProps {
   product: ExtendedProduct;
@@ -19,29 +19,7 @@ export const ProductCard = ({ product, locale }: ProductCardProps) => {
 
   return (
     <article className={classes.card}>
-      <div className={classes.card__image_wrapper}>
-        <Image
-          src={getImageUrl(product.image)}
-          alt={localized_product.name}
-          width={320}
-          height={220}
-          className={classes.card__image}
-        />
-        {localized_product.is_discounted && (
-          <div className={classes.card__discount_badge}>
-            {t('discount')}
-          </div>
-        )}
-        <div className={classes.card__actions}>
-          <Link
-            href={{ pathname: '/products/[product_id]', params: { product_id: product.id } }}
-            className={classes.card__action_button}
-            aria-label={t('view_details')}
-          >
-            <Eye size={20} />
-          </Link>
-        </div>
-      </div>
+      <ImageSection name={localized_product.name} image={product.image} is_discounted={localized_product.is_discounted} product_id={product.id} />
 
       <div className={classes.card__content}>
         <Heading size='lg' className={classes.card__title}>{localized_product.name}</Heading>
@@ -50,22 +28,7 @@ export const ProductCard = ({ product, locale }: ProductCardProps) => {
         )}
 
         <div className={classes.card__price_section}>
-          <div className={classes.card__price}>
-            {localized_product.is_discounted ? (
-              <>
-                <span className={classes.card__price_current}>
-                  {localized_product.formatted_discount_price}
-                </span>
-                <span className={classes.card__price_original}>
-                  {localized_product.formatted_price}
-                </span>
-              </>
-            ) : (
-              <span className={classes.card__price_current}>
-                {localized_product.formatted_price}
-              </span>
-            )}
-          </div>
+          <PriceSection formatted_discount_price={localized_product.formatted_discount_price} formatted_price={localized_product.formatted_price} />
 
           <Link
             href={{ pathname: '/products/[product_id]', params: { product_id: product.id } }}

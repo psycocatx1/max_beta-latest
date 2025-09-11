@@ -4,10 +4,10 @@ import { LocaleFiltersDto } from "../dto";
 
 @Injectable()
 export class ListService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   customFilters = (options: LocaleFiltersDto) => {
-    const { search, is_excluded } = options;
+    const { search, is_excluded, symbol } = options;
     const filters: Prisma.LocaleWhereInput = {};
     if (search) {
       filters.OR = [
@@ -20,6 +20,7 @@ export class ListService {
       ];
     }
     if (is_excluded !== undefined) filters.is_excluded = is_excluded;
+    if (symbol) filters.symbol = symbol;
     return filters;
   };
 

@@ -348,10 +348,8 @@ export class CrudService {
    * @returns удаленное описание объекта (LocalItemDescription) | null
    */
   async delete(id: string): Promise<LocalItemDescription> {
-    await this.findOne(id);
-    return this.prisma.localItemDescription.update({
-      where: { id },
-      data: { is_excluded: true },
-    });
+    return !(await this.findOne(id)).is_excluded
+      ? await this.prisma.localItemDescription.update({ where: { id }, data: { is_excluded: true } })
+      : await this.prisma.localItemDescription.delete({ where: { id } });
   }
 }

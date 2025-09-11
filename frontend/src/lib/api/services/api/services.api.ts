@@ -37,7 +37,7 @@ export class ServicesApi {
    * @returns Результат создания услуги
    */
   static async create(data: CreateServiceFormData): Promise<AxiosResponse<Service | null>> {
-    return await api.post<Service | null>(this.SERVICES_PATHS.create, createFormData(data));
+    return await api.post<Service | null>(this.SERVICES_PATHS.create, ...createFormData(data));
   }
   /**
    * Обновление услуги
@@ -46,7 +46,7 @@ export class ServicesApi {
    * @returns Результат обновления услуги
    */
   static async update(id: string, data: UpdateServiceFormData): Promise<AxiosResponse<ExtendedService | null>> {
-    return await api.put<ExtendedService | null>(this.SERVICES_PATHS.update(id), createFormData(data));
+    return await api.put<ExtendedService | null>(this.SERVICES_PATHS.update(id), ...createFormData(data));
   }
   /**
    * Удаление услуги

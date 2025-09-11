@@ -13,7 +13,7 @@ export class CrudService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly filesService: FilesService,
-  ) {}
+  ) { }
   /**
    * Сохраняет изображение продукта
    * @param data - данные для создания или обновления продукта
@@ -39,21 +39,22 @@ export class CrudService {
    */
   async create(data: CreateCategoryDto, file?: Express.Multer.File) {
     if (file) this.saveImage(data, file);
-    if (!data.image) throw new Error("Изображение обязательно");
-    // Проверяем, что родительская категория того же типа
+    if (!data.image) throw new BadRequestException("Изображение обязательно");
+
+    // Проверяем, что родительская категория существует и того же типа
     if (data.parent_id) {
       const parentCategory = await this.prisma.category.findUnique({
-        where: { id: data.parent_id },
+        where: { id: data.parent_id, is_excluded: false },
       });
       if (!parentCategory)
-        throw new NotFoundException("Родительская категория не найдена");
+        throw new NotFoundException("Родительская категория не найдена или удалена");
       if (parentCategory.type !== data.type)
         throw new BadRequestException(
           "Тип категории должен совпадать с типом родительской категории",
         );
     }
     return await this.prisma.category.create({
-      data,
+      data: { ...data, parent_id: data.parent_id?.length && data.parent_id.length > 0 ? data.parent_id : null },
       include: {
         parent: true,
         children: true,
@@ -96,11 +97,13 @@ export class CrudService {
     if (file) this.saveImage(data, file);
     if (!data.image) throw new BadRequestException("Изображение обязательно");
     const existingCategory = await this.findOneInternal(id);
-    // Проверяем, что родительская категория того же типа
+    // Проверяем, что родительская категория существует и того же типа
     if (data.parent_id) {
-      const parentCategory = await this.findOneInternal(data.parent_id);
+      const parentCategory = await this.prisma.category.findUnique({
+        where: { id: data.parent_id, is_excluded: false },
+      });
       if (!parentCategory)
-        throw new NotFoundException("Родительская категория не найдена");
+        throw new NotFoundException("Родительская категория не найдена или удалена");
       const categoryType = data.type || existingCategory.type;
       if (parentCategory.type !== categoryType)
         throw new BadRequestException(
@@ -315,8 +318,8 @@ export class CrudService {
           },
           children: category.children
             ? await this.applyRecursiveCounts(
-                category.children as (Category & { children: Category[] })[],
-              )
+              category.children as (Category & { children: Category[] })[],
+            )
             : [],
         };
       }),

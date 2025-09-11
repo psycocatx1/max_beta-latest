@@ -20,11 +20,12 @@ export const formatExtendedProduct = (product: ExtendedProduct, locale: Locale):
   const price = local_product?.price || product.price_USD;
   const discount_price = local_product?.discount_price || product.discount_price_USD;
 
-  const formatted_price = `${price.toFixed(2)} ${locale.currency_symbol}`;
-  const formatted_discount_price = `${discount_price?.toFixed(2)} ${locale.currency_symbol}`;
-
   const discount_percentage = discount_price ? (price - discount_price) / price * 100 : 0;
   const is_discounted = !!discount_price && discount_price < price;
+
+  const formatted_price = `${price.toFixed(2)} ${local_product.price ? locale.currency_symbol : '$'}`;
+  const formatted_discount_price = !is_discounted ? null : `${discount_price?.toFixed(2)} ${local_product.discount_price ? locale.currency_symbol : '$'}`;
+
 
   return {
     id: product.id,
@@ -35,7 +36,7 @@ export const formatExtendedProduct = (product: ExtendedProduct, locale: Locale):
     discount_percentage: discount_percentage,
     is_discounted: is_discounted,
     formatted_price: formatted_price,
-    formatted_discount_price: !is_discounted ? null : formatted_discount_price,
+    formatted_discount_price: formatted_discount_price,
     images: [mainImageToItemImage(product), ...product.images],
     item_descriptions: product.local_products?.[0]?.local_item_descriptions || [],
   }

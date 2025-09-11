@@ -56,10 +56,13 @@ export const ProductFormModal = ({
 
   const handleSubmit = (data: ProductFormData) => {
     const submitData: CreateProductFormData | UpdateProductFormData = {
-      ...data,
+      name: data.name,
+      description: data.description,
+      price_USD: data.price_USD,
+      category_id: data.category_id,
+      discount_price_USD: data.discount_price_USD || undefined,
       file: data.image_type === 'file' && data.files ? data.files[0] : undefined,
       image: data.image_type === 'url' ? data.url || undefined : undefined,
-      discount_price_USD: data.discount_price_USD || undefined,
     };
     onSubmit(submitData);
   };
