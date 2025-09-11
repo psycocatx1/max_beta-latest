@@ -27,7 +27,17 @@ const nextConfig: NextConfig = {
         port: '3001',
         pathname: '/**',
       },
+      {
+        protocol: 'http',
+        hostname: '146.103.122.171',
+        port: '3001',
+        pathname: '/**',
+      },
     ],
+  },
+  env: {
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://146.103.122.171:3001/api',
+    NEXT_PUBLIC_STATIC_URL: process.env.NEXT_PUBLIC_STATIC_URL || 'http://146.103.122.171:3001',
   },
 };
 
