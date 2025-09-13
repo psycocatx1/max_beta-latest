@@ -20,7 +20,7 @@ export const WhyUsSection = async () => {
             return (
               <Card hoverable key={index} className={classes.whyus__card}>
                 <div className={classes.whyus__card_icon}>
-                  <IconComponent size={24} />
+                  <IconComponent size={48} />
                 </div>
                 <Heading size='md' className={classes.whyus__card_title}>{feature.title}</Heading>
                 <Paragraph size='md' className={classes.whyus__card_description}>{feature.description}</Paragraph>

@@ -9,12 +9,16 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   href?: string;
 }
 
-export const Button = ({ children, className, variant = 'primary', href, ...props }: ButtonProps) => href ? (
-  <Link href={href} className={clsx(classes.button, classes[variant], className)}>
-    {children}
-  </Link>
-) : (
-  <button className={clsx(classes.button, classes[variant], className)} {...props}>
-    {children}
-  </button>
-);
+export const Button = ({ children, className, variant = 'primary', href, ...props }: ButtonProps) => {
+  const hasHref = href && href.trim().length > 0;
+
+  return hasHref ? (
+    <Link href={href} className={clsx(classes.button, classes[variant], className)}>
+      {children}
+    </Link>
+  ) : (
+    <button className={clsx(classes.button, classes[variant], className)} {...props}>
+      {children}
+    </button>
+  );
+};

@@ -1,11 +1,14 @@
-import { getTranslations } from 'next-intl/server';
+'use client';
+
+import { useTranslations } from 'next-intl';
 import classes from './VideoSection.module.scss';
 import { Button, Container, Heading, Paragraph, Section } from '@/components/styles';
 import { Iframe } from '@/components/common/Iframe';
 
-export const VideoSection = async () => {
-  const t = await getTranslations('public.pages.home.video');
+export const VideoSection = () => {
+  const t = useTranslations('public.pages.home.video');
   const video_url = t('video_url');
+  const infoText = t.raw('info.text');
 
   return (
     <Section className={classes.video}>
@@ -21,8 +24,10 @@ export const VideoSection = async () => {
             <Heading size='lg' className={classes.video__info_title}>
               {t('info.title')}
             </Heading>
-            <Paragraph dangerouslySetInnerHTML={{ __html: t.raw('info.text') }} size='md' className={classes.video__text} />
-            <Button variant='primary'>
+            {infoText && (
+              <Paragraph dangerouslySetInnerHTML={{ __html: infoText }} size='md' className={classes.video__text} />
+            )}
+            <Button href='/about' variant='primary'>
               {t('info.button')}
             </Button>
           </div>

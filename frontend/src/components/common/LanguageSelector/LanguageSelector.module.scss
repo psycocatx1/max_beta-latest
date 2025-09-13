@@ -1,3 +1,5 @@
+@use '../../styles/variables' as vars;
+
 .language_selector {
   position: relative;
   display: inline-block;
@@ -45,6 +47,12 @@
     align-items: center;
     gap: var(--spacing-xs);
     font-size: var(--font-size-xl);
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        margin-left: var(--spacing-xs);
+      }
+    }
   }
 
   &_icon {

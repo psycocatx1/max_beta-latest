@@ -149,8 +149,10 @@
           "title": "Панель управления",
           "status": "В сети",
           "metrics": {
-            "active_deliveries": "Активные доставки",
-            "average_speed": "Средняя скорость доставки"
+            "active_deliveries_label": "Активные доставки",
+            "active_deliveries_value": "24/7",
+            "average_speed_label": "Средняя скорость доставки",
+            "average_speed_value": "2.4 часа"
           }
         }
       },

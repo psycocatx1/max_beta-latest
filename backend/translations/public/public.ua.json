@@ -149,8 +149,10 @@
           "title": "Панель управління",
           "status": "Онлайн",
           "metrics": {
-            "active_deliveries": "Активні доставки",
-            "average_speed": "Середня швидкість доставки"
+            "active_deliveries_label": "Активні доставки",
+            "active_deliveries_value": "24/7",
+            "average_speed_label": "Середня швидкість доставки",
+            "average_speed_value": "2.4 години"
           }
         }
       },

@@ -33,10 +33,9 @@
     }
   }
 
-  &__empty {
+  &__empty_content {
 
     @include mix.flex-center;
-    @include mix.modern-card;
 
     & {
       flex-direction: column;
@@ -44,68 +43,153 @@
       min-height: 400px;
       padding: vars.$spacing-3xl;
       background: vars.$bg-level-1;
+      border-radius: vars.$border-radius-xl;
+      box-shadow: vars.$shadow-md;
       margin: vars.$spacing-xl 0;
+      border: vars.$border-width-normal solid vars.$border-color;
+    }
+
+    @media (max-width: vars.$breakpoint-lg) {
+      & {
+        padding: vars.$spacing-2xl;
+        min-height: 350px;
+      }
     }
 
     @media (max-width: vars.$breakpoint-md) {
       & {
-        padding: vars.$spacing-2xl;
+        padding: vars.$spacing-xl;
         min-height: 300px;
+        margin: vars.$spacing-lg 0;
       }
     }
 
     @media (max-width: vars.$breakpoint-sm) {
       & {
-        padding: vars.$spacing-xl;
+        padding: vars.$spacing-lg;
         min-height: 250px;
+        margin: vars.$spacing-md 0;
       }
     }
 
-    &_icon {
-      color: vars.$primary-color;
-      margin-bottom: vars.$spacing-xl;
-      opacity: 0.7;
-      filter: drop-shadow(0 4px 8px rgba(34, 197, 94, 0.2));
-
-      @media (max-width: vars.$breakpoint-sm) {
-        & {
-          width: 3rem;
-          height: 3rem;
-          margin-bottom: vars.$spacing-lg;
-        }
-      }
-    }
-
-    &_title {
-      @include mix.heading-lg;
-
+    @media (max-width: vars.$breakpoint-xs) {
       & {
-        margin: 0 0 vars.$spacing-md 0;
-        color: vars.$text-primary;
-        font-weight: vars.$font-weight-bold;
+        padding: vars.$spacing-md;
+        min-height: 200px;
+        margin: vars.$spacing-sm 0;
       }
+    }
+  }
 
-      @media (max-width: vars.$breakpoint-sm) {
-        & {
-          font-size: vars.$font-size-xl;
-        }
+  &__empty_icon {
+    color: vars.$primary-color;
+    margin-bottom: vars.$spacing-xl;
+    opacity: 0.7;
+    filter: drop-shadow(0 4px 8px rgba(34, 197, 94, 0.2));
+    transition: vars.$transition-all;
+
+    @media (max-width: vars.$breakpoint-lg) {
+      & {
+        width: 4rem;
+        height: 4rem;
       }
     }
 
-    &_description {
-      @include mix.paragraph-lg;
-
+    @media (max-width: vars.$breakpoint-md) {
       & {
-        margin: 0;
-        color: vars.$text-secondary;
-        max-width: 500px;
-        line-height: 1.6;
+        width: 3.5rem;
+        height: 3.5rem;
+        margin-bottom: vars.$spacing-lg;
       }
+    }
 
-      @media (max-width: vars.$breakpoint-sm) {
-        & {
-          font-size: vars.$font-size-md;
-        }
+    @media (max-width: vars.$breakpoint-sm) {
+      & {
+        width: 3rem;
+        height: 3rem;
+        margin-bottom: vars.$spacing-md;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-xs) {
+      & {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-bottom: vars.$spacing-sm;
+      }
+    }
+  }
+
+  &__empty_title {
+    @include mix.heading-lg;
+
+    & {
+      margin: 0 0 vars.$spacing-md 0;
+      color: vars.$text-primary;
+      font-weight: vars.$font-weight-bold;
+    }
+
+    @media (max-width: vars.$breakpoint-lg) {
+      & {
+        font-size: vars.$font-size-2xl;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        font-size: vars.$font-size-xl;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-sm) {
+      & {
+        font-size: vars.$font-size-lg;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-xs) {
+      & {
+        font-size: vars.$font-size-md;
+      }
+    }
+  }
+
+  &__empty_description {
+    @include mix.paragraph-lg;
+
+    & {
+      margin: 0;
+      color: vars.$text-secondary;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: vars.$breakpoint-lg) {
+      & {
+        font-size: vars.$font-size-md;
+        max-width: 450px;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        font-size: vars.$font-size-md;
+        max-width: 400px;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-sm) {
+      & {
+        font-size: vars.$font-size-sm;
+        max-width: 100%;
+        padding: 0 vars.$spacing-sm;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-xs) {
+      & {
+        font-size: vars.$font-size-sm;
+        padding: 0 vars.$spacing-xs;
       }
     }
   }

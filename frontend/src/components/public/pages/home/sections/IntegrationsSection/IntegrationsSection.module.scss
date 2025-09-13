@@ -9,7 +9,7 @@
     margin-bottom: vars.$spacing-3xl;
 
     @media (max-width: vars.$breakpoint-md) {
-      margin-bottom: vars.$spacing-2xl;
+      margin-bottom: vars.$spacing-xl;
     }
   }
 
@@ -18,6 +18,10 @@
     grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
     gap: vars.$spacing-lg;
     margin-bottom: vars.$spacing-3xl;
+
+    @media (max-width: vars.$breakpoint-md) {
+      margin-bottom: vars.$spacing-xl;
+    }
 
     &_item {
       @include mix.flex-center;
@@ -111,6 +115,7 @@
 
       & {
         flex: 1;
+        gap: vars.$spacing-lg;
       }
 
       @media (max-width: vars.$breakpoint-md) {
@@ -128,6 +133,14 @@
 
       &_description {
         margin-bottom: vars.$spacing-xl;
+      }
+
+      &_image {
+        @include mix.flex-center;
+
+        & {
+          flex: 1;
+        }
       }
     }
 
@@ -170,7 +183,7 @@
       }
     }
 
-    &_image {
+    &_item {
       @include mix.flex-center;
 
       & {

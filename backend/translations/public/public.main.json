@@ -147,8 +147,10 @@
           "title": "Control Panel",
           "status": "Online",
           "metrics": {
-            "active_deliveries": "Active Deliveries",
-            "average_speed": "Average Delivery Speed"
+            "active_deliveries_label": "Active Deliveries",
+            "active_deliveries_value": "24/7",
+            "average_speed_label": "Average Delivery Speed",
+            "average_speed_value": "2.4 hours"
           }
         }
       },

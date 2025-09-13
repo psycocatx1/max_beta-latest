@@ -8,12 +8,16 @@ type CardProps = {
   href?: string;
 }
 
-export const Card = ({ children, className, hoverable, href }: CardProps) => href ? (
-  <a href={href} className={clsx(classes.card, hoverable && classes.hoverable, className)}>
-    {children}
-  </a>
-) : (
-  <div className={clsx(classes.card, hoverable && classes.hoverable, className)}>
-    {children}
-  </div>
-);
+export const Card = ({ children, className, hoverable, href }: CardProps) => {
+  const hasHref = href && href.trim().length > 0;
+
+  return hasHref ? (
+    <a href={href} className={clsx(classes.card, hoverable && classes.hoverable, className)}>
+      {children}
+    </a>
+  ) : (
+    <div className={clsx(classes.card, hoverable && classes.hoverable, className)}>
+      {children}
+    </div>
+  );
+};

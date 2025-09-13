@@ -18,8 +18,8 @@ export const Header = ({ locale, locales }: { locale: string, locales: Locale[] 
     <header className={styles.header}>
       <div className={styles.header_container}>
         <div className={styles.header_left}>
-          <Link locale={locale} href="/" className={styles.header_logo_link}>
-            <Logo className={styles.header_logo} width={270} height={150} />
+          <Link locale={locale} href="/" className={styles.header_logo}>
+            <Logo />
           </Link>
         </div>
 
@@ -27,9 +27,7 @@ export const Header = ({ locale, locales }: { locale: string, locales: Locale[] 
           <Navigation is_mobile_menu_opened={is_mobile_menu_opened} setIsMobileMenuOpened={setIsMobileMenuOpened} locale={locale} locales={locales} />
 
           <div className={styles.header_actions}>
-            <div className={styles.header_actions_language_selector}>
-              <LanguageSelector locale={locale} locales={locales} />
-            </div>
+            <LanguageSelector className={styles.header_actions_language_selector} locale={locale} locales={locales} />
             <button
               className={styles.header_mobile_toggle}
               onClick={() => setIsMobileMenuOpened(!is_mobile_menu_opened)}

@@ -17,7 +17,7 @@ export const getImageUrl = (imagePath: string | null | undefined): string | unde
   }
 
   // Получаем базовый URL для статических файлов из переменных окружения или используем значение по умолчанию
-  const staticBaseUrl = process.env.NEXT_PUBLIC_STATIC_URL || 'http://localhost:3001';
+  const staticBaseUrl = process.env.NEXT_PUBLIC_STATIC_URL;
 
   // Убираем начальный слеш из imagePath если он есть, так как мы его добавим сами
   const cleanImagePath = imagePath.startsWith('/') ? imagePath.slice(1) : imagePath;

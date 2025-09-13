@@ -11263,7 +11263,7 @@ async function bootstrap() {
     app.useGlobalPipes(new common_1.ValidationPipe({ transform: true, whitelist: true }));
     app.use(cookieParser());
     app.enableCors({
-        origin: process.env.FRONTEND_URL || "http://localhost:3000",
+        origin: true,
         credentials: true,
     });
     app.setGlobalPrefix("api");

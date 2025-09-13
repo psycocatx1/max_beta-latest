@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, HTMLAttributes } from 'react';
 import { ChevronDown, Globe, Loader } from 'lucide-react';
 import styles from './LanguageSelector.module.scss';
 import { Link, usePathname } from '@/lib/intl';
@@ -19,7 +19,7 @@ type Params = {
   local_product_id?: string,
 }
 
-export const LanguageSelector = ({ locale, locales }: { locale: string, locales: Locale[] }) => {
+export const LanguageSelector = ({ locale, locales, className }: { locale: string, locales: Locale[] } & HTMLAttributes<HTMLDivElement>) => {
   const [is_open, setIsOpen] = useState(false);
   const dropdown_ref = useRef<HTMLDivElement>(null);
   const pathname = usePathname()
@@ -55,7 +55,7 @@ export const LanguageSelector = ({ locale, locales }: { locale: string, locales:
   return (
     <div className={styles.language_selector} ref={dropdown_ref}>
       <button
-        className={styles.language_selector_button}
+        className={`${styles.language_selector_button} ${className}`}
         onClick={() => setIsOpen(!is_open)}
         aria-label="Выбрать язык"
       >

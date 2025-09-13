@@ -38,9 +38,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   return (
     <Providers locale={current_locale} messages={messages}>
       <AnimationInitializer />
-      <div>
-        {children}
-      </div>
+      {children}
     </Providers>
   );
 } 

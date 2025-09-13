@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import classes from './Section.module.scss';
 
-type SectionProps = {
+type SectionProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
   className?: string;
   hero?: boolean;

@@ -6,10 +6,10 @@
 
   &__title {
     text-align: center;
-    margin-bottom: vars.$spacing-3xl;
+    margin: vars.$spacing-lg 0 vars.$spacing-2xl 0;
 
     @media (max-width: vars.$breakpoint-md) {
-      margin-bottom: vars.$spacing-2xl;
+      margin: vars.$spacing-md 0 vars.$spacing-lg 0;
     }
   }
 
@@ -45,7 +45,7 @@
     }
 
     &_icon {
-      @include mix.icon-container(4rem, vars.$primary-light, vars.$primary-color);
+      @include mix.icon-container(6rem, vars.$primary-light, vars.$primary-color);
 
       & {
         margin-bottom: vars.$spacing-lg;
@@ -66,6 +66,10 @@
     &_description {
       margin-bottom: 0;
       line-height: vars.$line-height-relaxed;
+
+      @media (max-width: vars.$breakpoint-md) {
+        padding: 0 vars.$spacing-lg;
+      }
     }
   }
 }

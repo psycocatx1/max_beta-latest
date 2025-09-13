@@ -6,7 +6,7 @@ import classes from './ServiceCard.module.scss';
 import { Eye } from 'lucide-react';
 import { Link } from '@/lib/intl/navigation';
 import { formatExtendedService } from '../../../service/localized-service';
-import { Price } from './components/Price';
+import { PriceSection } from './components';
 import { Paragraph, Heading } from '@/components/styles';
 
 interface ServiceCardProps {
@@ -51,7 +51,7 @@ export const ServiceCard = ({ service, locale }: ServiceCardProps) => {
         )}
 
         <div className={classes.card__price_section}>
-          <Price formatted_discount_price={localized_service.formatted_discount_price} formatted_price={localized_service.formatted_price} />
+          <PriceSection formatted_discount_price={localized_service.formatted_discount_price} formatted_price={localized_service.formatted_price} />
 
           <Link
             href={{ pathname: '/services/[service_id]', params: { service_id: service.id } }}

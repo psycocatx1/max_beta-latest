@@ -13,31 +13,6 @@
     box-shadow: vars.$shadow-md;
   }
 
-  &_left {
-    display: flex;
-    height: inherit;
-    align-items: center;
-    gap: vars.$spacing-xl;
-    margin-top: -18px;
-  }
-
-  &_logo_link {
-    margin-left: -40px;
-
-    & img {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 230px;
-    }
-  }
-
-  &_right {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
   @media (max-width: vars.$breakpoint-2xl) {
     & {
       gap: vars.$spacing-lg;
@@ -49,6 +24,68 @@
       gap: vars.$spacing-md;
     }
   }
+
+  &_left {
+    display: flex;
+    height: inherit;
+    align-items: center;
+    gap: vars.$spacing-xl;
+    height: 100%;
+    width: 1px;
+  }
+
+  &_logo {
+    height: 96px;
+    margin-left: -65px;
+
+    @media (max-width: vars.$breakpoint-xl) {
+      & {
+        margin-top: -16px;
+        height: 80px;
+        margin-left: -40px;
+      }
+    }
+
+    @media(max-width: vars.$breakpoint-lg) {
+      & {
+        margin-top: 0px;
+        height: 70px;
+        margin-left: -30px;
+      }
+    }
+
+    @media(max-width: vars.$breakpoint-xs) {
+      & {
+        margin-left: -20px;
+      }
+    }
+
+    @media(max-width: 460px) {
+      & {
+        transform: scaleX(0.95);
+        margin-left: -30px;
+      }
+    }
+
+    @media(max-width: 450px) {
+      & {
+        transform: scaleX(0.93);
+        margin-left: -34px;
+      }
+    }
+
+    & svg {
+      height: 100%;
+    }
+  }
+
+  &_right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+
 
   &_container {
     width: 100%;
@@ -70,50 +107,54 @@
         padding: vars.$spacing-xl vars.$spacing-lg;
       }
     }
-  }
 
-  &_logo {
-    &_link {
-      display: flex;
-      align-items: center;
-      gap: vars.$spacing-sm;
-      color: vars.$text-primary;
-      font-weight: vars.$font-weight-bold;
-      font-size: vars.$font-size-2xl;
-      transition: color vars.$transition-normal vars.$transition-ease;
-
-      &:hover {
-        color: vars.$primary-color;
+    @media (max-width: vars.$breakpoint-xs) {
+      & {
+        padding: vars.$spacing-xl vars.$spacing-xs;
       }
-    }
-
-    &_icon {
-      font-size: vars.$font-size-2xl;
-    }
-
-    &_text {
-      color: vars.$primary-color;
-      font-weight: vars.$font-weight-bold;
     }
   }
 
   &_actions {
+    display: none !important;
     display: flex;
     align-items: center;
     gap: vars.$spacing-md;
 
     @media (max-width: vars.$breakpoint-lg) {
       & {
-        gap: vars.$spacing-sm;
+        gap: vars.$spacing-xs;
+      }
+    }
+
+    @media (max-width: 900px) {
+      & {
+        display: flex !important;
       }
     }
 
     &_language_selector {
-      display: none;
+      display: none !important;
 
-      @media (max-width: vars.$breakpoint-md) {
+      @media (max-width: 900px) {
         & {
-          display: block;
+          display: flex !important;
+          padding: vars.$spacing-sm vars.$spacing-xs !important;
+          border-radius: vars.$border-radius-lg !important;
+        }
+
+        & span {
+          font-size: vars.$font-size-md !important;
+        }
+
+        & svg {
+          width: 20px !important;
+          height: 20px !important;
+        }
+
+        & img {
+          height: 20px !important;
+          width: 30px !important;
         }
       }
     }
@@ -124,7 +165,6 @@
     display: none;
     align-items: center;
     justify-content: center;
-    height: 100%;
     aspect-ratio: 1/1;
     padding: vars.$spacing-sm;
     background: vars.$bg-level-2;
@@ -132,22 +172,17 @@
     border-radius: vars.$border-radius-lg;
     cursor: pointer;
 
-    @media (max-width: vars.$breakpoint-md) {
+    & svg {
+      width: 22px !important;
+      height: 22px !important;
+    }
+
+    @media (max-width: 900px) {
       display: flex;
     }
 
     &:hover {
       background: vars.$primary-light;
-    }
-  }
-}
-
-@media (max-width: vars.$breakpoint-lg) {
-  .header {
-    &_logo {
-      &_link {
-        font-size: vars.$font-size-lg;
-      }
     }
   }
 }

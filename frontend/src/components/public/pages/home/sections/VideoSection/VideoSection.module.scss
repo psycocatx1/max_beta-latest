@@ -7,10 +7,14 @@
 
   &__title {
     text-align: center;
-    margin-bottom: vars.$spacing-3xl;
+    margin-bottom: vars.$spacing-2xl !important;
 
     @media (max-width: vars.$breakpoint-md) {
-      margin-bottom: vars.$spacing-2xl;
+      margin-bottom: vars.$spacing-2xl !important;
+    }
+
+    @media (max-width: vars.$breakpoint-xs) {
+      margin-bottom: vars.$spacing-xl !important;
     }
   }
 
@@ -20,9 +24,10 @@
     gap: vars.$spacing-3xl;
     align-items: center;
 
-    @media (max-width: vars.$breakpoint-lg) {
+    @media (max-width: vars.$breakpoint-md) {
       grid-template-columns: 1fr;
-      gap: vars.$spacing-2xl;
+      gap: vars.$spacing-lg;
+
     }
   }
 
@@ -37,6 +42,13 @@
       box-shadow: vars.$shadow-lg;
       background: vars.$bg-level-3;
       position: relative;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        margin-bottom: vars.$spacing-xs;
+        aspect-ratio: 16/9;
+      }
     }
 
     // Плейсхолдер для видео
@@ -74,6 +86,10 @@
 
     @media (max-width: vars.$breakpoint-lg) {
       text-align: center;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      padding: 0 vars.$spacing-lg;
     }
 
     &_title {

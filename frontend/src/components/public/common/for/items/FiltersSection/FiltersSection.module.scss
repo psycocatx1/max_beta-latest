@@ -3,21 +3,28 @@
 
 .filters {
   background-color: vars.$bg-level-2;
-  padding: vars.$spacing-xl 0 0 0;
+  padding: vars.$spacing-lg vars.$spacing-sm 0 vars.$spacing-sm;
+
+  @media (max-width: vars.$breakpoint-xs) {
+    padding-top: vars.$spacing-md;
+  }
 
   &__container {
     padding: 0;
     background-color: vars.$bg-level-1;
     padding: vars.$spacing-md;
-    border-radius: vars.$border-radius-lg;
+    border-radius: vars.$border-radius-xl;
     border: vars.$border-width-normal solid vars.$border-color;
     box-shadow: vars.$shadow-sm;
+    width: calc(100% - vars.$spacing-lg * 2);
 
 
-    @media (max-width: vars.$breakpoint-sm) {
-      width: calc(100% - (vars.$spacing-sm * 2));
+    @media (max-width: 948px) {
       padding: vars.$spacing-sm;
+      width: 100%;
     }
+
+
   }
 
 

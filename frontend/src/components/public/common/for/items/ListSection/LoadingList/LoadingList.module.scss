@@ -43,6 +43,73 @@
       border-radius: vars.$border-radius-xl;
       margin: vars.$spacing-xl 0;
       box-shadow: vars.$shadow-md;
+      border: vars.$border-width-normal solid vars.$border-color;
+      position: relative;
+      overflow: hidden;
+    }
+
+    // Анимация пульсации для фона
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.05), transparent);
+      animation: shimmer 2s infinite;
+      z-index: 0;
+    }
+
+    // Контент поверх анимации
+    >* {
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: vars.$breakpoint-lg) {
+      & {
+        min-height: 350px;
+        margin: vars.$spacing-lg 0;
+        font-size: vars.$font-size-md;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      & {
+        min-height: 300px;
+        margin: vars.$spacing-lg 0;
+        font-size: vars.$font-size-md;
+        padding: vars.$spacing-lg;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-sm) {
+      & {
+        min-height: 250px;
+        margin: vars.$spacing-md 0;
+        font-size: vars.$font-size-md;
+        padding: vars.$spacing-md;
+      }
+    }
+
+    @media (max-width: vars.$breakpoint-xs) {
+      & {
+        min-height: 200px;
+        margin: vars.$spacing-sm 0;
+        font-size: vars.$font-size-sm;
+        padding: vars.$spacing-sm;
+      }
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(100%);
     }
   }
 }

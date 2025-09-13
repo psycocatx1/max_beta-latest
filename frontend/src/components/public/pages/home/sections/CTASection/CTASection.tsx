@@ -21,7 +21,7 @@ export const CTASection = async () => {
           </Paragraph>
 
           <div className={classes.cta__actions}>
-            <Button variant='primary' className={classes.cta__button_primary}>
+            <Button href='/contact' variant='primary' className={classes.cta__button_primary}>
               {t('buttons.quote')}
             </Button>
             <Button variant='secondary' href={`tel:${t('phone.number')}`} className={classes.cta__button_secondary}>
@@ -36,7 +36,7 @@ export const CTASection = async () => {
                 <div className={classes.cta__feature_icon}>
                   <CheckCircle size={24} />
                 </div>
-                {feature}
+                <Paragraph size='lg' className={classes.cta__feature_description}>{feature}</Paragraph>
               </div>
             ))}
           </div>

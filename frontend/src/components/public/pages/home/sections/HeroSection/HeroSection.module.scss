@@ -97,6 +97,7 @@
 
     @media (max-width: vars.$breakpoint-lg) {
       max-width: none;
+      padding: 0 vars.$spacing-md;
     }
 
     @media (max-width: vars.$breakpoint-sm) {
@@ -155,7 +156,7 @@
       opacity: 1;
     }
 
-    @media (max-width: vars.$breakpoint-md) {
+    @media (max-width: vars.$breakpoint-lg) {
       width: 100%;
       height: auto;
     }
@@ -184,7 +185,7 @@
         opacity: 1;
       }
 
-      @media (max-width: vars.$breakpoint-sm) {
+      @media (max-width: vars.$breakpoint-md) {
         width: 100%;
         height: auto;
       }

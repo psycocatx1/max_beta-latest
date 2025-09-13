@@ -36,6 +36,7 @@ export const NavLink = ({ locale, href, onClick, label, is_mobile_menu_opened }:
   if (is_mobile_menu_opened || is_desktop) {
     return (
       <Link
+        id={label}
         locale={locale}
         href={href}
         className={`${classes.nav_link} ${match(href)(pathname) ? classes.nav_link__active : ''}`}

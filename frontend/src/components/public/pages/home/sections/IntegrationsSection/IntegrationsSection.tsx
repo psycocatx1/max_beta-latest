@@ -56,7 +56,7 @@ export const IntegrationsSection = async () => {
           ))}
         </div>
 
-        <Button variant='primary' className={classes.integrations__button}>
+        <Button variant='primary' href='/contact' className={classes.integrations__button}>
           {t('button_text')}
         </Button>
 
@@ -67,7 +67,7 @@ export const IntegrationsSection = async () => {
               <Paragraph size='md' className={classes.integrations__courier_description}>{t('courier.description')}</Paragraph>
 
             </div>
-            <div className={classes.integrations__courier_item}>
+            <div className={classes.integrations__courier_content_image}>
               <Image
                 src={integration_courier_image.src}
                 alt="Courier Network"

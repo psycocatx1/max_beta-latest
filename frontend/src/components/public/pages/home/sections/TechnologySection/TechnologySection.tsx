@@ -36,7 +36,7 @@ export const TechnologySection = async () => {
             {features.map((feature, index) => (
               <div key={index} className={classes.technology__feature}>
                 <div className={classes.technology__feature_icon}>
-                  <feature.icon size={24} />
+                  <feature.icon size={32} />
                 </div>
                 <div className={classes.technology__feature_content}>
                   <Heading size='sm' className={classes.technology__feature_title}>{feature.title}</Heading>
@@ -57,12 +57,12 @@ export const TechnologySection = async () => {
           </div>
           <div className={classes.technology__dashboard_content}>
             <div className={classes.technology__metric}>
-              <Paragraph size='md'>{t('dashboard.metrics.active_deliveries')}</Paragraph>
-              <Heading size='lg' className={classes.technology__metric_value}>247</Heading>
+              <Heading size='md' className={classes.technology__metric_label}>{t('dashboard.metrics.active_deliveries_label')}</Heading>
+              <Heading size='lg' className={classes.technology__metric_value}>{t('dashboard.metrics.active_deliveries_value')}</Heading>
             </div>
             <div className={classes.technology__metric}>
-              <Paragraph size='md'>{t('dashboard.metrics.average_speed')}</Paragraph>
-              <Heading size='lg' className={classes.technology__metric_value}>2.4 ч</Heading>
+              <Heading size='md' className={classes.technology__metric_label}>{t('dashboard.metrics.average_speed_label')}</Heading>
+              <Heading size='lg' className={classes.technology__metric_value}>{t('dashboard.metrics.average_speed_value')}</Heading>
             </div>
           </div>
         </Card>

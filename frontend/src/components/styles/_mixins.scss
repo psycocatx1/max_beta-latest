@@ -845,7 +845,7 @@
   @media (max-width: vars.$breakpoint-md) {
     & {
       margin-top: vars.$spacing-lg;
-      height: 150px;
+      height: 250px;
     }
   }
 
@@ -853,7 +853,7 @@
     & {
       margin-top: vars.$spacing-md;
       border-radius: vars.$border-radius-md;
-      height: 120px;
+      height: 220px;
     }
   }
 }

@@ -1,6 +1,8 @@
-import { ReactNode } from 'react';
+'use client';
+import { ReactNode, useEffect, useRef } from 'react';
 import classes from './AnimatedSection.module.scss';
 import clsx from 'clsx';
+import { observeAnimatedSection } from './animation-observer';
 
 interface AnimatedSectionProps {
   children: ReactNode;
@@ -21,8 +23,19 @@ export const AnimatedSection = ({
   enableAnimations = true,
   useCssOnly = false
 }: AnimatedSectionProps) => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Регистрируем элемент в Intersection Observer при монтировании
+  useEffect(() => {
+    const element = sectionRef.current;
+    if (element && enableAnimations && !useCssOnly) {
+      observeAnimatedSection(element);
+    }
+  }, [enableAnimations, useCssOnly]);
+
   return (
     <section
+      ref={sectionRef}
       className={clsx(
         classes.animated_section,
         {
@@ -43,6 +56,7 @@ export const AnimatedSection = ({
       data-duration={duration}
       data-enable-animations={enableAnimations}
       data-css-only={useCssOnly}
+      suppressHydrationWarning
     >
       {children}
     </section>
