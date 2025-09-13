@@ -12,9 +12,7 @@ export const Home = () => {
   return (
     <div className={classes.home_page}>
       <HeroSection />
-      <AnimatedSection animation="fadeInUp" delay={50} >
-        <ServicesSection />
-      </AnimatedSection>
+      <ServicesSection />
 
       <AnimatedSection animation="fadeInUp" delay={50}>
         <VideoSection />
