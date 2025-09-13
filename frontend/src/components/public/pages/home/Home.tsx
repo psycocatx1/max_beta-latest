@@ -2,6 +2,7 @@ import dynamic, { DynamicOptions } from 'next/dynamic';
 import classes from './Home.module.scss';
 import { AnimatedSection } from '@/components/public/common/for/section/AnimatedSection';
 import { SectionLoader } from '../../common';
+import { HeroSection } from './sections/HeroSection';
 
 const options: DynamicOptions = {
   ssr: true,
@@ -9,7 +10,6 @@ const options: DynamicOptions = {
 };
 
 // Динамическая подгрузка секций
-const HeroSection = dynamic(() => import('./sections/HeroSection').then(mod => ({ default: mod.HeroSection })), { ssr: true });
 const ServicesSection = dynamic(() => import('./sections/ServicesSection').then(mod => ({ default: mod.ServicesSection })), { ...options });
 const VideoSection = dynamic(() => import('./sections/VideoSection').then(mod => ({ default: mod.VideoSection })), { ...options });
 const WhyUsSection = dynamic(() => import('./sections/WhyUsSection').then(mod => ({ default: mod.WhyUsSection })), { ...options });
@@ -20,10 +20,7 @@ const CTASection = dynamic(() => import('./sections/CTASection').then(mod => ({ 
 export const Home = () => {
   return (
     <div className={classes.home_page}>
-      <AnimatedSection animation="fadeInUp" delay={0}>
-        <HeroSection />
-      </AnimatedSection>
-
+      <HeroSection />
       <AnimatedSection animation="fadeInUp" delay={50} >
         <ServicesSection />
       </AnimatedSection>
