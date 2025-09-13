@@ -8,15 +8,20 @@ interface LayoutProps {
   locale: string;
 }
 
-export const Layout: FC<LayoutProps> = async ({ children, locale }) => {
-  const locales = (await LocalesApi.get({ take: 1000, skip: 0 })).data.items;
+export const Layout: FC<LayoutProps> = ({ children, locale }) => {
   return (
     <div className={styles.layout}>
-      <Header locale={locale} locales={locales} />
+      <HeaderWrapper locale={locale} />
       <main className={styles.layout_main}>
         {children}
       </main>
       <Footer />
     </div>
   );
+};
+
+// Отдельный компонент для Header с асинхронной логикой
+const HeaderWrapper: FC<{ locale: string }> = async ({ locale }) => {
+  const locales = (await LocalesApi.get({ take: 1000, skip: 0 })).data.items;
+  return <Header locale={locale} locales={locales} />;
 };
