@@ -22,7 +22,7 @@ export const HeroSection = async () => {
               {t('description')}
             </Paragraph>
             <div className={classes.hero__actions}>
-              <Button variant='primary' className={classes.hero__button}>
+              <Button href='/contacts' variant='primary' className={classes.hero__button}>
                 <span>{t('buttons.quote')}</span>
                 <ArrowRight size={20} />
               </Button>
