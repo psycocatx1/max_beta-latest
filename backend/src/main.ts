@@ -25,24 +25,24 @@ async function bootstrap(): Promise<void> {
 
   // CORS
   app.enableCors({
-    origin: true,
+    origin: ['https://relpen.org', 'http://localhost:3000', 'http://localhost:3001', 'https://www.relpen.org'],
     credentials: true,
   });
   app.setGlobalPrefix("api");
   // Swagger документация
-  const config = new DocumentBuilder()
-    .setTitle("E-Commerce API")
-    .setDescription("API для электронной коммерции")
-    .setVersion("1.0")
-    .addTag("auth")
-    .addTag("users")
-    .addTag("products")
-    .addTag("orders")
-    .addBearerAuth()
-    .build();
+  // const config = new DocumentBuilder()
+  //   .setTitle("E-Commerce API")
+  //   .setDescription("API для электронной коммерции")
+  //   .setVersion("1.0")
+  //   .addTag("auth")
+  //   .addTag("users")
+  //   .addTag("products")
+  //   .addTag("orders")
+  //   .addBearerAuth()
+  //   .build();
 
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup("api", app, document);
+  // const document = SwaggerModule.createDocument(app, config);
+  // SwaggerModule.setup("api", app, document);
 
   // Запуск сервера
   const port = process.env.PORT || 3001;
