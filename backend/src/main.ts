@@ -25,7 +25,7 @@ async function bootstrap(): Promise<void> {
 
   // CORS
   app.enableCors({
-    origin: ['https://relpen.org', 'http://localhost:3000', 'http://localhost:3001', 'https://www.relpen.org'],
+    origin: true,
     credentials: true,
   });
   app.setGlobalPrefix("api");
