@@ -36,7 +36,7 @@ const nextConfig: NextConfig = {
     ],
   },
   env: {
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://146.103.122.171:3001/api',
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
     NEXT_PUBLIC_STATIC_URL: process.env.NEXT_PUBLIC_STATIC_URL || 'http://146.103.122.171:3001',
   },
 };

@@ -20,8 +20,8 @@
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-xl);
     border: var(--border-width-thin) solid var(--bg-level-3);
-    overflow: hidden;
     max-height: 90vh;
+    overflow-y: scroll;
     animation: slideIn var(--transition-normal) var(--transition-ease);
 
     &_sm {
@@ -41,6 +41,9 @@
   }
 
   &_header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-modal);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -81,8 +84,8 @@
 
   &_body {
     padding: var(--spacing-lg);
-    overflow-y: auto;
-    max-height: calc(90vh - 80px);
+    overflow-y: scroll;
+    scrollbar-width: thin;
   }
 }
 
