@@ -15,10 +15,6 @@ export const Home = () => {
       <ServicesSection />
 
       <AnimatedSection animation="fadeInUp" delay={50}>
-        <VideoSection />
-      </AnimatedSection>
-
-      <AnimatedSection animation="fadeInUp" delay={50}>
         <WhyUsSection />
       </AnimatedSection>
 
