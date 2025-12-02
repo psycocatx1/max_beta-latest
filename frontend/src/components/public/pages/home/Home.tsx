@@ -2,7 +2,6 @@ import classes from './Home.module.scss';
 import { AnimatedSection } from '@/components/public/common/for/section/AnimatedSection';
 import { HeroSection } from './sections/HeroSection';
 import { ServicesSection } from './sections/ServicesSection/ServicesSection';
-import { VideoSection } from './sections/VideoSection/VideoSection';
 import { WhyUsSection } from './sections/WhyUsSection/WhyUsSection';
 import { TechnologySection } from './sections/TechnologySection/TechnologySection';
 import { IntegrationsSection } from './sections/IntegrationsSection/IntegrationsSection';
