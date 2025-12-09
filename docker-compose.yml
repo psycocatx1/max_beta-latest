@@ -12,7 +12,7 @@ services:
     ports:
       - 5433:5432
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - backend_postgres_data:/var/lib/postgresql/data
     networks:
       - max-network
     healthcheck:
@@ -31,7 +31,7 @@ services:
     ports:
       - 6379:6379
     volumes:
-      - redis_data:/data
+      - backend_redis_data:/data
     networks:
       - max-network
     command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
