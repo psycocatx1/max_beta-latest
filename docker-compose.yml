@@ -1,14 +1,12 @@
 version: '3.7'
 
-# Load environment variables from .env file
-env_file:
-  - .env
-
 services:
   db:
     container_name: postgres
     image: postgres:latest
     restart: always
+    env_file:
+      - .env
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -30,6 +28,8 @@ services:
     container_name: redis
     image: redis:7-alpine
     restart: always
+    env_file:
+      - .env
     ports:
       - 6379:6379
     volumes:
@@ -50,6 +50,8 @@ services:
       dockerfile: ./backend/Dockerfile
     container_name: max-backend
     restart: always
+    env_file:
+      - .env
     ports:
       - "3001:3001"
     environment:
@@ -91,11 +93,13 @@ services:
       dockerfile: ./frontend/Dockerfile
     container_name: max-frontend
     restart: always
+    env_file:
+      - .env
     ports:
       - "3000:3000"
     environment:
       - NEXT_PUBLIC_API_URL=http://backend:3001/api
-      - NEXT_PUBLIC_DEFAULT_LOCALE=ru
+      - NEXT_PUBLIC_DEFAULT_LOCALE=ua
       - NEXT_PUBLIC_LOCALES=ru,uk,ua,pl
       - NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=${GOOGLE_MAPS_API_KEY}
     depends_on:
