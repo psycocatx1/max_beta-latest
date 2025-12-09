@@ -56,4 +56,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD node --version || exit 1
 
 # Run database migrations and start the application
-CMD npx prisma migrate deploy && node dist/main.js
+CMD npx prisma migrate deploy && npm run start:prod
