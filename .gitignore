@@ -2,10 +2,8 @@
 /frontend/.next/
 
 .next
-.dist
 
 /backend/node_modules/
-/backend/.dist/
 
 .env
 .env.local
