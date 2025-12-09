@@ -13,10 +13,10 @@ async function bootstrap(): Promise<void> {
   app.getHttpAdapter().getInstance().set("trust proxy", true);
 
   // Настройка хостинга статических файлов
-  app.useStaticAssets(join(__dirname, "..", "uploads"), {
+  app.useStaticAssets(join(__dirname, "../..", "uploads"), {
     prefix: "/static/",
   });
-  console.log(join(__dirname, "..", "uploads"));
+  console.log(join(__dirname, "../..", "uploads"));
 
   // Глобальные пайпы
   app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
