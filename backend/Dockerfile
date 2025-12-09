@@ -40,6 +40,9 @@ RUN npm install --omit=dev && npm cache clean --force
 
 # Copy built application from builder stage
 COPY --from=builder /app/dist ./dist
+
+# Verify copied files
+RUN ls -la dist/
 COPY --from=builder /app/prisma ./prisma
 
 # Generate Prisma client
@@ -53,4 +56,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD node --version || exit 1
 
 # Run database migrations and start the application
-CMD npx prisma migrate deploy && npm run start:prod
+CMD npx prisma migrate deploy && node dist/main.js
