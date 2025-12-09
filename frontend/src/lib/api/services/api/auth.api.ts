@@ -14,17 +14,15 @@ const getCurrentLocale = (): string => {
   return 'ru'; // локаль по умолчанию
 };
 
-const ENDPOINT = `${process.env.NEXT_PUBLIC_API_URL}/auth`;
-
 /**
  * Пути для работы с авторизацией
  */
 const AUTH_PATHS = {
-  login: `${ENDPOINT}/login`,
-  register: `${ENDPOINT}/register`,
-  logout: `${ENDPOINT}/logout`,
-  me: `${ENDPOINT}/me`,
-  refresh: `${ENDPOINT}/refresh`,
+  login: `/auth/login`,
+  register: `auth/register`,
+  logout: `/auth/logout`,
+  me: `/auth/me`,
+  refresh: `/auth/refresh`,
 } as const;
 
 /**
