@@ -13,8 +13,6 @@ coverage
 .prettierrc
 .prettierignore
 jest.config.js
-tsconfig.json
-tsconfig.build.json
 nest-cli.json
 dist
 uploads
