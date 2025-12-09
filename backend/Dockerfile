@@ -5,10 +5,10 @@ FROM node:18-alpine AS builder
 WORKDIR /app
 
 # Copy package files
-COPY package*.json ./
+COPY package*.json package-lock.json ./
 
 # Install dependencies
-RUN npm ci --only=production
+RUN npm ci
 
 # Copy source code
 COPY . .
@@ -27,7 +27,7 @@ RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nestjs -u 1001
 
 # Copy package files
-COPY package*.json ./
+COPY package*.json package-lock.json ./
 
 # Install only production dependencies
 RUN npm ci --omit=dev && npm cache clean --force
