@@ -1,0 +1,1 @@
+export declare const Auth: (...dataOrPipes: ("created" | "email" | "first_name" | "last_name" | "phone_number" | "id" | "hashed_password" | "image" | "updated" | "role" | "is_banned" | "locale_id" | import("@nestjs/common").PipeTransform<any, any> | import("@nestjs/common").Type<import("@nestjs/common").PipeTransform<any, any>> | undefined)[]) => ParameterDecorator;
