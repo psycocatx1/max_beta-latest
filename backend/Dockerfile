@@ -19,6 +19,9 @@ RUN npx prisma generate
 # Build the application
 RUN npm run build
 
+# Verify build output
+RUN ls -la dist/
+
 # Production stage
 FROM node:20-alpine AS production
 
@@ -41,10 +44,6 @@ COPY --from=builder /app/prisma ./prisma
 
 # Generate Prisma client
 RUN npx prisma generate
-
-# Change ownership to non-root user
-RUN chown -R nestjs:nodejs /app
-USER nestjs
 
 # Expose port
 EXPOSE 3001
