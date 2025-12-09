@@ -7,3 +7,15 @@
 
 .env
 .env.local
+
+
+
+cat > .env << 'EOF'
+# Frontend
+NEXT_PUBLIC_API_URL=https://www.relpen.org/api
+NEXT_PUBLIC_DEFAULT_LOCALE=ua
+NEXT_PUBLIC_LOCALES="ru,uk,ua,pl"
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao
+# Google Maps API Key (replace with your actual key)
+GOOGLE_MAPS_API_KEY=AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao
+EOF
