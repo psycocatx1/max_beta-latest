@@ -1,0 +1,73 @@
+# Dependencies
+**/node_modules/
+**/npm-debug.log*
+
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile*
+.dockerignore
+docker-compose*.yml
+
+# Environment files
+.env*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Runtime data
+pids/
+*.pid
+*.seed
+
+# Coverage
+coverage/
+.nyc_output/
+.coverage/
+
+# Build outputs
+**/dist/
+**/build/
+**/out/
+**/.next/
+
+# Cache
+**/.cache/
+**/tmp/
+**/temp/
+
+# Uploads (will be mounted as volume)
+**/uploads/
+
+# Documentation
+README.md
+DOCKER_README.md
+
+# Config files
+**/*.config.js
+**/*.config.ts
+**/tsconfig*.json
+**/nest-cli.json
+**/next.config.*
+**/postcss.config.*
+**/tailwind.config.*
+
+# Testing
+**/*.test.*
+**/*.spec.*
+**/jest.config.*
+**/test/
