@@ -1,6 +1,6 @@
 services:
   db:
-    container_name: postgres
+    container_name: max-postgres
     image: postgres:latest
     restart: always
     env_file:
@@ -23,7 +23,7 @@ services:
       start_period: 30s
 
   redis:
-    container_name: redis
+    container_name: max-redis
     image: redis:7-alpine
     restart: always
     env_file:
